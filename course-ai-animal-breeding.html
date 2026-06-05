@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI &amp; Computer Vision in Animal Breeding · ASAP-Bio</title>
+<meta name="description" content="A self-paced ASAP-Bio short course on big data, machine learning, computer vision and deep learning applied to animal breeding.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="assets/styles.css">
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header>
+<section class="course-hero" id="top"><div class="wrap">
+  <div class="eyebrow">Knowledge Hub · Digitalization and phenomics</div>
+  <h1>AI &amp; Computer Vision in Animal Breeding</h1>
+  <p class="csub">From big data and machine learning to deep learning and high-throughput phenotyping, how artificial intelligence is reshaping the way we measure animals and make breeding decisions.</p>
+  <div class="metachips">
+    <span>★ Self-paced</span><span>⏱ ~6 hours</span><span>🎓 MSc level</span><span>🧪 2 hands-on Python labs</span><span>🌍 Open access</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="attrib"><strong>About this course.</strong> This self-paced course adapts a one-day intensive class delivered by <strong>Grum Gebreyesus</strong> (Center for Quantitative Genetics and Genomics, Aarhus University) under ASAP-Bio. It has been restructured for online self-study: read each module at your own pace, try the knowledge checks, and run the labs in your browser.</div>
+
+  <h3 style="margin-top:4px">Watch: course introduction</h3>
+  <div class="videowrap" style="margin:6px 0 4px">
+    <video controls preload="none" poster="assets/video-poster.png">
+      <source src="assets/videos/course-ai-intro.mp4" type="video/mp4">
+      Your browser does not support embedded video.
+    </video>
+  </div>
+
+  <h2>What you will learn</h2>
+  <div class="outcomes"><ul>
+    <li>Explain what “big data” means in livestock and why genomic and sensor data need different statistical tools.</li>
+    <li>Describe the digital-agriculture data pipeline, from sensors to on-farm decisions.</li>
+    <li>Recognise the main machine-learning methods, neural networks, support vector machines and tree ensembles, and when to use them.</li>
+    <li>Understand how digital images are formed and processed, and how convolution extracts information.</li>
+    <li>Explain how deep learning and convolutional neural networks (CNNs) learn from images.</li>
+    <li>Connect computer vision and high-throughput phenotyping to real breeding applications.</li>
+  </ul></div>
+
+  <h3>Course contents</h3>
+  <div class="toc-chips">
+    <a href="#m1">1 · Big data in livestock</a>
+    <a href="#m2">2 · Digital agriculture &amp; PLF</a>
+    <a href="#m3">3 · Machine learning</a>
+    <a href="#m4">4 · Image processing</a>
+    <a href="#m5">5 · Deep learning &amp; CNNs</a>
+    <a href="#m6">6 · Phenotyping &amp; breeding</a>
+    <a href="#m7">7 · Wrap-up &amp; resources</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+
+  <!-- MODULE 1 -->
+  <div class="module" id="m1">
+    <div class="module-head"><div class="module-num">1</div><div><h2>Big data and data science in livestock</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>State the “5 Vs” of big data and give livestock examples.</li>
+      <li>Distinguish <em>tall</em> from <em>wide</em> data and explain why each needs different methods.</li>
+      <li>Place breeding's classic mixed model in the modern multi-omics context.</li></ul></div>
+    <p>Livestock science has become a <strong>data science</strong>. Milking robots, wearable sensors, cameras, genotyping chips and weather stations now generate streams of data on every animal, every day. “Big data” is usually described by the <strong>5 Vs</strong>: <em>Volume</em> (how much), <em>Velocity</em> (how fast it arrives), <em>Variety</em> (tabular, images, sound, sequence), <em>Veracity</em> (how trustworthy) and <em>Value</em> (what decision it supports).</p>
+    <p>Not all big data is big in the same way. <strong>Tall data</strong> has many observations and relatively few variables, classical statistics works well and significance is easy to reach. <strong>Wide data</strong> is the “big <em>p</em>, small <em>n</em>” world: far more variables than animals, as when each animal carries hundreds of thousands of genetic markers. Here ordinary regression breaks down (collinearity, multiple testing, overfitting), so we turn to <strong>penalised / regularised regression</strong> and <strong>dimension-reduction</strong> techniques.</p>
+    <div class="kc"><strong class="kclabel">Key concept · big p, small n</strong>When you have more predictors than observations, a model can fit the training data perfectly yet predict new animals badly. Regularisation (shrinking coefficients) and reducing dimensions are how we keep predictions honest.</div>
+    <p>Animal breeding's workhorse is the <strong>mixed model</strong>, <em>y = Xβ + Zu + e</em>, separating fixed effects (e.g. herd-year-season) from random genetic merit (breeding values). Genomics made this model “wide”; multi-omics (transcriptomics, proteomics, microbiomics) is widening it further. AI does not replace this framework, it extends our ability to use messy, high-dimensional data within it.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 720 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data to decisions pipeline">
+        <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="14" text-anchor="middle">
+          <rect x="10" y="40" width="150" height="50" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="85" y="62">Descriptive</text><text x="85" y="80" font-size="11" fill="#5f6b62">what happened</text>
+          <rect x="190" y="40" width="150" height="50" rx="9" fill="#E3EEF6" stroke="#3E7CB1"/><text x="265" y="62">Predictive</text><text x="265" y="80" font-size="11" fill="#5f6b62">what will happen</text>
+          <rect x="370" y="40" width="150" height="50" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="445" y="62">Prescriptive</text><text x="445" y="80" font-size="11" fill="#5f6b62">what to do</text>
+          <rect x="550" y="40" width="160" height="50" rx="9" fill="#FBF3E3" stroke="#C8962A"/><text x="630" y="62">Optimisation</text><text x="630" y="80" font-size="11" fill="#5f6b62">best decision</text>
+          <line x1="162" y1="65" x2="186" y2="65" stroke="#2E6B3E" stroke-width="2" marker-end="url(#ar)"/>
+          <line x1="342" y1="65" x2="366" y2="65" stroke="#2E6B3E" stroke-width="2" marker-end="url(#ar)"/>
+          <line x1="522" y1="65" x2="546" y2="65" stroke="#2E6B3E" stroke-width="2" marker-end="url(#ar)"/>
+          <text x="360" y="22" font-size="13" fill="#1F4A2B" font-weight="bold">From data to decisions</text>
+        </g>
+      </svg>
+      <figcaption>Analytics maturity: data becomes valuable as we move from describing the past to optimising future decisions.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: a genomic dataset has 2,000 animals and 600,000 SNP markers. Tall or wide?</summary><div class="ans"><strong>Wide</strong>, far more variables (markers) than observations (animals). This “big p, small n” setting calls for regularised methods such as ridge/LASSO or genomic BLUP, not ordinary least squares.</div></details>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module" id="m2">
+    <div class="module-head"><div class="module-num">2</div><div><h2>Digital agriculture &amp; precision livestock farming</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Define digital agriculture and precision livestock farming (PLF).</li>
+      <li>Describe the pipeline: collect → store → analyse → visualise → decide.</li>
+      <li>Explain why animal identification is the foundation of on-farm computer vision.</li></ul></div>
+    <p><strong>Digital agriculture</strong> combines sensors, communication networks, drones (UAVs), robotic machinery, data analytics and AI to manage farms more precisely. Applied to animals, this is <strong>precision livestock farming (PLF)</strong>: continuous, automated, individual-level monitoring.</p>
+    <p>The value chain is a pipeline: <strong>collect</strong> data (wearables, cameras, milk meters), <strong>store</strong> it (structured tables and unstructured images/sound), <strong>analyse</strong> it, <strong>visualise</strong> it (dashboards, alerts), and turn it into <strong>smart decisions</strong>. Among all sensing technologies, <strong>wearable accelerometers</strong> are the most common, and animal <strong>behaviour</strong> (activity, rumination, oestrus) is the most-collected phenotype, but cameras are rising fast because a single image can be extraordinarily informative.</p>
+    <div class="kc"><strong class="kclabel">Key concept · animal identification</strong>Almost every on-farm vision system must first answer “which animal is this?”. Ear tags and RFID do this today; increasingly, 2D and 3D images identify animals directly. Identification is hardest when animals share the same colour, one reason depth (3D) cameras are valuable.</div>
+    <details class="quiz"><summary>Check: why is animal identification described as the foundation of computer-vision systems on farm?</summary><div class="ans">Because individual-level decisions (genetic merit, health, feeding, traceability) require linking each measurement to the right animal. Without reliable identity, an informative image can't be used for management or breeding.</div></details>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module" id="m3">
+    <div class="module-head"><div class="module-num">3</div><div><h2>Machine learning methods</h2><div class="module-time">~55 minutes · includes a lab</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Distinguish supervised from unsupervised learning.</li>
+      <li>Explain neural networks, support vector machines and tree-based ensembles at a working level.</li>
+      <li>Recognise overfitting and the tools used to control it.</li></ul></div>
+    <p>A charming starting point is Francis Galton's 1906 observation that the average guess of 800 fair-goers estimated an ox's weight almost perfectly, the <strong>“wisdom of crowds.”</strong> Modern <strong>ensemble methods</strong> use the same idea: many weak models combined beat any single one.</p>
+    <p><strong>Supervised</strong> learning predicts a labelled outcome (e.g. body weight) from inputs; <strong>unsupervised</strong> learning finds structure without labels (e.g. clustering animals). Three families dominate:</p>
+    <p><strong>Artificial neural networks (ANNs)</strong> are flexible non-linear regressions inspired by the brain: inputs feed weighted <em>hidden units</em>, an <em>activation function</em> (sigmoid, tanh, ReLU) adds non-linearity, and <em>back-propagation</em> tunes the weights. ANNs easily <strong>overfit</strong>, so we use <em>early stopping</em> and <em>weight decay</em> (regularisation).</p>
+    <div class="figbox">
+      <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neural network with one hidden layer">
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <g stroke="#bcd0c2" stroke-width="1.5">
+            <line x1="90" y1="50" x2="250" y2="40"/><line x1="90" y1="50" x2="250" y2="100"/><line x1="90" y1="50" x2="250" y2="160"/><line x1="90" y1="50" x2="250" y2="200"/>
+            <line x1="90" y1="115" x2="250" y2="40"/><line x1="90" y1="115" x2="250" y2="100"/><line x1="90" y1="115" x2="250" y2="160"/><line x1="90" y1="115" x2="250" y2="200"/>
+            <line x1="90" y1="180" x2="250" y2="40"/><line x1="90" y1="180" x2="250" y2="100"/><line x1="90" y1="180" x2="250" y2="160"/><line x1="90" y1="180" x2="250" y2="200"/>
+            <line x1="250" y1="40" x2="430" y2="115"/><line x1="250" y1="100" x2="430" y2="115"/><line x1="250" y1="160" x2="430" y2="115"/><line x1="250" y1="200" x2="430" y2="115"/>
+          </g>
+          <g fill="#2E6B3E"><circle cx="90" cy="50" r="16"/><circle cx="90" cy="115" r="16"/><circle cx="90" cy="180" r="16"/></g>
+          <g fill="#3E7CB1"><circle cx="250" cy="40" r="16"/><circle cx="250" cy="100" r="16"/><circle cx="250" cy="160" r="16"/><circle cx="250" cy="200" r="16"/></g>
+          <circle cx="430" cy="115" r="18" fill="#C8962A"/>
+          <text x="90" y="210" fill="#1F4A2B">inputs (x)</text><text x="250" y="226" fill="#1F4A2B">hidden units</text><text x="430" y="150" fill="#1F4A2B">output (ŷ)</text>
+        </g>
+      </svg>
+      <figcaption>A feed-forward neural network with one hidden layer: inputs are combined, transformed by an activation function, and mapped to a prediction.</figcaption>
+    </div>
+    <p><strong>Support vector machines (SVMs)</strong> find the boundary with the widest <em>margin</em> between classes; the <em>“kernel trick”</em> lets them draw curved boundaries for data that aren't linearly separable. <strong>Decision trees</strong> split data with nested if-then rules; on their own they're unstable, so we combine many: <strong>bagging</strong>, <strong>random forests</strong> (each tree sees a random subset of predictors) and <strong>boosting</strong> (each model fixes the previous one's mistakes).</p>
+    <div class="kc"><strong class="kclabel">Key concept · overfitting</strong>A model that memorises the training data fails on new animals. Cross-validation, regularisation, early stopping and ensembling all exist to keep models general.</div>
+    <div class="labcard">
+      <h4>🧪 Lab 1, Machine learning on real cull-cow data</h4>
+      <p>Using the <code>CullDairyCow</code> dataset (401 cows: lactation, health events, 305-day production, body weight and price), build and compare <strong>partial least squares</strong>, <strong>ridge regression</strong> and a <strong>neural network</strong> in Python. You'll one-hot encode variables, split train/test, tune with grid search, and evaluate predictions. Runs free in your browser, no installation.</p>
+      <a class="colab" href="https://colab.research.google.com/github/GGlivePh/QG/blob/main/Lab03.ipynb" target="_blank" rel="noopener">▶ Open Lab 1 in Google Colab</a>
+      <p class="cmeta" style="margin-top:10px">Dataset: <a href="assets/course/CullDairyCow_Data.csv" download>CullDairyCow_Data.csv</a></p>
+    </div>
+    <details class="quiz"><summary>Check: a random forest and boosting both combine many trees. What's the key difference?</summary><div class="ans">A <strong>random forest</strong> builds trees independently in parallel on bootstrap samples (with random predictor subsets) and averages them. <strong>Boosting</strong> builds trees sequentially, each one giving more weight to the cases the previous trees got wrong.</div></details>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module" id="m4">
+    <div class="module-head"><div class="module-num">4</div><div><h2>Image processing &amp; computer vision basics</h2><div class="module-time">~45 minutes · includes a lab</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain how a digital image is formed and stored as numbers.</li>
+      <li>Read an image as a matrix of pixels and channels (RGB), and bit depth.</li>
+      <li>Apply point operators and linear filters, and define convolution.</li></ul></div>
+    <p>Computer vision works because <strong>an organism's status, health, growth, behaviour, leaves visually distinguishable cues</strong>. Light is electromagnetic radiation; cameras (CCD or CMOS sensors with a Bayer filter) turn it into numbers. The eye sees colour through three cone types (sensitive to red, green, blue), and digital images mimic this with <strong>RGB channels</strong>.</p>
+    <p>An image is simply a <strong>matrix of numbers</strong>: a black-and-white image is one binary matrix, a grayscale image one matrix of intensities, and a colour image three stacked matrices (R, G, B). <strong>Bit depth</strong> sets how many levels each pixel can take, 8-bit gives 2⁸ = 256 levels, 16-bit gives 65,536.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Image as a matrix and convolution with a kernel">
+        <defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <text x="80" y="22" font-weight="bold" fill="#1F4A2B">Image = pixels</text>
+          <g stroke="#9bb6a3" fill="#EEF3EC">
+            <rect x="20" y="35" width="30" height="30"/><rect x="50" y="35" width="30" height="30"/><rect x="80" y="35" width="30" height="30"/><rect x="110" y="35" width="30" height="30"/>
+            <rect x="20" y="65" width="30" height="30"/><rect x="50" y="65" width="30" height="30" fill="#2E6B3E"/><rect x="80" y="65" width="30" height="30" fill="#2E6B3E"/><rect x="110" y="65" width="30" height="30"/>
+            <rect x="20" y="95" width="30" height="30"/><rect x="50" y="95" width="30" height="30" fill="#2E6B3E"/><rect x="80" y="95" width="30" height="30" fill="#2E6B3E"/><rect x="110" y="95" width="30" height="30"/>
+            <rect x="20" y="125" width="30" height="30"/><rect x="50" y="125" width="30" height="30"/><rect x="80" y="125" width="30" height="30"/><rect x="110" y="125" width="30" height="30"/>
+          </g>
+          <text x="290" y="22" font-weight="bold" fill="#1F4A2B">Kernel (filter)</text>
+          <g stroke="#C8962A" fill="#FBF3E3"><rect x="250" y="70" width="30" height="30"/><rect x="280" y="70" width="30" height="30"/><rect x="310" y="70" width="30" height="30"/>
+          <rect x="250" y="100" width="30" height="30"/><rect x="280" y="100" width="30" height="30"/><rect x="310" y="100" width="30" height="30"/>
+          <rect x="250" y="130" width="30" height="30"/><rect x="280" y="130" width="30" height="30"/><rect x="310" y="130" width="30" height="30"/></g>
+          <text x="295" y="180" font-size="11" fill="#5f6b62">slides across the image</text>
+          <line x1="350" y1="115" x2="430" y2="115" stroke="#2E6B3E" stroke-width="2" marker-end="url(#ar2)"/>
+          <text x="392" y="105" font-size="11" fill="#5f6b62">convolution</text>
+          <text x="560" y="22" font-weight="bold" fill="#1F4A2B">Feature map</text>
+          <g stroke="#9bb6a3" fill="#E3EEF6"><rect x="500" y="55" width="36" height="36"/><rect x="536" y="55" width="36" height="36"/><rect x="572" y="55" width="36" height="36"/>
+          <rect x="500" y="91" width="36" height="36" fill="#3E7CB1"/><rect x="536" y="91" width="36" height="36" fill="#3E7CB1"/><rect x="572" y="91" width="36" height="36"/>
+          <rect x="500" y="127" width="36" height="36"/><rect x="536" y="127" width="36" height="36"/><rect x="572" y="127" width="36" height="36"/></g>
+          <text x="554" y="185" font-size="11" fill="#5f6b62">edges / textures highlighted</text>
+        </g>
+      </svg>
+      <figcaption>Convolution slides a small kernel across the pixel matrix; different kernels blur, sharpen or detect edges, the same operation a CNN learns automatically.</figcaption>
+    </div>
+    <p>Processing an image means applying <strong>operators</strong>. A <em>point operator</em> changes each pixel on its own (e.g. brightness scaling). A <em>linear filter</em> combines each pixel with its neighbours using a small grid of weights called a <strong>kernel</strong>, this operation is <strong>convolution</strong>, and it can blur (mean filter), sharpen, or detect edges depending on the kernel. Hold onto this idea: it is the heart of the deep-learning module.</p>
+    <div class="labcard">
+      <h4>🧪 Lab 2, Image processing in Python</h4>
+      <p>Load an image, inspect its size and pixel statistics per channel, plot RGB histograms, and apply point operators and convolution filters (brightness, blur, sharpen, edge detection) to see how kernels transform an image.</p>
+      <a class="colab" href="https://colab.research.google.com/github/GGlivePh/QG/blob/main/ImageAnalysis.ipynb" target="_blank" rel="noopener">▶ Open Lab 2 in Google Colab</a>
+    </div>
+    <details class="quiz"><summary>Check: how many numbers represent one pixel in an 8-bit RGB image, and what is each one's range?</summary><div class="ans">Three numbers, one per channel (R, G, B), each ranging 0–255 (2⁸ levels).</div></details>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module" id="m5">
+    <div class="module-head"><div class="module-num">5</div><div><h2>Deep learning &amp; convolutional neural networks</h2><div class="module-time">~55 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Trace the path from a single perceptron to a deep network.</li>
+      <li>Explain loss, gradient descent, back-propagation and regularisation.</li>
+      <li>Describe what convolutional and pooling layers do, and why CNNs suit images.</li></ul></div>
+    <p>A <strong>perceptron</strong> is a single artificial neuron: it weights its inputs, sums them, and passes the result through an <strong>activation function</strong> (sigmoid, tanh, ReLU) that introduces non-linearity. Stack many neurons in many layers and you have a <strong>deep neural network</strong>.</p>
+    <p>Networks <strong>learn</strong> by minimising a <strong>loss function</strong>, mean squared error for continuous traits, cross-entropy for classification. <strong>Gradient descent</strong> nudges the weights downhill on the loss surface, and <strong>back-propagation</strong> efficiently computes those gradients layer by layer. Because deep models overfit readily, we apply <strong>dropout</strong> (randomly switching off connections during training) and <strong>early stopping</strong> (halting when validation performance stops improving).</p>
+    <p>For images we use <strong>convolutional neural networks (CNNs)</strong>. Instead of hand-designing filters (Module 4), a CNN <em>learns</em> the kernels from data. <strong>Convolutional layers</strong> detect local patterns (edges → textures → parts → objects); <strong>pooling layers</strong> downsample to add robustness; a final dense layer turns the learned features into a prediction.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CNN pipeline">
+        <defs><marker id="ar3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="11.5" text-anchor="middle">
+          <rect x="10" y="50" width="70" height="55" rx="6" fill="#EEF3EC" stroke="#2E6B3E"/><text x="45" y="74">Input</text><text x="45" y="90">image</text>
+          <rect x="105" y="50" width="80" height="55" rx="6" fill="#E3EEF6" stroke="#3E7CB1"/><text x="145" y="74">Conv</text><text x="145" y="90" font-size="10" fill="#5f6b62">learn filters</text>
+          <rect x="210" y="50" width="80" height="55" rx="6" fill="#EEF3EC" stroke="#2E6B3E"/><text x="250" y="74">Pool</text><text x="250" y="90" font-size="10" fill="#5f6b62">downsample</text>
+          <rect x="315" y="50" width="80" height="55" rx="6" fill="#E3EEF6" stroke="#3E7CB1"/><text x="355" y="74">Conv</text>
+          <rect x="420" y="50" width="80" height="55" rx="6" fill="#EEF3EC" stroke="#2E6B3E"/><text x="460" y="74">Pool</text>
+          <rect x="525" y="50" width="80" height="55" rx="6" fill="#f0eef6" stroke="#7E6BAE"/><text x="565" y="74">Flatten +</text><text x="565" y="90">Dense</text>
+          <rect x="630" y="50" width="80" height="55" rx="6" fill="#FBF3E3" stroke="#C8962A"/><text x="670" y="74">Output</text><text x="670" y="90" font-size="10" fill="#5f6b62">trait / class</text>
+          <g stroke="#2E6B3E" stroke-width="2">
+            <line x1="82" y1="77" x2="103" y2="77" marker-end="url(#ar3)"/><line x1="187" y1="77" x2="208" y2="77" marker-end="url(#ar3)"/>
+            <line x1="292" y1="77" x2="313" y2="77" marker-end="url(#ar3)"/><line x1="397" y1="77" x2="418" y2="77" marker-end="url(#ar3)"/>
+            <line x1="502" y1="77" x2="523" y2="77" marker-end="url(#ar3)"/><line x1="607" y1="77" x2="628" y2="77" marker-end="url(#ar3)"/>
+          </g>
+          <text x="360" y="28" font-size="12.5" font-weight="bold" fill="#1F4A2B">A convolutional neural network for image-based phenotyping</text>
+        </g>
+      </svg>
+      <figcaption>A CNN learns its own filters: convolution and pooling layers build up from edges to whole-animal features, ending in a prediction such as body condition score.</figcaption>
+    </div>
+    <div class="kc"><strong class="kclabel">Key concept · learned vs hand-crafted features</strong>The big shift deep learning brought is that the model discovers the useful image features itself, instead of an expert designing them. This is why CNNs outperform classical methods on hard, unstructured images, at the cost of needing more data and GPU computing.</div>
+    <details class="quiz"><summary>Check: what is the role of a pooling layer in a CNN?</summary><div class="ans">Pooling downsamples the feature maps (e.g. taking the maximum in each small region). It shrinks the data, reduces computation, and makes the network more robust to small shifts in where a feature appears in the image (translation invariance).</div></details>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module" id="m6">
+    <div class="module-head"><div class="module-num">6</div><div><h2>High-throughput phenotyping &amp; breeding applications</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Define high-throughput phenotyping (HTP) and the qualities of a good phenotype.</li>
+      <li>Give concrete examples of computer vision in animal breeding.</li>
+      <li>Explain enviromics and genotype-by-environment interaction (G×E).</li></ul></div>
+    <p>The phenotype equation is simple to state and hard to satisfy: <strong>Phenotype = Genetics + Environment</strong>. Genomics gave us cheap genotypes; the bottleneck moved to <strong>phenotypes</strong>. <strong>High-throughput phenotyping</strong> uses cameras, wearable sensors, robots and drones to measure many animals, often and cheaply. A <em>good</em> phenotype is accurate and precise, measured non-invasively, and scalable to thousands of animals at low cost.</p>
+    <p>Computer vision now delivers traits that were once subjective or labour-intensive:</p>
+    <ul>
+      <li><strong>Body weight &amp; growth</strong>, continuous monitoring of cattle weight and energy balance from images.</li>
+      <li><strong>Body condition score</strong>, from 3-D images at &gt;90% accuracy, a key health, welfare and feed-efficiency indicator.</li>
+      <li><strong>Black soldier fly larvae</strong>, automated weight and sex prediction (YOLOv8 detection) for insect production.</li>
+      <li><strong>Ribeye area &amp; carcass shape</strong> in live calves from 3-D body shape.</li>
+      <li><strong>Parasite detection</strong>, reading the ocular conjunctiva (FAMACHA) to flag parasitised sheep, removing human subjectivity.</li>
+      <li><strong>Identification &amp; behaviour</strong>, recognising individuals and their feeding behaviour without tags.</li>
+    </ul>
+    <p>Sensors also describe the <strong>environment</strong>. <strong>Enviromics</strong> uses farm- and region-level environmental descriptors to study <strong>genotype-by-environment interaction (G×E)</strong>, why the best animals in one system are not the best in another, a central question for breeding programmes across the diverse environments of East Africa and Denmark.</p>
+    <div class="kc"><strong class="kclabel">Why this matters for breeding</strong>Cheaper, larger-scale, more objective phenotypes mean more animals with records, novel traits (welfare, efficiency, resilience), and more accurate breeding values, the raw material of genetic progress.</div>
+    <details class="quiz"><summary>Check: HTP is often called a solution to a “bottleneck.” Which bottleneck, and why?</summary><div class="ans">The <strong>phenotyping bottleneck</strong>. Genotyping became fast and cheap, so the limiting factor for genetic evaluation is now collecting enough accurate phenotypes. HTP (sensors and computer vision) relieves this by measuring many animals automatically.</div></details>
+  </div>
+
+  <!-- MODULE 7 -->
+  <div class="module" id="m7">
+    <div class="module-head"><div class="module-num">7</div><div><h2>Wrap-up &amp; resources</h2><div class="module-time">~10 minutes</div></div></div>
+    <h3>Key takeaways</h3>
+    <ul>
+      <li>AI and machine learning let us use big data for prediction, interpretation and causal inference in breeding.</li>
+      <li>Computer vision enables non-invasive, high-throughput phenotyping at large scale.</li>
+      <li>Neural networks, SVMs and tree ensembles are the core ML tools; CNNs are the workhorse for images.</li>
+      <li>The payoff for breeding is more, better and cheaper phenotypes, and therefore faster, fairer genetic progress.</li>
+    </ul>
+    <h3 style="margin-top:24px">Glossary</h3>
+    <div class="gloss">
+      <div><b>5 Vs</b>, Volume, Velocity, Variety, Veracity, Value: the dimensions of big data.</div>
+      <div><b>Tall / Wide data</b>, many observations vs many variables (“big p, small n”).</div>
+      <div><b>Regularisation</b>, shrinking model complexity (ridge, LASSO, weight decay) to avoid overfitting.</div>
+      <div><b>Activation function</b>, non-linear transform in a neuron (sigmoid, tanh, ReLU).</div>
+      <div><b>Back-propagation</b>, algorithm to compute gradients for training neural networks.</div>
+      <div><b>Kernel / convolution</b>, a small weight grid slid across an image to extract features.</div>
+      <div><b>CNN</b>, convolutional neural network; learns image filters automatically.</div>
+      <div><b>Pooling</b>, downsampling step that adds robustness and reduces computation.</div>
+      <div><b>HTP</b>, high-throughput phenotyping: measuring many animals automatically.</div>
+      <div><b>Enviromics / G×E</b>, using environmental data to study genotype-by-environment interaction.</div>
+    </div>
+    <h3 style="margin-top:24px">Further reading &amp; resources</h3>
+    <ul>
+      <li>Gianola, D. &amp; Rosa, G. J. M. (2015). One hundred years of statistical developments in animal breeding. <em>Annual Review of Animal Biosciences</em> 3:19–56.</li>
+      <li>Kuhn, M. &amp; Johnson, K. <em>Applied Predictive Modeling.</em> Springer.</li>
+      <li>Free, certified courses on data and sustainable agriculture at the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy</a>.</li>
+    </ul>
+    <div class="coursenav">
+      <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
+      <a class="btn" href="#top">↑ Back to top</a>
+    </div>
+  </div>
+
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
