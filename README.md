@@ -4,6 +4,11 @@ Official project website for **ASAP-Bio, Advancing Sustainable Animal Production
 
 A static multi-page site (plain HTML/CSS, no build step). Open `index.html` to preview locally.
 
+## Pages
+`index.html` · `about.html` · `partners.html` · `themes.html` · `scholarships.html` · `news.html` · `contact.html`
+
+## Publishing
+See **HOW-TO-PUBLISH (GitHub Pages).md** for free hosting in ~15 minutes, no coding required.
 
 ## Edit
 Content lives directly in each `.html` file; shared styling is in `assets/styles.css`; logos are in `assets/`.
