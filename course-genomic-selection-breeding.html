@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Breeding programs with Genomic selection · ASAP-Bio</title>
+<meta name="description" content="A self-paced ASAP-Bio course on genomic selection in animal breeding, based on the Wageningen University genomic selection course, with full credit to the original authors.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="assets/styles.css">
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header>
+<section class="course-hero" id="top"><div class="wrap">
+  <div class="eyebrow">Knowledge Hub · Biodiversity and Breeding programs</div>
+  <h1>Breeding programs with Genomic selection</h1>
+  <p class="csub">From SNP chips and genomic breeding values to the accuracy equation, breeding-program design and the genetic-diversity questions that genomic selection raises.</p>
+  <div class="metachips">
+    <span>★ Self-paced</span><span>⏱ ~5 hours</span><span>🎓 MSc / advanced</span><span>🧮 Excel &amp; SelAction exercises</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  
+
+  <h2>What you will learn</h2>
+  <div class="outcomes"><ul>
+    <li>Explain why genomic selection was introduced and where it beats traditional selection.</li>
+    <li>Describe how genomic breeding values (GEBVs) are estimated, by SNP-BLUP, Bayesian methods and the genomic relationship matrix (GBLUP).</li>
+    <li>Use the accuracy (Daetwyler) equation to reason about reference-population size, heritability and marker information.</li>
+    <li>Design a reference population and choose phenotypes for genomic evaluation.</li>
+    <li>Predict response to selection in a breeding program that uses GEBVs, accounting for the Bulmer effect.</li>
+    <li>Discuss the consequences of genomic selection for inbreeding and genetic diversity.</li>
+  </ul></div>
+
+  <h3>Course contents</h3>
+  <div class="toc-chips">
+    <a href="#b1">1 · Why genomic selection</a>
+    <a href="#b2">2 · Estimating GEBVs</a>
+    <a href="#b3">3 · Accuracy of prediction</a>
+    <a href="#b4">4 · Reference populations &amp; phenotypes</a>
+    <a href="#b5">5 · Breeding programs with GS</a>
+    <a href="#b6">6 · Genetic change &amp; diversity</a>
+    <a href="#b7">7 · Materials, credits &amp; wrap-up</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+
+  <!-- B1 -->
+  <div class="module" id="b1">
+    <div class="module-head"><div class="module-num">1</div><div><h2>Why genomic selection</h2><div class="module-time">~35 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Name the limits of traditional, phenotype-based selection.</li>
+      <li>Explain how SNP chips and the “use all markers” idea created genomic selection.</li></ul></div>
+    <p>Traditional selection depends on <strong>phenotypes</strong>. Accuracy is limited by a trait's heritability, and it struggles with traits that are lowly heritable, sex-limited (e.g. egg production), expressed late in life, or hard or expensive to measure (disease resistance, meat quality). It also cannot see <strong>Mendelian sampling</strong>: we don't know which alleles a parent actually passed on, so relatives only take us so far.</p>
+    <p>Gene-detection (QTL) studies found a few large-effect genes but left most variation unexplained, the “missing heritability”: most traits are driven by very many genes of tiny effect. The breakthrough came with cheap <strong>SNP chips</strong> (genotyping 50,000 to 700,000 markers per animal). With markers blanketing the genome, at least one is in <strong>linkage disequilibrium</strong> with each causal variant. Meuwissen, Hayes and Goddard (2001) proposed using <em>all</em> markers at once to predict a <strong>genomic estimated breeding value (GEBV)</strong>, even before any phenotype is recorded on the candidate.</p>
+    <div class="kc"><strong class="kclabel">Key concept · where GS helps most</strong>Genomic selection adds the most value for “difficult” traits and for selecting young animals early, because it predicts merit from DNA rather than waiting for the animal (or its progeny) to be measured.</div>
+    <details class="quiz"><summary>Check: for a trait that is cheap and easy to measure early in both sexes (e.g. body weight in broilers), is genomic selection likely to be worthwhile?</summary><div class="ans">Often not, on its own. When accurate phenotypes are available early and cheaply on all candidates, traditional selection is already accurate and fast; the extra cost of genotyping buys little. GS pays off for low-heritability, sex-limited, late or expensive-to-measure traits.</div></details>
+  </div>
+
+  <!-- B2 -->
+  <div class="module" id="b2">
+    <div class="module-head"><div class="module-num">2</div><div><h2>Estimating genomic breeding values</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain why selecting only “significant” SNPs fails (the winner's curse).</li>
+      <li>Describe SNP-BLUP / ridge regression, Bayesian methods, and GBLUP.</li></ul></div>
+    <p>A tempting but wrong approach is to test each SNP, keep the significant ones, and add up their effects. This suffers the <strong>winner's curse</strong>: the SNPs that reach significance have over-estimated effects, and together they explain only a small slice of the variance. Meuwissen et al. showed the fix is to fit <strong>all markers simultaneously</strong>.</p>
+    <p>But with tens of thousands of markers and far fewer animals, this is the <strong>“big p, small n”</strong> problem, ordinary regression cannot invert the equations. Two equivalent families of solutions are used:</p>
+    <ul>
+      <li><strong>SNP-BLUP / ridge regression</strong>, every marker is assumed to explain the same small variance; effects are shrunk toward zero.</li>
+      <li><strong>Bayesian methods (BayesA, BayesB)</strong>, allow markers to have different variances; BayesB lets many markers have exactly zero effect, matching the biology of few large and many tiny effects.</li>
+    </ul>
+    <p>The third route gives the same answer as ridge regression but is easier to implement at scale: build a <strong>genomic relationship matrix (G)</strong> from the markers and use it in the standard mixed model in place of the pedigree relationship matrix A. This is <strong>GBLUP</strong>. G captures the <em>realised</em> relationships between animals, two full sibs are not always related by exactly ½, so “some animals are more equal than others”, which is extra information traditional pedigrees miss.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="From SNP genotypes to genomic breeding values">
+        <defs><marker id="bar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <rect x="10" y="45" width="160" height="60" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="90" y="70">SNP genotypes</text><text x="90" y="88" font-size="10.5" fill="#5f6b62">M (0/1/2 per marker)</text>
+          <rect x="210" y="45" width="180" height="60" rx="9" fill="#E3EEF6" stroke="#3E7CB1"/><text x="300" y="68">Genomic relationship</text><text x="300" y="86">matrix G = WW'/Σ2pq</text>
+          <rect x="430" y="45" width="150" height="60" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="505" y="70">Mixed model</text><text x="505" y="88" font-size="10.5" fill="#5f6b62">y = Xb + Zu + e</text>
+          <rect x="620" y="45" width="90" height="60" rx="9" fill="#FBF3E3" stroke="#C8962A"/><text x="665" y="70">GEBV</text><text x="665" y="88" font-size="10.5" fill="#5f6b62">per animal</text>
+          <line x1="172" y1="75" x2="208" y2="75" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bar)"/>
+          <line x1="392" y1="75" x2="428" y2="75" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bar)"/>
+          <line x1="582" y1="75" x2="618" y2="75" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bar)"/>
+        </g>
+      </svg>
+      <figcaption>GBLUP: markers build a realised relationship matrix G that replaces pedigree in the mixed model to produce genomic breeding values.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: why does keeping only statistically significant SNPs give biased, disappointing predictions?</summary><div class="ans">The <strong>winner's curse</strong>: only SNPs whose effects are over-estimated by chance clear the significance threshold, so their effects are biased upward, and the few that pass capture only a small part of the genetic variance. Fitting all markers together (shrinking effects) is unbiased and captures far more.</div></details>
+  </div>
+
+  <!-- B3 -->
+  <div class="module" id="b3">
+    <div class="module-head"><div class="module-num">3</div><div><h2>Accuracy of genomic prediction</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Define accuracy and how it is validated (and checked for bias).</li>
+      <li>Use the Daetwyler equation to reason about what drives accuracy.</li></ul></div>
+    <p>The <strong>accuracy</strong> of a GEBV is its correlation with the true breeding value. We estimate it by <strong>validation</strong>: train the prediction on a reference population, predict a separate validation set, and compare predictions with later phenotypes, checking both correlation (accuracy) and the regression slope (<strong>bias</strong>; a slope of 1 means unbiased).</p>
+    <p>The <strong>Daetwyler equation</strong> captures what drives accuracy:</p>
+    <p style="text-align:center;font-size:18px;margin:6px 0"><em>r</em> = &radic;( <em>N</em>h² / (<em>N</em>h² + M<sub>e</sub>) )</p>
+    <p>where <em>N</em> is the number of reference animals with phenotypes, <em>h²</em> the heritability, and <em>M<sub>e</sub></em> the effective number of independent chromosome segments (larger in populations with a big effective size N<sub>e</sub> and long genome). Accuracy rises with a <strong>larger reference population</strong> and <strong>higher heritability</strong>, and falls when M<sub>e</sub> is large. The practical messages: low-heritability traits need much larger reference populations; predicting <strong>across breeds</strong> is hard because linkage disequilibrium differs; and cheap low-density genotypes can be <strong>imputed</strong> up to high density to add information at low cost.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 520 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Accuracy rises with reference population size">
+        <g font-family="Segoe UI,Arial" font-size="12">
+          <line x1="60" y1="210" x2="490" y2="210" stroke="#888" stroke-width="1.5"/>
+          <line x1="60" y1="210" x2="60" y2="20" stroke="#888" stroke-width="1.5"/>
+          <text x="275" y="240" text-anchor="middle" fill="#5f6b62">Reference population size (N)</text>
+          <text x="20" y="115" text-anchor="middle" fill="#5f6b62" transform="rotate(-90 20 115)">Accuracy</text>
+          <path d="M60,200 C160,90 300,55 490,42" fill="none" stroke="#2E6B3E" stroke-width="3"/>
+          <path d="M60,205 C180,160 320,135 490,120" fill="none" stroke="#3E7CB1" stroke-width="3"/>
+          <text x="430" y="34" fill="#2E6B3E" font-weight="bold">high h²</text>
+          <text x="430" y="138" fill="#3E7CB1" font-weight="bold">low h²</text>
+          <text x="60" y="206" font-size="10" fill="#888">0</text>
+        </g>
+      </svg>
+      <figcaption>Accuracy increases with reference-population size and saturates; low-heritability traits need many more reference animals to reach the same accuracy.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: two traits have h² = 0.05 and h² = 0.40. Which needs the larger reference population for the same GEBV accuracy, and why?</summary><div class="ans">The <strong>h² = 0.05</strong> trait. In the Daetwyler equation, lower heritability means each phenotype carries less genetic signal, so many more reference animals (larger N) are needed to reach the same accuracy.</div></details>
+  </div>
+
+  <!-- B4 -->
+  <div class="module" id="b4">
+    <div class="module-head"><div class="module-num">4</div><div><h2>Reference populations &amp; phenotypes</h2><div class="module-time">~35 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain how relatedness between reference and candidates affects accuracy.</li>
+      <li>Describe single-step evaluation and the role of phenotype quality.</li></ul></div>
+    <p>Accuracy depends not just on reference size but on <strong>relatedness</strong>: predictions are most accurate for candidates closely related to the reference animals. Comparing <strong>genomic and pedigree relationships</strong> also serves as quality control, large mismatches (Mendelian inconsistencies) flag pedigree or genotype errors.</p>
+    <p>The <strong>phenotypes</strong> that go into the reference matter as much as the genotypes: they should be accurate and unbiased (for dairy bulls, for example, de-regressed proofs are used). Where some animals are genotyped and others are not, <strong>single-step GBLUP</strong> combines pedigree and genomic relationships into one matrix (H), so all animals are evaluated together, no information is wasted. Different BLUP variants (pedigree BLUP, GBLUP, single-step) can be compared on the same data to see what genomic information adds.</p>
+    <div class="kc"><strong class="kclabel">Key concept · single-step</strong>Single-step GBLUP blends genotyped and non-genotyped animals into one evaluation, avoiding the need to genotype everyone while still using all phenotypes and pedigree.</div>
+    <details class="quiz"><summary>Check: a young candidate is only distantly related to every animal in the reference population. What happens to its GEBV accuracy?</summary><div class="ans">It drops. Genomic prediction leans heavily on relationships (shared chromosome segments) with reference animals; distant relationship means less shared information and lower accuracy. Keeping the reference population closely connected to selection candidates is part of good design.</div></details>
+  </div>
+
+  <!-- B5 -->
+  <div class="module" id="b5">
+    <div class="module-head"><div class="module-num">5</div><div><h2>Breeding programs with genomic selection</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Predict response to selection and include GEBVs in a selection index.</li>
+      <li>Explain the Bulmer effect and why parent-average comparisons mislead.</li></ul></div>
+    <p>Response to selection follows from the <strong>breeding goal</strong> (H = g′v), the genetic parameters, the information used for breeding-value estimation, and the selection and mating decisions (including the <strong>generation interval</strong>). Selection-index theory predicts response, and the <strong>SelAction</strong> software implements it. A GEBV enters the index as an extra information source with its own accuracy.</p>
+    <p>Genomic selection helps breeding programs in two big ways: it gives accurate predictions on <strong>young animals</strong> before they have records, which <strong>shortens the generation interval</strong>, and it improves accuracy for difficult traits. Both raise the rate of genetic gain.</p>
+    <p>Two cautions are essential. The <strong>Bulmer effect</strong>: selection reduces the additive genetic variance (often by around 25%) because selected parents are less variable, so realised response is lower than a naive calculation suggests, and after accounting for it, extra pedigree information adds little. And when judging the benefit of GS (for example, the value of genotyping cows), do not compare against a <strong>parent-average</strong> prediction as if it were accurate, once the parents themselves are selected, the parent average is almost useless, so honest comparisons must account for selection.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Genomic selection shortens the generation interval">
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <text x="320" y="20" font-weight="bold" fill="#1F4A2B">Genomic selection lets you select earlier</text>
+          <text x="70" y="55" fill="#5f6b62">Traditional</text>
+          <rect x="120" y="42" width="180" height="26" rx="6" fill="#EEF3EC" stroke="#9bb6a3"/><text x="210" y="59" font-size="10.5">wait for progeny records</text>
+          <rect x="300" y="42" width="90" height="26" rx="6" fill="#FBF3E3" stroke="#C8962A"/><text x="345" y="59" font-size="10.5">select</text>
+          <line x1="120" y1="86" x2="345" y2="86" stroke="#888" stroke-dasharray="3 3"/><text x="232" y="100" font-size="10" fill="#888">long generation interval</text>
+          <text x="70" y="135" fill="#5f6b62">Genomic</text>
+          <rect x="120" y="122" width="70" height="26" rx="6" fill="#E3EEF6" stroke="#3E7CB1"/><text x="155" y="139" font-size="10.5">genotype</text>
+          <rect x="190" y="122" width="70" height="26" rx="6" fill="#FBF3E3" stroke="#C8962A"/><text x="225" y="139" font-size="10.5">select</text>
+          <line x1="120" y1="156" x2="225" y2="156" stroke="#2E6B3E"/><text x="172" y="168" font-size="10" fill="#2E6B3E">shorter interval, faster gain</text>
+        </g>
+      </svg>
+      <figcaption>Predicting merit from DNA on young animals shortens the generation interval, a major source of the extra genetic gain from genomic selection.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: a scheme reports a big advantage of GEBVs over the parent average for selecting cows. Why be sceptical?</summary><div class="ans">Because the cows' parents were themselves selected, which makes the parent average far less informative than software assuming no selection reports. Comparing GEBVs against an over-optimistic parent average inflates the apparent benefit; the Bulmer effect and selection must be accounted for (as SelAction does).</div></details>
+  </div>
+
+  <!-- B6 -->
+  <div class="module" id="b6">
+    <div class="module-head"><div class="module-num">6</div><div><h2>Genetic change, inbreeding &amp; diversity</h2><div class="module-time">~30 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Distinguish selection from drift as causes of allele-frequency change.</li>
+      <li>Explain why genomic selection needs active control of inbreeding.</li></ul></div>
+    <p>Selection changes allele frequencies directionally and leaves <strong>signatures of selection</strong> in the genome, detectable through statistics such as F<sub>ST</sub> (differentiation between populations), reduced heterozygosity, and haplotype-based measures (iHS, EHH) around <strong>selective sweeps</strong>. But not all change is selection: <strong>genetic drift</strong>, random change that is larger in small populations (inversely proportional to effective size N<sub>e</sub>), also shifts frequencies and erodes diversity, and must be separated from true selection signals.</p>
+    <p>This matters for sustainability. Genomic selection captures close family relationships, so without care it can <strong>increase inbreeding per generation</strong> relative to progeny testing. The remedy is <strong>genomic control of inbreeding</strong>: managing matings to restrict the increase in marker-based kinship while still selecting for merit. Maintaining genetic diversity is not a side issue, it protects long-term response, adaptability and resilience, which is exactly where breeding meets <strong>biodiversity</strong>.</p>
+    <div class="kc"><strong class="kclabel">Key concept · diversity is a resource</strong>Faster genetic gain is only sustainable if genetic diversity is managed. Genomic tools that accelerate selection should be paired with genomic management of inbreeding and kinship.</div>
+    <details class="quiz"><summary>Check: allele frequencies shift in a small closed herd with no deliberate selection. Selection or drift?</summary><div class="ans"><strong>Drift</strong>, random change in allele frequencies, which is stronger the smaller the effective population size. It erodes diversity and can mimic or mask selection signatures, which is why distinguishing the two requires care.</div></details>
+  </div>
+
+  <!-- B7 -->
+  <div class="module" id="b7">
+    <div class="module-head"><div class="module-num">7</div><div><h2>Source materials, credits &amp; wrap-up</h2><div class="module-time">~10 minutes</div></div></div>
+    <h3>Key takeaways</h3>
+    <ul>
+      <li>Genomic selection predicts breeding values from genome-wide markers, helping most for difficult traits and young animals.</li>
+      <li>GEBVs come from fitting all markers (SNP-BLUP, Bayesian) or, equivalently, from the genomic relationship matrix (GBLUP).</li>
+      <li>Accuracy is driven by reference-population size, heritability and marker information (the Daetwyler equation).</li>
+      <li>In breeding programs, GS shortens the generation interval, but the Bulmer effect and inbreeding must be managed.</li>
+    </ul>
+    <h3 style="margin-top:22px">Hands-on (original Wageningen exercises)</h3>
+    <p>The original course includes worked cases with Excel files, data sets and the <strong>SelAction</strong> software for predicting response in breeding programs. Open them from the source links below; they run alongside Modules 2 to 5.</p>
+    <div class="callout gold"><strong>Please credit the source.</strong> All lectures, cases and data below are the work of the Wageningen University &amp; Research Animal Breeding and Genomics group (Genomic Selection course, 2014). They are provided here by link, with attribution, and must not be reused as teaching material without crediting the authors.</div>
+    <h4 style="margin-top:14px;color:var(--greendk)">Day 1, Genomic selection and breeding values</h4><ul><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_lecture_GS_part_1.pdf" target="_blank" rel="noopener">Lecture: Genomic Selection in Animal Breeding, part 1</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_lecture_GS_part_2.pdf" target="_blank" rel="noopener">Lecture: Genomic Selection in Animal Breeding, part 2</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_lecture_Matrices_in_Excel.pdf" target="_blank" rel="noopener">Lecture: Matrix calculations in Excel</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_Case_Power.pdf" target="_blank" rel="noopener">Case + solutions: Power</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_Case_Winners_Curse.pdf" target="_blank" rel="noopener">Case + Excel + solutions: Winner's Curse</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Monday_Case_Genomic_Selection_part1.pdf" target="_blank" rel="noopener">Case + Excel + solutions: Genomic Selection</a></li></ul><h4 style="margin-top:14px;color:var(--greendk)">Day 2, Relatedness</h4><ul><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Tuesday_lecture_Relatedness.pdf" target="_blank" rel="noopener">Lecture: Relatedness and Variation in relatedness</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Tuesday_Genomic_vs_Pedigree_relations.pdf" target="_blank" rel="noopener">Lecture: Genomic and Pedigree Relationships, Mendelian Inconsistencies</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Tuesday_Case_Relatedness.pdf" target="_blank" rel="noopener">Cases + solutions: Relatedness; Variation in Relatedness</a></li></ul><h4 style="margin-top:14px;color:var(--greendk)">Day 3, Accuracy, validation and reference design</h4><ul><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Lecture_ValidationGenomicPrediction.pdf" target="_blank" rel="noopener">Lecture: Validation of Genomic Predictions</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Lecture_DesignReferencePopulation.pdf" target="_blank" rel="noopener">Lecture: Design of Reference Populations</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Lecture_FactorsAffectingAccuracy" target="_blank" rel="noopener">Lecture: Factors Affecting Accuracy</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Lecture_AcrossBreed.pdf" target="_blank" rel="noopener">Lecture: Across Breed Genomic Prediction</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Lecture_The%20Daetwyler%20equation.pdf" target="_blank" rel="noopener">Lecture: The Daetwyler equation</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Wednesday_Exercise_CompAccuracy.docx" target="_blank" rel="noopener">Case + Excel + solutions: Accuracy and Bias</a></li></ul><h4 style="margin-top:14px;color:var(--greendk)">Day 4, Phenotypes, BLUP methods and imputation</h4><ul><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Thursday_Lecture_PhenotypesUsedInGenomicSelection.pdf" target="_blank" rel="noopener">Lecture: Phenotypes used in Genomic Selection</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Thursday_Lecture_ImputationOfGenotypeData.pdf" target="_blank" rel="noopener">Lecture: Imputation of Genotype data</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Thursday_Case_EvaluateDiffBLUPs.docx" target="_blank" rel="noopener">Case + data: Different BLUP methods</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Thursday_Case-SS-Genomic-selection.xlsx" target="_blank" rel="noopener">Case (Excel): Single Step Genomic Selection</a></li></ul><h4 style="margin-top:14px;color:var(--greendk)">Day 5, Breeding programs and genomic change</h4><ul><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Friday_Lecture_Breeding_programs_with_genomic_selection.pdf" target="_blank" rel="noopener">Lecture: Breeding Programs with Genomic Selection</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Friday_Lecture_Genomic_Change_due_to_Selection.pdf" target="_blank" rel="noopener">Lecture: Genomic Change due to Selection</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Friday_Exercise_SelAction_Dairy_Cattle.docx" target="_blank" rel="noopener">Exercises + solutions: SelAction (Dairy Cattle)</a></li><li><a href="http://vps6371.xlshosting.net/GSwageningen/datafiles/GSwageningen_2014_Friday_Exercise_SelAction_Pigs.docx" target="_blank" rel="noopener">Exercises + solutions: SelAction (Pigs)</a></li></ul>
+    <p style="margin-top:10px">Full original index: <a href="http://vps6371.xlshosting.net/GSwageningen/" target="_blank" rel="noopener">vps6371.xlshosting.net/GSwageningen</a> &middot; SelAction software (Wageningen University &amp; Research).</p>
+    <h3 style="margin-top:22px">Glossary</h3>
+    <div class="gloss">
+      <div><b>SNP chip</b>, array genotyping tens to hundreds of thousands of markers per animal.</div>
+      <div><b>GEBV</b>, genomic estimated breeding value, merit predicted from markers.</div>
+      <div><b>Winner's curse</b>, upward bias when keeping only significant SNP effects.</div>
+      <div><b>SNP-BLUP / ridge</b>, fit all markers with equal, shrunk variance.</div>
+      <div><b>BayesA / BayesB</b>, Bayesian methods allowing unequal (or zero) marker effects.</div>
+      <div><b>GBLUP</b>, mixed model using the genomic relationship matrix G.</div>
+      <div><b>Daetwyler equation</b>, accuracy as a function of N, h² and M<sub>e</sub>.</div>
+      <div><b>Single-step</b>, joint evaluation of genotyped and non-genotyped animals.</div>
+      <div><b>Bulmer effect</b>, reduction in additive variance caused by selection.</div>
+      <div><b>Signatures of selection</b>, genomic patterns (F<sub>ST</sub>, iHS) left by selection.</div>
+      <div><b>Genetic drift</b>, random change in allele frequency, stronger when N<sub>e</sub> is small.</div>
+    </div>
+    <div class="attrib" style="margin-top:18px"><strong>Credits.</strong> Course materials by the Animal Breeding and Genomics group, Wageningen University &amp; Research (<em>Introduction to theory and implementation of Genomic Selection</em>, 2014): Henk Bovenhuis, Piter Bijma, Marzieh Heidaritabar, John Bastiaansen and colleagues. Restructured as a study guide for ASAP-Bio with full attribution; original materials linked above and remain the property of their authors.</div>
+    <div class="coursenav">
+      <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
+      <a class="btn" href="#top">↑ Back to top</a>
+    </div>
+  </div>
+
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
