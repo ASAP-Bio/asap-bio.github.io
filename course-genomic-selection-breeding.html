@@ -161,6 +161,196 @@
     <details class="quiz"><summary>Check: a scheme reports a big advantage of GEBVs over the parent average for selecting cows. Why be sceptical?</summary><div class="ans">Because the cows' parents were themselves selected, which makes the parent average far less informative than software assuming no selection reports. Comparing GEBVs against an over-optimistic parent average inflates the apparent benefit; the Bulmer effect and selection must be accounted for (as SelAction does).</div></details>
   </div>
 
+  </div></section>
+
+<section><div class="wrap">
+<div class="goatsim">
+<style>
+.goatsim{border:1px solid var(--line);border-radius:14px;padding:24px;background:#fff}
+.goatsim h2{margin-bottom:4px}
+.goatsim .lead{margin-bottom:14px}
+.goatsim .gs-grid{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+.goatsim .gs-panel{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px}
+.goatsim .gs-panel h4{color:var(--greendk);font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin:0 0 8px}
+.goatsim label{font-size:14px;font-weight:600;color:var(--ink);display:block;margin:12px 0 4px}
+.goatsim input[type=range]{width:100%}
+.goatsim .seg{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.goatsim .seg button{flex:1;min-width:54px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 4px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer}
+.goatsim .seg button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.goatsim .seg.meth button{min-width:100%}
+.goatsim .runbtns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.goatsim .runbtns button{flex:1;border:0;border-radius:8px;padding:10px 6px;font-weight:700;font-size:14px;cursor:pointer}
+.goatsim .b-step{background:var(--green);color:#fff}.goatsim .b-run{background:var(--gold);color:#fff}.goatsim .b-reset{background:#fff;color:var(--ink);border:1px solid var(--line)!important}
+.goatsim .chk{font-size:13.5px;font-weight:600;margin-top:14px;display:flex;align-items:center;gap:8px}
+.goatsim .eq{background:#eef4f9;border:1px solid #cfe0ee;border-radius:10px;padding:12px 14px;font-size:14px;margin-top:14px}
+.goatsim .eq b{color:#225277}
+.goatsim .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.goatsim .stat{background:var(--band);border-radius:10px;padding:10px;text-align:center}
+.goatsim .stat .v{font-size:20px;font-weight:800;color:var(--green);line-height:1.1}
+.goatsim .stat .l{font-size:11px;color:var(--grey);margin-top:2px}
+.goatsim canvas{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;display:block}
+.goatsim .cap{font-size:12px;color:var(--grey);margin:5px 0 14px}
+.goatsim .herd{font-size:24px;line-height:1.5;letter-spacing:2px;margin-top:6px}
+.goatsim .herd span{filter:grayscale(1) opacity(.55)}
+.goatsim .herd span.sel{filter:none;text-shadow:0 0 0 #000}
+.goatsim .herd span.sel::after{content:"";}
+@media(max-width:760px){.goatsim .gs-grid{grid-template-columns:1fr}}
+</style>
+
+<h2>Interactive: the goat selection simulator</h2>
+<p class="lead">A dairy-goat breeder wants higher <strong>milk yield</strong> (start: 250 kg per lactation). Change how hard you select, how accurately you rank the goats, and how heritable the trait is, then watch genetic gain build up across generations. Everything runs on the breeder&rsquo;s equation, <em>R = i &times; r &times; &sigma;<sub>A</sub></em>.</p>
+
+<div class="gs-grid">
+  <div class="gs-panel">
+    <h4>Your breeding decisions</h4>
+
+    <label>Heritability (h&sup2;): <span id="gsH2v">0.30</span></label>
+    <input type="range" id="gsH2" min="0.05" max="0.6" step="0.05" value="0.30">
+
+    <label>Proportion of goats selected as parents</label>
+    <div class="seg" id="gsProp">
+      <button data-p="2">Top 2%</button>
+      <button data-p="5">Top 5%</button>
+      <button data-p="10" class="on">10%</button>
+      <button data-p="25">25%</button>
+      <button data-p="50">50%</button>
+    </div>
+
+    <label>Selection method (sets accuracy &amp; generation interval)</label>
+    <div class="seg meth" id="gsMeth">
+      <button data-m="mass">Mass selection &middot; own record</button>
+      <button data-m="progeny">Progeny testing &middot; very accurate, slow</button>
+      <button data-m="genomic" class="on">Genomic selection &middot; accurate &amp; fast</button>
+    </div>
+
+    <label class="chk"><input type="checkbox" id="gsBulmer" checked> Include the Bulmer effect (variance shrinks under selection)</label>
+
+    <div class="runbtns">
+      <button class="b-step" id="gsStep">+1 generation</button>
+      <button class="b-run" id="gsRun">Run 10</button>
+      <button class="b-reset" id="gsReset">Reset</button>
+    </div>
+
+    <div class="eq" id="gsEq"></div>
+  </div>
+
+  <div class="gs-viz">
+    <canvas id="gsDist" width="640" height="230"></canvas>
+    <div class="cap">Milk-yield distribution of the current generation. The gold area is the share you keep as parents; the dashed curve is the original population.</div>
+    <div class="herd" id="gsHerd"></div>
+    <div class="cap">The herd of candidates, the highlighted goats are the ones selected to breed.</div>
+    <canvas id="gsGain" width="640" height="210"></canvas>
+    <div class="cap">Genetic gain in milk yield across generations. A faded line is kept after Reset so you can compare strategies.</div>
+    <div class="stats">
+      <div class="stat"><div class="v" id="gsGen">0</div><div class="l">generation</div></div>
+      <div class="stat"><div class="v" id="gsYear">0</div><div class="l">years elapsed</div></div>
+      <div class="stat"><div class="v" id="gsMean">250</div><div class="l">mean yield (kg)</div></div>
+      <div class="stat"><div class="v" id="gsTot">0</div><div class="l">total gain (kg)</div></div>
+      <div class="stat"><div class="v" id="gsPerGen">0</div><div class="l">gain / generation</div></div>
+      <div class="stat"><div class="v" id="gsPerYr">0</div><div class="l">gain / year (kg)</div></div>
+    </div>
+  </div>
+</div>
+</div>
+</div></section>
+<script>
+(function(){
+  var BASE=250, SP=60;
+  var PROPS={2:{i:2.421,x:2.054,k:0.888},5:{i:2.063,x:1.645,k:0.862},10:{i:1.755,x:1.282,k:0.830},25:{i:1.271,x:0.674,k:0.759},50:{i:0.798,x:0.0,k:0.637}};
+  var METH={mass:{L:2,name:'Mass selection'},progeny:{r:0.85,L:5,name:'Progeny testing'},genomic:{r:0.70,L:2,name:'Genomic selection'}};
+  var h2=0.30, prop=10, meth='genomic', bulmer=true;
+  var st, ghost=null, ghostName='';
+  function Va0(){return h2*SP*SP;}
+  function accuracy(){return meth==='mass'?Math.sqrt(h2):METH[meth].r;}
+  function reset(keepGhost){
+    if(keepGhost && st && st.series.length>1){ghost=st.series.slice();ghostName=METH[st.meth].name;}
+    st={meanV:BASE, Va:Va0(), gen:0, meth:meth, series:[{g:0,mean:BASE,yr:0}]};
+    draw();
+  }
+  function step(){
+    var p=PROPS[prop], r=accuracy(), sA=Math.sqrt(st.Va), R=p.i*r*sA;
+    st.meanV+=R; st.gen++;
+    if(bulmer){ st.Va=0.5*Va0()+0.5*st.Va*(1-p.k*r*r); }
+    st.series.push({g:st.gen,mean:st.meanV,yr:st.gen*METH[meth].L});
+    draw();
+  }
+  var running=false;
+  function run10(){ if(running)return; running=true; var n=0; var t=setInterval(function(){step();if(++n>=10){clearInterval(t);running=false;}},230); }
+
+  // ---- drawing ----
+  function dpr(c){var r=window.devicePixelRatio||1;var w=c.clientWidth||c.width;var h=c.height;c.width=w*r;c.height=h*r;var ctx=c.getContext('2d');ctx.setTransform(r,0,0,r,0,0);return {ctx:ctx,w:w,h:h};}
+  function bell(ctx,x0,x1,W,H,mean,sd,col,fill,xLo,xHi){
+    ctx.beginPath();var first=true,peak=0.40/sd;
+    for(var px=0;px<=W;px++){var v=xLo+(xHi-xLo)*px/W;var y=Math.exp(-0.5*Math.pow((v-mean)/sd,2))/(sd*Math.sqrt(2*Math.PI));var Y=H-12-(y/peak)*(H-30);if(first){ctx.moveTo(px,Y);first=false;}else ctx.lineTo(px,Y);}
+    ctx.strokeStyle=col;ctx.lineWidth=2;if(fill){ctx.setLineDash([]);}ctx.stroke();
+  }
+  function drawDist(){
+    var c=document.getElementById('gsDist');var o=dpr(c),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
+    var xLo=100,xHi=620,peak=0.40/SP;
+    // axis
+    ctx.strokeStyle='#ccc';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,H-12);ctx.lineTo(W,H-12);ctx.stroke();
+    ctx.fillStyle='#888';ctx.font='11px Segoe UI,Arial';
+    for(var v=100;v<=600;v+=100){var X=(v-xLo)/(xHi-xLo)*W;ctx.fillText(v+(v===600?' kg':''),X-8,H-2);}
+    // base population (dashed)
+    ctx.setLineDash([5,4]);bell(ctx,0,W,W,H,BASE,SP,'#9bb6a3',false,xLo,xHi);ctx.setLineDash([]);
+    // current generation: shade selected tail
+    var p=PROPS[prop], tx=st.meanV+p.x*SP;
+    ctx.beginPath();
+    for(var px=0;px<=W;px++){var val=xLo+(xHi-xLo)*px/W;var y=Math.exp(-0.5*Math.pow((val-st.meanV)/SP,2))/(SP*Math.sqrt(2*Math.PI));var Y=H-12-(y/peak)*(H-30);if(px===0)ctx.moveTo(px,Y);else ctx.lineTo(px,Y);}
+    ctx.lineTo(W,H-12);ctx.lineTo(0,H-12);ctx.closePath();ctx.fillStyle='rgba(46,107,62,.10)';ctx.fill();
+    // shaded selected area (right of tx)
+    var sx=(tx-xLo)/(xHi-xLo)*W;
+    ctx.save();ctx.beginPath();ctx.rect(sx,0,W-sx,H);ctx.clip();
+    ctx.beginPath();
+    for(var px2=0;px2<=W;px2++){var val2=xLo+(xHi-xLo)*px2/W;var y2=Math.exp(-0.5*Math.pow((val2-st.meanV)/SP,2))/(SP*Math.sqrt(2*Math.PI));var Y2=H-12-(y2/peak)*(H-30);if(px2===0)ctx.moveTo(px2,Y2);else ctx.lineTo(px2,Y2);}
+    ctx.lineTo(W,H-12);ctx.lineTo(0,H-12);ctx.closePath();ctx.fillStyle='rgba(200,150,42,.55)';ctx.fill();ctx.restore();
+    // current curve outline + truncation line
+    bell(ctx,0,W,W,H,st.meanV,SP,'#2E6B3E',true,xLo,xHi);
+    if(sx>0&&sx<W){ctx.strokeStyle='#C8962A';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(sx,8);ctx.lineTo(sx,H-12);ctx.stroke();}
+    ctx.fillStyle='#1F4A2B';ctx.font='bold 12px Segoe UI,Arial';ctx.fillText('mean '+Math.round(st.meanV)+' kg',Math.min(W-90,(st.meanV-xLo)/(xHi-xLo)*W-28),16);
+  }
+  function drawGain(){
+    var c=document.getElementById('gsGain');var o=dpr(c),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
+    var allMax=BASE+10;st.series.forEach(function(d){if(d.mean>allMax)allMax=d.mean;});if(ghost)ghost.forEach(function(d){if(d.mean>allMax)allMax=d.mean;});
+    var maxG=Math.max(10,st.series.length-1);if(ghost)maxG=Math.max(maxG,ghost.length-1);
+    var yLo=BASE-10,yHi=allMax+15;
+    function X(g){return 38+g/maxG*(W-50);}function Y(m){return H-26-(m-yLo)/(yHi-yLo)*(H-44);}
+    ctx.strokeStyle='#ddd';ctx.beginPath();ctx.moveTo(38,8);ctx.lineTo(38,H-26);ctx.lineTo(W-12,H-26);ctx.stroke();
+    ctx.fillStyle='#888';ctx.font='11px Segoe UI,Arial';ctx.fillText('kg',6,16);ctx.fillText('generation',W-78,H-8);
+    if(ghost&&ghost.length>1){ctx.strokeStyle='rgba(120,107,174,.5)';ctx.lineWidth=2;ctx.setLineDash([4,3]);ctx.beginPath();ghost.forEach(function(d,k){var px=X(d.g),py=Y(d.mean);k?ctx.lineTo(px,py):ctx.moveTo(px,py);});ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(120,107,174,.9)';ctx.fillText(ghostName,W-160,18);}
+    ctx.strokeStyle='#2E6B3E';ctx.lineWidth=3;ctx.beginPath();st.series.forEach(function(d,k){var px=X(d.g),py=Y(d.mean);k?ctx.lineTo(px,py):ctx.moveTo(px,py);});ctx.stroke();
+    ctx.fillStyle='#2E6B3E';st.series.forEach(function(d){ctx.beginPath();ctx.arc(X(d.g),Y(d.mean),2.5,0,7);ctx.fill();});
+  }
+  function drawHerd(){
+    var el=document.getElementById('gsHerd');var N=24,sel=Math.max(1,Math.round(N*prop/100));var html='';
+    for(var k=0;k<N;k++){html+='<span'+(k<sel?' class="sel"':'')+'>🐐</span>';}
+    el.innerHTML=html;
+  }
+  function draw(){
+    drawDist();drawGain();drawHerd();
+    var p=PROPS[prop],r=accuracy(),sA=Math.sqrt(st.Va),R=p.i*r*sA,L=METH[meth].L;
+    document.getElementById('gsGen').textContent=st.gen;
+    document.getElementById('gsYear').textContent=st.gen*L;
+    document.getElementById('gsMean').textContent=Math.round(st.meanV);
+    document.getElementById('gsTot').textContent=Math.round(st.meanV-BASE);
+    document.getElementById('gsPerGen').textContent=R.toFixed(1);
+    document.getElementById('gsPerYr').textContent=(R/L).toFixed(1);
+    document.getElementById('gsEq').innerHTML='<b>R = i &times; r &times; &sigma;<sub>A</sub></b> &nbsp;=&nbsp; '+p.i.toFixed(2)+' &times; '+r.toFixed(2)+' &times; '+sA.toFixed(1)+' &nbsp;=&nbsp; <b>'+R.toFixed(1)+' kg / generation</b><br><span style="color:#5f6b62">i = selection intensity ('+prop+'% kept) &middot; r = accuracy ('+METH[meth].name+') &middot; &sigma;<sub>A</sub> = genetic SD &middot; interval = '+L+' yr</span>';
+  }
+
+  // ---- wire controls ----
+  document.getElementById('gsH2').addEventListener('input',function(){h2=parseFloat(this.value);document.getElementById('gsH2v').textContent=h2.toFixed(2);st.Va=bulmer?st.Va:Va0();if(st.gen===0)st.Va=Va0();draw();});
+  document.getElementById('gsProp').addEventListener('click',function(e){if(e.target.dataset.p){prop=parseInt(e.target.dataset.p);[].forEach.call(this.children,function(b){b.classList.toggle('on',b===e.target);});draw();}});
+  document.getElementById('gsMeth').addEventListener('click',function(e){if(e.target.dataset.m){meth=e.target.dataset.m;[].forEach.call(this.children,function(b){b.classList.toggle('on',b===e.target);});draw();}});
+  document.getElementById('gsBulmer').addEventListener('change',function(){bulmer=this.checked;});
+  document.getElementById('gsStep').addEventListener('click',step);
+  document.getElementById('gsRun').addEventListener('click',run10);
+  document.getElementById('gsReset').addEventListener('click',function(){reset(true);});
+  reset(false);
+})();
+</script>
+
+<section class="alt"><div class="wrap">
   <!-- B6 -->
   <div class="module" id="b6">
     <div class="module-head"><div class="module-num">6</div><div><h2>Genetic change, inbreeding &amp; diversity</h2><div class="module-time">~30 minutes</div></div></div>
