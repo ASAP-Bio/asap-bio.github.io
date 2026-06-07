@@ -278,14 +278,14 @@
   function run10(){ if(running)return; running=true; var n=0; var t=setInterval(function(){step();if(++n>=10){clearInterval(t);running=false;}},230); }
 
   // ---- drawing ----
-  function dpr(c){var r=window.devicePixelRatio||1;var w=c.clientWidth||c.width;var h=c.height;c.width=w*r;c.height=h*r;var ctx=c.getContext('2d');ctx.setTransform(r,0,0,r,0,0);return {ctx:ctx,w:w,h:h};}
+  function dpr(c,H0){var r=window.devicePixelRatio||1;var w=c.clientWidth||640;c.style.height=H0+'px';c.width=Math.round(w*r);c.height=Math.round(H0*r);var ctx=c.getContext('2d');ctx.setTransform(r,0,0,r,0,0);return {ctx:ctx,w:w,h:H0};}
   function bell(ctx,x0,x1,W,H,mean,sd,col,fill,xLo,xHi){
     ctx.beginPath();var first=true,peak=0.40/sd;
     for(var px=0;px<=W;px++){var v=xLo+(xHi-xLo)*px/W;var y=Math.exp(-0.5*Math.pow((v-mean)/sd,2))/(sd*Math.sqrt(2*Math.PI));var Y=H-12-(y/peak)*(H-30);if(first){ctx.moveTo(px,Y);first=false;}else ctx.lineTo(px,Y);}
     ctx.strokeStyle=col;ctx.lineWidth=2;if(fill){ctx.setLineDash([]);}ctx.stroke();
   }
   function drawDist(){
-    var c=document.getElementById('gsDist');var o=dpr(c),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
+    var c=document.getElementById('gsDist');var o=dpr(c,230),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
     var xLo=100,xHi=620,peak=0.40/SP;
     // axis
     ctx.strokeStyle='#ccc';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,H-12);ctx.lineTo(W,H-12);ctx.stroke();
@@ -310,7 +310,7 @@
     ctx.fillStyle='#1F4A2B';ctx.font='bold 12px Segoe UI,Arial';ctx.fillText('mean '+Math.round(st.meanV)+' kg',Math.min(W-90,(st.meanV-xLo)/(xHi-xLo)*W-28),16);
   }
   function drawGain(){
-    var c=document.getElementById('gsGain');var o=dpr(c),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
+    var c=document.getElementById('gsGain');var o=dpr(c,210),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
     var allMax=BASE+10;st.series.forEach(function(d){if(d.mean>allMax)allMax=d.mean;});if(ghost)ghost.forEach(function(d){if(d.mean>allMax)allMax=d.mean;});
     var maxG=Math.max(10,st.series.length-1);if(ghost)maxG=Math.max(maxG,ghost.length-1);
     var yLo=BASE-10,yHi=allMax+15;
