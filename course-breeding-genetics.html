@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Breeding and Genetics · ASAP-Bio</title>
+<meta name="description" content="A self-paced ASAP-Bio course on breeding and quantitative genetics by Peter Sørensen (Aarhus University), from basic concepts to genomic breeding values, with R practicals.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header>
+<section class="course-hero" id="top"><div class="wrap">
+  <div class="eyebrow">Knowledge Hub · Biodiversity and Breeding programs</div>
+  <h1>Breeding and Genetics</h1>
+  <p class="csub">The quantitative-genetics foundations of animal and plant breeding: how traits are inherited, how we estimate heritability and breeding values, and how genomic data sharpen prediction, with hands-on analyses in R.</p>
+  <div class="metachips">
+    <span>★ Self-paced</span><span>⏱ ~8 hours</span><span>🎓 MSc / advanced</span><span>📊 R practicals</span><span>🔓 CC0 open licence</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="attrib"><strong>About this course.</strong> The full lecture notes, practicals and R solutions are by <strong>Peter Sørensen</strong> (Center for Quantitative Genetics and Genomics, Aarhus University), released under a <strong>CC0-1.0</strong> public-domain dedication. ASAP-Bio presents a structured study path here and links to Peter&rsquo;s original materials for each module. Source repository: <a href="https://github.com/psoerensen/bgcourse" target="_blank" rel="noopener">github.com/psoerensen/bgcourse</a>.</div>
+
+  <h2>What you will learn</h2>
+  <div class="outcomes"><ul>
+    <li>Describe how breeding programmes turn genetic variation into genetic gain.</li>
+    <li>Decompose a phenotype into genetic and environmental components and define heritability.</li>
+    <li>Estimate genetic parameters (heritabilities, correlations) using mixed models.</li>
+    <li>Estimate breeding values with BLUP and the animal model.</li>
+    <li>Extend prediction to genomic breeding values (GBLUP and marker models).</li>
+    <li>Carry out quantitative-genetic analyses in R.</li>
+  </ul></div>
+
+  <h3>Course contents</h3>
+  <div class="toc-chips">
+    <a href="#bg1">1 · Introduction to breeding</a>
+    <a href="#bg2">2 · Basic quantitative genetics</a>
+    <a href="#bg3">3 · Genetic parameters</a>
+    <a href="#bg4">4 · Breeding values (BLUP)</a>
+    <a href="#bg5">5 · Genomic breeding values</a>
+    <a href="#bg6">6 · Analyses in R &amp; practicals</a>
+    <a href="#bg7">7 · Materials &amp; credits</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+
+  <div class="module" id="bg1">
+    <div class="module-head"><div class="module-num">1</div><div><h2>Introduction to plant and animal breeding</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>State what a breeding programme is and what a breeding goal does.</li>
+      <li>Describe the breeder&rsquo;s cycle: variation, evaluation, selection, mating.</li></ul></div>
+    <p>Breeding is the directed improvement of populations across generations. A programme starts from a <strong>breeding goal</strong> (the traits to improve and their relative economic or societal weights), then repeats a cycle: measure <strong>phenotypes</strong>, estimate each candidate&rsquo;s genetic merit, <strong>select</strong> the best as parents, and <strong>mate</strong> them to produce the next generation. Plant and animal breeding share this logic, differing mainly in reproductive biology, generation interval and how populations are structured.</p>
+    <p>Genetic gain per cycle depends on how intensely we select, how accurately we rank candidates, how much genetic variation exists, and how long a generation takes, the same levers explored in the companion genomic-selection course and simulator.</p>
+    <p>Full notes: <a href="https://github.com/psoerensen/bgcourse/blob/main/Brief-Introduction-to-Plant-and-Animal-Breeding.pdf" target="_blank" rel="noopener">Brief Introduction to Plant and Animal Breeding (PDF)</a>.</p>
+    <details class="quiz"><summary>Check: why is a clearly defined breeding goal the first step of any programme?</summary><div class="ans">Because every later decision, which traits to record, how to weight them in an index, which animals to select, follows from the goal. Without it, selection has no consistent direction and traits can drift or deteriorate.</div></details>
+  </div>
+
+  <div class="module" id="bg2">
+    <div class="module-head"><div class="module-num">2</div><div><h2>Basic concepts in quantitative genetics</h2><div class="module-time">~70 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Decompose phenotype into genetic and environmental parts.</li>
+      <li>Define additive variance, breeding value and heritability.</li>
+      <li>Explain why relatives resemble each other.</li></ul></div>
+    <p>Quantitative traits (growth, milk yield, disease resistance) are shaped by many genes of small effect plus the environment, the <strong>infinitesimal model</strong>. The core decomposition is <strong>P = G + E</strong>: an individual&rsquo;s phenotype is its genotypic value plus an environmental deviation. The genotypic value splits further into <strong>additive</strong> (transmissible), dominance and epistatic parts. The additive value is the <strong>breeding value</strong>, what a parent passes on, and is the currency of selection.</p>
+    <p>At the population level, variance partitions the same way: total phenotypic variance V<sub>P</sub> = V<sub>A</sub> + V<sub>D</sub> + V<sub>E</sub> (and more). <strong>Heritability</strong> in the narrow sense, h² = V<sub>A</sub>/V<sub>P</sub>, is the fraction of phenotypic variation that is additive and therefore responds to selection. Relatives resemble one another because they share alleles; the degree of resemblance (covariance between relatives) is what lets us estimate genetic parameters and breeding values.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phenotype equals genotype plus environment, with variance partition">
+        <g font-family="Segoe UI,Arial" font-size="13" text-anchor="middle">
+          <rect x="20" y="50" width="120" height="50" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="80" y="72">Phenotype</text><text x="80" y="90" font-size="11" fill="#5f6b62">P (V_P)</text>
+          <text x="160" y="80" font-size="20">=</text>
+          <rect x="185" y="50" width="120" height="50" rx="9" fill="#E3EEF6" stroke="#3E7CB1"/><text x="245" y="72">Genotype</text><text x="245" y="90" font-size="11" fill="#5f6b62">G (V_A + V_D + ...)</text>
+          <text x="320" y="80" font-size="20">+</text>
+          <rect x="345" y="50" width="130" height="50" rx="9" fill="#FBF3E3" stroke="#C8962A"/><text x="410" y="72">Environment</text><text x="410" y="90" font-size="11" fill="#5f6b62">E (V_E)</text>
+          <rect x="500" y="50" width="100" height="50" rx="9" fill="#fff" stroke="#bbb"/><text x="550" y="70" font-size="12">h² =</text><text x="550" y="88" font-size="12">V_A / V_P</text>
+          <text x="310" y="128" font-size="12" fill="#5f6b62">The additive part (breeding value) is what parents transmit and what selection acts on.</text>
+        </g>
+      </svg>
+      <figcaption>The central decomposition of quantitative genetics, and heritability as the additive share of phenotypic variance.</figcaption>
+    </div>
+    <p>Full notes: <a href="https://github.com/psoerensen/bgcourse/blob/main/Basic-Concepts-in-Quantitative-Genetics.pdf" target="_blank" rel="noopener">Basic Concepts in Quantitative Genetics (PDF)</a>.</p>
+    <details class="quiz"><summary>Check: a trait has h² = 0.1. What does that tell a breeder?</summary><div class="ans">Only 10% of the phenotypic variation is additive genetic, so individual phenotypes are weak predictors of breeding value. Progress is still possible but needs more information (relatives, repeated records, genomics) and/or higher selection intensity; response per generation will be modest.</div></details>
+  </div>
+
+  <div class="module" id="bg3">
+    <div class="module-head"><div class="module-num">3</div><div><h2>Estimation of genetic parameters</h2><div class="module-time">~60 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain how heritabilities and genetic correlations are estimated.</li>
+      <li>Describe variance-component estimation with mixed models (REML).</li></ul></div>
+    <p>Before we can predict breeding values we need the <strong>genetic parameters</strong>: heritabilities, and genetic and environmental (co)variances among traits. These are estimated from the resemblance between relatives, using <strong>mixed models</strong> that separate fixed effects (herd, year, sex) from random genetic effects. The standard estimation method is <strong>REML</strong> (restricted maximum likelihood), which estimates <strong>variance components</strong> (V<sub>A</sub>, V<sub>E</sub>, and others) from the data and pedigree or genomic relationships.</p>
+    <p><strong>Genetic correlations</strong> matter because traits are not independent: selecting hard on one trait drags correlated traits along, sometimes unfavourably. Reliable parameters are the foundation of both selection-index design and BLUP evaluation.</p>
+    <p>Full notes: <a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Genetic-Parameters.pdf" target="_blank" rel="noopener">Estimation of Genetic Parameters (PDF)</a>.</p>
+    <details class="quiz"><summary>Check: why does a breeder need genetic correlations, not just heritabilities?</summary><div class="ans">Because selection on one trait changes correlated traits too. A favourable genetic correlation gives a free bonus; an unfavourable one (for example, between yield and fertility) means single-trait selection can erode another important trait. Multi-trait indexes need the correlations to balance the goal.</div></details>
+  </div>
+
+  <div class="module" id="bg4">
+    <div class="module-head"><div class="module-num">4</div><div><h2>Estimation of breeding values (BLUP)</h2><div class="module-time">~70 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain BLUP and the animal model.</li>
+      <li>Say how the pedigree relationship matrix and information sources drive accuracy.</li></ul></div>
+    <p>To rank selection candidates we estimate their breeding values. The standard tool is <strong>BLUP</strong> (best linear unbiased prediction) in the <strong>animal model</strong>, <em>y = Xb + Zu + e</em>, which simultaneously corrects for fixed effects and predicts each animal&rsquo;s additive genetic merit <em>u</em>. BLUP combines every available record, the animal&rsquo;s own, its relatives&rsquo;, across generations, weighting them by the <strong>pedigree relationship matrix A</strong> and the genetic parameters from Module 3.</p>
+    <p>The prediction&rsquo;s <strong>accuracy</strong> (correlation between estimated and true breeding value) rises with heritability and with the amount of information on the animal and its relatives. BLUP&rsquo;s great strength is that it accounts for selection, non-random mating and unbalanced data, which is why it underpins national genetic evaluations.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="From records and relationships to breeding values">
+        <defs><marker id="bvar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <rect x="10" y="45" width="150" height="55" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="85" y="67">Phenotypes +</text><text x="85" y="85">fixed effects</text>
+          <rect x="190" y="45" width="170" height="55" rx="9" fill="#E3EEF6" stroke="#3E7CB1"/><text x="275" y="67">Relationships</text><text x="275" y="85" font-size="11" fill="#5f6b62">pedigree A (or genomic G)</text>
+          <rect x="390" y="45" width="150" height="55" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="465" y="67">BLUP / animal</text><text x="465" y="85">model (MME)</text>
+          <rect x="570" y="45" width="120" height="55" rx="9" fill="#FBF3E3" stroke="#C8962A"/><text x="630" y="67">Breeding</text><text x="630" y="85">values + accuracy</text>
+          <line x1="162" y1="72" x2="188" y2="72" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bvar)"/>
+          <line x1="362" y1="72" x2="388" y2="72" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bvar)"/>
+          <line x1="542" y1="72" x2="568" y2="72" stroke="#2E6B3E" stroke-width="2" marker-end="url(#bvar)"/>
+        </g>
+      </svg>
+      <figcaption>BLUP combines records, fixed effects and relationships to estimate each candidate&rsquo;s breeding value.</figcaption>
+    </div>
+    <p>Full notes: <a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Breeding-Values.pdf" target="_blank" rel="noopener">Estimation of Breeding Values (PDF)</a>.</p>
+    <details class="quiz"><summary>Check: what does the relationship matrix A contribute to a BLUP evaluation?</summary><div class="ans">It tells the model how genetically similar animals are, so information flows between relatives. That lets an animal&rsquo;s breeding value borrow strength from its parents, sibs and progeny, and corrects estimates for the genetic merit of the animals it is compared with.</div></details>
+  </div>
+
+  <div class="module" id="bg5">
+    <div class="module-head"><div class="module-num">5</div><div><h2>Estimation of genomic breeding values</h2><div class="module-time">~70 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain how genomic markers replace or augment pedigree.</li>
+      <li>Describe GBLUP and marker (ridge / Bayesian) models.</li></ul></div>
+    <p>Dense SNP markers let us measure relationships and gene effects directly. In <strong>GBLUP</strong>, the pedigree matrix A is replaced (or blended, single-step) with a <strong>genomic relationship matrix G</strong> built from markers, capturing the <em>realised</em> sharing of DNA between animals rather than its pedigree expectation. Equivalently, one can fit all marker effects at once with <strong>ridge regression / SNP-BLUP</strong> or <strong>Bayesian</strong> models that allow markers to differ in effect.</p>
+    <p>Genomic prediction gives accurate breeding values on <strong>young animals before they have records or progeny</strong>, shortening the generation interval and accelerating genetic gain. Accuracy depends on the size and relatedness of the reference population and the trait&rsquo;s heritability. This module connects directly to the companion course <a href="course-genomic-selection-breeding.html">Breeding programs with Genomic selection</a>, which covers reference-population design and the accuracy equation in depth.</p>
+    <p>Full notes: <a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Genomic-Breeding-Values.pdf" target="_blank" rel="noopener">Estimation of Genomic Breeding Values (PDF)</a>.</p>
+    <details class="quiz"><summary>Check: what is the key practical advantage of a genomic breeding value over a pedigree-only one?</summary><div class="ans">It can be computed accurately on a young animal with no phenotype or progeny of its own, using only its DNA and a trained reference population. Selecting earlier shortens the generation interval and speeds genetic gain.</div></details>
+  </div>
+
+  <div class="module" id="bg6">
+    <div class="module-head"><div class="module-num">6</div><div><h2>Statistical analysis of quantitative traits in R, and practicals</h2><div class="module-time">~3 hours hands-on</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Read and explore quantitative-genetic data in R.</li>
+      <li>Fit linear and mixed models, estimate variance components, and run genomic prediction.</li></ul></div>
+    <p>The course is built around hands-on computing in <strong>R</strong>. The guide and practicals walk through importing data, fitting linear and mixed models, estimating heritabilities and breeding values, and carrying out genomic prediction, the methods of Modules 2 to 5 applied to real data. Work through the practicals in order; full R solutions are provided so you can check yourself.</p>
+    <p style="margin-top:6px"><strong>Guide:</strong> <a href="https://github.com/psoerensen/bgcourse/blob/main/Using-R-for-Statistical-Analyses-of-Quantitative-Traits.pdf" target="_blank" rel="noopener">Using R for Statistical Analyses of Quantitative Traits (PDF)</a></p>
+    <div class="labcard">
+      <h4>📊 Practicals (with R solutions)</h4>
+      <p>Run these alongside Modules 2 to 5. Solutions are provided as separate PDFs.</p>
+      <ul>
+        <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Practical_1.pdf" target="_blank" rel="noopener">Practical 1</a> &middot; <a href="https://github.com/psoerensen/bgcourse/blob/main/Practical_2.pdf" target="_blank" rel="noopener">Practical 2</a> &middot; <a href="https://github.com/psoerensen/bgcourse/blob/main/Practicals_3.pdf" target="_blank" rel="noopener">Practical 3</a> &middot; <a href="https://github.com/psoerensen/bgcourse/blob/main/Practicals_4.pdf" target="_blank" rel="noopener">Practical 4</a></li>
+        <li>All practicals in one file: <a href="https://github.com/psoerensen/bgcourse/blob/main/Practicals.pdf" target="_blank" rel="noopener">Practicals (combined)</a></li>
+        <li>R solutions: <a href="https://github.com/psoerensen/bgcourse/blob/main/Practicals_1_2_Rsolutions.pdf" target="_blank" rel="noopener">Practicals 1–2</a> &middot; <a href="https://github.com/psoerensen/bgcourse/blob/main/Practicals_1_2_3_Rsolutions.pdf" target="_blank" rel="noopener">Practicals 1–2–3</a></li>
+      </ul>
+    </div>
+    <details class="quiz"><summary>Check: why are full R solutions valuable in a self-paced course?</summary><div class="ans">They let a lone learner verify both their code and their interpretation, turning the practicals into self-correcting exercises rather than open-ended tasks with no feedback.</div></details>
+  </div>
+
+  <div class="module" id="bg7">
+    <div class="module-head"><div class="module-num">7</div><div><h2>Materials &amp; credits</h2><div class="module-time">~5 minutes</div></div></div>
+    <h3>All course materials</h3>
+    <ul>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Brief-Introduction-to-Plant-and-Animal-Breeding.pdf" target="_blank" rel="noopener">Brief Introduction to Plant and Animal Breeding</a></li>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Basic-Concepts-in-Quantitative-Genetics.pdf" target="_blank" rel="noopener">Basic Concepts in Quantitative Genetics</a></li>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Genetic-Parameters.pdf" target="_blank" rel="noopener">Estimation of Genetic Parameters</a></li>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Breeding-Values.pdf" target="_blank" rel="noopener">Estimation of Breeding Values</a></li>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Estimation-of-Genomic-Breeding-Values.pdf" target="_blank" rel="noopener">Estimation of Genomic Breeding Values</a></li>
+      <li><a href="https://github.com/psoerensen/bgcourse/blob/main/Using-R-for-Statistical-Analyses-of-Quantitative-Traits.pdf" target="_blank" rel="noopener">Using R for Statistical Analyses of Quantitative Traits</a></li>
+      <li>Practicals and R solutions (see Module 6) &middot; source repository: <a href="https://github.com/psoerensen/bgcourse" target="_blank" rel="noopener">github.com/psoerensen/bgcourse</a></li>
+    </ul>
+    <h3 style="margin-top:20px">Glossary</h3>
+    <div class="gloss">
+      <div><b>Phenotype (P)</b>, the observed trait value; P = G + E.</div>
+      <div><b>Breeding value</b>, the additive (transmissible) genetic merit of an individual.</div>
+      <div><b>Heritability (h²)</b>, the additive share of phenotypic variance, V_A / V_P.</div>
+      <div><b>Genetic correlation</b>, the correlation of breeding values for two traits.</div>
+      <div><b>REML</b>, restricted maximum likelihood, used to estimate variance components.</div>
+      <div><b>BLUP</b>, best linear unbiased prediction of breeding values (animal model).</div>
+      <div><b>Relationship matrix (A / G)</b>, pedigree-based (A) or genomic (G) genetic similarity.</div>
+      <div><b>GBLUP</b>, BLUP using the genomic relationship matrix.</div>
+      <div><b>Reference population</b>, genotyped and phenotyped animals used to train genomic prediction.</div>
+    </div>
+    <div class="attrib" style="margin-top:18px"><strong>Credit.</strong> Lecture notes, practicals and R solutions by Peter Sørensen, Center for Quantitative Genetics and Genomics, Aarhus University, released under CC0-1.0. Presented in the ASAP-Bio Knowledge Hub with links to the original materials.</div>
+    <div class="coursenav">
+      <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
+      <a class="btn" href="#top">↑ Back to top</a>
+    </div>
+  </div>
+
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
