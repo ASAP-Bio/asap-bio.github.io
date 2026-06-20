@@ -229,3 +229,9 @@ footer.site .contactlist strong{color:#fff}
 .matbox .mb-tx span{font-size:13px;color:#eaf3e8}
 .matbox + .matbox{margin-top:8px}
 .matnote{font-size:13px;color:var(--grey);margin:8px 0 4px}
+/* APSU 2026 feature */
+.apsu-fig{display:block}
+.apsu-fig img{width:100%;border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 22px rgba(20,50,30,.10)}
+.apsu-fig:hover img{box-shadow:0 10px 28px rgba(20,50,30,.18)}
+.callout.gold ul{margin:8px 0 8px 0;padding-left:20px}
+.callout.gold li{margin:3px 0}
