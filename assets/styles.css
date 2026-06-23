@@ -235,3 +235,11 @@ footer.site .contactlist strong{color:#fff}
 .apsu-fig:hover img{box-shadow:0 10px 28px rgba(20,50,30,.18)}
 .callout.gold ul{margin:8px 0 8px 0;padding-left:20px}
 .callout.gold li{margin:3px 0}
+/* --- Hulunim course additions (no left-edge accents per brand pref) --- */
+.formula{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0;text-align:center;font-size:18px;color:var(--greendk)}
+.formula sub,.formula sup{font-size:12px}
+.example{background:#fbf3e3;border:1px solid #ecd9ad;border-radius:10px;padding:16px 20px;margin:16px 0}
+.example h4{margin:0 0 6px;color:var(--gold);font-size:15px;text-transform:uppercase;letter-spacing:1px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+.callout.green{background:var(--band);border-color:var(--line)}
+.callout.green strong{color:var(--greendk)}

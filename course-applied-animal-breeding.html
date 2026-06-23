@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Applied Animal Breeding · ASAP-Bio</title>
+<meta name="description" content="A self-paced ASAP-Bio course on applied animal breeding: traits and variation, heritability and repeatability, the breeder's equation and selection, breeding-value estimation and BLUP, and systems of mating including inbreeding. Developed from the teaching materials of Hulunim Gatew Tariku, Debre Berhan University.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header>
+<section class="course-hero" id="top"><div class="wrap">
+  <div class="eyebrow">Knowledge Hub · Biodiversity and Breeding programs</div>
+  <h1>Applied Animal Breeding</h1>
+  <p class="csub">The working toolkit of the animal breeder: how to measure traits and variation, estimate heritability, predict breeding values, select parents with the breeder&rsquo;s equation, and manage mating systems and inbreeding to deliver lasting genetic gain.</p>
+  <div class="metachips">
+    <span>★ Self-paced</span><span>⏱ ~8 hours</span><span>🎓 MSc level</span><span>🧮 Worked examples</span><span>🔓 Open access</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="attrib"><strong>About this course.</strong> This self-paced course was developed by ASAP-Bio from the teaching materials of <strong>Hulunim Gatew Tariku</strong>, Department of Animal Sciences, College of Agriculture and Natural Resource Sciences, <strong>Debre Berhan University</strong>, Ethiopia. It is open-access and free to use for study.</div>
+
+  <h2>What you will learn</h2>
+  <div class="outcomes"><ul>
+    <li>State what a breeding programme does and define a breeding goal.</li>
+    <li>Classify traits and partition phenotypic variation into genetic and environmental parts.</li>
+    <li>Interpret heritability and repeatability and use them to choose a selection method.</li>
+    <li>Apply the breeder&rsquo;s equation, R = i&middot;r&middot;&sigma;<sub>A</sub>, and quantify the four levers of genetic gain.</li>
+    <li>Estimate breeding values from own performance, relatives and progeny, build a selection index, and explain BLUP.</li>
+    <li>Compute an inbreeding coefficient and manage inbreeding and effective population size.</li>
+  </ul></div>
+
+  <h3>Course contents</h3>
+  <div class="toc-chips">
+    <a href="#a1">1 · What animal breeding is</a>
+    <a href="#a2">2 · Traits &amp; their measurement</a>
+    <a href="#a3">3 · Variation</a>
+    <a href="#a4">4 · Heritability &amp; repeatability</a>
+    <a href="#a5">5 · Selection &amp; the breeder&rsquo;s equation</a>
+    <a href="#a6">6 · Breeding values, index &amp; BLUP</a>
+    <a href="#a7">7 · Systems of mating &amp; inbreeding</a>
+    <a href="#a8">8 · Glossary &amp; credits</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+
+  <div class="module" id="a1">
+    <div class="module-head"><div class="module-num">1</div><div><h2>What animal breeding is</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>State the task of the animal breeder and the role of a breeding goal.</li>
+      <li>Outline the breeder&rsquo;s cycle and a little of its history.</li></ul></div>
+    <p><strong>Animal breeding</strong> is the application of genetic principles to improve farm-animal populations for the traits people value: more milk, faster or leaner growth, better fertility, disease resistance and resilience. The breeder&rsquo;s task is to identify the genetically superior animals and choose which become parents, so that each generation is, on average, better than the last. Everything starts from a clearly stated <strong>breeding goal</strong>, the traits to improve and their relative economic weights.</p>
+    <p>The work then repeats a four-step <strong>breeder&rsquo;s cycle</strong>: record <strong>phenotypes</strong>, estimate each candidate&rsquo;s genetic merit, <strong>select</strong> the best as parents, and <strong>mate</strong> them to produce the next generation. Robert Bakewell pioneered systematic selection and progeny testing in the eighteenth century; Mendel (1865) supplied the genetic mechanism; and Jay Lush, from 1945, built the quantitative methods, heritability, breeding values and selection theory, that this course teaches.</p>
+    <details class="quiz"><summary>Check: why is a clearly defined breeding goal the first step of any programme?</summary><div class="ans">Because every later decision, which traits to record, how to weight them, which animals to select, follows from the goal. Without it selection has no consistent direction, and traits can drift or deteriorate even as effort is spent.</div></details>
+  </div>
+
+  <div class="module" id="a2">
+    <div class="module-head"><div class="module-num">2</div><div><h2>Traits in farm animals and their measurement</h2><div class="module-time">~50 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Distinguish qualitative and quantitative traits.</li>
+      <li>Name economically important traits in dairy, beef and sheep.</li>
+      <li>Explain why records must be standardised before comparison.</li></ul></div>
+    <p>Traits fall into two broad classes. <strong>Qualitative traits</strong> (coat colour, horned or polled) are controlled by one or a few genes, fall into distinct categories and are little affected by environment. <strong>Quantitative traits</strong> (milk yield, growth rate, litter size) are controlled by many genes plus the environment, vary continuously and are the main target of selection. A few are <strong>threshold traits</strong>: an underlying continuous liability expressed as a yes/no outcome such as calving difficulty or survival.</p>
+    <p>Economically important traits differ by species and system: in <strong>dairy cattle</strong>, milk volume and composition (fat, protein), fertility, udder health (mastitis) and longevity; in <strong>beef cattle</strong>, growth rate, feed efficiency, carcass yield and calving ease; in <strong>sheep</strong>, reproduction rate, growth, and wool or meat quality. Because animals are kept in different herds, years and seasons, raw records are not comparable. They must first be <strong>standardised</strong>, corrected for fixed environmental effects such as parity, age, season and lactation length, so that the genetic signal is not confounded with management.</p>
+    <details class="quiz"><summary>Check: why must lactation records be adjusted (for example to a mature-equivalent, 305-day basis) before cows are ranked?</summary><div class="ans">Because differences in age/parity and in the number of days milked are environmental, not genetic. Comparing a young cow&rsquo;s partial record with a mature cow&rsquo;s full record would rank management and circumstance rather than breeding value. Standardising removes those known effects so the comparison reflects genetic merit.</div></details>
+  </div>
+
+  <div class="module" id="a3">
+    <div class="module-head"><div class="module-num">3</div><div><h2>Variation and how we partition it</h2><div class="module-time">~55 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>List the sources of phenotypic variation.</li>
+      <li>Write and interpret the variance partition.</li>
+      <li>Explain genotype-by-environment interaction.</li></ul></div>
+    <p>Selection works only because animals vary. An individual&rsquo;s phenotype is <strong>P = G + E</strong>: a genotypic value plus an environmental deviation. The genotypic value itself splits into an <strong>additive</strong> part (the average effect of alleles, transmissible to offspring), a <strong>dominance</strong> part (interaction of alleles at a locus) and an <strong>epistatic</strong> part (interaction between loci). Only the additive part is reliably passed on, which is why it is the currency of selection.</p>
+    <p>At the population level the same logic partitions variance: <strong>V<sub>P</sub> = V<sub>A</sub> + V<sub>D</sub> + V<sub>I</sub> + V<sub>E</sub></strong>. Genetic variation arises from recombination, the independent assortment of chromosomes, mutation and chromosomal change; environmental variation comes from feeding, climate, health and management. A further complication is <strong>genotype-by-environment interaction (G&times;E)</strong>: the best genotype in one environment is not always the best in another, so an animal selected under high input may not excel under harsh tropical conditions, a central concern for African breeding programmes.</p>
+    <details class="quiz"><summary>Check: a sire&rsquo;s daughters are top-ranked on a high-input European farm but only average under low-input tropical management. Which phenomenon is this, and why does it matter for ASAP-Bio partners?</summary><div class="ans">Genotype-by-environment interaction. Because genetic merit is re-ranked across environments, breeding values estimated in one production system may not transfer to another. It matters because importing genetics evaluated abroad can disappoint locally; evaluations and breeding goals should reflect the target environment.</div></details>
+  </div>
+
+  <div class="module" id="a4">
+    <div class="module-head"><div class="module-num">4</div><div><h2>Heritability and repeatability</h2><div class="module-time">~55 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Define narrow-sense heritability and read its typical ranges.</li>
+      <li>Define repeatability and distinguish it from heritability.</li>
+      <li>Use both to decide how much to trust a single record.</li></ul></div>
+    <p><strong>Heritability</strong> in the narrow sense, <strong>h&sup2; = V<sub>A</sub> / V<sub>P</sub></strong>, is the fraction of phenotypic variation that is additive genetic, and therefore the fraction that responds to selection. It runs from 0 to 1. A useful rule of thumb from the course materials: <strong>h&sup2; &lt; 0.1</strong> is very low, <strong>0.1&ndash;0.2</strong> low, <strong>0.2&ndash;0.4</strong> medium and <strong>&gt; 0.4</strong> high. Reproduction traits are usually low, growth traits moderate, and conformation or some milk-composition traits high. The higher the heritability, the more an animal&rsquo;s own phenotype reveals its breeding value.</p>
+    <p><strong>Repeatability (R)</strong> applies to traits measured more than once per animal (successive lactations, litters). It is the proportion of variance due to permanent differences between animals: <strong>R = (V<sub>G</sub> + V<sub>Ep</sub>) / V<sub>P</sub></strong>, the ratio of genetic plus permanent-environmental variance to total. Repeatability is always at least as large as heritability and sets an upper limit on it. A high repeatability means one record already predicts future performance well, so few records are needed; a low one means you should average several records before judging an animal.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 640 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heritability ranges">
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <rect x="30" y="45" width="140" height="34" fill="#F3E9D7" stroke="#C8962A"/><text x="100" y="67">very low &lt;0.1</text>
+          <rect x="170" y="45" width="140" height="34" fill="#EDE3CF" stroke="#C8962A"/><text x="240" y="67">low 0.1&ndash;0.2</text>
+          <rect x="310" y="45" width="150" height="34" fill="#DCEAD7" stroke="#2E6B3E"/><text x="385" y="67">medium 0.2&ndash;0.4</text>
+          <rect x="460" y="45" width="150" height="34" fill="#C7DDBF" stroke="#2E6B3E"/><text x="535" y="67">high &gt;0.4</text>
+          <text x="320" y="28" font-size="12" fill="#5f6b62">h&sup2; = V_A / V_P</text>
+          <text x="320" y="100" font-size="11" fill="#5f6b62">Higher h&sup2; &rarr; an animal&rsquo;s own record is a better guide to its breeding value</text>
+        </g>
+      </svg>
+      <figcaption>Working ranges for heritability used in the course materials.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: a trait has h&sup2; = 0.1. What does that imply for selection?</summary><div class="ans">Only 10% of phenotypic variation is additive genetic, so an individual&rsquo;s own record is a weak guide to its breeding value. Progress is still possible but needs more information (records on relatives, repeated records, genomics) or higher selection intensity; response per generation will be modest.</div></details>
+  </div>
+
+  <div class="module" id="a5">
+    <div class="module-head"><div class="module-num">5</div><div><h2>Selection and the breeder&rsquo;s equation</h2><div class="module-time">~80 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Use the breeder&rsquo;s equation and name its four levers.</li>
+      <li>Define accuracy, intensity and generation interval.</li>
+      <li>Compare mass, family, progeny-test and index selection.</li></ul></div>
+    <p>The expected genetic gain from one round of selection is captured by the <strong>breeder&rsquo;s equation</strong>:</p>
+    <div class="formula"><strong>R = i &middot; r &middot; &sigma;<sub>A</sub></strong>&nbsp;&nbsp;per generation, or rate of gain&nbsp; &Delta;G = (i &middot; r &middot; &sigma;<sub>A</sub>) / L</div>
+    <p>where <strong>R</strong> is response, <strong>i</strong> the <strong>selection intensity</strong> (how extreme the selected group is, in standard-deviation units; selecting fewer animals raises i), <strong>r</strong> the <strong>accuracy</strong> of selection (correlation between the estimated and true breeding value), <strong>&sigma;<sub>A</sub></strong> the additive genetic standard deviation (the variation available), and <strong>L</strong> the <strong>generation interval</strong> (average age of parents when their replacements are born). To breed faster you increase intensity or accuracy, preserve genetic variation, or shorten the generation interval, and these levers trade off against one another.</p>
+    <div class="example"><h4>Worked example</h4>
+      <p>A milk trait has phenotypic SD &sigma;<sub>P</sub> = 600 kg and heritability h&sup2; = 0.25, so &sigma;<sub>A</sub> = &radic;0.25 &times; 600 = 300 kg. Suppose we select on own records (accuracy r = h = 0.5) and keep the top 10% of cows (selection intensity i &asymp; 1.76).</p>
+      <p>Response per generation: R = i &middot; r &middot; &sigma;<sub>A</sub> = 1.76 &times; 0.5 &times; 300 = <strong>&asymp; 264 kg</strong>. If the generation interval is L = 5 years, the annual gain is 264 / 5 &asymp; <strong>53 kg per year</strong>. Doubling accuracy (better evaluation) or halving the generation interval (genomic selection on young animals) roughly doubles annual gain, the central insight that motivates modern breeding.</p>
+    </div>
+    <p>How accurately we rank candidates depends on the <strong>information source</strong>. <strong>Mass (individual) selection</strong> uses the animal&rsquo;s own record, simple and effective for highly heritable traits expressed in both sexes. <strong>Family selection</strong> and the use of <strong>relatives&rsquo; records</strong> help for low-heritability traits. <strong>Progeny testing</strong>, judging a sire by the mean of his offspring, gives the highest accuracy for traits of low heritability or expressed in one sex (milk, egg production), but lengthens the generation interval; the materials note that as many as 30 offspring per sire may be needed for very low-heritability traits. When several traits matter at once, they are combined into a <strong>selection index</strong> rather than selected one at a time.</p>
+    <details class="quiz"><summary>Check: for a low-heritability, sex-limited trait such as milk yield, why is progeny testing preferred to mass selection of bulls, despite its cost in time?</summary><div class="ans">A bull does not express milk yield himself, so his own phenotype carries no direct information (mass selection cannot work). The mean of many daughters estimates his breeding value with high accuracy, and averaging over many progeny overcomes the low heritability. The price is a longer generation interval while daughters are recorded, which is exactly what genomic selection later helps to shorten.</div></details>
+  </div>
+
+  <div class="module" id="a6">
+    <div class="module-head"><div class="module-num">6</div><div><h2>Estimating breeding values: index and BLUP</h2><div class="module-time">~75 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Define a breeding value and the sources used to estimate it.</li>
+      <li>Explain the selection index and its limitation.</li>
+      <li>Say what BLUP adds and why national evaluations rely on it.</li></ul></div>
+    <p>A <strong>breeding value (BV)</strong> is the additive genetic merit of an animal, twice the average deviation of its offspring from the population mean, because a parent passes on a sample of half its genes. We never observe a BV directly; we <strong>estimate</strong> it (an EBV) from records on the animal&rsquo;s own performance, its <strong>pedigree</strong>, its <strong>progeny</strong>, and correlated traits, weighting each source by how much information it carries.</p>
+    <p>The classical tool for combining sources is the <strong>selection index</strong>: a weighted sum of records, with weights chosen to maximise the correlation between the index and the true breeding value (it is the best linear prediction, BLP). Its weakness is that it assumes the records are already corrected for environmental effects and that those effects are known without error, rarely true in field data with unbalanced herds, years and management.</p>
+    <p><strong>BLUP</strong> (best linear unbiased prediction) removes that weakness. In the mixed-model equation <em>y = Xb + Zu + e</em>, it estimates the <strong>fixed environmental effects (b)</strong> and predicts the <strong>random breeding values (u)</strong> simultaneously, using the <strong>relationship matrix A</strong> so that information flows between relatives across the whole pedigree. BLUP therefore corrects for unequal environments, accounts for non-random mating and selection, and ranks all animals on one comparable scale, which is why it underpins national genetic evaluations. Each animal&rsquo;s BV also contains a <strong>Mendelian-sampling</strong> term, its deviation from the parental average, the reason full sibs differ in merit.</p>
+    <div class="figbox">
+      <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inputs to a BLUP evaluation">
+        <defs><marker id="abv" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2E6B3E"/></marker></defs>
+        <g font-family="Segoe UI,Arial" font-size="12" text-anchor="middle">
+          <rect x="10" y="42" width="150" height="52" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="85" y="63">Records +</text><text x="85" y="81">fixed effects</text>
+          <rect x="185" y="42" width="170" height="52" rx="9" fill="#E3EEF6" stroke="#3E7CB1"/><text x="270" y="63">Pedigree</text><text x="270" y="81" font-size="11" fill="#5f6b62">relationship matrix A</text>
+          <rect x="380" y="42" width="150" height="52" rx="9" fill="#EEF3EC" stroke="#2E6B3E"/><text x="455" y="63">BLUP / animal</text><text x="455" y="81">model (MME)</text>
+          <rect x="560" y="42" width="130" height="52" rx="9" fill="#FBF3E3" stroke="#C8962A"/><text x="625" y="63">EBVs +</text><text x="625" y="81">accuracy</text>
+          <line x1="160" y1="68" x2="183" y2="68" stroke="#2E6B3E" stroke-width="2" marker-end="url(#abv)"/>
+          <line x1="355" y1="68" x2="378" y2="68" stroke="#2E6B3E" stroke-width="2" marker-end="url(#abv)"/>
+          <line x1="530" y1="68" x2="558" y2="68" stroke="#2E6B3E" stroke-width="2" marker-end="url(#abv)"/>
+        </g>
+      </svg>
+      <figcaption>BLUP combines records, fixed effects and pedigree relationships into comparable breeding values.</figcaption>
+    </div>
+    <details class="quiz"><summary>Check: what does a selection index assume that BLUP does not?</summary><div class="ans">The selection index assumes records are already corrected for environmental (fixed) effects and that those corrections are exact. BLUP drops that assumption: it estimates fixed effects and breeding values at the same time from unbalanced data, using the relationship matrix, so it stays unbiased when herds, years and management differ.</div></details>
+  </div>
+
+  <div class="module" id="a7">
+    <div class="module-head"><div class="module-num">7</div><div><h2>Systems of mating and inbreeding</h2><div class="module-time">~70 minutes</div></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Distinguish random, assortative, inbreeding and outbreeding systems.</li>
+      <li>Compute an inbreeding coefficient from a simple pedigree.</li>
+      <li>Link effective population size to the rate of inbreeding.</li></ul></div>
+    <p>Selection decides <em>which</em> animals breed; the <strong>mating system</strong> decides <em>which with which</em>. Options range from <strong>random mating</strong>, through <strong>positive</strong> and <strong>negative assortative mating</strong> (like-with-like or unlike-with-unlike for a trait), to the two pure-breeding strategies: <strong>inbreeding</strong> (mating relatives) and <strong>outbreeding / crossbreeding</strong> (mating unrelated animals or different breeds). Crossbreeding exploits <strong>heterosis</strong> (hybrid vigour) and breed complementarity; inbreeding concentrates desired genes and exposes recessives but carries costs.</p>
+    <p>The <strong>inbreeding coefficient F</strong> is the probability that the two alleles at a locus are identical by descent. From a pedigree it is computed by the path method:</p>
+    <div class="formula"><strong>F<sub>X</sub> = &Sigma; (&frac12;)<sup>n&#8321;+n&#8322;+1</sup> (1 + F<sub>A</sub>)</strong></div>
+    <p>summing over every common ancestor A, where n&#8321; and n&#8322; are the numbers of generations from each parent back to A, and F<sub>A</sub> is that ancestor&rsquo;s own inbreeding.</p>
+    <div class="example"><h4>Worked example</h4>
+      <p>Mate a half-brother and half-sister that share one common ancestor (a sire, S), each one generation away, with S non-inbred (F<sub>S</sub> = 0). There is one path through S with n&#8321; = 1 and n&#8322; = 1, so</p>
+      <p>F<sub>offspring</sub> = (&frac12;)<sup>1+1+1</sup> (1 + 0) = (&frac12;)&sup3; = <strong>0.125</strong>, i.e. 12.5% inbreeding. A full-sib mating (two common parents) gives F = 0.25.</p>
+    </div>
+    <p>Inbreeding accumulates fastest in small populations. Its rate per generation depends on the <strong>effective population size N<sub>e</sub></strong>:</p>
+    <div class="formula"><strong>&Delta;F &asymp; 1 / (2 N<sub>e</sub>)</strong></div>
+    <p>so using too few sires, the usual bottleneck, drives N<sub>e</sub> down and inbreeding up, eroding fitness through <strong>inbreeding depression</strong> (lower fertility, survival and growth). Managing genetic gain and genetic diversity together, by limiting the rate of inbreeding while selecting, is essential, and is exactly the concern carried into the genomic-selection course.</p>
+    <details class="quiz"><summary>Check: a breeder uses only two bulls in a herd to maximise short-term gain. What is the genetic risk, in the language of this module?</summary><div class="ans">Using very few sires drops the effective population size N<sub>e</sub>, so the rate of inbreeding &Delta;F &asymp; 1/(2N<sub>e</sub>) rises sharply. Inbreeding accumulates, recessive defects surface and inbreeding depression lowers fertility and survival, undermining the very gain the breeder sought. Genetic diversity must be managed alongside selection.</div></details>
+  </div>
+
+  <div class="module" id="a8">
+    <div class="module-head"><div class="module-num">8</div><div><h2>Glossary, recommendations &amp; credits</h2><div class="module-time">~10 minutes</div></div></div>
+    <h3>Glossary</h3>
+    <div class="gloss">
+      <div><b>Breeding goal</b>, the traits to improve and their relative economic weights.</div>
+      <div><b>Heritability (h&sup2;)</b>, additive share of phenotypic variance, V_A / V_P.</div>
+      <div><b>Repeatability (R)</b>, share of variance due to permanent differences between animals.</div>
+      <div><b>Breeder&rsquo;s equation</b>, R = i &middot; r &middot; &sigma;_A; gain per generation.</div>
+      <div><b>Selection intensity (i)</b>, how extreme the selected group is, in SD units.</div>
+      <div><b>Accuracy (r)</b>, correlation between estimated and true breeding value.</div>
+      <div><b>Generation interval (L)</b>, average age of parents when replacements are born.</div>
+      <div><b>Breeding value (BV / EBV)</b>, additive genetic merit, estimated as an EBV.</div>
+      <div><b>Selection index</b>, weighted combination of records predicting breeding value.</div>
+      <div><b>BLUP</b>, best linear unbiased prediction of breeding values (animal model).</div>
+      <div><b>Inbreeding coefficient (F)</b>, probability of alleles identical by descent.</div>
+      <div><b>Effective population size (N_e)</b>, drives the rate of inbreeding, &Delta;F &asymp; 1/(2N_e).</div>
+    </div>
+    <div class="callout green" style="margin-top:18px"><strong>Where to go next.</strong> This course assumes the genetics covered in <a href="course-foundations-animal-genetics.html">Foundations of Animal Genetics</a>. To take breeding values into the genomic era, continue to <a href="course-genomic-selection-breeding.html">Breeding programs with Genomic selection</a> and <a href="course-breeding-genetics.html">Breeding and Genetics</a> (Peter Sørensen, with R practicals). To deliver genetic gain on the ground, see <a href="course-animal-reproduction-biotech.html">Animal Reproduction and Reproductive Biotechnology</a>.</div>
+    <div class="faobox" style="margin-top:18px">
+      <img class="faologo" src="assets/logo-fao.png" alt="FAO e-learning Academy logo" onerror="this.style.display='none'">
+      <div class="faotext">
+        <h3>Recommended FAO Academy course</h3>
+        <p>The FAO <strong>Animal breeding</strong> course complements this one with a field-extension perspective: breeding structures and systems, management of breeding stock and, importantly for the region, <strong>community-based breeding programmes</strong>. It is a tutored course; the page explains how to join a session.</p>
+        <p><a class="btn green" href="https://virtual-learning-center.fao.org/admin/tool/custompage/view.php?id=67" target="_blank" rel="noopener">FAO · Animal breeding course &#8594;</a></p>
+      </div>
+    </div>
+    <div class="attrib" style="margin-top:18px"><strong>Credit.</strong> Course developed by ASAP-Bio from the teaching materials of Hulunim Gatew Tariku, Department of Animal Sciences, Debre Berhan University, Ethiopia. Open-access for study.</div>
+    <div class="coursenav">
+      <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
+      <a class="btn" href="#top">↑ Back to top</a>
+    </div>
+  </div>
+
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
