@@ -260,3 +260,24 @@ footer.site .contactlist strong{color:#fff}
 .cg-body{padding:16px 18px}
 .cg-body .coursefeat:last-child{margin-bottom:0}
 @media(max-width:560px){.cg-n{display:none}.cg-ic{width:38px;height:38px;font-size:20px}}
+/* --- Downloads: master banner + per-area boxes (no left-edge accents) --- */
+.dlmaster{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--band);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:8px 0 16px}
+.dlmaster .dl-ic{font-size:30px;flex:none}
+.dlm-tx{flex:1;min-width:220px;display:flex;flex-direction:column}
+.dlm-tx strong{color:var(--greendk);font-size:16px}
+.dlm-tx span{font-size:13.5px;color:var(--grey);margin-top:3px}
+.dlbox{border:1px solid var(--line);border-radius:10px;margin:14px 0 2px;background:#fff}
+.dlbox>summary{list-style:none;cursor:pointer;padding:12px 15px;display:flex;align-items:center;gap:12px}
+.dlbox>summary::-webkit-details-marker{display:none}
+.dlbox>summary:hover{background:var(--soft)}
+.dl-ic{font-size:20px;flex:none}
+.dl-tx{flex:1;display:flex;flex-direction:column;min-width:0}
+.dl-tx strong{color:var(--green);font-size:15px}
+.dl-sub{font-size:12.5px;color:var(--grey)}
+.dlbox>summary .chev{transition:.2s;color:var(--green);flex:none}
+.dlbox[open]>summary .chev{transform:rotate(180deg)}
+.dlbox[open]>summary{border-bottom:1px solid var(--line)}
+.dl-body{padding:14px 16px}
+.dl-list{list-style:none;margin:12px 0 0;padding:0;columns:2;column-gap:22px}
+.dl-list li{margin:0 0 7px;font-size:13.5px;break-inside:avoid}
+@media(max-width:620px){.dl-list{columns:1}}
