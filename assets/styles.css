@@ -243,3 +243,20 @@ footer.site .contactlist strong{color:#fff}
 .tablewrap{overflow-x:auto;margin:14px 0}
 .callout.green{background:var(--band);border-color:var(--line)}
 .callout.green strong{color:var(--greendk)}
+/* --- Course groups (shelf) on Biodiversity theme; no left-edge accents --- */
+.cg-intro{font-size:14.5px;color:var(--grey);margin:2px 0 14px}
+.coursegroup{border:1px solid var(--line);border-radius:12px;margin:12px 0;background:#fff;overflow:hidden}
+.coursegroup>summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:14px;background:var(--band)}
+.coursegroup>summary::-webkit-details-marker{display:none}
+.coursegroup>summary:hover{background:#e6efe4}
+.cg-ic{width:44px;height:44px;flex:none;border-radius:11px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:23px}
+.cg-tx{flex:1;display:flex;flex-direction:column;min-width:0}
+.cg-tx strong{color:var(--greendk);font-size:17px;font-weight:800}
+.cg-desc{font-size:13px;color:var(--grey);font-weight:400;margin-top:2px}
+.cg-n{flex:none;font-size:12px;font-weight:700;color:var(--green);background:#fff;border:1px solid var(--line);border-radius:20px;padding:3px 11px}
+.coursegroup>summary .chev{transition:.2s;color:var(--green);font-size:18px;flex:none}
+.coursegroup[open]>summary{border-bottom:1px solid var(--line)}
+.coursegroup[open]>summary .chev{transform:rotate(180deg)}
+.cg-body{padding:16px 18px}
+.cg-body .coursefeat:last-child{margin-bottom:0}
+@media(max-width:560px){.cg-n{display:none}.cg-ic{width:38px;height:38px;font-size:20px}}
