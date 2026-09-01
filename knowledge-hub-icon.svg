@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Knowledge Hub">
+  <circle cx="60" cy="60" r="55" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M60 58 C51 51, 38 51, 30 55 L30 86 C38 82, 51 82, 60 88 C69 82, 82 82, 90 86 L90 55 C82 51, 69 51, 60 58 Z"
+        fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M60 58 L60 88" stroke="#FFFFFF" stroke-width="2.6"/>
+  <path d="M60 58 C60 46, 60 40, 60 32" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M60 44 C50 42, 44 34, 46 26 C56 27, 61 35, 60 44 Z" fill="#7Cc47C" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M60 50 C70 49, 77 42, 76 34 C67 34, 60 41, 60 50 Z" fill="#A9DCA9" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+</svg>
