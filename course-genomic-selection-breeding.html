@@ -19,7 +19,7 @@
   <h1>Breeding programs with Genomic selection</h1>
   <p class="csub">From SNP chips and genomic breeding values to the accuracy equation, breeding-program design and the genetic-diversity questions that genomic selection raises.</p>
   <div class="metachips">
-    <span>★ Self-paced</span><span>⏱ ~5 hours</span><span>🎓 MSc / advanced</span><span>🧮 Excel &amp; SelAction exercises</span>
+    <span>★ Self-paced</span><span>🎓 MSc / advanced</span><span>🧮 Excel &amp; SelAction exercises</span>
   </div>
 </div></section>
 
@@ -52,35 +52,30 @@
 
   <!-- B1 -->
   <div class="module" id="b1">
-    <div class="module-head"><div class="module-num">1</div><div><h2>Why genomic selection</h2><div class="module-time">~35 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">1</div><div><h2>Why genomic selection</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Name the limits of traditional, phenotype-based selection.</li>
       <li>Explain how SNP chips and the “use all markers” idea created genomic selection.</li></ul></div>
-    <div class="gbcbox">
-      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
-      <p>Genomic selection rests entirely on linkage disequilibrium between markers and causal variants. These show LD as a measurable, visualisable quantity.</p>
-      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=MuGr5QMLnSY" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/MuGr5QMLnSY/mqdefault.jpg" alt=""><span class="vmeta"><strong>Visualising linkage disequilibrium with Haploview</strong><span class="vnote">The assumption behind GS, made visible</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=netf0e3ZGCQ" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/netf0e3ZGCQ/mqdefault.jpg" alt=""><span class="vmeta"><strong>From microsatellites to SNP and sequence</strong><span class="vnote">Why SNP chips made GS possible</span></span></a></div>
-<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
-    </div>
     <p>Traditional selection depends on <strong>phenotypes</strong>. Accuracy is limited by a trait's heritability, and it struggles with traits that are lowly heritable, sex-limited (e.g. egg production), expressed late in life, or hard or expensive to measure (disease resistance, meat quality). It also cannot see <strong>Mendelian sampling</strong>: we don't know which alleles a parent actually passed on, so relatives only take us so far.</p>
     <p>Gene-detection (QTL) studies found a few large-effect genes but left most variation unexplained, the “missing heritability”: most traits are driven by very many genes of tiny effect. The breakthrough came with cheap <strong>SNP chips</strong> (genotyping 50,000 to 700,000 markers per animal). With markers blanketing the genome, at least one is in <strong>linkage disequilibrium</strong> with each causal variant. Meuwissen, Hayes and Goddard (2001) proposed using <em>all</em> markers at once to predict a <strong>genomic estimated breeding value (GEBV)</strong>, even before any phenotype is recorded on the candidate.</p>
     <div class="kc"><strong class="kclabel">Key concept · where GS helps most</strong>Genomic selection adds the most value for “difficult” traits and for selecting young animals early, because it predicts merit from DNA rather than waiting for the animal (or its progeny) to be measured.</div>
     <p>The case for genomic selection is clearest where the old approach is slowest. Traditional <strong>progeny testing</strong> of a dairy bull takes about five years, because he must wait for daughters to be born, grow up and complete a lactation before his breeding value is known; and sex-limited traits (milk, egg number) give the sire no record of his own. Genomic prediction breaks this bottleneck by estimating merit from DNA at birth, so a young bull or heifer can be selected <strong>before</strong> any phenotype exists, roughly <strong>halving the generation interval</strong>. This is exactly why dairy cattle breeding was transformed once dense SNP chips became affordable around 2008, and why the economics turn on the cost of genotyping versus the value of selecting earlier and more accurately.</p>
     <details class="quiz"><summary>Check: for a trait that is cheap and easy to measure early in both sexes (e.g. body weight in broilers), is genomic selection likely to be worthwhile?</summary><div class="ans">Often not, on its own. When accurate phenotypes are available early and cheaply on all candidates, traditional selection is already accurate and fast; the extra cost of genotyping buys little. GS pays off for low-heritability, sex-limited, late or expensive-to-measure traits.</div></details>
-  </div>
-
-  <!-- B2 -->
-  <div class="module" id="b2">
-    <div class="module-head"><div class="module-num">2</div><div><h2>Estimating genomic breeding values</h2><div class="module-time">~45 minutes</div></div></div>
-    <div class="outcomes"><h4>By the end you can</h4><ul>
-      <li>Explain why selecting only “significant” SNPs fails (the winner's curse).</li>
-      <li>Describe SNP-BLUP / ridge regression, Bayesian methods, and GBLUP.</li></ul></div>
+  
     <div class="gbcbox">
       <h4>🧪 Practical companion: Genomics Boot Camp</h4>
       <p>Before any of these models can be fitted, the genotype file has to be understood and cleaned. This is the hands-on version of that step.</p>
       <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=vZyf5aXlB-k" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/vZyf5aXlB-k/mqdefault.jpg" alt=""><span class="vmeta"><strong>SNP genotype data files: fam, bim, bed</strong><span class="vnote">What you actually feed the model</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=QR80Y0Xhrg4" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/QR80Y0Xhrg4/mqdefault.jpg" alt=""><span class="vmeta"><strong>SNP data quality control with PLINK</strong><span class="vnote">Do this before estimating any GEBV</span></span></a></div>
 <p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html#">Full Genomics Boot Camp study path &#8594;</a></p>
     </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="module" id="b2">
+    <div class="module-head"><div class="module-num">2</div><div><h2>Estimating genomic breeding values</h2></div></div>
+    <div class="outcomes"><h4>By the end you can</h4><ul>
+      <li>Explain why selecting only “significant” SNPs fails (the winner's curse).</li>
+      <li>Describe SNP-BLUP / ridge regression, Bayesian methods, and GBLUP.</li></ul></div>
     <p>A tempting but wrong approach is to test each SNP, keep the significant ones, and add up their effects. This suffers the <strong>winner's curse</strong>: the SNPs that reach significance have over-estimated effects, and together they explain only a small slice of the variance. Meuwissen et al. showed the fix is to fit <strong>all markers simultaneously</strong>.</p>
     <p>But with tens of thousands of markers and far fewer animals, this is the <strong>“big p, small n”</strong> problem, ordinary regression cannot invert the equations. Two equivalent families of solutions are used:</p>
     <ul>
@@ -106,11 +101,18 @@
     <p>It helps to see that the marker model and the GBLUP model are two views of the same thing. One can either estimate an effect for <strong>every SNP at once</strong> (SNP-BLUP / ridge regression, with all markers sharing a small shrunk variance) or summarise the markers into a <strong>genomic relationship matrix G</strong> and predict animals directly (GBLUP); under the infinitesimal assumption the two give identical predictions. The <strong>Bayesian alphabet</strong> (BayesA, BayesB and relatives) relaxes the equal-variance assumption, letting a few markers carry large effects while most carry none, which helps for traits influenced by a major gene but matters less for highly polygenic traits. In every case the effects are <strong>shrunk</strong> toward zero, and that deliberate shrinkage, not selecting a handful of &ldquo;significant&rdquo; markers, is what makes genomic prediction robust.</p>
     <p>Genomic prediction is best understood as the successor to an earlier idea. For two decades breeders tried <strong>marker-assisted selection</strong>: map a few <strong>quantitative trait loci (QTL)</strong> by linkage, then select on those markers. It helped for the rare trait controlled by a gene of large effect, but most production traits are highly polygenic, so a handful of significant QTL captured only a small slice of the genetic variance and progress disappointed. Whole-genome prediction succeeds precisely by abandoning the search for individually significant markers and instead fitting <strong>all markers simultaneously</strong>, letting thousands of small effects sum to an accurate prediction. Recognising that genomic selection is the polygenic generalisation of marker-assisted selection explains both why it works and why selecting only the top SNPs (the old approach) reintroduces the very bias it was designed to avoid.</p>
     <details class="quiz"><summary>Check: why does keeping only statistically significant SNPs give biased, disappointing predictions?</summary><div class="ans">The <strong>winner's curse</strong>: only SNPs whose effects are over-estimated by chance clear the significance threshold, so their effects are biased upward, and the few that pass capture only a small part of the genetic variance. Fitting all markers together (shrinking effects) is unbiased and captures far more.</div></details>
+  
+    <div class="gbcbox">
+      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
+      <p>Using genomic data to monitor diversity and manage populations in practice.</p>
+      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=pmKWGBBcxiM" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/pmKWGBBcxiM/mqdefault.jpg" alt=""><span class="vmeta"><strong>Genetic indicators of diversity within and between breeds</strong><span class="vnote">Measuring what you are trying to protect</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=YM1Amn16f0Y" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/YM1Amn16f0Y/mqdefault.jpg" alt=""><span class="vmeta"><strong>Genomic data in breed management and conservation</strong><span class="vnote">Applied conservation genomics</span></span></a></div>
+<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
+    </div>
   </div>
 
   <!-- B3 -->
   <div class="module" id="b3">
-    <div class="module-head"><div class="module-num">3</div><div><h2>Accuracy of genomic prediction</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">3</div><div><h2>Accuracy of genomic prediction</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Define accuracy and how it is validated (and checked for bias).</li>
       <li>Use the Daetwyler equation to reason about what drives accuracy.</li></ul></div>
@@ -140,7 +142,7 @@
 
   <!-- B4 -->
   <div class="module" id="b4">
-    <div class="module-head"><div class="module-num">4</div><div><h2>Reference populations &amp; phenotypes</h2><div class="module-time">~35 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">4</div><div><h2>Reference populations &amp; phenotypes</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Explain how relatedness between reference and candidates affects accuracy.</li>
       <li>Describe single-step evaluation and the role of phenotype quality.</li></ul></div>
@@ -153,7 +155,7 @@
 
   <!-- B5 -->
   <div class="module" id="b5">
-    <div class="module-head"><div class="module-num">5</div><div><h2>Breeding programs with genomic selection</h2><div class="module-time">~45 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">5</div><div><h2>Breeding programs with genomic selection</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Predict response to selection and include GEBVs in a selection index.</li>
       <li>Explain the Bulmer effect and why parent-average comparisons mislead.</li></ul></div>
@@ -305,11 +307,11 @@
   }
   function drawDist(){
     var c=document.getElementById('gsDist');var o=dpr(c,230),ctx=o.ctx,W=o.w,H=o.h;ctx.clearRect(0,0,W,H);
-    var xLo=100,xHi=620,peak=0.40/SP;
+    var xLo=100,xHi=Math.max(620,st.meanV+3.6*SP),peak=0.40/SP;
     // axis
     ctx.strokeStyle='#ccc';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,H-12);ctx.lineTo(W,H-12);ctx.stroke();
     ctx.fillStyle='#888';ctx.font='11px Segoe UI,Arial';
-    for(var v=100;v<=600;v+=100){var X=(v-xLo)/(xHi-xLo)*W;ctx.fillText(v+(v===600?' kg':''),X-8,H-2);}
+    var tStep=100;while((xHi-xLo)/tStep>6)tStep+=100;var vLast=Math.floor(xHi/tStep)*tStep;for(var v=100;v<=vLast;v+=tStep){var X=(v-xLo)/(xHi-xLo)*W;ctx.fillText(v+(v===vLast?' kg':''),X-8,H-2);}
     // base population (dashed)
     ctx.setLineDash([5,4]);bell(ctx,0,W,W,H,BASE,SP,'#9bb6a3',false,xLo,xHi);ctx.setLineDash([]);
     // current generation: shade selected tail
@@ -372,21 +374,22 @@
 <section class="alt"><div class="wrap">
   <!-- B6 -->
   <div class="module" id="b6">
-    <div class="module-head"><div class="module-num">6</div><div><h2>Genetic change, inbreeding &amp; diversity</h2><div class="module-time">~30 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">6</div><div><h2>Genetic change, inbreeding &amp; diversity</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Distinguish selection from drift as causes of allele-frequency change.</li>
       <li>Explain why genomic selection needs active control of inbreeding.</li></ul></div>
-    <div class="gbcbox">
-      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
-      <p>Using genomic data to monitor diversity and manage populations in practice.</p>
-      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=pmKWGBBcxiM" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/pmKWGBBcxiM/mqdefault.jpg" alt=""><span class="vmeta"><strong>Genetic indicators of diversity within and between breeds</strong><span class="vnote">Measuring what you are trying to protect</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=YM1Amn16f0Y" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/YM1Amn16f0Y/mqdefault.jpg" alt=""><span class="vmeta"><strong>Genomic data in breed management and conservation</strong><span class="vnote">Applied conservation genomics</span></span></a></div>
-<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
-    </div>
     <p>Selection changes allele frequencies directionally and leaves <strong>signatures of selection</strong> in the genome, detectable through statistics such as F<sub>ST</sub> (differentiation between populations), reduced heterozygosity, and haplotype-based measures (iHS, EHH) around <strong>selective sweeps</strong>. But not all change is selection: <strong>genetic drift</strong>, random change that is larger in small populations (inversely proportional to effective size N<sub>e</sub>), also shifts frequencies and erodes diversity, and must be separated from true selection signals.</p>
     <p>This matters for sustainability. Genomic selection captures close family relationships, so without care it can <strong>increase inbreeding per generation</strong> relative to progeny testing. The remedy is <strong>genomic control of inbreeding</strong>: managing matings to restrict the increase in marker-based kinship while still selecting for merit. Maintaining genetic diversity is not a side issue, it protects long-term response, adaptability and resilience, which is exactly where breeding meets <strong>biodiversity</strong>.</p>
     <div class="kc"><strong class="kclabel">Key concept · diversity is a resource</strong>Faster genetic gain is only sustainable if genetic diversity is managed. Genomic tools that accelerate selection should be paired with genomic management of inbreeding and kinship.</div>
     <p>The practical tool that reconciles gain with diversity is <strong>optimum-contribution selection (OCS)</strong>: instead of simply mating the highest-merit animals, OCS chooses how many offspring each candidate contributes so as to <strong>maximise genetic gain for a fixed, pre-set rate of inbreeding</strong>. With genomic data the kinship being constrained can be measured directly from markers rather than pedigree, and realised inbreeding can be audited from <strong>runs of homozygosity (ROH)</strong>, long stretches of homozygous genotype that reveal recent common ancestry. Setting an explicit ceiling on the rate of inbreeding, typically well under one percent per generation, and letting OCS optimise within it, is how a programme keeps the fast genomic gains of the previous modules sustainable.</p>
     <details class="quiz"><summary>Check: allele frequencies shift in a small closed herd with no deliberate selection. Selection or drift?</summary><div class="ans"><strong>Drift</strong>, random change in allele frequencies, which is stronger the smaller the effective population size. It erodes diversity and can mimic or mask selection signatures, which is why distinguishing the two requires care.</div></details>
+  
+    <div class="gbcbox">
+      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
+      <p>The practical counterpart: preparing and quality-controlling the genotypes these models assume.</p>
+      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=vZyf5aXlB-k" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/vZyf5aXlB-k/mqdefault.jpg" alt=""><span class="vmeta"><strong>SNP genotype data files: fam, bim, bed</strong><span class="vnote">File structure in practice</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=QR80Y0Xhrg4" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/QR80Y0Xhrg4/mqdefault.jpg" alt=""><span class="vmeta"><strong>SNP data quality control with PLINK</strong><span class="vnote">Prerequisite for trustworthy GEBVs</span></span></a></div>
+<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
+    </div>
   </div>
 
   <!-- B7 -->

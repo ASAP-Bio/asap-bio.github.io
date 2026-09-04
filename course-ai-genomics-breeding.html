@@ -19,7 +19,7 @@
   <h1>AI-Driven Variant Discovery &amp; Genomic Prediction</h1>
   <p class="csub">How artificial intelligence finds the DNA changes that actually matter, and uses them to predict performance and guide next-generation breeding.</p>
   <div class="metachips">
-    <span>★ Self-paced</span><span>⏱ ~3.5 hours</span><span>🎓 MSc / advanced</span><span>🧬 Genomics focus</span><span>🌍 Open access</span>
+    <span>★ Self-paced</span><span>🎓 MSc / advanced</span><span>🧬 Genomics focus</span><span>🌍 Open access</span>
   </div>
 </div></section>
 
@@ -50,16 +50,10 @@
 
   <!-- G1 -->
   <div class="module" id="g1">
-    <div class="module-head"><div class="module-num">1</div><div><h2>The variant-discovery bottleneck</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">1</div><div><h2>The variant-discovery bottleneck</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Explain why finding impactful variants limits biological design and breeding.</li>
       <li>Compare three discovery strategies on accuracy, resolution and cost.</li></ul></div>
-    <div class="gbcbox">
-      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
-      <p>Context on how variant catalogues are built and represented.</p>
-      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=t1lJxzqBZTE" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/t1lJxzqBZTE/mqdefault.jpg" alt=""><span class="vmeta"><strong>What is the pangenome?</strong><span class="vnote">Beyond a single reference genome</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=netf0e3ZGCQ" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/netf0e3ZGCQ/mqdefault.jpg" alt=""><span class="vmeta"><strong>From microsatellites to SNP and sequence</strong><span class="vnote">How variant data scaled up</span></span></a></div>
-<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
-    </div>
     <p>A genome contains millions of variants, but only a small fraction actually change a trait. Breeding and gene editing both depend on finding those <strong>impactful variants</strong>, and that discovery is the rate-limiting step. There are three broad strategies, each with a different trade-off:</p>
     <table class="t"><tr><th>Strategy</th><th>What it does</th><th>Accuracy</th><th>Resolution</th><th>Time &amp; cost</th></tr>
       <tr><td><strong>Mutant screens</strong></td><td>Create and test mutations experimentally</td><td>High</td><td>High</td><td>High</td></tr>
@@ -69,11 +63,18 @@
     <p>Association testing (genome-wide association studies) is powerful but blunt: because nearby variants are inherited together, a significant signal points to a <strong>recombination bin</strong> that can span hundreds of thousands of DNA bases (often ~300&nbsp;kb), not the causal base itself. We can see <em>where</em> an effect is, but not <em>which</em> variant causes it. That missing resolution is exactly what computational, AI-based screens promise to recover, cheaply.</p>
     <div class="kc"><strong class="kclabel">Key concept · resolution</strong>“Resolution” is how precisely a method pinpoints the causal variant. GWAS has low resolution (a broad region); the goal of AI variant discovery is single-base resolution at low cost.</div>
     <details class="quiz"><summary>Check: GWAS flags a region strongly associated with milk yield. Why can't you immediately edit the causal base?</summary><div class="ans">Because of <strong>linkage</strong>: variants in the region are inherited together, so the association points to a recombination bin (potentially ~300&nbsp;kb) rather than the single causal base. You know the neighbourhood, not the exact address.</div></details>
+  
+    <div class="gbcbox">
+      <h4>🧪 Practical companion: Genomics Boot Camp</h4>
+      <p>Pedigrees are only as good as their parentage records. These show how genomic data verifies relationships and reveals structure.</p>
+      <div class="vgrid"><a class="vcard" href="https://www.youtube.com/watch?v=JCaiwmY1e3I" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/JCaiwmY1e3I/mqdefault.jpg" alt=""><span class="vmeta"><strong>DNA paternity testing with PLINK</strong><span class="vnote">Verifying pedigree with markers</span></span></a><a class="vcard" href="https://www.youtube.com/watch?v=l5afbHnw6Uw" target="_blank" rel="noopener"><img loading="lazy" src="https://i.ytimg.com/vi/l5afbHnw6Uw/mqdefault.jpg" alt=""><span class="vmeta"><strong>PCA based on SNP data</strong><span class="vnote">Seeing population structure directly</span></span></a></div>
+<p style="margin-top:8px;font-size:13px"><a href="genomics-bootcamp.html">Full Genomics Boot Camp study path &#8594;</a></p>
+    </div>
   </div>
 
   <!-- G2 -->
   <div class="module" id="g2">
-    <div class="module-head"><div class="module-num">2</div><div><h2>Genomic prediction in a nutshell</h2><div class="module-time">~35 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">2</div><div><h2>Genomic prediction in a nutshell</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Write the mixed model used in animal breeding and name its parts.</li>
       <li>Explain genomic prediction and why marker data are “wide”.</li>
@@ -101,7 +102,7 @@
 
   <!-- G3 -->
   <div class="module" id="g3">
-    <div class="module-head"><div class="module-num">3</div><div><h2>Evolutionary scores I: sequence conservation</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">3</div><div><h2>Evolutionary scores I: sequence conservation</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Explain how evolution “labels” important positions in the genome.</li>
       <li>Define an evolutionary score from a multiple-sequence alignment.</li></ul></div>
@@ -131,7 +132,7 @@
 
   <!-- G4 -->
   <div class="module" id="g4">
-    <div class="module-head"><div class="module-num">4</div><div><h2>Evolutionary scores II: biological language models</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">4</div><div><h2>Evolutionary scores II: biological language models</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Explain the analogy between human-language and protein-language models.</li>
       <li>Describe how a protein language model scores a mutation.</li></ul></div>
@@ -157,7 +158,7 @@
 
   <!-- G5 -->
   <div class="module" id="g5">
-    <div class="module-head"><div class="module-num">5</div><div><h2>Better prediction &amp; the road to genome editing</h2><div class="module-time">~40 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">5</div><div><h2>Better prediction &amp; the road to genome editing</h2></div></div>
     <div class="outcomes"><h4>By the end you can</h4><ul>
       <li>Give evidence that evolutionary scores improve genomic prediction.</li>
       <li>Explain how they could guide single-base genome edits (new genomic techniques).</li></ul></div>
@@ -169,7 +170,7 @@
 
   <!-- G6 -->
   <div class="module" id="g6">
-    <div class="module-head"><div class="module-num">6</div><div><h2>Wrap-up &amp; resources</h2><div class="module-time">~10 minutes</div></div></div>
+    <div class="module-head"><div class="module-num">6</div><div><h2>Wrap-up &amp; resources</h2></div></div>
     <h3>Key takeaways</h3>
     <ul>
       <li>Finding <em>impactful</em> variants, not just associated regions, is the real bottleneck in genomic breeding.</li>
