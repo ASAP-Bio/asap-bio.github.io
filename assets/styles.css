@@ -177,7 +177,7 @@ footer.site .contactlist strong{color:#fff}
 .module-time{font-size:13px;color:var(--gold);font-weight:700;margin-top:2px}
 .outcomes{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0}
 .outcomes h4{color:var(--greendk);font-size:13px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
-.outcomes ul{margin:0;padding-left:30px}.outcomes li{margin:3px 0}
+.outcomes ul{margin:0 0 0 18px;padding-left:22px}.outcomes li{margin:3px 0}
 .kc{background:#eef4f9;border:1px solid #cfe0ee;border-radius:10px;padding:14px 18px;margin:16px 0}
 .kc strong.kclabel{display:block;color:#225277;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
 .figbox{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:20px;margin:18px 0;text-align:center}
@@ -233,7 +233,7 @@ footer.site .contactlist strong{color:#fff}
 .apsu-fig{display:block}
 .apsu-fig img{width:100%;border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 22px rgba(20,50,30,.10)}
 .apsu-fig:hover img{box-shadow:0 10px 28px rgba(20,50,30,.18)}
-.callout.gold ul{margin:8px 0 8px 0;padding-left:30px}
+.callout.gold ul{margin:8px 0 8px 18px;padding-left:22px}
 .callout.gold li{margin:3px 0}
 /* --- Hulunim course additions (no left-edge accents per brand pref) --- */
 .formula{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0;text-align:center;font-size:18px;color:var(--greendk)}
@@ -319,7 +319,7 @@ footer.site .contactlist strong{color:#fff}
 .step-box{background:#fafafa;border-left:4px solid var(--green);border-radius:8px;padding:18px;margin-bottom:16px}
 .step-box h4{margin-top:0;color:var(--greendk);font-size:15px}
 .step-box p{margin:8px 0;font-size:13px;line-height:1.6;color:#333}
-.step-box ul{margin:8px 0;padding-left:30px;font-size:13px;color:#333}
+.step-box ul{margin:8px 0 8px 18px;padding-left:22px;font-size:13px;color:#333}
 .step-box li{margin:4px 0}
 .dates-table{display:flex;flex-direction:column;gap:8px}
 .date-row{display:flex;gap:16px;padding:12px;background:#fafafa;border-radius:6px;align-items:flex-start}
@@ -379,11 +379,11 @@ nav.links a{font-size:clamp(13px,1.02vw,14.5px);padding:7px clamp(6px,0.70vw,10p
 .rdwhy{display:block;font-size:12.5px;color:var(--grey);margin-top:1px}
 .notesbox .rdlist{columns:1}
 /* --- Lists: markers indented inside the text block, not hanging outside --- */
-ul,ol{padding-left:34px}
-ul ul,ol ol,ul ol,ol ul{padding-left:28px;margin-top:4px}
+ul,ol{margin-left:18px;padding-left:22px}
+ul ul,ol ol,ul ol,ol ul{margin-left:14px;padding-left:20px;margin-top:4px}
 li{margin:3px 0}
 footer.site ul{padding-left:0;margin-left:0}
-.flagicon{height:11px;width:auto;vertical-align:-1px;margin-right:5px;border-radius:1.5px;box-shadow:0 0 0 .5px rgba(0,0,0,.18)}
+.flagicon{height:11px!important;width:auto!important;max-width:22px;vertical-align:-1px;margin-right:5px;border-radius:1.5px;box-shadow:0 0 0 .5px rgba(0,0,0,.18)}
 /* hero credit must clear the stats cards, which pull up over the hero on desktop */
 .hero .credit{bottom:56px}
 @media(max-width:860px){.hero .credit{bottom:10px}}
