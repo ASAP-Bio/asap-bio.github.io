@@ -448,3 +448,24 @@ footer.site ul{padding-left:0;margin-left:0}
 .lect strong{display:block;color:var(--greendk);font-size:15px;margin-bottom:2px}
 .lect span{display:block;font-size:13px;color:var(--grey);line-height:1.5}
 .lecgo{flex:none;color:var(--green);font-weight:700;align-self:center}
+/* --- Quick access to courses and lectures (Knowledge Hub) --- */
+.quickaccess{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;box-shadow:0 2px 10px rgba(20,50,30,.05)}
+.quickaccess>summary{list-style:none;cursor:pointer;padding:15px 20px;display:flex;align-items:center;gap:14px;background:var(--band)}
+.quickaccess>summary::-webkit-details-marker{display:none}
+.quickaccess>summary:hover{background:#e4ece2}
+.quickaccess[open]>summary{border-bottom:1px solid var(--line)}
+.qa-ico{flex:none;width:38px;height:38px;border-radius:10px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+.qa-tx{flex:1}
+.qa-tx strong{display:block;color:var(--greendk);font-size:16px}
+.qa-sub{display:block;font-size:13px;color:var(--grey);margin-top:2px}
+.quickaccess .chev{flex:none;color:var(--green);font-size:15px;transition:transform .18s}
+.quickaccess[open] .chev{transform:rotate(180deg)}
+.qa-body{padding:18px 20px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px 26px}
+.qa-col h5{margin:0 0 8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--greendk);display:flex;align-items:center;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.qa-ic{font-size:15px}
+.qa-col ul{list-style:none;margin:0;padding:0}
+.qa-col li{margin:0 0 3px}
+.qa-col a{display:flex;align-items:flex-start;gap:7px;font-size:13.5px;line-height:1.45;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--ink)}
+.qa-col a:hover{background:var(--soft);color:var(--greendk);text-decoration:none}
+.qa-n{flex:none;width:19px;height:19px;border-radius:5px;background:var(--green);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.qa-ext{color:var(--grey);font-size:11px}
