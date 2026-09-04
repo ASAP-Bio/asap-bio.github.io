@@ -62,6 +62,15 @@
     </table>
     <p>Association testing (genome-wide association studies) is powerful but blunt: because nearby variants are inherited together, a significant signal points to a <strong>recombination bin</strong> that can span hundreds of thousands of DNA bases (often ~300&nbsp;kb), not the causal base itself. We can see <em>where</em> an effect is, but not <em>which</em> variant causes it. That missing resolution is exactly what computational, AI-based screens promise to recover, cheaply.</p>
     <div class="kc"><strong class="kclabel">Key concept · resolution</strong>“Resolution” is how precisely a method pinpoints the causal variant. GWAS has low resolution (a broad region); the goal of AI variant discovery is single-base resolution at low cost.</div>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/reproductive-tech/12.5%20Detection%20of%20DNA%20markers%20for%20disease%20genes%20or%20QTL%27s.pdf" target="_blank" rel="noopener">Detecting markers for disease genes and QTL</a><span class="rdwhy">The classical genome-scan approach, and the resolution limit that sequence-based discovery set out to break.</span></li>
+        <li><a href="assets/notes/reproductive-tech/12.4%20Utilization%20of%20marker%20genes.pdf" target="_blank" rel="noopener">Using marker genes</a><span class="rdwhy">Tracking a causal allele through flanking markers when the gene itself is unknown.</span></li>
+        <li><a href="assets/notes/genetics-foundations/Gamete%20frequencies%20under%20linkage.pdf" target="_blank" rel="noopener">Gamete frequencies under linkage</a><span class="rdwhy">Why a marker can stand in for an unobserved causal variant, stated from first principles.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: GWAS flags a region strongly associated with milk yield. Why can't you immediately edit the causal base?</summary><div class="ans">Because of <strong>linkage</strong>: variants in the region are inherited together, so the association points to a recombination bin (potentially ~300&nbsp;kb) rather than the single causal base. You know the neighbourhood, not the exact address.</div></details>
   
     <div class="gbcbox">
@@ -96,6 +105,16 @@
         </g>
       </svg>
       <figcaption>Genomic prediction turns genotype and phenotype data into breeding values; weighting variants by their likely impact can sharpen it.</figcaption>
+    </div>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/selection-breeding/6.2%20The%20terms%20genotype%20value%2C%20breeding%20value%20and%20dominans%20deviation.pdf" target="_blank" rel="noopener">Breeding value and dominance deviation</a><span class="rdwhy">Exactly what quantity genomic prediction is trying to predict.</span></li>
+        <li><a href="assets/notes/selection-breeding/The%20terms%20additive%20variance%20and%20heritability.pdf" target="_blank" rel="noopener">Additive variance and heritability</a><span class="rdwhy">h-squared, which sets the ceiling on achievable prediction accuracy.</span></li>
+        <li><a href="assets/notes/selection-breeding/pj4-Estimation%20of%20breeding%20value.%20BLUP.pdf" target="_blank" rel="noopener">BLUP in full</a><span class="rdwhy">The linear machinery that GBLUP and most genomic prediction models extend.</span></li>
+        <li><a href="assets/notes/selection-breeding/pj3-Properties%20of%20the%20relationship%20matrix.pdf" target="_blank" rel="noopener">Properties of the relationship matrix</a><span class="rdwhy">The A matrix, and how a genomic relationship matrix takes its place.</span></li>
+      </ul>
     </div>
     <details class="quiz"><summary>Check: what does “big p, small n” mean for a genotyping dataset, and what's the fix?</summary><div class="ans">Far more markers (p) than animals (n). Ordinary regression overfits, so we use regularised/Bayesian methods (e.g. genomic BLUP) that shrink the many small marker effects.</div></details>
   </div>
@@ -165,6 +184,14 @@
     <p>Do these scores actually help? Yes. When variants are <strong>weighted by their evolutionary scores</strong> in genomic prediction, accuracy for fitness-related traits improves across species: up to ~20% for grain yield in maize, ~10% for cassava biomass, and up to ~25% for biomass in potato. Telling the model which variants to trust beats treating all markers equally.</p>
     <p>The bigger prize is <strong>new genomic techniques (NGT)</strong> such as precise single-base editing. To edit, you must know the <em>exact</em> causal base, the resolution GWAS lacks. Evolutionary scores can prioritise candidate single-base edits <em>in silico</em>, which are then checked by <em>experimental</em> mutagenesis. Proof-of-concept work in the model grass <em>Brachypodium</em> shows that mutations with the highest evolutionary scores have the largest effects on traits such as seed weight, evidence that AI can point editors at the right base.</p>
     <div class="kc"><strong class="kclabel">Concluding remarks</strong>Computational screens address the throughput limit of mutant screens and the resolution limit of association testing. Evolutionary scores from biological language models already improve genomic prediction; whether they can reliably target single bases for editing is the active research frontier.</div>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/reproductive-tech/12.3%20Transgenic%20and%20transgene%20animals.pdf" target="_blank" rel="noopener">Transgenic animals and gene transfer</a><span class="rdwhy">Earlier-generation gene transfer, useful context for how far genome editing has moved.</span></li>
+        <li><a href="assets/notes/reproductive-tech/12.6%20Results%20of%20selection%20experiments%20for%20improved%20disease%20resistance.pdf" target="_blank" rel="noopener">Selecting for disease resistance: the evidence</a><span class="rdwhy">The baseline that editing for disease resistance has to beat.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: why is single-base resolution essential for genome editing but not for ordinary marker-assisted selection?</summary><div class="ans">Editing physically changes a specific base, so you must know the exact causal nucleotide. Marker-assisted selection only needs a marker <em>linked</em> to the causal variant, it selects existing animals/plants rather than rewriting the sequence.</div></details>
   </div>
 
@@ -204,28 +231,6 @@
       <li>Free courses at the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy</a>.</li>
     </ul>
     <div class="attrib" style="margin-top:18px"><strong>Credits.</strong> Based on the lecture <em>“Discovery of impactful variants by artificial intelligence to support next-generation breeding”</em> by Guillaume Ramstein (Aarhus University), adapted for self-study under ASAP-Bio with quantitative-genetics framing by Grum Gebreyesus (QGG, Aarhus University). Reproduced for educational use within the ASAP-Bio partnership.</div>
-        <details class="notesbox">
-      <summary><span class="dl-ic">📥</span><span class="dl-tx"><strong>Course notes (PDF downloads)</strong><span class="dl-sub">15 open-access reference notes selected for this course &middot; individual PDFs</span></span><span class="chev">▾</span></summary>
-      <div class="dl-body"><p class="notesintro">Optional deeper-reading notes matched to this course. Click any title to open or download the PDF.</p>
-        <ul class="dl-list">
-        <li><a href="assets/notes/genetics-foundations/Gamete%20frequencies%20under%20linkage.pdf" target="_blank" rel="noopener">Gamete frequencies under linkage</a></li>
-        <li><a href="assets/notes/genetics-foundations/Hardy-Weinberg%20equilibrium%20and%20statistical%20test.pdf" target="_blank" rel="noopener">Hardy-Weinberg equilibrium and statistical test</a></li>
-        <li><a href="assets/notes/genetics-foundations/2.1%20Gene%20counting%20method%20for%20calculating%20gene%20frequencies.pdf" target="_blank" rel="noopener">2.1 Gene counting method for calculating gene frequencies</a></li>
-        <li><a href="assets/notes/genetics-foundations/Population%20and%20Quantitative%20Genetics%20(compendium).pdf" target="_blank" rel="noopener">Population and Quantitative Genetics (compendium)</a></li>
-        <li><a href="assets/notes/selection-breeding/6.2%20The%20terms%20genotype%20value,%20breeding%20value%20and%20dominans%20deviation.pdf" target="_blank" rel="noopener">6.2 The terms genotype value, breeding value and dominans deviation</a></li>
-        <li><a href="assets/notes/selection-breeding/The%20terms%20additive%20variance%20and%20heritability.pdf" target="_blank" rel="noopener">The terms additive variance and heritability</a></li>
-        <li><a href="assets/notes/selection-breeding/7.4%20Estimation%20of%20breeding%20values%20in%20animal%20breeding,%20and%20use%20of%20gene%20markers.pdf" target="_blank" rel="noopener">7.4 Estimation of breeding values in animal breeding, and use of gene markers</a></li>
-        <li><a href="assets/notes/selection-breeding/pj3-Properties%20of%20the%20relationship%20matrix.pdf" target="_blank" rel="noopener">pj3-Properties of the relationship matrix</a></li>
-        <li><a href="assets/notes/selection-breeding/pj4-Estimation%20of%20breeding%20value.%20BLUP.pdf" target="_blank" rel="noopener">pj4-Estimation of breeding value. BLUP</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.4%20Utilization%20of%20marker%20genes.pdf" target="_blank" rel="noopener">12.4 Utilization of marker genes</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.5%20Detection%20of%20DNA%20markers%20for%20disease%20genes%20or%20QTL's.pdf" target="_blank" rel="noopener">12.5 Detection of DNA markers for disease genes or QTL&#x27;s</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.3%20Transgenic%20and%20transgene%20animals.pdf" target="_blank" rel="noopener">12.3 Transgenic and transgene animals</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.6%20Results%20of%20selection%20experiments%20for%20improved%20disease%20resistance.pdf" target="_blank" rel="noopener">12.6 Results of selection experiments for improved disease resistance</a></li>
-        <li><a href="assets/notes/genetics-foundations/Problem%20set%20(Lessons%202-9).pdf" target="_blank" rel="noopener">Problem set (Lessons 2-9)</a></li>
-        <li><a href="assets/notes/genetics-foundations/Problem%20set%20,%20Solutions%20(Lessons%202-9).pdf" target="_blank" rel="noopener">Problem set , Solutions (Lessons 2-9)</a></li>
-        </ul>
-      </div>
-    </details>
     <div class="coursenav">
       <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
       <a class="btn" href="#top">↑ Back to top</a>

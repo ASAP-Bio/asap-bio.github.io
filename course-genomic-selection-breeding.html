@@ -60,6 +60,14 @@
     <p>Gene-detection (QTL) studies found a few large-effect genes but left most variation unexplained, the “missing heritability”: most traits are driven by very many genes of tiny effect. The breakthrough came with cheap <strong>SNP chips</strong> (genotyping 50,000 to 700,000 markers per animal). With markers blanketing the genome, at least one is in <strong>linkage disequilibrium</strong> with each causal variant. Meuwissen, Hayes and Goddard (2001) proposed using <em>all</em> markers at once to predict a <strong>genomic estimated breeding value (GEBV)</strong>, even before any phenotype is recorded on the candidate.</p>
     <div class="kc"><strong class="kclabel">Key concept · where GS helps most</strong>Genomic selection adds the most value for “difficult” traits and for selecting young animals early, because it predicts merit from DNA rather than waiting for the animal (or its progeny) to be measured.</div>
     <p>The case for genomic selection is clearest where the old approach is slowest. Traditional <strong>progeny testing</strong> of a dairy bull takes about five years, because he must wait for daughters to be born, grow up and complete a lactation before his breeding value is known; and sex-limited traits (milk, egg number) give the sire no record of his own. Genomic prediction breaks this bottleneck by estimating merit from DNA at birth, so a young bull or heifer can be selected <strong>before</strong> any phenotype exists, roughly <strong>halving the generation interval</strong>. This is exactly why dairy cattle breeding was transformed once dense SNP chips became affordable around 2008, and why the economics turn on the cost of genotyping versus the value of selecting earlier and more accurately.</p>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/genetics-foundations/Gamete%20frequencies%20under%20linkage.pdf" target="_blank" rel="noopener">Gamete frequencies under linkage</a><span class="rdwhy">Linkage disequilibrium from first principles: the assumption genomic selection is built on.</span></li>
+        <li><a href="assets/notes/selection-breeding/7.4%20Estimation%20of%20breeding%20values%20in%20animal%20breeding%2C%20and%20use%20of%20gene%20markers.pdf" target="_blank" rel="noopener">Breeding values with gene markers</a><span class="rdwhy">Marker-assisted evaluation, the intermediate step between pedigree BLUP and genomic prediction.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: for a trait that is cheap and easy to measure early in both sexes (e.g. body weight in broilers), is genomic selection likely to be worthwhile?</summary><div class="ans">Often not, on its own. When accurate phenotypes are available early and cheaply on all candidates, traditional selection is already accurate and fast; the extra cost of genotyping buys little. GS pays off for low-heritability, sex-limited, late or expensive-to-measure traits.</div></details>
   
     <div class="gbcbox">
@@ -100,6 +108,14 @@
     </div>
     <p>It helps to see that the marker model and the GBLUP model are two views of the same thing. One can either estimate an effect for <strong>every SNP at once</strong> (SNP-BLUP / ridge regression, with all markers sharing a small shrunk variance) or summarise the markers into a <strong>genomic relationship matrix G</strong> and predict animals directly (GBLUP); under the infinitesimal assumption the two give identical predictions. The <strong>Bayesian alphabet</strong> (BayesA, BayesB and relatives) relaxes the equal-variance assumption, letting a few markers carry large effects while most carry none, which helps for traits influenced by a major gene but matters less for highly polygenic traits. In every case the effects are <strong>shrunk</strong> toward zero, and that deliberate shrinkage, not selecting a handful of &ldquo;significant&rdquo; markers, is what makes genomic prediction robust.</p>
     <p>Genomic prediction is best understood as the successor to an earlier idea. For two decades breeders tried <strong>marker-assisted selection</strong>: map a few <strong>quantitative trait loci (QTL)</strong> by linkage, then select on those markers. It helped for the rare trait controlled by a gene of large effect, but most production traits are highly polygenic, so a handful of significant QTL captured only a small slice of the genetic variance and progress disappointed. Whole-genome prediction succeeds precisely by abandoning the search for individually significant markers and instead fitting <strong>all markers simultaneously</strong>, letting thousands of small effects sum to an accurate prediction. Recognising that genomic selection is the polygenic generalisation of marker-assisted selection explains both why it works and why selecting only the top SNPs (the old approach) reintroduces the very bias it was designed to avoid.</p>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/selection-breeding/pj3-Properties%20of%20the%20relationship%20matrix.pdf" target="_blank" rel="noopener">Properties of the relationship matrix</a><span class="rdwhy">The pedigree matrix A that the genomic relationship matrix G replaces.</span></li>
+        <li><a href="assets/notes/selection-breeding/pj4-Estimation%20of%20breeding%20value.%20BLUP.pdf" target="_blank" rel="noopener">BLUP in full</a><span class="rdwhy">GBLUP is this machinery with G in place of A, so the algebra here transfers directly.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: why does keeping only statistically significant SNPs give biased, disappointing predictions?</summary><div class="ans">The <strong>winner's curse</strong>: only SNPs whose effects are over-estimated by chance clear the significance threshold, so their effects are biased upward, and the few that pass capture only a small part of the genetic variance. Fitting all markers together (shrinking effects) is unbiased and captures far more.</div></details>
   
     <div class="gbcbox">
@@ -179,6 +195,14 @@
       <figcaption>Predicting merit from DNA on young animals shortens the generation interval, a major source of the extra genetic gain from genomic selection.</figcaption>
     </div>
     <p>Adopting genomic selection is not a bolt-on; it <strong>redesigns the breeding programme</strong>. Young bulls can enter service on their genomic test without a progeny-test wait, so schemes use <strong>more sires for shorter periods</strong> and turn generations over faster. The female pathway changes too: genotyping heifers, and even screening <strong>IVF embryos</strong>, lets breeders select intensely on the dam side that progeny testing never could. Because faster, family-based selection also accelerates inbreeding, modern programmes pair these gains with <strong>optimum-contribution selection</strong> to manage diversity, the subject of the next module. The net effect is the same levers as always, intensity, accuracy and generation interval, but reset to deliver substantially more gain per year.</p>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/selection-breeding/8.2%20Selection%20response.pdf" target="_blank" rel="noopener">Selection response</a><span class="rdwhy">The response equation whose accuracy and generation-interval terms genomic selection improves.</span></li>
+        <li><a href="assets/notes/selection-breeding/9.5%20Populations%20structure%2C%20breeding%20pyramid.pdf" target="_blank" rel="noopener">Population structure and the breeding pyramid</a><span class="rdwhy">The nucleus and multiplier structure into which genomic selection is introduced.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: a scheme reports a big advantage of GEBVs over the parent average for selecting cows. Why be sceptical?</summary><div class="ans">Because the cows' parents were themselves selected, which makes the parent average far less informative than software assuming no selection reports. Comparing GEBVs against an over-optimistic parent average inflates the apparent benefit; the Bulmer effect and selection must be accounted for (as SelAction does).</div></details>
   </div>
 
@@ -382,6 +406,15 @@
     <p>This matters for sustainability. Genomic selection captures close family relationships, so without care it can <strong>increase inbreeding per generation</strong> relative to progeny testing. The remedy is <strong>genomic control of inbreeding</strong>: managing matings to restrict the increase in marker-based kinship while still selecting for merit. Maintaining genetic diversity is not a side issue, it protects long-term response, adaptability and resilience, which is exactly where breeding meets <strong>biodiversity</strong>.</p>
     <div class="kc"><strong class="kclabel">Key concept · diversity is a resource</strong>Faster genetic gain is only sustainable if genetic diversity is managed. Genomic tools that accelerate selection should be paired with genomic management of inbreeding and kinship.</div>
     <p>The practical tool that reconciles gain with diversity is <strong>optimum-contribution selection (OCS)</strong>: instead of simply mating the highest-merit animals, OCS chooses how many offspring each candidate contributes so as to <strong>maximise genetic gain for a fixed, pre-set rate of inbreeding</strong>. With genomic data the kinship being constrained can be measured directly from markers rather than pedigree, and realised inbreeding can be audited from <strong>runs of homozygosity (ROH)</strong>, long stretches of homozygous genotype that reveal recent common ancestry. Setting an explicit ceiling on the rate of inbreeding, typically well under one percent per generation, and letting OCS optimise within it, is how a programme keeps the fast genomic gains of the previous modules sustainable.</p>
+    
+    <div class="reading">
+      <h4>📄 Further reading on this topic</h4>
+      <ul class="rdlist">
+        <li><a href="assets/notes/selection-breeding/9.1%20Effect%20of%20inbreeding%20on%20individual%20and%20on%20populations%20level.pdf" target="_blank" rel="noopener">Effects of inbreeding</a><span class="rdwhy">Inbreeding depression at individual and population level, the cost of ignoring diversity.</span></li>
+        <li><a href="assets/notes/selection-breeding/Effective%20population%20size.pdf" target="_blank" rel="noopener">Effective population size</a><span class="rdwhy">Ne and why intense selection on a few elite families shrinks it quickly.</span></li>
+        <li><a href="assets/notes/selection-breeding/9.3%20Minimum%20inbreeding%20systems.pdf" target="_blank" rel="noopener">Minimum-inbreeding mating systems</a><span class="rdwhy">Classical precursors to optimum-contribution selection: equalising family contributions.</span></li>
+      </ul>
+    </div>
     <details class="quiz"><summary>Check: allele frequencies shift in a small closed herd with no deliberate selection. Selection or drift?</summary><div class="ans"><strong>Drift</strong>, random change in allele frequencies, which is stronger the smaller the effective population size. It erodes diversity and can mimic or mask selection signatures, which is why distinguishing the two requires care.</div></details>
   
     <div class="gbcbox">
@@ -415,27 +448,6 @@
         <p><a class="btn green" href="https://elearning.fao.org/course/view.php?id=392" target="_blank" rel="noopener">FAO · Plant &amp; Animal Genetic Resources &#8594;</a></p>
       </div>
     </div>
-        <details class="notesbox">
-      <summary><span class="dl-ic">📥</span><span class="dl-tx"><strong>Course notes (PDF downloads)</strong><span class="dl-sub">14 open-access reference notes selected for this course &middot; individual PDFs</span></span><span class="chev">▾</span></summary>
-      <div class="dl-body"><p class="notesintro">Optional deeper-reading notes matched to this course. Click any title to open or download the PDF.</p>
-        <ul class="dl-list">
-        <li><a href="assets/notes/selection-breeding/7.4%20Estimation%20of%20breeding%20values%20in%20animal%20breeding,%20and%20use%20of%20gene%20markers.pdf" target="_blank" rel="noopener">7.4 Estimation of breeding values in animal breeding, and use of gene markers</a></li>
-        <li><a href="assets/notes/selection-breeding/pj3-Properties%20of%20the%20relationship%20matrix.pdf" target="_blank" rel="noopener">pj3-Properties of the relationship matrix</a></li>
-        <li><a href="assets/notes/selection-breeding/pj4-Estimation%20of%20breeding%20value.%20BLUP.pdf" target="_blank" rel="noopener">pj4-Estimation of breeding value. BLUP</a></li>
-        <li><a href="assets/notes/selection-breeding/Effective%20population%20size.pdf" target="_blank" rel="noopener">Effective population size</a></li>
-        <li><a href="assets/notes/selection-breeding/9.1%20Effect%20of%20inbreeding%20on%20individual%20and%20on%20populations%20level.pdf" target="_blank" rel="noopener">9.1 Effect of inbreeding on individual and on populations level</a></li>
-        <li><a href="assets/notes/selection-breeding/9.5%20Populations%20structure,%20breeding%20pyramid.pdf" target="_blank" rel="noopener">9.5 Populations structure, breeding pyramid</a></li>
-        <li><a href="assets/notes/genetics-foundations/Gamete%20frequencies%20under%20linkage.pdf" target="_blank" rel="noopener">Gamete frequencies under linkage</a></li>
-        <li><a href="assets/notes/genetics-foundations/Hardy-Weinberg%20equilibrium%20and%20statistical%20test.pdf" target="_blank" rel="noopener">Hardy-Weinberg equilibrium and statistical test</a></li>
-        <li><a href="assets/notes/genetics-foundations/Population%20and%20Quantitative%20Genetics%20(compendium).pdf" target="_blank" rel="noopener">Population and Quantitative Genetics (compendium)</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.4%20Utilization%20of%20marker%20genes.pdf" target="_blank" rel="noopener">12.4 Utilization of marker genes</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.5%20Detection%20of%20DNA%20markers%20for%20disease%20genes%20or%20QTL's.pdf" target="_blank" rel="noopener">12.5 Detection of DNA markers for disease genes or QTL&#x27;s</a></li>
-        <li><a href="assets/notes/reproductive-tech/12.6%20Results%20of%20selection%20experiments%20for%20improved%20disease%20resistance.pdf" target="_blank" rel="noopener">12.6 Results of selection experiments for improved disease resistance</a></li>
-        <li><a href="assets/notes/genetics-foundations/Problem%20set%20(Lessons%202-9).pdf" target="_blank" rel="noopener">Problem set (Lessons 2-9)</a></li>
-        <li><a href="assets/notes/genetics-foundations/Problem%20set%20,%20Solutions%20(Lessons%202-9).pdf" target="_blank" rel="noopener">Problem set , Solutions (Lessons 2-9)</a></li>
-        </ul>
-      </div>
-    </details>
     <div class="coursenav">
       <a class="btn green" href="knowledge.html">← Back to the Knowledge Hub</a>
       <a class="btn" href="#top">↑ Back to top</a>
