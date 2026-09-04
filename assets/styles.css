@@ -387,3 +387,9 @@ footer.site ul{padding-left:0;margin-left:0}
 /* hero credit must clear the stats cards, which pull up over the hero on desktop */
 .hero .credit{bottom:56px}
 @media(max-width:860px){.hero .credit{bottom:10px}}
+/* --- Knowledge Hub header icon (white artwork needs a dark badge) --- */
+.khhead{display:flex;align-items:center;gap:22px}
+.khhead h1{margin:0}
+.khicon{flex:none;width:78px;height:78px;border-radius:50%;background:var(--greendk);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(31,74,43,.20)}
+.khicon img{width:56px;height:56px;display:block}
+@media(max-width:640px){.khhead{gap:14px}.khicon{width:58px;height:58px}.khicon img{width:42px;height:42px}}
