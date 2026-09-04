@@ -281,3 +281,100 @@ footer.site .contactlist strong{color:#fff}
 .dl-list{list-style:none;margin:12px 0 0;padding:0;columns:2;column-gap:22px}
 .dl-list li{margin:0 0 7px;font-size:13.5px;break-inside:avoid}
 @media(max-width:620px){.dl-list{columns:1}}
+/* --- Per-course notes box (single-PDF downloads; no left-edge accents) --- */
+.notesbox{border:1px solid var(--line);border-radius:10px;margin:20px 0 6px;background:#fff}
+.notesbox>summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:12px}
+.notesbox>summary::-webkit-details-marker{display:none}
+.notesbox>summary:hover{background:var(--soft)}
+.notesbox .dl-ic{font-size:20px;flex:none}
+.notesbox .dl-tx{flex:1;display:flex;flex-direction:column;min-width:0}
+.notesbox .dl-tx strong{color:var(--green);font-size:15px}
+.notesbox .dl-sub{font-size:12.5px;color:var(--grey)}
+.notesbox>summary .chev{transition:.2s;color:var(--green);flex:none}
+.notesbox[open]>summary .chev{transform:rotate(180deg)}
+.notesbox[open]>summary{border-bottom:1px solid var(--line)}
+.notesbox .dl-body{padding:14px 16px}
+.notesintro{font-size:13px;color:var(--grey);margin:0 0 8px}
+.notesbox .dl-list{list-style:none;margin:6px 0 0;padding:0;columns:2;column-gap:22px}
+.notesbox .dl-list li{margin:0 0 7px;font-size:13.5px;break-inside:avoid}
+@media(max-width:620px){.notesbox .dl-list{columns:1}}
+/* --- Recommended FAO e-learning courses per theme (no left-edge accents) --- */
+.faorec{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:4px 0 14px}
+.faorec h4{margin:0 0 4px;color:var(--greendk);font-size:15px}
+.faorec-intro{font-size:13px;color:var(--grey);margin:0 0 10px}
+.faorec-item{margin:0 0 12px;font-size:14px}
+.faorec-item:last-child{margin-bottom:0}
+.faorec-item a{font-weight:600}
+.faorec-blurb{font-size:13px;color:var(--grey);margin:2px 0 0}
+.faorec-tag{display:inline-block;margin-left:8px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold);background:#fbf3e3;border:1px solid #ecd9ad;border-radius:20px;padding:1px 8px;vertical-align:middle}
+/* --- News sub-pages: partner logo row + call-for-papers sub-theme chips --- */
+.logorow{display:flex;flex-wrap:wrap;align-items:center;gap:26px;padding:16px 0 4px}
+.logorow img{height:52px;width:auto;max-width:150px;object-fit:contain}
+.stnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;flex:none;border-radius:50%;background:var(--green);color:#fff;font-size:13px;font-weight:700;margin-bottom:6px}
+.grid.g2 .card .stnum{margin-bottom:8px}
+/* --- MSc 2027 scholarship page styles --- */
+.info-box{background:#fafafa;border:1px solid #e0e0e0;border-radius:8px;padding:16px;text-align:left}
+.info-box strong{color:var(--green);display:block;margin-bottom:6px;font-size:14px}
+.info-box p{margin:0;font-size:13px;line-height:1.5;color:var(--grey)}
+.step-box{background:#fafafa;border-left:4px solid var(--green);border-radius:8px;padding:18px;margin-bottom:16px}
+.step-box h4{margin-top:0;color:var(--greendk);font-size:15px}
+.step-box p{margin:8px 0;font-size:13px;line-height:1.6;color:#333}
+.step-box ul{margin:8px 0;padding-left:20px;font-size:13px;color:#333}
+.step-box li{margin:4px 0}
+.dates-table{display:flex;flex-direction:column;gap:8px}
+.date-row{display:flex;gap:16px;padding:12px;background:#fafafa;border-radius:6px;align-items:flex-start}
+.date-row strong{color:var(--greendk);min-width:140px;font-size:13px}
+.date-row span{flex:1;font-size:13px;color:#333;line-height:1.5}
+.banner{animation:slideIn 0.3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+/* --- Genomics Boot Camp: study path, chapters, video cards --- */
+.pathstage{display:flex;gap:18px;align-items:flex-start;margin:18px 0}
+.pathnum{flex:none;width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px}
+.pathbody{flex:1}
+.pathbody h3{margin:2px 0 6px}
+.pathlinks{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.pathlinks a{font-size:13.5px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:8px 12px;text-decoration:none}
+.pathlinks a:hover{background:#eef5ee}
+.bcchap{background:#fafafa;border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.bcchap h4{margin:0 0 6px;font-size:15.5px;color:var(--greendk);display:flex;align-items:center;gap:10px}
+.bcnum{flex:none;background:var(--green);color:#fff;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:700}
+.bcchap p{margin:6px 0;font-size:14px;line-height:1.6}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:12px}
+.vgrid3{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.vcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .15s,transform .15s}
+.vcard:hover{box-shadow:0 4px 14px rgba(0,0,0,.10);transform:translateY(-2px)}
+.vcard img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eee}
+.vmeta{padding:9px 11px 11px}
+.vmeta strong{display:block;font-size:13px;line-height:1.4;color:var(--greendk)}
+.vnote{display:block;font-size:11.5px;color:var(--grey);margin-top:3px}
+.gbcbox{background:linear-gradient(135deg,#f2f8f2,#e6f2e6);border:1px solid #cfe3cf;border-radius:10px;padding:14px 16px;margin:14px 0}
+.gbcbox h4{margin:0 0 4px;font-size:14px;color:var(--greendk)}
+.gbcbox p{margin:0 0 8px;font-size:13px;color:var(--grey)}
+.byline{font-size:12.5px;color:var(--grey);font-style:italic;margin:-4px 0 8px}
+/* --- Nav: all 10 items on one row, fluid so it can never wrap --- */
+.nav .wrap{max-width:1340px;gap:18px}
+.brand{flex:none}
+.brand small{white-space:nowrap}
+nav.links{flex-wrap:nowrap;gap:2px}
+nav.links a{font-size:clamp(13px,1.02vw,14.5px);padding:7px clamp(6px,0.70vw,10px);white-space:nowrap}
+/* drop the tagline early to free ~155px before anything can break */
+@media(max-width:1320px){.brand small{display:none}.brand img{height:34px}.brand{font-size:17px}}
+/* burger menu takes over well before the bar could overflow */
+@media(max-width:1100px){
+  .navtoggle{display:block;background:var(--green);color:#fff;border:0;border-radius:7px;padding:8px 13px;font-size:18px;cursor:pointer}
+  nav.links{display:none;width:100%;flex-direction:column;flex-wrap:wrap}
+  nav.links.open{display:flex}
+  nav.links a{font-size:15px;padding:9px 12px}
+  .nav .wrap{flex-wrap:wrap;gap:10px}
+  .brand small{display:block;white-space:normal}
+  .brand{font-size:19px}.brand img{height:38px}
+}
+/* --- Section-level further reading --- */
+.reading{background:#fcfaf5;border:1px solid #ece3cf;border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin:16px 0}
+.reading h4{margin:0 0 8px;font-size:13.5px;color:#8a6d1f;text-transform:uppercase;letter-spacing:.4px}
+.rdlist{list-style:none;margin:0;padding:0}
+.rdlist li{margin:0 0 9px;font-size:14px;line-height:1.45}
+.rdlist li:last-child{margin-bottom:0}
+.rdlist a{font-weight:600}
+.rdwhy{display:block;font-size:12.5px;color:var(--grey);margin-top:1px}
+.notesbox .rdlist{columns:1}
