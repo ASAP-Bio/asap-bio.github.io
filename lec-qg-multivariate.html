@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Multivariate analysis · ASAP-Bio</title>
+<meta name="description" content="Lecture on the multivariate normal distribution, conditional distributions, predicting genetic values from relatives, the two-trait model, decomposition of the phenotypic correlation and genotype-environment interaction.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>Multivariate analysis</h1><p>Lecture 7 of the Quantitative Genetics series. The multivariate normal distribution, multi-trait models, genetic and environmental correlations, and GxE.</p></div></div><section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 7</span><span>Quantitative Genetics</span><span>MSc level</span><span class="s">Grum Gebreyesus</span></div>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#ilo">Intended learning outcomes</a></li>
+    <li><a href="#motiv">Motivation</a></li>
+    <li><a href="#uni">The univariate normal distribution</a></li>
+    <li><a href="#mvn">The multivariate normal distribution</a></li>
+    <li><a href="#why">Why this matters in animal science</a></li>
+    <li><a href="#cond">Conditional distributions</a></li>
+    <li><a href="#predict">Predicting genetic values from phenotypes</a></li>
+    <li><a href="#two">The two-trait model</a></li>
+    <li><a href="#decomp">Decomposing the phenotypic correlation</a></li>
+    <li><a href="#gxe">Genotype-environment correlation and interaction</a></li>
+    <li><a href="#take">Take-home messages</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="ilo">
+    <h2>Intended learning outcomes</h2>
+
+    <p>After this lecture you will be able to:</p>
+    <ul>
+      <li><em>apply</em> the multivariate normal distribution to analyse multi-trait models</li>
+      <li><em>explain</em> general properties of the univariate and multivariate normal distributions</li>
+      <li><em>apply</em> concepts for multivariate distributions to analyse problems in quantitative
+          genetics</li>
+    </ul>
+    <p>What is covered: the multivariate normal distribution, the two-trait model, genetic and
+    environmental correlation, and genotype-environment interaction.</p>  </section>
+  <section class="lsec" id="motiv">
+    <h2>Motivation</h2>
+
+    <ul>
+      <li>Different traits, such as height, weight or disease susceptibility, exhibit characteristic
+          distributions. Studying these distributions helps quantify and characterise trait
+          variability.</li>
+      <li>The frequency distribution of most metric traits resembles the normal curve, so we can use
+          the properties of the normal distribution to make inferences about the trait.</li>
+    </ul>
+    <p>Lecture 1 explained <em>why</em> that bell shape arises, many small independent gene effects
+    summing under the Central Limit Theorem. This lecture takes the next step: what happens when we
+    consider <strong>several traits, or several animals, at once</strong>.</p>  </section>
+  <section class="lsec" id="uni">
+    <h2>The univariate normal distribution</h2>
+
+    <p>A reminder of the one-dimensional case, written \(X\sim N\left(\mu,\sigma^{2}\right)\):</p>
+    <div class="eqn c">\[f_X(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right],\qquad -\infty<x<\infty\]</div>
+
+    <p>with \(\mathbb{E}(X)=\mu\) and \(\mathbb{V}(X)=\sigma^{2}\). The distribution is completely
+    specified by two numbers, its mean and its variance. That economy is what makes it so useful, and it
+    is exactly what generalises next.</p>  </section>
+  <section class="lsec" id="mvn">
+    <h2>The multivariate normal distribution</h2>
+
+    <p>Now consider \(k\) variables together. If all are normally distributed marginally, and jointly
+    they form a multivariate normal distribution, we write
+    \(\boldsymbol{X}\sim N\left(\boldsymbol{\mu},\boldsymbol{\Sigma}\right)\) with density</p>
+    <div class="eqn c">\[f_{\boldsymbol{X}}(\boldsymbol{x})=\frac{1}{\sqrt{(2\pi)^{k}\left|\boldsymbol{\Sigma}\right|}}
+\exp\left[-\tfrac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\mu}\right)^{\prime}\boldsymbol{\Sigma}^{-1}
+\left(\boldsymbol{x}-\boldsymbol{\mu}\right)\right]\]</div>
+
+    <p>The two parameters are now a <em>vector</em> of means and a <em>matrix</em> of variances and
+    covariances:</p>
+    <div class="eqn c">\[\boldsymbol{X}=\begin{bmatrix}X_1\\X_2\\\vdots\\X_k\end{bmatrix},\qquad
+\boldsymbol{\mu}=\begin{bmatrix}\mu_1\\\mu_2\\\vdots\\\mu_k\end{bmatrix},\qquad
+\boldsymbol{\Sigma}=\begin{bmatrix}
+\sigma_1^2 & \sigma_{12} & \cdots & \sigma_{1k}\\
+\sigma_{12} & \sigma_2^2 & \cdots & \sigma_{2k}\\
+\vdots & \vdots & \ddots & \vdots\\
+\sigma_{1k} & \sigma_{2k} & \cdots & \sigma_k^2
+\end{bmatrix}\]</div>
+    <div class="keybox"><strong>Reading the covariance matrix</strong>
+    <ul style="margin:6px 0 0">
+      <li>The <strong>diagonal</strong> holds the variances of each variable.</li>
+      <li>The <strong>off-diagonal</strong> holds the covariances between pairs.</li>
+      <li>\(\boldsymbol{\Sigma}\) is symmetric, since \(\sigma_{12}=\sigma_{21}\).</li>
+    </ul></div>
+
+    <h3>Covariance or correlation</h3>
+    <p>Covariance measures association, but its units are awkward, so we usually standardise it:</p>
+    <div class="eqn c">\[\rho_{XZ}=\frac{\mathbb{C}(X,Z)}{\sqrt{\mathbb{V}(X)\,\mathbb{V}(Z)}}
+=\frac{\sigma_{XZ}}{\sqrt{\sigma_X^2\sigma_Z^2}}
+\qquad\Longleftrightarrow\qquad \sigma_{XZ}=\rho_{XZ}\,\sigma_X\sigma_Z\]</div>
+
+    <p>which lets the covariance matrix be written entirely in terms of correlations and standard
+    deviations. If two traits are <strong>independent</strong> they are uncorrelated, so
+    \(\sigma_{XZ}=\rho_{XZ}\sigma_X\sigma_Z=0\) and the corresponding off-diagonal entries vanish. A
+    diagonal \(\boldsymbol{\Sigma}\) therefore means mutually independent traits.</p>
+    <div class="vslot"><strong>Video: The multivariate normal distribution</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="why">
+    <h2>Why this matters in animal science</h2>
+
+    <ul>
+      <li>It is embedded in the <strong>infinitesimal model</strong> assumptions.</li>
+      <li>Selection of livestock is usually based on a <strong>combination of several traits</strong>.</li>
+      <li>Those traits may be phenotypically <em>and</em> genetically correlated.</li>
+      <li>Animals are ranked and selected by combining these correlated traits.</li>
+    </ul>
+    <p>In other words, single-trait theory is the exception in practice. As soon as you have an index
+    over several traits, or you want to predict a breeding value from relatives' records, you are
+    working inside a multivariate normal distribution whether you name it or not.</p>  </section>
+  <section class="lsec" id="cond">
+    <h2>Conditional distributions</h2>
+
+    <p>The single most useful property of the multivariate normal is that its <strong>conditional
+    distributions are also normal</strong>, with a mean that is a linear function of what you condition
+    on. Partition the vector, mean and covariance matrix as</p>
+    <div class="eqn c">\[\boldsymbol{X}=\begin{bmatrix}\boldsymbol{X}_1\\\boldsymbol{X}_2\end{bmatrix},\quad
+\boldsymbol{\mu}=\begin{bmatrix}\boldsymbol{\mu}_1\\\boldsymbol{\mu}_2\end{bmatrix},\quad
+\boldsymbol{\Sigma}=\begin{bmatrix}\boldsymbol{\Sigma}_{11}&\boldsymbol{\Sigma}_{12}\\
+\boldsymbol{\Sigma}_{21}&\boldsymbol{\Sigma}_{22}\end{bmatrix}\]</div>
+    <div class="keybox"><strong>Conditional mean and variance</strong>
+    <div class="eqn c" style="background:#fff">\[\boldsymbol{X}_1\mid\boldsymbol{X}_2=\boldsymbol{x}_2
+    \;\sim\; N\!\left(\boldsymbol{\mu}_1+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}
+    \left(\boldsymbol{x}_2-\boldsymbol{\mu}_2\right),\;
+    \boldsymbol{\Sigma}_{11}-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}
+    \boldsymbol{\Sigma}_{21}\right)\]</div>
+    <p style="margin:6px 0 0">The conditional mean is the multivariate generalisation of the regression
+    formula from Lecture 2, and the conditional variance is <em>smaller</em> than the unconditional one:
+    observing \(\boldsymbol{X}_2\) removes uncertainty about \(\boldsymbol{X}_1\).</p></div>
+  </section>
+  <section class="lsec" id="predict">
+    <h2>Predicting genetic values from phenotypes</h2>
+
+    <p>This is where the machinery pays off. Everything below is one application of the conditional
+    formula.</p>
+    <h3>One individual</h3>
+    <p>Consider the two variables \(g\) (breeding value) and \(y\) (phenotype) for a single animal:</p>
+    <ul>
+      <li>\(\mathbb{E}(y)=\mu\), \(\mathbb{E}(g)=0\)</li>
+      <li>\(\mathbb{V}(y)=\sigma_y^2\), \(\mathbb{V}(g)=\sigma_g^2=h^2\sigma_y^2\)</li>
+      <li>\(\mathbb{C}(y,g)=\mathbb{C}(g+e,g)=\mathbb{C}(g,g)=\sigma_g^2=h^2\sigma_y^2\)</li>
+    </ul>
+    <div class="eqn c">\[\begin{bmatrix}g\\y\end{bmatrix}\sim MVN\left(
+\begin{bmatrix}0\\ \mu\end{bmatrix},
+\begin{bmatrix}h^2\sigma_y^2 & h^2\sigma_y^2\\ h^2\sigma_y^2 & \sigma_y^2\end{bmatrix}\right)\]</div>
+    <div class="wex"><h5>Worked example: predicting one animal's breeding value</h5>
+    <p style="margin-top:4px">Suppose \(y=10\), \(\mu=8\), \(\sigma_y^2=4\) and \(h^2=0.25\).</p>
+    <p>Apply the conditional mean with \(\Sigma_{12}=h^2\sigma_y^2=1\) and \(\Sigma_{22}=\sigma_y^2=4\):</p>
+    <div class="eqn c">\[\hat g=E(g\mid y)=0+\frac{h^2\sigma_y^2}{\sigma_y^2}\left(y-\mu\right)
+    =h^2\left(y-\mu\right)=0.25\times 2=0.5\]</div>
+    <p>The regression coefficient is exactly \(h^2\), which is the result met in Lecture 6 when deriving
+    the breeder's equation. The conditional variance,
+    \(\sigma_g^2-\left(h^2\sigma_y^2\right)^2/\sigma_y^2=h^2\sigma_y^2(1-h^2)=0.75\), quantifies how
+    much uncertainty remains.</p></div>
+
+    <h3>Two individuals with independent environments</h3>
+    <p>Now stack two related animals. With relationship \(F_{ij}\) between them and independent
+    environments, the joint distribution of both breeding values and both phenotypes is</p>
+    <div class="eqn c">\[\begin{bmatrix}g_1\\g_2\\y_1\\y_2\end{bmatrix}\sim MVN\left(
+\begin{bmatrix}0\\0\\ \mu\\ \mu\end{bmatrix},
+\begin{bmatrix}
+h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2\\
+F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2\\
+h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & \sigma_y^2 & F_{ij}h^2\sigma_y^2\\
+F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & \sigma_y^2
+\end{bmatrix}\right)\]</div>
+    <div class="keybox"><strong>What this delivers</strong>
+    <p style="margin-top:4px">Conditioning the top block (the breeding values) on the bottom block (the
+    observed phenotypes) predicts <em>both</em> animals' genetic values from <em>both</em> records,
+    weighting each by relationship. Notice that \(F_{ij}\), from the relationship lecture, is what
+    couples the two animals. This is BLUP in miniature: the numerator relationship matrix
+    \(\mathbf{A}\) simply extends this \(2\times 2\) block to the whole pedigree.</p></div>
+    <div class="vslot"><strong>Video: Predicting genetic values</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="two">
+    <h2>The two-trait model</h2>
+
+    <p>Real examples of trait relationships:</p>
+    <ul>
+      <li>Animals with higher growth rate tend to have higher fat accumulation.</li>
+      <li>Animals with higher weaning weight tend to have higher birth weight.</li>
+      <li>Animals with lower body weight tend to have smaller litter sizes.</li>
+    </ul>
+    <p>Starting from the general model \(y=\mu+\sum_{j=1}^{L}g_j+e\), write it once per trait:</p>
+    <div class="eqn c">\[\begin{aligned}
+y_1&=\mu_1+g_1+e_1\\
+y_2&=\mu_2+g_2+e_2
+\end{aligned}
+\qquad\Longrightarrow\qquad
+\begin{bmatrix}y_1\\y_2\end{bmatrix}\sim MVN\left(
+\begin{bmatrix}\mu_1\\ \mu_2\end{bmatrix},
+\begin{bmatrix}\sigma_1^2 & \rho_{12}\sigma_1\sigma_2\\
+\rho_{21}\sigma_2\sigma_1 & \sigma_2^2\end{bmatrix}\right)\]</div>
+  </section>
+  <section class="lsec" id="decomp">
+    <h2>Decomposing the phenotypic correlation</h2>
+
+    <p>Where does a phenotypic correlation between two traits come from? Decompose it.</p>
+    <div class="derive"><h5>From covariance to correlation</h5>
+      <ol>
+      <li>By definition
+        \(\rho_{12}=\dfrac{\mathbb{C}(y_1,y_2)}{\sqrt{\mathbb{V}(y_1)\mathbb{V}(y_2)}}\).</li>
+      <li>Expand the covariance:
+        \(\mathbb{C}(y_1,y_2)=\mathbb{C}\left[(\mu_1+g_1+e_1),(\mu_2+g_2+e_2)\right]\), which produces
+        nine terms.</li>
+      <li>Means are constants so contribute nothing, and assuming
+        \(\mathbb{C}(g_1,e_2)=\mathbb{C}(g_2,e_1)=0\), only two terms survive:
+        \(\mathbb{C}(y_1,y_2)=\mathbb{C}(g_1,g_2)+\mathbb{C}(e_1,e_2)\).</li>
+      <li>Writing each in correlation form,
+        \(\mathbb{C}(y_1,y_2)=\rho_{g_{12}}\sqrt{\mathbb{V}(g_1)\mathbb{V}(g_2)}
+        +\rho_{e_{12}}\sqrt{\mathbb{V}(e_1)\mathbb{V}(e_2)}\).</li>
+      <li>Dividing through by \(\sqrt{\mathbb{V}(y_1)\mathbb{V}(y_2)}\) and recognising
+        \(\mathbb{V}(g)/\mathbb{V}(y)=h^2\) and \(\mathbb{V}(e)/\mathbb{V}(y)=1-h^2\) gives the
+        result.</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>The decomposition</strong>
+    <div class="eqn c" style="background:#fff">\[\rho_{12}=\rho_{g_{12}}\sqrt{h_1^2h_2^2}
+    +\rho_{e_{12}}\sqrt{\left(1-h_1^2\right)\left(1-h_2^2\right)}\]</div>
+    <p style="margin:6px 0 0">There are therefore <strong>three</strong> correlations between any two
+    traits: phenotypic \(\rho_{12}\), genetic \(\rho_{g_{12}}\) and environmental \(\rho_{e_{12}}\).</p></div>
+
+    <div class="keybox"><strong>Why this is practically important</strong>
+    <p style="margin-top:4px">The phenotypic correlation you can measure directly is a <em>blend</em> of
+    the genetic and environmental correlations, weighted by the heritabilities. The two components can
+    even have opposite signs, so a near-zero phenotypic correlation does not mean the traits are
+    genetically unrelated. Only the genetic correlation \(\rho_{g_{12}}\) predicts correlated response
+    to selection, which is why the correlated-response formula in Lecture 6 contains \(r_g\) and not
+    \(\rho_{12}\).</p></div>
+  </section>
+  <section class="lsec" id="gxe">
+    <h2>Genotype-environment correlation and interaction</h2>
+
+    <p>The decomposition above rested on the assumption that
+    \(\mathbb{C}(g_1,e_2)=\mathbb{C}(g_2,e_1)=0\). It is worth asking what happens when that fails, and
+    the two ways it can fail are different phenomena.</p>
+    <h3>Genotype-environment correlation</h3>
+    <div class="keybox"><strong>Definition</strong>
+    <p style="margin-top:4px">Genotype-environment correlation occurs when individuals with high genetic
+    values for a trait also experience environments with high values for that trait, that is, when
+    certain genotypes "select" certain environments.</p></div>
+
+    <p>When it is present the cross terms no longer vanish and additional covariance components enter
+    the expression for \(\mathbb{C}(y_1,y_2)\). Practically, it inflates apparent genetic effects: the
+    best-bred animals may also be the best-fed ones, and the phenotype cannot tell the difference.</p>
+    <h3>Genotype-environment interaction</h3>
+    <div class="keybox"><strong>Definition</strong>
+    <ul style="margin:6px 0 0">
+      <li>Both genes and environment contribute to the trait.</li>
+      <li>The relationship between the environment and the phenotype <em>depends on the genotype</em>,
+          or equivalently the relationship between genotype and phenotype depends on the
+          environment.</li>
+      <li>Genotypes are affected <strong>differently</strong> by different environments.</li>
+    </ul></div>
+
+    <p>The distinction matters. A genotype-environment <em>correlation</em> means genotypes are
+    non-randomly distributed across environments; an <em>interaction</em> means their ranking changes
+    between environments. Interaction is the reason a sire that is elite in a temperate intensive system
+    may be mediocre in a tropical extensive one, and it is why ASAP-Bio's concern with locally relevant
+    evaluation is a genetic argument, not merely a political one.</p>
+    <div class="vslot"><strong>Video: Genotype-environment interaction</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="take">
+    <h2>Take-home messages</h2>
+
+    <ul>
+      <li>The multivariate normal distribution is a useful tool for analysing multi-trait models in
+          quantitative genetics.</li>
+      <li>Genetic values can be predicted using the phenotypic information of relatives.</li>
+      <li>The covariance matrix is the key parameter of the multivariate normal distribution, describing
+          the degree of correlation between different traits or individuals.</li>
+      <li>Genotype-environment interaction occurs when genotypes respond differently to different
+          environments.</li>
+    </ul>
+  <div class="srcnote"><b>References.</b> Slides for this lecture were influenced by the notes and slides of
+    Bernt Guldbrandtsen (Department of Veterinary and Animal Sciences, University of Copenhagen;
+    formerly at QGG) and Beatriz Cuyabano (INRA, France; formerly at QGG).</div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 7.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Covariances from correlations.</strong> Consider three variables with</p>
+    <ul>
+      <li>\(\sigma_1^2=\sigma_2^2=\sigma_3^2=1.0\)</li>
+      <li>\(\mu_1=-2\), \(\mu_2=3\), \(\mu_3=5\)</li>
+      <li>\(\rho_{12}=0.3\), \(\rho_{13}=-0.9\), \(\rho_{23}=0.0\)</li>
+    </ul>
+    <ol>
+      <li>What are the covariances between the traits?</li>
+      <li>Simulate and plot the variables against each other, 1 vs 2, 1 vs 3, and 2 vs 3.</li>
+    </ol></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1.</strong> Since \(\sigma_{ij}=\rho_{ij}\sigma_i\sigma_j\) and all standard
+    deviations are 1, the covariances equal the correlations numerically:
+    \(\sigma_{12}=0.3\), \(\sigma_{13}=-0.9\), \(\sigma_{23}=0.0\). The covariance matrix is</p>
+    <div class="eqn c">\[\boldsymbol{\Sigma}=\begin{bmatrix}1&0.3&-0.9\\0.3&1&0\\-0.9&0&1\end{bmatrix}\]</div>
+    <p><strong>2.</strong> In R:</p>
+    <div class="eqn" style="text-align:left"><code>
+    install.packages("mvtnorm"); library(mvtnorm)<br>
+    mu    &lt;- c(-2, 3, 5)<br>
+    sigma &lt;- matrix(c(1,0.3,-0.9, 0.3,1,0, -0.9,0,1), 3, 3)<br>
+    x     &lt;- rmvnorm(n = 1000, mean = mu, sigma = sigma)<br>
+    par(mfrow = c(3,3))<br>
+    for (i in 1:3) for (j in 1:3)<br>
+    &nbsp;&nbsp;plot(x[,i], x[,j], xlab = paste0("Var", i), ylab = paste0("Var", j))
+    </code></div>
+    <p>Var1 against Var3 forms a tight negatively sloping cloud (\(\rho=-0.9\)); Var1 against Var2 is a
+    weak positive cloud; Var2 against Var3 is a circular blob with no tilt (\(\rho=0\)).</p>
+    <p><strong>A caution worth noticing.</strong> Var2 and Var3 are uncorrelated, yet each is correlated
+    with Var1. Marginal independence of a pair does not survive conditioning: if you condition on Var1,
+    Var2 and Var3 become correlated. This is exactly why multi-trait evaluation cannot be replaced by a
+    series of single-trait analyses.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 7.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Predicting genetic values by conditioning.</strong> Using the two-block
+    partition, complete the R script below to obtain predicted genetic values from observed phenotypes.
+    Block 1 is the genetic values, block 2 the phenotypes.</p>
+    <div class="eqn" style="text-align:left"><code>
+    mu1 &lt;- c(......)<br>
+    mu2 &lt;- c(......)<br>
+    V11 = V12 = V21 &lt;- matrix(c(.......), ncol = 2)<br>
+    V22 &lt;- matrix(c(.......), ncol = 2)<br>
+    x2  &lt;- c(......)<br>
+    x1  &lt;- mu1 + V12 %*% solve(V22) %*% (x2 - mu2)<br>
+    print(x1)
+    </code></div>
+    <p>Take two half sibs (\(F_{ij}=0.25\)) with \(h^2=0.3\), \(\sigma_y^2=100\), \(\mu=50\), and
+    observed phenotypes \(y_1=62\), \(y_2=45\).</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>With \(h^2\sigma_y^2=30\) and \(F_{ij}h^2\sigma_y^2=0.25\times 30=7.5\):</p>
+    <div class="eqn" style="text-align:left"><code>
+    mu1 &lt;- c(0, 0)          # genetic values have mean 0<br>
+    mu2 &lt;- c(50, 50)        # phenotypes have mean mu<br>
+    V11 = V12 = V21 &lt;- matrix(c(30, 7.5, 7.5, 30), ncol = 2)<br>
+    V22 &lt;- matrix(c(100, 7.5, 7.5, 100), ncol = 2)<br>
+    x2  &lt;- c(62, 45)<br>
+    x1  &lt;- mu1 + V12 %*% solve(V22) %*% (x2 - mu2)<br>
+    print(x1)
+    </code></div>
+    <p>Note carefully that \(V_{12}\) and \(V_{22}\) differ only in their diagonals: the genetic
+    covariance between the two animals is \(7.5\) in both, but the phenotypic variance on the diagonal of
+    \(V_{22}\) is \(100\) whereas the genetic variance in \(V_{12}\) is \(30\).</p>
+    <p>Evaluating gives approximately \(\hat g_1\approx 3.5\) and \(\hat g_2\approx -0.6\). Two features
+    are worth noting. First, the predictions are <em>regressed</em> towards zero relative to the
+    phenotypic deviations (\(+12\) and \(-5\)), because \(h^2<1\). Second, each animal's prediction is
+    influenced by its half sib's record through the off-diagonal \(7.5\), which is precisely the
+    information-sharing that makes BLUP more accurate than individual phenotypes alone.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 7.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Decomposing a phenotypic correlation.</strong> Two traits have
+    \(h_1^2=0.25\) and \(h_2^2=0.49\). The genetic correlation is \(\rho_{g_{12}}=-0.50\) and the
+    environmental correlation is \(\rho_{e_{12}}=+0.40\).</p>
+    <ol>
+      <li>Compute the phenotypic correlation.</li>
+      <li>Comment on what a breeder who only measured the phenotypic correlation would conclude, and why
+          that would be a mistake.</li>
+    </ol></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1.</strong> Apply the decomposition:</p>
+    <div class="eqn c">\[\rho_{12}=\rho_{g_{12}}\sqrt{h_1^2h_2^2}
+    +\rho_{e_{12}}\sqrt{\left(1-h_1^2\right)\left(1-h_2^2\right)}\]</div>
+    <div class="eqn c">\[=-0.50\sqrt{0.25\times 0.49}+0.40\sqrt{0.75\times 0.51}
+    =-0.50(0.35)+0.40(0.6185)\]</div>
+    <div class="eqn c">\[=-0.175+0.247=+0.072\]</div>
+    <p><strong>2.</strong> The phenotypic correlation is small and <em>positive</em>, about \(+0.07\).
+    A breeder seeing only this would conclude the two traits are essentially unrelated, and that
+    selecting on trait 1 is harmless for trait 2.</p>
+    <p>That conclusion is wrong, and expensively so. The genetic correlation is
+    \(-0.50\), strongly <strong>antagonistic</strong>. Correlated response depends on \(\rho_{g}\), not
+    \(\rho_{12}\), so selection on trait 1 will steadily degrade trait 2. The positive environmental
+    correlation has masked the antagonism at the phenotypic level. This is the quantitative reason that
+    breeding programmes must estimate genetic parameters rather than relying on observed phenotypic
+    associations.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecnav"><a href="lec-qg-selection.html">&#8592; Lecture 6: Selection</a><a href="knowledge.html">All lectures</a><span></span></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

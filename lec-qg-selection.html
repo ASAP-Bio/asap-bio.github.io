@@ -1,0 +1,657 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Selection · ASAP-Bio</title>
+<meta name="description" content="Lecture on natural and artificial selection, viability selection, Fisher's Fundamental Theorem, truncation selection, the breeder's equation, correlated response, selection experiments and hitchhiking.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>Selection</h1><p>Lecture 6 of the Quantitative Genetics series. From fitness at one locus to the breeder's equation, correlated response, drift and hitchhiking.</p></div></div><section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 6</span><span>Quantitative Genetics</span><span>MSc level</span><span class="s">Grum Gebreyesus</span></div>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#history">The question, and three answers</a></li>
+    <li><a href="#postulates">Darwin's postulates</a></li>
+    <li><a href="#types">Types of selection</a></li>
+    <li><a href="#viability">Viability selection at one locus</a></li>
+    <li><a href="#dp">Change in allele frequency</a></li>
+    <li><a href="#fisher">Fisher's Fundamental Theorem</a></li>
+    <li><a href="#trunc">Truncation selection and selection intensity</a></li>
+    <li><a href="#onelocus">From one locus to the breeder's equation</a></li>
+    <li><a href="#breeder">The breeder's equation</a></li>
+    <li><a href="#corr">Correlated response</a></li>
+    <li><a href="#drift">Selection and genetic drift</a></li>
+    <li><a href="#experiments">Selection experiments</a></li>
+    <li><a href="#hitch">Hitchhiking and selective sweeps</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="history">
+    <h2>The question, and three answers</h2>
+
+    <div class="keybox"><strong>Selection</strong>
+    <p style="margin-top:4px">Selection is <strong>differential reproduction and survival</strong> of
+    individuals due to genetic differences between the individuals.</p></div>
+
+    <p>Before the mathematics, it is worth recalling the question that selection was invented to answer:
+    why are organisms so well suited to their circumstances? Three historical answers frame the topic.</p>
+    <h3>William Paley (1743&ndash;1805), <em>Natural Theology</em></h3>
+    <ul>
+      <li>Believed organisms' design implied a designer.</li>
+      <li>Known for the <em>watchmaker analogy</em> to explain purposeful design in nature.</li>
+    </ul>
+    <h3>Jean-Baptiste Lamarck (1744&ndash;1829)</h3>
+    <ul>
+      <li>Proposed the theory of the <strong>inheritance of acquired characteristics</strong>.</li>
+      <li>Suggested traits acquired during an organism's lifetime could be passed to offspring.</li>
+      <li>Famous example: giraffes stretching their necks to reach higher leaves, leading to longer
+          necks over generations.</li>
+    </ul>
+    <h3>Charles Darwin (1809&ndash;1882)</h3>
+    <ul>
+      <li>Organisms best adapted to their environment are more likely to survive and reproduce.</li>
+      <li>"Survival of the fittest" as an explanation of how species change over time.</li>
+    </ul>
+    <p>The decisive difference is that Darwin's mechanism requires <em>heritable variation that already
+    exists</em>, and does not require the variation to arise because it is needed. That is what makes it
+    a quantitative theory rather than a narrative, and it is why the rest of this lecture can be
+    written as algebra.</p>
+  <div class="srcnote"><b>Source note.</b> The historical opening (Paley, Lamarck, Darwin) was added in the
+    2024 delivery and is retained here. Earlier deliveries opened directly with Darwin's postulates.</div>
+    <div class="vslot"><strong>Video: The question, and three answers</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="postulates">
+    <h2>Darwin's postulates</h2>
+
+    <ol>
+      <li>There is a <strong>surplus of offspring</strong>. Not all offspring can survive and reproduce
+          in the long run.</li>
+      <li>Individuals <strong>differ</strong> in how well they survive and reproduce.</li>
+      <li>At least part of this variation is due to <strong>genetic differences</strong> between the
+          individuals.</li>
+    </ol>
+    <p>All three are necessary. Remove the surplus and there is nothing to select among; remove the
+    variation and there is nothing to choose; remove the genetic basis and the choice has no
+    consequences for the next generation.</p>  </section>
+  <section class="lsec" id="types">
+    <h2>Types of selection</h2>
+
+    <div class="keybox"><strong>Two kinds</strong>
+    <p style="margin-top:4px"><strong>Artificial selection</strong> is the <em>intentional</em>
+    preferential breeding of some individuals in a population in order to improve the population's
+    genetic characteristics.</p>
+    <p><strong>Natural selection</strong> is differential reproduction and survival due to genetic
+    differences, where the differences are not caused by intentional human interference.</p></div>
+
+    <p>Selection is differential survival and reproduction, and it can act at <em>any</em> stage of a
+    life cycle:</p>
+    <ol>
+      <li>Survival until reproduction (<strong>viability selection</strong>)</li>
+      <li><strong>Sexual selection</strong>: who gets to reproduce</li>
+      <li><strong>Fertility or fecundity selection</strong>: how many offspring</li>
+      <li><strong>Gametic selection</strong>: competition between gametes</li>
+    </ol>
+    <p>It helps to see where these stages sit in a life cycle, and that the stages differ between
+    taxa:</p>
+    <table class="dtab">
+      <tr><th>Mammals</th><th>Flowering plants</th></tr>
+      <tr><td>Zygote</td><td>Zygote</td></tr>
+      <tr><td>Adult males and females</td><td>Sporophyte</td></tr>
+      <tr><td>Gametes (meiosis)</td><td>Spores (meiosis), then gametophyte</td></tr>
+      <tr><td>Mating</td><td>Pollination</td></tr>
+      <tr><td>Fertilisation, zygote formation</td><td>Fertilisation, zygote formation</td></tr>
+    </table>
+    <p>In plants there is a free-living haploid phase, so selection can act on the
+    <em>gametophyte</em> directly, a stage mammals do not have.</p>
+  <div class="srcnote"><b>Source note.</b> The life-cycle comparison was presented in the 2021 and 2023
+    deliveries and dropped in 2024. It is restored because it makes concrete the claim that selection
+    can act at any life stage.</div>
+  </section>
+  <section class="lsec" id="viability">
+    <h2>Viability selection at one locus</h2>
+
+    <p>Viability selection is due to differences in survival until reproduction. Focus on a single
+    locus with two alleles \(A\) and \(a\) at frequencies \(p\) and \(q\).</p>
+    <h3>Fitness</h3>
+    <p>Genotypes survive to reproduction with probabilities \(W_{AA}\), \(W_{Aa}\), \(W_{aa}\). Fitness
+    is then just a quantitative trait, and it has a mean like any other:</p>
+    <div class="eqn c">\[\bar W=p^2W_{AA}+2pq\,W_{Aa}+q^2W_{aa}\]</div>
+
+    <h3>Fitness of an allele</h3>
+    <p>Exactly as in the one-locus model, define the fitness of an allele as the average effect of that
+    allele, plus the mean:</p>
+    <div class="eqn c">\[\begin{aligned}
+W_A&=pW_{AA}+qW_{Aa}\\
+W_a&=pW_{Aa}+qW_{aa}
+\end{aligned}\]</div>
+
+    <p>These are consistent with the population mean, as they must be:</p>
+    <div class="eqn c">\[\begin{aligned}
+pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
+&=p^2W_{AA}+2pq\,W_{Aa}+q^2W_{aa}=\bar W
+\end{aligned}\]</div>
+  </section>
+  <section class="lsec" id="dp">
+    <h2>Change in allele frequency</h2>
+
+    <p>Higher survival for an allele means higher representation in the next generation. Selection
+    therefore induces a change in allele frequencies. Here is the derivation in full.</p>
+    <div class="derive"><h5>Deriving \(\Delta p\)</h5>
+      <ol>
+      <li>A fraction \(\bar W\) of all individuals survive to reproduce. Among the surviving gene copies,
+        \(pW_A\) are \(A\) alleles and \(qW_a\) are \(a\) alleles.</li>
+      <li>The new frequency of \(A\) is therefore
+        \[p'=\frac{pW_A}{pW_A+qW_a}=p\,\frac{W_A}{\bar W}\]</li>
+      <li>Subtracting the old frequency,
+        \[\Delta p=p'-p=p\frac{W_A}{\bar W}-p\frac{\bar W}{\bar W}=p\,\frac{W_A-\bar W}{\bar W}\]</li>
+      <li>Substituting \(\bar W=pW_A+qW_a\) and simplifying gives the standard form
+        \[\boxed{\;\Delta p=pq\,\frac{W_A-W_a}{\bar W}\;}\]</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>Read the result</strong>
+    <p style="margin-top:4px">\(\Delta p\) is zero whenever \(W_A=W_a\), that is, whenever the two
+    alleles have the same average fitness. It is also zero when \(p=0\) or \(q=0\). Selection needs both
+    a fitness difference <em>and</em> standing variation to produce change, which is Darwin's postulates
+    in algebraic form.</p></div>
+
+    <div class="keybox"><strong>In a breeding context</strong>
+    <p style="margin-top:4px">In breeding, "survival" means the same thing as "being selected for
+    breeding". In general we assume no differences in reproduction among the selected animals, they are
+    all bred equally. So the whole viability-selection apparatus transfers directly to artificial
+    selection, with \(W\) reinterpreted as the probability of being chosen.</p></div>
+  <div class="srcnote"><b>Source note.</b> The step-by-step derivation of \(\Delta p\) (the frame <em>More
+    formally</em>) and the breeding-context reinterpretation are live in the 2021 delivery but commented
+    out in 2023 and 2024, which state only the final formula. Both are restored here, since the
+    reinterpretation is what licenses using natural-selection theory for artificial selection.</div>
+    <div class="vslot"><strong>Video: Change in allele frequency</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="fisher">
+    <h2>Fisher's Fundamental Theorem</h2>
+
+    <blockquote style="border-left:3px solid var(--line);margin:12px 0;padding:6px 0 6px 16px;color:var(--grey)">
+    "The rate of increase in the average fitness of a population is equal to the genetic variance of
+    fitness of that population."<br>
+    <span style="font-size:12.5px">Fisher, R. A., <em>Annals of Eugenics</em> (London), 11, 53 (1941)</span>
+    </blockquote>
+    <p>The theorem follows from the result we just derived in a few lines.</p>
+    <div class="eqn c">\[\begin{aligned}
+\Delta \bar W&=2\left(W_A-W_a\right)\Delta p\\
+&=2\left(W_A-W_a\right)\,pq\,\frac{W_A-W_a}{\bar W}\\
+&=\frac{2pq\left(W_A-W_a\right)^2}{\bar W}=\frac{2pq\,\alpha_W^2}{\bar W}\\
+&=\frac{V_A(W)}{\bar W}
+\end{aligned}\]</div>
+
+    <p>The middle step should look familiar: \(2pq\alpha^2\) is exactly the additive genetic variance
+    derived in the one-locus lecture, here applied to fitness itself.</p>
+    <div class="keybox"><strong>Consequence</strong>
+    <div class="eqn c" style="background:#fff">\[\Delta \bar W=\frac{V_A(W)}{\bar W}\]</div>
+    <p style="margin:6px 0 0">Since \(\bar W>0\) and \(V_A(W)\ge 0\), we have \(\Delta\bar W\ge 0\).
+    Under viability selection, <strong>mean fitness never decreases</strong>. It also tells you when
+    change stops: when the additive genetic variance in fitness is exhausted.</p></div>
+  </section>
+  <section class="lsec" id="trunc">
+    <h2>Truncation selection and selection intensity</h2>
+
+    <p>A particularly simple and practically important scheme:</p>
+    <ul>
+      <li>All individuals with a selection criterion below a <strong>truncation point</strong> \(t\) are
+          discarded from breeding.</li>
+      <li>All individuals above \(t\) are selected for breeding.</li>
+      <li>All selected individuals are bred equally.</li>
+    </ul>
+    <div class="keybox"><strong>Selection differential and selection intensity</strong>
+    <p style="margin-top:4px">The <strong>selection differential</strong> \(S\) is the average
+    phenotypic superiority of the selected individuals, in <em>phenotypic units</em>.</p>
+    <p>The <strong>selection intensity</strong> \(i\) is the same superiority expressed in <em>units of
+    phenotypic standard deviation</em>:</p>
+    <div class="eqn c" style="background:#fff">\[i=\frac{S}{\sigma_P}\]</div></div>
+
+    <h3>Computing \(S\) under truncation</h3>
+    <p>If the trait is normally distributed, \(i\) depends only on the proportion selected:</p>
+    <div class="derive"><h5>Recipe</h5>
+      <ol>
+      <li>Fix the proportion selected, \(B\).</li>
+      <li>Find the truncation point \(t\) in the <em>standard normal</em> distribution such that a
+        proportion \(B\) lies above it.</li>
+      <li>Find the density \(\phi(t)\) at that point.</li>
+      <li>The selection intensity is \(i=\dfrac{\phi(t)}{B}\), and the selection differential is
+        \(S=i\,\sigma_P\).</li>
+      </ol>
+    </div>
+    <div class="wex"><h5>Worked example: selecting the top 20%, in R</h5>
+    <div class="eqn" style="text-align:left;margin-top:6px"><code>
+    B   &lt;- 0.2<br>
+    t   &lt;- qnorm(0.2, lower.tail = FALSE)   # truncation point<br>
+    phi &lt;- dnorm(t)                         # density at t<br>
+    i   &lt;- phi / B                           # selection intensity<br>
+    Vp  &lt;- 2.0<br>
+    S   &lt;- i * sqrt(Vp)                      # selection differential
+    </code></div>
+    <p>R gives \(i=1.39981\). Falconer and Mackay (p. 379) tabulate \(i=1.400\), so the computation
+    checks out against the standard reference.</p></div>
+  <div class="srcnote"><b>Source note.</b> The explicit definition block for selection intensity and the R
+    computation with the Falconer and Mackay cross-check are live in the 2021 delivery and commented out
+    in the later ones. They are restored because the numerical check is exactly what students need when
+    they first meet \(i=\phi(t)/B\).</div>
+    <div class="vslot"><strong>Video: Truncation selection</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="onelocus">
+    <h2>From one locus to the breeder's equation</h2>
+
+    <p>We now have two apparently separate stories: allele-frequency change under fitness differences,
+    and the practical business of selecting on a phenotype. This section connects them, and the
+    connection is the intellectual heart of the lecture.</p>
+    <p>The effect of selecting on a <em>quantitative trait</em> can be modelled at a single locus of
+    small effect. Assume selection is on phenotype alone: we use no information from other traits or
+    from relatives.</p>
+    <h3>The locus</h3>
+    <p>Two alleles, with genotypes differing by a small additive amount \(\delta\):</p>
+    <div class="eqn c">\[E(y\mid aa)=0,\qquad E(y\mid Aa)=\delta,\qquad E(y\mid AA)=2\delta\]</div>
+
+    <p>so on this scale the allele substitution effect is \(\beta_y=\delta\).</p>
+    <h3>Translating trait values into fitness</h3>
+    <p>Under truncation selection with proportion \(B\) selected, an individual's probability of being
+    selected rises with its phenotype. To first order, a genotype whose mean is higher by \(\delta\) has
+    its selection probability raised by \(\delta\phi\), where \(\phi\) is the standard normal density at
+    the truncation point:</p>
+    <table class="dtab">
+      <tr><th>Genotype</th><th>\(aa\)</th><th>\(Aa\)</th><th>\(AA\)</th></tr>
+      <tr><td>Fitness</td><td>\(B\)</td><td>\(B+\delta\phi\)</td><td>\(B+2\delta\phi\)</td></tr>
+      <tr><td>\(\bar W\)</td><td colspan="3">\(B+2p\delta\phi\)</td></tr>
+      <tr><td>\(W_a\)</td><td colspan="3">\(B+p\delta\phi\)</td></tr>
+      <tr><td>\(W_A\)</td><td colspan="3">\(B+(1+p)\delta\phi\)</td></tr>
+      <tr><td>\(\beta_W\)</td><td colspan="3">\(\delta\phi\)</td></tr>
+    </table>
+    <div class="derive"><h5>One generation of selection at a locus of small effect</h5>
+      <ol>
+      <li>Substitute into \(\Delta p=p\dfrac{W_A-\bar W}{\bar W}\):
+        \[\Delta p=p\,\frac{B+(1+p)\delta\phi-\left(B+2p\delta\phi\right)}{\bar W}
+        =p\,\frac{q\,\delta\phi}{\bar W}\]</li>
+      <li>For a locus of small effect \(\bar W\approx B\), so
+        \(\Delta p\approx p\dfrac{q\delta\phi}{B}=pq\,\delta\,\dfrac{i}{\sigma}
+        =pq\,\beta_y\dfrac{i}{\sigma}\), using \(i=\phi/B\).</li>
+      <li>The change in the trait mean is twice the substitution effect times the change in frequency:
+        \[\Delta G=2\beta_y\times pq\,\beta_y\frac{i}{\sigma}=2pq\,\beta_y^2\,\frac{i}{\sigma}\]</li>
+      <li>But \(2pq\beta_y^2=V_A\), so
+        \[\Delta G=V_A\frac{i}{\sigma}=i\,h^2\frac{\sigma^2}{\sigma}=i\,h^2\sigma\]</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>What just happened</strong>
+    <p style="margin-top:4px">Starting from nothing but allele-frequency change at a single locus of
+    small effect, we have arrived at the breeder's equation. The two stories are one story. This also
+    explains <em>why</em> the breeder's equation contains \(h^2\) and not \(H^2\): the derivation runs
+    through \(2pq\beta_y^2=V_A\), the additive variance, because only average allele effects are
+    transmitted.</p></div>
+  <div class="srcnote"><b>Source note, and a significant restoration.</b> This entire derivation, the frames
+    <em>Effect of selection on one locus</em>, <em>Phenotypic selection</em>, <em>One locus</em>,
+    <em>In terms of fitness</em> and <em>Change in allele frequency</em>, is live in the 2021 delivery
+    but commented out in both 2023 and 2024, which present the breeder's equation only via the
+    regression argument below. It is restored here because it is the only place in the course where the
+    population-genetic and the quantitative-genetic treatments of selection are shown to be the same
+    thing.</div>
+  </section>
+  <section class="lsec" id="breeder">
+    <h2>The breeder's equation</h2>
+
+    <p>The derivation above came from the locus. Here is the complementary derivation, from regression,
+    which is the one that generalises to real breeding programmes. We assume non-overlapping
+    generations and that all selected individuals breed equally.</p>
+    <div class="derive"><h5>Step 1: covariance between breeding value and phenotype</h5>
+      <ol>
+      <li>For one individual, \(V_P\) is known and \(V_A=h^2V_P\).</li>
+      <li>\(\operatorname{Cov}(g_a,y)=\operatorname{Cov}\left(g_a,\;\mu+g_a+g_d+e\right)\)</li>
+      <li>\(=\operatorname{Cov}(g_a,\mu)+\operatorname{Cov}(g_a,g_a)+\operatorname{Cov}(g_a,g_d)
+        +\operatorname{Cov}(g_a,e)=0+V_A+0+0=V_A\)</li>
+      </ol>
+    </div>
+    <div class="derive"><h5>Step 2: regression, for one individual</h5>
+      <ol>
+      <li>Knowing the deviation from the mean in \(y\), we predict the deviation in \(g_a\):
+        \[R=E(g_a\mid y)=E(g_a)+\operatorname{Reg}(g_a\mid y)\left(y-E(y)\right)\]</li>
+      <li>\(\operatorname{Reg}(g_a\mid y)=\dfrac{\operatorname{Cov}(g_a,y)}{V_P}=\dfrac{V_A}{V_P}=h^2\),
+        so \(R=0+h^2S=h^2S\).</li>
+      </ol>
+    </div>
+    <div class="derive"><h5>Step 3: many individuals</h5>
+      <ol>
+      <li>For a group of \(n\) selected individuals,
+        \(R=E\!\left(\dfrac{\sum g_{a,i}}{n}\right)=\dfrac{1}{n}\sum E(g_{a,i})\)</li>
+      <li>\(=\dfrac{1}{n}\sum E\!\left(h^2S_i\right)=h^2\dfrac{\sum S_i}{n}=h^2S\), so the result carries
+        over unchanged to the group mean.</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>Breeder's equation</strong>
+    <p style="margin-top:4px">Expressing the superiority in standard deviations, \(S=i\sigma_P\):</p>
+    <div class="eqn c" style="background:#fff">\[R=\Delta G=i\,h^2\,\sigma_P\]</div>
+    <p style="margin:6px 0 0">With pure phenotypic selection, this is the predicted gain per
+    generation.</p></div>
+
+    <p>This simplest case generalises in two directions:</p>
+    <ul>
+      <li>With <strong>more general information</strong> than the animal's own phenotype (relatives,
+          markers), the accuracy term \(r_{a,\hat a}\sqrt{h^2}\) replaces \(h^2\).</li>
+      <li>With <strong>several selection paths</strong> (sires of sires, dams of sires, and so on), the
+          response sums over paths.</li>
+    </ul>
+    <div class="vslot"><strong>Video: The breeder's equation</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="corr">
+    <h2>Correlated response</h2>
+
+    <p>Genetic correlations describe the relationship between the breeding values for different traits.
+    Consequently, genetic change in one trait induces change in another, whether we want it or not.</p>
+    <p>The correlated response in trait 2 from selection on trait 1 is</p>
+    <div class="eqn c">\[\Delta G_2=\operatorname{Reg}\left(g_{a,2}\mid y_1\right)S_1\]</div>
+
+    <p>which requires the joint variance structure of the phenotype of trait 1 and the breeding values
+    of both traits:</p>
+    <div class="eqn c">\[\operatorname{Var}\begin{pmatrix}y_1\\ g_{a,1}\\ g_{a,2}\end{pmatrix}=
+\begin{pmatrix}
+V_{p1} & \operatorname{Cov}(y_1,g_{a,1}) & \operatorname{Cov}(y_1,g_{a,2})\\
+\operatorname{Cov}(y_1,g_{a,1}) & V_{a1} & \operatorname{Cov}(g_{a,1},g_{a,2})\\
+\operatorname{Cov}(y_1,g_{a,2}) & \operatorname{Cov}(g_{a,1},g_{a,2}) & V_{a2}
+\end{pmatrix}\]</div>
+    <div class="derive"><h5>Working it through</h5>
+      <ol>
+      <li>\(\operatorname{Cov}(y_1,g_{a,1})=\operatorname{Cov}(g_{a,1}+e_1,g_{a,1})=V_{a1}\).</li>
+      <li>\(\operatorname{Cov}(y_1,g_{a,2})=\operatorname{Cov}(g_{a,1},g_{a,2})
+        =r_g\sqrt{V_{a1}V_{a2}}\).</li>
+      <li>Hence \(\operatorname{Reg}(g_{a,2}\mid y_1)
+        =\dfrac{r_g\sqrt{V_{a1}V_{a2}}}{V_{p1}}
+        =\dfrac{r_g\sqrt{h_1^2h_2^2}\,\sigma_{p2}}{\sigma_{p1}}\).</li>
+      <li>With \(S_1=i\sigma_{p1}\), the \(\sigma_{p1}\) cancels:
+        \[\Delta G_2=i\,\frac{r_g\sqrt{h_1^2h_2^2}\,\sigma_{p2}}{\sigma_{p1}}\,\sigma_{p1}
+        =i\,r_g\sqrt{h_1^2h_2^2}\,\sigma_{p2}=i\,r_g\,h_1h_2\,\sigma_{p2}\]</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>Correlated response</strong>
+    <div class="eqn c" style="background:#fff">\[\Delta G_2=i\,r_g\,h_1h_2\,\sigma_{p2}\]</div>
+    <p style="margin:6px 0 0">Note the symmetry with \(\Delta G=ih^2\sigma_P=i\,h\cdot h\,\sigma_P\).
+    The direct response uses \(h_1\) twice; the correlated response replaces one \(h_1\) with \(h_2\)
+    and multiplies by \(r_g\). If \(r_g\) is negative, selecting on trait 1 <em>degrades</em> trait 2,
+    which is the classic dairy story of yield against fertility.</p></div>
+  </section>
+  <section class="lsec" id="drift">
+    <h2>Selection and genetic drift</h2>
+
+    <p>Genetic drift affects all loci, including those with effects on quantitative traits. Recall its
+    consequences: alleles in a population become more related, genetic variation shrinks, and population
+    means diverge.</p>
+    <h3>Why selection makes drift worse</h3>
+    <ol>
+      <li><strong>Drift.</strong> Selection means breeding only a fraction of a population.</li>
+      <li><strong>More related individuals.</strong> Related animals are more similar in breeding value
+          and share information, so selecting on estimated breeding value means selecting individuals
+          that are more related than random.</li>
+    </ol>
+    <div class="eqn c">\[\Delta F_{ST}\propto i^2\]</div>
+
+    <h3>The variance of a selected group mean</h3>
+    <p>With additive gene action and \(n\) individuals with additive genetic values \(g_{a,i}\):</p>
+    <div class="eqn c">\[\begin{aligned}
+\operatorname{Var}\!\left(\frac{\sum g_{a,i}}{n}\right)
+&=\frac{1}{n^2}\sum_{i,j}\operatorname{Cov}\left(g_{a,i},g_{a,j}\right)\\
+&=\frac{1}{n^2}\,n(n-1)\operatorname{Cov}\left(g_{a,i},g_{a,j}\right)_{i\ne j}
+ +\frac{1}{n}\operatorname{Cov}\left(g_{a,i},g_{a,i}\right)\\
+&=F_{ST}V_A+\frac{1}{n}\left(1-F_{ST}\right)V_A
+\end{aligned}\]</div>
+
+    <p>The first term does not shrink with \(n\). However many animals you select, the shared drift
+    component \(F_{ST}V_A\) remains, so the outcome of a selection scheme in a small population is
+    <strong>less predictable</strong>, not merely slower.</p>
+    <div class="keybox"><strong>Major genes</strong>
+    <ul style="margin:6px 0 0">
+      <li>Models predict major genes should be rapidly fixed for the desirable allele.</li>
+      <li>Genes of small effect may take a very long time.</li>
+    </ul></div>
+  <div class="srcnote"><b>Source note.</b> The derivation of \(\operatorname{Var}\) of the selected group mean
+    (the frame <em>The genetic mean</em>) is live in 2021 and commented out later. It is restored
+    because it is the quantitative justification for the otherwise bare assertion that small \(N_e\)
+    makes selection outcomes unpredictable.</div>
+  </section>
+  <section class="lsec" id="experiments">
+    <h2>Selection experiments</h2>
+
+    <p>Natural selection acts in all populations, including domestic animals, so the observed outcome is
+    always a balance between artificial selection, natural selection and drift. Selection experiments
+    are how that balance is studied.</p>
+    <h3>Why they are conducted</h3>
+    <ul>
+      <li>Demonstrate that a trait is heritable</li>
+      <li>Estimate genetic parameters</li>
+      <li>Demonstrate that selection is effective</li>
+      <li>Detect correlated effects of selection</li>
+      <li>Understand the genetic architecture of traits</li>
+      <li>Estimate the rate at which new mutations affecting a trait appear</li>
+    </ul>
+    <div class="keybox"><strong>Anatomy of a selection experiment</strong>
+    <ul style="margin:6px 0 0">
+      <li>Large enough that the response exceeds the effects of genetic drift.</li>
+      <li><strong>Replicated</strong>, to reduce estimation error and rule out freak results.</li>
+      <li>Three sets of lines: <strong>up</strong>, <strong>down</strong> and <strong>control</strong>.</li>
+      <li>Control lines are required to rule out environmental trends.</li>
+    </ul>
+    <p style="margin:8px 0 0;font-size:13.5px;color:var(--grey)">Each requirement answers a specific
+    alternative explanation: drift, chance, and environmental change over the years of the experiment.</p></div>
+
+    <h3>Typical time course</h3>
+    <ol>
+      <li>Rapid genetic gain, consistent with the breeder's equation.</li>
+      <li>Slowdown in gain due to the <strong>Bulmer effect</strong>.</li>
+      <li>Further slowdown, then cessation of gain, due to exhaustion of genetic variation or
+          counteracting natural selection.</li>
+      <li>End of artificial selection.</li>
+      <li>Regression toward the starting value, driven by natural selection.</li>
+    </ol>
+    <h3>Some observations from real experiments</h3>
+    <ul>
+      <li>The magnitude of regression varies between replicates, because of differences in linkage
+          disequilibrium between QTL and deleterious alleles.</li>
+      <li>Occasional <strong>spurts in gain</strong>, when recombination releases a selected allele from
+          its association with a deleterious allele.</li>
+      <li>Response to "up" and "down" selection is frequently highly <strong>asymmetric</strong>.</li>
+    </ul>
+    <h3>Long-term experiments</h3>
+    <ul>
+      <li>Long-term selection has <em>smaller</em> effects on \(V_A\) than expected.</li>
+      <li>Candidate interpretations: new mutational variance, or epistatic mechanisms.</li>
+      <li>On balance, the accumulation of deleterious alleles <em>appears</em> to be a bigger problem
+          than depletion of \(V_A\).</li>
+    </ul>  </section>
+  <section class="lsec" id="hitch">
+    <h2>Hitchhiking and selective sweeps</h2>
+
+    <p>Genes on a chromosome are physically linked and inherited together. When selection targets one
+    gene, the surrounding region, including genes that were never selected, may also rise in frequency.</p>
+    <div class="keybox"><strong>Definitions</strong>
+    <p style="margin-top:4px"><strong>Hitchhiking</strong> is the process by which an allele may
+    increase in frequency because it is physically linked to another gene that is the target of
+    selection.</p>
+    <p><strong>A selective sweep</strong> is the sweeping away of variation around a selected site
+    following the fixation of a favourable allele.</p></div>
+
+    <h3>An example: lactase persistence</h3>
+    <ul>
+      <li>Most adult mammals cannot digest milk as adults.</li>
+      <li>In humans a mutation enables digestion in adulthood.</li>
+      <li>It arose at least twice, once in Africa and once in Europe.</li>
+      <li>Selection in favour of lactase persistence was very strong.</li>
+    </ul>
+    <p>The genomic signature is striking. Comparing homozygotes for the persistence allele with
+    non-persistent homozygotes, the homozygous tracts surrounding the locus are much longer in the
+    persistent group, on average by a factor of about <strong>1000</strong>. That is a very long
+    selective sweep: anything linked to the lactase persistence mutation is now frequent, including any
+    recessive deleterious allele that happened to be on the same haplotype, and such recessives are now
+    expressed more often simply because they are more common.</p>
+    <div class="keybox"><strong>Why this matters for breeding</strong>
+    <ul style="margin:6px 0 0">
+      <li>Selection "drags along" large pieces of genome.</li>
+      <li>This may raise the frequency of previously rare recessive deleterious alleles.</li>
+      <li>As those alleles become more common, selection against them becomes more effective (the
+          \(q^2\) term grows), which itself slows gain.</li>
+    </ul></div>
+
+    <div class="wex"><h5>A real case: Finnish Ayrshire cattle</h5>
+    <ul style="margin:6px 0 0">
+      <li>A large QTL for fertility on BTA12.</li>
+      <li>It is a <strong>recessive lethal</strong>, a large deletion of about 660 kb.</li>
+      <li>Frequency reached \(q=0.17\).</li>
+      <li>It has a linked or pleiotropic effect of about +150 kg milk per year.</li>
+      <li>Hitchhiking is the natural explanation: the lethal rose to high frequency because it travelled
+          with a strongly favoured milk allele.</li>
+    </ul></div>
+
+    <p>In regions subject to hitchhiking the effect can be much greater than simple models predict, and
+    molecular studies confirm that the real effect often exceeds prediction. Note also that in the
+    infinitesimal model \(V_A\) does not change due to selection, apart from the Bulmer effect, so
+    hitchhiking is precisely one of the phenomena the infinitesimal model cannot capture.</p>
+  <div class="srcnote"><b>Source note.</b> The homozygosity detail (the roughly 1000-fold difference in tract
+    length), the observations on asymmetric response and recombination spurts, and the Finnish Ayrshire
+    example are live in the 2021 delivery and commented out in 2023 and 2024. They are restored because
+    they supply the empirical evidence for claims that are otherwise asserted.</div>
+  </section>
+  <section class="lsec" id="summary">
+    <h2>Summary</h2>
+
+    <ul>
+      <li>Selection acts by changing allele frequencies.</li>
+      <li>The outcome is a balance between artificial selection, natural selection and drift.</li>
+      <li>Response: \(\Delta G=i\,h^2\sigma_P\).</li>
+      <li>Correlated response: \(\Delta G_2=i\,r_g\,h_1h_2\,\sigma_{p2}\).</li>
+      <li>Selection has large effects on genetic drift.</li>
+      <li>Hitchhiking matters.</li>
+    </ul>  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 6.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Change in allele frequency.</strong> Selection acts at a locus with two
+    alleles \(A\) and \(a\) at frequencies \(p=0.99\) and \(q=0.01\). The allele \(a\) is a recessive
+    lethal, so the fitnesses are \(W_{AA}=1\), \(W_{Aa}=1\), \(W_{aa}=0\).</p>
+    <ol>
+      <li>Compute the mean fitness and the allele substitution effect \(\alpha\).</li>
+      <li>Compute the additive genetic variance \(V_A\) in fitness caused by this locus.</li>
+      <li>Compute the expected change in the frequency of \(A\) from one generation of selection.</li>
+    </ol>
+    <p>Recall from earlier lectures that \(V_A=2pq\alpha^2\) and that the allele substitution effect is
+    \(\alpha=W_A-W_a\).</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1. Mean fitness and \(\alpha\).</strong></p>
+    <div class="eqn c">\[\bar W=p^2(1)+2pq(1)+q^2(0)=0.9801+0.0198=0.9999\]</div>
+    <p>Allele fitnesses: \(W_A=pW_{AA}+qW_{Aa}=0.99(1)+0.01(1)=1\), and
+    \(W_a=pW_{Aa}+qW_{aa}=0.99(1)+0.01(0)=0.99\).</p>
+    <div class="eqn c">\[\alpha=W_A-W_a=1-0.99=0.01\]</div>
+    <p><strong>2. Additive genetic variance in fitness.</strong></p>
+    <div class="eqn c">\[V_A=2pq\alpha^2=2(0.99)(0.01)(0.01)^2=1.98\times 10^{-6}\]</div>
+    <p><strong>3. Change in allele frequency.</strong></p>
+    <div class="eqn c">\[\Delta p=pq\frac{W_A-W_a}{\bar W}=\frac{(0.99)(0.01)(0.01)}{0.9999}
+    \approx 9.9\times 10^{-5}\]</div>
+    <p>Sanity check via Fisher: \(\Delta\bar W=V_A/\bar W=1.98\times10^{-6}/0.9999\approx
+    1.98\times10^{-6}\), which is positive, as it must be.</p>
+    <p><strong>Interpretation.</strong> Even against a <em>lethal</em>, progress is glacial once the
+    allele is rare: \(\Delta p\approx 10^{-4}\) per generation. This is the same point met in the
+    Foundations course, selection against a recessive is slow at low frequency because almost all copies
+    are hidden in heterozygotes, and it is the reason marker-assisted removal of recessive defects is so
+    much more effective than phenotypic culling.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 6.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Intensity of selection.</strong></p>
+    <ol>
+      <li>You want to select the top 20% of individuals for a trait with phenotypic variance
+          \(V_P=2.0\). Calculate the selection intensity and the selection differential.</li>
+      <li>For proportions selected \(B\) from 1% to 99% in steps of 1%, plot \(i\) as a function of
+          \(B\). Describe the shape and explain it.</li>
+    </ol></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1.</strong> \(t=\)<code>qnorm(0.2, lower.tail=FALSE)</code>\(=0.8416\);
+    \(\phi(t)=\)<code>dnorm(0.8416)</code>\(=0.2800\).</p>
+    <div class="eqn c">\[i=\frac{\phi(t)}{B}=\frac{0.2800}{0.2}=1.400,\qquad
+    S=i\,\sigma_P=1.400\times\sqrt{2.0}=1.980\]</div>
+    <p>So the selected group is on average 1.98 phenotypic units above the population mean.</p>
+    <p><strong>2.</strong> Python for the plot:</p>
+    <div class="eqn" style="text-align:left"><code>
+    import numpy as np, matplotlib.pyplot as plt<br>
+    from scipy.stats import norm<br>
+    B = np.arange(0.01, 1.00, 0.01)<br>
+    t = norm.ppf(1 - B)<br>
+    i = norm.pdf(t) / B<br>
+    plt.plot(B, i); plt.xlabel("Proportion selected (B)"); plt.ylabel("Selection intensity (i)")<br>
+    plt.show()
+    </code></div>
+    <p><strong>Shape.</strong> \(i\) falls monotonically from very high values as \(B\to 0\) to zero at
+    \(B=1\), and the curve is steep at small \(B\). Selecting 1% instead of 2% buys a large increase in
+    \(i\); selecting 50% instead of 60% buys very little. Combined with \(\Delta F\propto i^2\) from the
+    drift lecture, this is why extremely intense selection is a poor bargain: gain rises ever more
+    slowly while inbreeding rises ever faster.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 6.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Correlated response.</strong> In Danish Holstein cattle, the heritability
+    of milk protein percentage is \(h_p^2=0.60\) and of milk yield \(h_m^2=0.20\). The genetic
+    correlation between them is \(r_g=-0.60\). Set the phenotypic variance of both traits to 1.</p>
+    <p>Predict the change in milk protein percentage that results from selecting the \(B=0.20\) of cows
+    with the highest milk yield.</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Use \(\Delta G_2=i\,r_g\,h_1h_2\,\sigma_{p2}\), where trait 1 is the trait selected on (milk
+    yield) and trait 2 is the correlated trait (protein percentage).</p>
+    <p>From Exercise 6.2, \(B=0.20\) gives \(i=1.400\). The heritabilities in standard-deviation form
+    are \(h_1=\sqrt{0.20}=0.4472\) (yield) and \(h_2=\sqrt{0.60}=0.7746\) (protein %), and
+    \(\sigma_{p2}=1\).</p>
+    <div class="eqn c">\[\Delta G_2=1.400\times(-0.60)\times 0.4472\times 0.7746\times 1
+    =-0.291\]</div>
+    <p>So one generation of selecting the top 20% on milk yield is expected to <strong>reduce</strong>
+    protein percentage by about 0.29 phenotypic standard deviations.</p>
+    <p><strong>Interpretation.</strong> This is the single most important practical lesson of the
+    section. The unfavourable genetic correlation means that selecting hard on yield degrades
+    composition, and no amount of care in <em>measuring</em> yield avoids it. The only remedies are to
+    select on an index that weights both traits, or to accept the loss. Historically, dairy programmes
+    that selected on yield alone did exactly this, which is why balanced indices replaced them.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecnav"><a href="lec-qg-drift.html">&#8592; Lecture 5: Random genetic drift</a><a href="knowledge.html">All lectures</a><a href="lec-qg-multivariate.html">Lecture 7: Multivariate analysis &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

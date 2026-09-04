@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Relationship and inbreeding · ASAP-Bio</title>
+<meta name="description" content="Lecture on relatedness, identity by descent, coefficient of coancestry, covariance among relatives, Mendelian sampling, the inbreeding coefficient, inbreeding depression, the numerator relationship matrix and assortative mating.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>Relationship and inbreeding</h1><p>Lecture 4 of the Quantitative Genetics series. Identity by descent, coancestry, the relationship matrix, inbreeding and assortative mating.</p></div></div><section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 4</span><span>Quantitative Genetics</span><span>MSc level</span><span class="s">Grum Gebreyesus</span></div>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#ilo">Intended learning outcomes</a></li>
+    <li><a href="#rel">Relatedness and the base population</a></li>
+    <li><a href="#ibd">Identity by descent</a></li>
+    <li><a href="#sim">Why relatives resemble one another</a></li>
+    <li><a href="#theta">The coefficient of coancestry</a></li>
+    <li><a href="#cov">Covariance among relatives</a></li>
+    <li><a href="#mendel">Parent average and Mendelian sampling</a></li>
+    <li><a href="#F">The inbreeding coefficient</a></li>
+    <li><a href="#Fvar">What inbreeding does to variance</a></li>
+    <li><a href="#pop">Inbreeding at population level</a></li>
+    <li><a href="#depress">Inbreeding depression</a></li>
+    <li><a href="#Amat">The numerator relationship matrix</a></li>
+    <li><a href="#assort">Assortative mating</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="ilo">
+    <h2>Intended learning outcomes</h2>
+
+    <ul>
+      <li>Explain how shared environments and shared genes contribute to the similarities among relatives.</li>
+      <li>Compute relatedness and inbreeding coefficients using pedigree information.</li>
+    </ul>  </section>
+  <section class="lsec" id="rel">
+    <h2>Relatedness and the base population</h2>
+
+    <div class="keybox"><strong>Relatedness</strong>
+    <p style="margin-top:4px">Two individuals are related if</p>
+    <ul style="margin:4px 0 0"><li>they share one or more ancestors, or</li>
+    <li>one is descended from the other.</li></ul></div>
+
+    <h3>Why relatedness matters in breeding</h3>
+    <ul>
+      <li>Estimating and managing inbreeding</li>
+      <li>QTL mapping</li>
+      <li>Breeding value estimation</li>
+      <li>Prediction of response to selection</li>
+    </ul>
+    <h3>Two essential features of any measure of relatedness</h3>
+    <ul>
+      <li>It can only be defined <strong>relative to a specific frame of reference</strong>, the
+          <em>base population</em>.</li>
+      <li>It is based on the concept of <strong>identity by descent</strong>.</li>
+    </ul>
+    <p>The first point is easy to skate over and causes real confusion later. All members of a
+    population share ancestors at <em>some</em> point in the phylogeny, so "related" is meaningless
+    without saying "related compared to what". In practice we consider recent ancestry rather than
+    ancient common ancestry: if no further information is available for the top generation of a
+    pedigree, those individuals are taken as the <strong>base animals</strong> and treated as unrelated
+    and non-inbred. Every relationship coefficient you compute is therefore a statement about ancestry
+    <em>since that base</em>.</p>
+    <div class="vslot"><strong>Video: Relatedness and the base population</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="ibd">
+    <h2>Identity by descent</h2>
+
+    <ul>
+      <li>Genes that are copies of the same gene in a past generation are <strong>identical by descent
+          (IBD)</strong>.</li>
+      <li>Genes where one is a copy of the other through inheritance are also IBD.</li>
+      <li>Genes that merely "look" the same are <strong>identical by state (IBS)</strong>.</li>
+      <li>Genes may be IBS <em>without</em> being IBD. Genes that are IBD are necessarily also IBS.</li>
+    </ul>
+    <div class="keybox"><strong>Inbreeding at a locus</strong>
+    <ul style="margin:6px 0 0">
+      <li>An individual is <strong>inbred at a locus</strong> if the two alleles at that locus are IBD.</li>
+      <li>If two genes are IBD they are also IBS, so the individual is homozygous at the locus.</li>
+    </ul>
+    <p style="margin:8px 0 0;font-size:13.5px;color:var(--grey)">The converse does not hold: a
+    homozygote need not be inbred, since the two identical-looking alleles may descend from different
+    ancestral copies.</p></div>
+  <div class="srcnote"><b>Source note.</b> The explicit IBD-versus-IBS definition of
+    inbreeding at a locus is taken from the 2021 delivery; in the 2023 slides the corresponding frame
+    had been commented out. It is restored here because the distinction is needed to read the
+    heterozygote-deficiency argument later in this lecture.</div>
+  </section>
+  <section class="lsec" id="sim">
+    <h2>Why relatives resemble one another</h2>
+
+    <p>Individuals in a population vary considerably. Those differences may arise from variation in
+    genes, from environmental experience, or from both. For most traits it is both. To the extent that
+    a trait is influenced by heritable effects, phenotypic similarity should track genetic similarity.
+    We can make that precise by decomposing the covariance between two individuals' phenotypes.</p>
+    <div class="derive"><h5>Decomposing the covariance between two phenotypes</h5>
+      <ol>
+      <li>Write each phenotype in the familiar form \(y_i=\mu+g_i+e_i\). Then
+        \(\operatorname{Cov}(y_i,y_j)=\operatorname{Cov}(\mu+g_i+e_i,\;\mu+g_j+e_j)\).</li>
+      <li>Expanding, \(\operatorname{Cov}(y_i,y_j)=\operatorname{Cov}(g_i,g_j)+\operatorname{Cov}(g_i,e_j)
+        +\operatorname{Cov}(e_i,g_j)+\operatorname{Cov}(e_i,e_j)\).</li>
+      <li>Typically \(\operatorname{Cov}(g_i,e_j)=\operatorname{Cov}(e_i,g_j)=0\): one individual's genes
+        are not associated with another's environment.</li>
+      <li>Hence \(\operatorname{Cov}(y_i,y_j)=\operatorname{Cov}(g_i,g_j)+\operatorname{Cov}(e_i,e_j)\),
+        that is, similarity is caused by <strong>shared genes</strong> and <strong>shared
+        environments</strong>.</li>
+      </ol>
+    </div>
+
+    <p>That last line is the whole basis of quantitative genetic estimation from relatives, and also its
+    central danger: relatives usually share environments as well as genes, so
+    \(\operatorname{Cov}(e_i,e_j)\ne 0\) inflates apparent heritability unless the design controls it.</p>  </section>
+  <section class="lsec" id="theta">
+    <h2>The coefficient of coancestry</h2>
+
+    <p>Take a random allele at a locus from individual \(i\) and a random allele at the same locus from
+    individual \(j\).</p>
+    <div class="keybox"><strong>Definitions</strong>
+    <ul style="margin:6px 0 0">
+      <li>\(\theta_{ij}\) is the probability that these two alleles are IBD: the
+          <strong>coefficient of coancestry</strong>.</li>
+      <li>The <strong>coefficient of relatedness</strong> in diploids is \(F_{ij}=2\theta_{ij}\).</li>
+      <li>\(F_{ij}\) is the expected number of IBD copies, in \(j\), of a random allele drawn from
+          \(i\).</li>
+    </ul></div>
+  </section>
+  <section class="lsec" id="cov">
+    <h2>Covariance among relatives</h2>
+
+    <p>Ignoring epistasis, split each genotypic value into its additive and dominance parts,
+    \(g_i=a_i+\delta_i\):</p>
+    <div class="eqn c">\[\begin{aligned}
+\operatorname{Cov}(g_i,g_j)&=\operatorname{Cov}(a_i+\delta_i,\;a_j+\delta_j)\\
+&=\operatorname{Cov}(a_i,a_j)+\underbrace{\operatorname{Cov}(a_i,\delta_j)}_{=0}
+ +\underbrace{\operatorname{Cov}(\delta_i,a_j)}_{=0}+\operatorname{Cov}(\delta_i,\delta_j)\\
+&=\operatorname{Cov}(a_i,a_j)+\operatorname{Cov}(\delta_i,\delta_j)
+\end{aligned}\]</div>
+
+    <p>The dominance term \(\operatorname{Cov}(\delta_i,\delta_j)\) is normally only appreciable if
+    \(i\) and \(j\) are <strong>full sibs</strong>, since only full sibs can share <em>both</em> alleles
+    at a locus IBD. Generally, therefore, we focus on \(\operatorname{Cov}(a_i,a_j)\).</p>
+    <div class="derive"><h5>Additive genetic similarity</h5>
+      <ol>
+      <li>Let \(\alpha_{ik}\) be the additive effect of allele \(k\) in individual \(i\), so
+        \(a_i=\alpha_{i1}+\alpha_{i2}\).</li>
+      <li>\(\operatorname{Cov}(a_i,a_j)=\operatorname{Cov}(\alpha_{i1}+\alpha_{i2},\;\alpha_{j1}+\alpha_{j2})\),
+        which expands into four allele-by-allele covariance terms.</li>
+      <li>Each such pair contributes \(V(\alpha)\) if the two alleles are IBD (probability
+        \(\theta_{ij}\)) and \(0\) otherwise, giving
+        \(4\left[(1-\theta_{ij})\cdot 0+\theta_{ij}V(\alpha)\right]\).</li>
+      <li>Since \(V(\alpha)=\tfrac12 V_a\) (the gametic variance is half the additive variance), this is
+        \(4\times\tfrac12\theta_{ij}V_a=2\theta_{ij}V_a\).</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>Central result</strong>
+    <div class="eqn c" style="background:#fff">\[\operatorname{Cov}(a_i,a_j)=2\theta_{ij}V_a=F_{ij}V_a\]</div></div>
+
+    <p>For a few common outbred relative pairs this gives:</p>
+    <table class="dtab">
+      <tr><th>Relationship</th><th>\(\theta_{ij}\)</th><th>\(\operatorname{Cov}(a_i,a_j)\)</th></tr>
+      <tr><td>Parent and offspring</td><td>\(1/4\)</td><td>\(\tfrac12 V_a\)</td></tr>
+      <tr><td>Half sibs</td><td>\(1/8\)</td><td>\(\tfrac14 V_a\)</td></tr>
+      <tr><td>Full sibs</td><td>\(1/4\)</td><td>\(\tfrac12 V_a\) (plus \(\tfrac14 V_d\))</td></tr>
+    </table>
+    <div class="vslot"><strong>Video: Covariance among relatives</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="mendel">
+    <h2>Parent average and Mendelian sampling</h2>
+
+    <p>Parents have breeding values \(a_s\) and \(a_d\). An offspring's expected deviation from the
+    population mean is the <strong>parent average breeding value</strong>:</p>
+    <div class="eqn c">\[a_{\bar p}=\tfrac12\left(a_s+a_d\right)\]</div>
+
+    <h3>Variance of the parent average</h3>
+    <div class="eqn c">\[\begin{aligned}
+\operatorname{Var}(a_{\bar p})&=\operatorname{Var}\!\left(\tfrac12(a_s+a_d)\right)
+=\tfrac14\operatorname{Var}(a_s)+\tfrac12\operatorname{Cov}(a_s,a_d)+\tfrac14\operatorname{Var}(a_d)\\
+&=\tfrac14 V_a+\tfrac14 V_a=\tfrac12 V_a \qquad\text{(assuming }\operatorname{Cov}(a_s,a_d)=0\text{, i.e.\ no assortative mating)}
+\end{aligned}\]</div>
+
+    <h3>Mendelian sampling</h3>
+    <p>An offspring is not exactly the average of its parents. Which particular allele each parent
+    transmits is a coin toss, and that randomness has a name and a variance. With no selection and
+    random mating, \(V_a\) is constant across generations, so:</p>
+    <div class="eqn c">\[\begin{aligned}
+a_o&=\tfrac12(a_s+a_d)+a_M=a_{\bar p}+a_M\\
+V(a_o)&=\tfrac14(V_s+V_d)+V_M\\
+V_M&=V_a-\tfrac12 V_a=\tfrac12 V_a
+\end{aligned}\]</div>
+    <div class="keybox"><strong>Distribution of offspring</strong>
+    <p style="margin-top:4px">Given parents with breeding values \(a_s\) and \(a_d\), the two sources of
+    variance among their offspring are \(V_M=\tfrac12 V_a\) and \(V_e\). Hence</p>
+    <div class="eqn c" style="background:#fff">\[a_o\sim N\!\left(a_{\bar p},\;\tfrac12 V_a\right),
+    \qquad y_o\sim N\!\left(a_{\bar p},\;\tfrac12 V_a+V_e\right)\]</div>
+    <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">This is why even an elite mating
+    produces a range of offspring, and why selection among full sibs is possible at all.</p></div>
+  </section>
+  <section class="lsec" id="F">
+    <h2>The inbreeding coefficient</h2>
+
+    <p>If the two parents are related, there is a chance they transmit IBD alleles to their offspring.
+    That probability is the <strong>inbreeding coefficient</strong> \(F_i\) of the offspring. Note the
+    logic: relatedness is a property of the <em>parents</em>, inbreeding is a property of the
+    <em>offspring</em>.</p>
+    <p>\(F\) can be computed from pedigree data in two ways: by direct computation of IBD probabilities
+    using <strong>Wright's path method</strong>, or by the <strong>tabular method</strong>, which leads
+    to the numerator relationship matrix below.</p>
+    <div class="keybox"><strong>Wright's path method</strong>
+    <p style="margin-top:4px">Count the number of meiosis links in each loop through a common ancestor:</p>
+    <div class="eqn c" style="background:#fff">\[F=\sum_i \left(\tfrac12\right)^{n_i-1}\]</div>
+    <p style="margin:6px 0 0">and if the ancestor in loop \(i\) is itself inbred with coefficient
+    \(F_{A_i}\),</p>
+    <div class="eqn c" style="background:#fff">\[F=\sum_i \left(\tfrac12\right)^{n_i-1}\left(1+F_{A_i}\right)\]</div>
+    <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">\(n_i\) is the number of meioses
+    (links) in loop \(i\). Each meiosis halves the probability of transmitting the same allele, which is
+    where the factor of one half comes from.</p></div>
+    <div class="vslot"><strong>Video: Computing F from a pedigree</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="Fvar">
+    <h2>What inbreeding does to variance</h2>
+
+    <p>When an individual is inbred, its two alleles \(A_1\) and \(A_2\) at a locus are no longer
+    independent, and neither are their effects \(\alpha_1\) and \(\alpha_2\).</p>
+    <div class="eqn c">\[\begin{aligned}
+\operatorname{Var}(a)&=\operatorname{Var}(\alpha_1+\alpha_2)
+=\operatorname{Var}(\alpha_1)+2\operatorname{Cov}(\alpha_1,\alpha_2)+\operatorname{Var}(\alpha_2)\\
+&=2\operatorname{Var}(\alpha)+2\left[(1-F)\cdot 0+F\operatorname{Var}(\alpha)\right]\\
+&=(1+F)\,V_a
+\end{aligned}\]</div>
+
+    <p>So inbreeding <em>increases</em> the additive genetic variance among individuals by a factor
+    \((1+F)\). This is not extra genetic variation being created; it is the same variation redistributed,
+    more of it now expressed between individuals because fewer alleles are hidden in heterozygotes.</p>
+    <h3>Mendelian sampling variance under inbreeding</h3>
+    <p>Inbred parents generate less variation among their offspring, because at loci where a parent is
+    already homozygous by descent, segregation produces nothing new:</p>
+    <ul>
+      <li>A non-inbred parent generates \(\tfrac14 V_a\).</li>
+      <li>An inbred parent generates \(\tfrac14(1-F)V_a\).</li>
+    </ul>
+    <div class="eqn c">\[V_M=\tfrac14(1-F_s)V_a+\tfrac14(1-F_d)V_a=\tfrac12\left(1-\frac{F_s+F_d}{2}\right)V_a\]</div>
+  <div class="srcnote"><b>Source note.</b>
+    The 2021 delivery presented Mendelian sampling variance only for non-inbred parents; the 2023
+    delivery generalised it to inbred parents. The general form is used here, since it reduces to the
+    2021 result when \(F_s=F_d=0\).</div>
+  </section>
+  <section class="lsec" id="pop">
+    <h2>Inbreeding at population level</h2>
+
+    <div class="wex"><h5>Worked example: average inbreeding</h5>
+    <p style="margin-top:4px">Start from a population of non-inbred animals. In the next generation,
+    10% of matings are between half sibs and 5% between full sibs. Half-sib mating gives offspring
+    \(F=0.125\); full-sib mating gives \(F=0.25\). Then</p>
+    <div class="eqn c">\[\bar F=0.85(0)+0.10(0.125)+0.05(0.25)=0.025\]</div></div>
+
+    <h3>Genotype frequencies with inbreeding</h3>
+    <p>Let a fraction \(\bar F\) of individuals be inbred at a locus. Among the \(1-\bar F\) that are
+    not, genotypes are in Hardy-Weinberg proportions \(p^2\), \(2pq\), \(q^2\). Among the \(\bar F\)
+    that are, the two alleles are IBD, so the individual is homozygous: a fraction \(p\) are \(AA\) and
+    \(q\) are \(aa\), with <em>no</em> heterozygotes.</p>
+    <h3>Estimating inbreeding from a heterozygote deficiency</h3>
+    <div class="derive"><h5>Deriving \(\bar F\) from observed heterozygosity</h5>
+      <ol>
+      <li>Under Hardy-Weinberg we expect \(H_{\text{exp}}=2pq\) heterozygotes.</li>
+      <li>With average inbreeding \(\bar F\), only the non-inbred fraction contributes heterozygotes:
+        \(H_{\text{obs}}=(1-\bar F)2pq\).</li>
+      <li>Therefore
+        \(\dfrac{H_{\text{exp}}-H_{\text{obs}}}{H_{\text{exp}}}
+        =\dfrac{2pq-(1-\bar F)2pq}{2pq}=\bar F\).</li>
+      </ol>
+    </div>
+    <div class="wex"><h5>Worked example: computing \(\bar F\) from genotype frequencies</h5>
+    <p style="margin-top:4px">A population shows 50% \(A_1A_1\), 20% \(A_1A_2\), 30% \(A_2A_2\).</p>
+    <p>\(p=0.5+0.2/2=0.6\), so \(q=0.4\). Expected heterozygosity
+    \(H_{\text{exp}}=2(0.6)(0.4)=0.48\), observed \(H_{\text{obs}}=0.20\).</p>
+    <div class="eqn c">\[\bar F=\frac{0.48-0.20}{0.48}\approx 0.58\]</div></div>
+    <div class="wex"><h5>Worked example: why breeders worry about small \(\bar F\)</h5>
+    <p style="margin-top:4px">Take \(\bar F=0.025\) from the earlier example, and a recessive disease
+    allele at \(q=0.001\).</p>
+    <p>Under Hardy-Weinberg the disease frequency would be \(q^2=10^{-6}\). With inbreeding it becomes
+    \(q^2+\bar F pq\approx 2.6\times10^{-5}\).</p>
+    <p>An average inbreeding of just 2.5% raises the incidence roughly <strong>26-fold</strong>. This is
+    why rare recessive defects surface in closed nucleus herds long before inbreeding depression in
+    production traits becomes obvious.</p></div>
+  </section>
+  <section class="lsec" id="depress">
+    <h2>Inbreeding depression</h2>
+
+    <p>The general observation is that inbred individuals perform worse, with an approximately
+    <strong>linear</strong> decrease in performance as \(F\) increases.</p>
+    <h3>Why</h3>
+    <ul>
+      <li>An excess of deleterious homozygotes.</li>
+      <li>A deficiency of advantageous heterozygotes.</li>
+    </ul>
+    <p>Formally, inbreeding depression occurs if the dominance deviations \(\delta_{Aa}\), summed across
+    loci, are <em>typically positive</em>, that is, if heterozygotes tend to be above the midpoint of
+    the two homozygotes.</p>
+    <div class="derive"><h5>Supplementary: the size of the depression</h5>
+      <ol>
+      <li>In Falconer and Mackay's notation, with no inbreeding the mean is
+        \(\mu+(p-q)a+2pq\,d\).</li>
+      <li>With average inbreeding \(\bar F\), the heterozygote frequency falls to \((1-\bar F)2pq\) and
+        the mean becomes \(\mu+(p-q)a+2(1-\bar F)pq\,d\).</li>
+      <li>The difference is \(-2\bar F pq\,d\) per locus, so summed over loci the total inbreeding
+        depression is \(D=\bar F\sum_i 2p_iq_id_i\), linear in \(\bar F\), as observed.</li>
+      </ol>
+    </div>
+  <div class="srcnote"><b>Source note.</b> This derivation appears in the slide source of both the 2021 and
+    2023 deliveries but is commented out in each, so it was not shown in class. It is included here,
+    clearly marked as supplementary, because it supplies the quantitative justification for the
+    linearity asserted above. Omit it if you prefer to keep the lecture at the level delivered.</div>
+  </section>
+  <section class="lsec" id="Amat">
+    <h2>The numerator relationship matrix</h2>
+
+    <p>For breeding value estimation we need a matrix representation of all pairwise relationships. The
+    natural one is the <strong>numerator relationship matrix</strong> \(\mathbf{A}\):</p>
+    <div class="eqn c">\[\mathbf{A}=\begin{pmatrix}
+1+F_{11} & & \cdots & & F_{1n}\\
+ & \ddots & & & \\
+\vdots & & 1+F_{ii} & & \vdots\\
+ & & & \ddots & \\
+F_{n1} & & \cdots & & 1+F_{nn}
+\end{pmatrix}\]</div>
+
+    <p>The off-diagonal element \(F_{ij}\) (\(i\ne j\)) is the coefficient of relatedness
+    \(F_{ij}=2\theta_{ij}\); the diagonal element is \(1+F_{ii}\), where \(F_{ii}\) is the individual's
+    inbreeding coefficient. The diagonal exceeding one is exactly the \((1+F)V_a\) result derived
+    above.</p>
+    <div class="keybox"><strong>Where this is going</strong>
+    <p style="margin-top:4px">\(\mathbf{A}\) is what makes BLUP possible: the additive genetic
+    covariance structure of an entire pedigree is \(\mathbf{A}V_a\). In genomic prediction the same
+    role is played by a genomic relationship matrix \(\mathbf{G}\), estimated from markers rather than
+    deduced from the pedigree.</p></div>
+  </section>
+  <section class="lsec" id="assort">
+    <h2>Assortative mating</h2>
+
+    <p>What happens when we mate the best with the best, phenotypically? This is what breeding
+    programmes usually do, so the consequences matter. Assortative mating means
+    \(\operatorname{Cov}(y_s,y_d)=r>0\).</p>
+    <div class="derive"><h5>Consequences, step by step</h5>
+      <ol>
+      <li>Association between <em>phenotypes</em> induces association between <em>breeding values</em>:
+        \(\operatorname{Cov}(a_s,a_d)=r\,h^2V_a\).</li>
+      <li>The parent average is therefore more variable than before:
+        \(\operatorname{Var}(a_{\bar p})=\tfrac14\left(V_a+2\operatorname{Cov}(a_s,a_d)+V_a\right)
+        =\tfrac12 V_a\left(1+rh^2\right)\).</li>
+      <li>Adding Mendelian sampling,
+        \(\operatorname{Var}(a_o)=\operatorname{Var}(a_{\bar p})+V_M
+        =\tfrac12 V_a(1+rh^2)+\tfrac12 V_a=V_a\left(1+\tfrac12 rh^2\right)\).</li>
+      </ol>
+    </div>
+
+    <p>So in the first generation assortative mating <strong>increases</strong> the additive variance.
+    But there is a sting. By mating good with good and poor with poor we induce inbreeding at the very
+    genes that affect the trait, which reduces \(V_M\). Over time the effect reverses:</p>
+    <table class="dtab">
+      <tr><th>Generation</th><th>Additive genetic variance</th><th>Heritability</th></tr>
+      <tr><td>0</td><td>\(V_a\)</td><td>\(h^2\)</td></tr>
+      <tr><td>1</td><td>\(V_a\left(1+\tfrac12 rh^2\right)\)</td>
+          <td>\(h^2\dfrac{1+\tfrac12 rh^2}{1+\tfrac12 r\left(h^2\right)^2}\)</td></tr>
+      <tr><td>\(\infty\)</td><td>\(V_a\left(1-rh^2\right)\)</td>
+          <td>\(h^2\dfrac{1-rh^2}{1+r\left(h^2\right)^2}\)</td></tr>
+    </table>
+    <div class="keybox"><strong>Consequences</strong>
+    <ul style="margin:6px 0 0">
+      <li>In the <strong>short term</strong>, assortative mating increases \(V_a\), heritability and
+          selection response.</li>
+      <li>In the <strong>longer term</strong> the effect is the opposite, because of the inbreeding
+          induced at the trait genes.</li>
+    </ul></div>
+  </section>
+  <section class="lsec" id="summary">
+    <h2>Summary</h2>
+
+    <ul>
+      <li>Resemblance among relatives is due to shared genes, and to shared environments.</li>
+      <li>Mating among relatives causes inbreeding.</li>
+      <li>Inbreeding leads to inbreeding depression.</li>
+      <li>The numerator relationship matrix summarises degrees of allele sharing.</li>
+    </ul>
+  <div class="srcnote"><b>Acknowledgement.</b> Lecture content inspired by notes from Prof. Bernt Guldbrandtsen.</div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 4.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Regression on parent average.</strong> Show that the regression of an
+    offspring's phenotype on the parent average phenotype equals the heritability, that is
+    \(\operatorname{Reg}(y_o,\overline{P})=h^2\), where \(\overline{P}=\tfrac12(y_s+y_d)\).</p>
+    <p>You may use the result from the lecture that the covariance between one parent and its offspring
+    is \(\tfrac12 V_a\).</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>We need \(\operatorname{Reg}(y_o,\overline{P})=
+    \dfrac{\operatorname{Cov}(y_o,\overline{P})}{\operatorname{Var}(\overline{P})}\), so compute both.</p>
+    <p><strong>Denominator.</strong> Assuming the parents are unrelated and each has phenotypic variance
+    \(V_p\),</p>
+    <div class="eqn c">\[\operatorname{Var}(\overline{P})=\operatorname{Var}\!\left(\frac{y_s+y_d}{2}\right)
+    =\tfrac14\left(\operatorname{Var}(y_s)+\operatorname{Var}(y_d)\right)=\tfrac14\cdot 2V_p=\tfrac12 V_p\]</div>
+    <p><strong>Numerator.</strong> Using \(\operatorname{Cov}(y_o,y_s)=\operatorname{Cov}(y_o,y_d)=\tfrac12 V_a\),</p>
+    <div class="eqn c">\[\operatorname{Cov}(y_o,\overline{P})=\tfrac12\left[\operatorname{Cov}(y_o,y_s)
+    +\operatorname{Cov}(y_o,y_d)\right]=\tfrac12\left(\tfrac12 V_a+\tfrac12 V_a\right)=\tfrac12 V_a\]</div>
+    <p><strong>Ratio.</strong></p>
+    <div class="eqn c">\[\operatorname{Reg}(y_o,\overline{P})=\frac{\tfrac12 V_a}{\tfrac12 V_p}
+    =\frac{V_a}{V_p}=h^2\]</div>
+    <p>Note the contrast with regression on a <em>single</em> parent, which gives \(\tfrac12 h^2\).
+    Averaging the two parents halves the variance of the predictor while leaving the covariance
+    unchanged, which doubles the regression coefficient.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 4.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Path method.</strong> Two half sibs share a single common ancestor and are
+    mated together. Compute the inbreeding coefficient of their offspring, first assuming the common
+    ancestor is not inbred, then assuming it has \(F_A=0.20\).</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Trace the loop from one parent up to the common ancestor and back down to the other parent.
+    For half sibs mated together the loop passes through 3 meioses, so \(n=3\).</p>
+    <div class="eqn c">\[F=\left(\tfrac12\right)^{n-1}=\left(\tfrac12\right)^{2}=0.125\]</div>
+    <p>With an inbred common ancestor,</p>
+    <div class="eqn c">\[F=\left(\tfrac12\right)^{n-1}\left(1+F_A\right)=0.125\times 1.20=0.15\]</div>
+    <p>The ancestor's own inbreeding raises the chance that the two alleles it passes down are IBD, so
+    it inflates the descendant's \(F\) proportionally.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 4.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Heterozygote deficiency.</strong> A population is scored at one locus:
+    36% \(A_1A_1\), 48% \(A_1A_2\), 16% \(A_2A_2\). Is there evidence of inbreeding? Now repeat for a
+    second locus scored as 45% \(A_1A_1\), 30% \(A_1A_2\), 25% \(A_2A_2\).</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>Locus 1.</strong> \(p=0.36+0.48/2=0.60\), \(q=0.40\).
+    \(H_{\text{exp}}=2(0.6)(0.4)=0.48\), and \(H_{\text{obs}}=0.48\).
+    \(\bar F=(0.48-0.48)/0.48=0\). No evidence of inbreeding; the locus is in Hardy-Weinberg
+    proportions.</p>
+    <p><strong>Locus 2.</strong> \(p=0.45+0.30/2=0.60\), \(q=0.40\).
+    \(H_{\text{exp}}=0.48\), \(H_{\text{obs}}=0.30\).</p>
+    <div class="eqn c">\[\bar F=\frac{0.48-0.30}{0.48}=0.375\]</div>
+    <p>A substantial apparent inbreeding. Note the caution, though: both loci have identical allele
+    frequencies, so the difference is entirely in the genotype distribution. A heterozygote deficiency
+    at a <em>single</em> locus can also be produced by population substructure (the Wahlund effect),
+    null alleles, or genotyping error, so \(\bar F\) estimated this way should be averaged over many
+    loci before it is believed.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecnav"><a href="lec-qg-one-locus.html">&#8592; Lecture 3: The one-locus model</a><a href="knowledge.html">All lectures</a><a href="lec-qg-drift.html">Lecture 5: Random genetic drift &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

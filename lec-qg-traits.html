@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Quantitative traits and distributions · ASAP-Bio</title>
+<meta name="description" content="Lecture on quantitative versus discrete traits, metric traits, the many-locus model, the Central Limit Theorem and the infinitesimal model.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>Quantitative traits and distributions</h1><p>Lecture 1 of the Quantitative Genetics series. Why quantitative traits need their own theory, and why they end up normally distributed.</p></div></div><section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 1</span><span>Quantitative Genetics</span><span>MSc level</span><span class="s">Grum Gebreyesus</span></div>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#why">Why quantitative genetics?</a></li>
+    <li><a href="#metric">Metric traits: what we can and cannot observe</a></li>
+    <li><a href="#many">From one locus to many</a></li>
+    <li><a href="#normal">Why phenotypes are normally distributed</a></li>
+    <li><a href="#infinit">The infinitesimal model</a></li>
+    <li><a href="#scope">What the rest of the course covers</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="why">
+    <h2>Why quantitative genetics?</h2>
+
+    <p>Genetics as most people first meet it is the genetics of <strong>discrete traits</strong>. A discrete
+    trait takes a few distinct values, eye colour, the ability to roll the tongue, coat colour in
+    Labradors. Such traits are usually controlled by the genotype at one or a few loci, and for many of
+    them the responsible genes are known and understood. You can write down a genotype, apply Mendel's
+    rules, and predict the phenotype.</p>
+
+    <p>Now consider milk yield, growth rate, feed intake, disease resistance or human height. None of
+    these falls into neat categories. They vary continuously, and no single gene determines them.</p>
+    <div class="keybox"><strong>Definition</strong>
+    <p style="margin-top:4px">A <strong>quantitative trait</strong> is a trait that assumes values on a
+    continuous scale. <strong>Quantitative genetics</strong> deals with the inheritance of variation in
+    quantitative traits. Most quantitative traits are influenced by variation in many genes, each of
+    small effect, together with the environment.</p></div>
+
+    <p>This is not a minor special case. Nearly every trait of economic importance in animal and plant
+    breeding is quantitative. So we need a different language: one built on <strong>expectations and
+    probabilities</strong> rather than on deterministic Mendelian ratios.</p>
+
+    <p>The strategy of this course is to model <strong>one locus in complete detail</strong>, and then
+    extend that model to many loci. Almost everything that follows, breeding values, variance
+    components, heritability, response to selection, is built on the one-locus foundation.</p>
+    <div class="vslot"><strong>Video: Why quantitative genetics</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="metric">
+    <h2>Metric traits: what we can and cannot observe</h2>
+
+    <p>Quantitative genetics deals primarily with <strong>metric traits</strong>, traits we measure on a
+    scale rather than classify into categories. Working with metric traits forces an important admission:</p>
+    <ul>
+      <li>The effect of any <em>single</em> gene cannot be observed directly.</li>
+      <li>We can only speak about the trait in terms of <strong>probability and statistics</strong>.</li>
+    </ul>
+    <p>This is worth pausing on, because it explains the shape of the whole subject. If you cannot see
+    an individual gene's effect, you cannot proceed gene by gene. Instead you describe the
+    <em>distribution</em> of the trait in a population, and you partition the <em>variation</em> in that
+    distribution into parts attributable to genes and to environment. That is why the next lecture is
+    about probability and expectations: they are not a mathematical detour, they are the working tools
+    of the subject.</p>
+  <div class="srcnote"><b>Source note.</b> This section follows the opening of Lecture Day 1 (slides originally
+    by courtesy of Prof. Bernt Guldbrandtsen), with the "why quantitative genetics" and "metric traits"
+    slides merged, since across course years they carried the same three points in different orders.</div>
+  </section>
+  <section class="lsec" id="many">
+    <h2>From one locus to many</h2>
+
+    <p>Start with the model for a single locus. For a locus \(j\) with two alleles, the effect an
+    individual carries is</p>
+    <div class="eqn c">\[g_j = \left(G_j - 2p_j\right)\alpha_j\]</div>
+
+    <p>where \(G_j\in\{0,1,2\}\) counts copies of one allele, \(p_j\) is that allele's frequency and
+    \(\alpha_j\) is the allele substitution effect. The full derivation of this expression is the
+    subject of the one-locus lecture; here we only need its shape.</p>
+
+    <p>Adding a second locus simply adds a second term:</p>
+    <div class="eqn c">\[y = \mu + g_1 + g_2 + e\]</div>
+
+    <p>and the general model for \(L\) loci is</p>
+    <div class="eqn c">\[y = \mu + \sum_{j=1}^{L} g_j + e \;=\; \mu + \sum_{j=1}^{L}\left(G_j-2p_j\right)\alpha_j + e\]</div>
+
+    <p>where \(y\) is the observed phenotype, \(\mu\) the overall mean, \(g_j\) the effect of the
+    genotype at locus \(j\), and \(e\) the residual or environmental effect. The individual's
+    <strong>breeding value</strong> across all loci is \(g=\sum_{j=1}^{L}g_j\).</p>
+    <div class="keybox"><strong>Expected value of an offspring</strong>
+    <p style="margin-top:4px">Because a parent transmits one allele of each pair, the offspring's
+    expected genetic value is the average of the parental breeding values:</p>
+    <div class="eqn c" style="background:#fff">\[E\!\left(y_{\text{off}}\right)=\mu+\sum_{j=1}^{L}
+    \left(\tfrac{1}{2}g_{s,j}+\tfrac{1}{2}g_{d,j}\right)\]</div>
+    <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">with \(s\) the sire and \(d\) the dam.
+    This single line is the reason breeding works at all, and it reappears as the parent average in
+    every breeding-value prediction you will meet later.</p></div>
+    <div class="vslot"><strong>Video: From one locus to many</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="normal">
+    <h2>Why phenotypes are normally distributed</h2>
+
+    <p>Height, milk yield, body weight and feed intake are all routinely assumed to be normally
+    distributed. Yet look again at the building block:</p>
+    <div class="eqn c">\[g_j = (G_j - 2p_j)\alpha_j \quad\text{takes only three values, since } G_j\in\{0,1,2\}\]</div>
+
+    <p>A single gene effect is emphatically <strong>not</strong> normally distributed. It is a
+    three-point discrete variable. So where does the familiar bell curve come from?</p>
+    <div class="derive"><h5>The argument, in three steps</h5>
+      <ol>
+      <li>A phenotype is a <em>sum</em> of many such three-point variables plus an environmental term:
+        \(y=\mu+\sum_{j=1}^{L}g_j+e\).</li>
+      <li>The <strong>Central Limit Theorem</strong> states that for independent random variables
+        \(X_1,\dots,X_N\),
+        \(\dfrac{\sum_j X_j - E\left(\sum_j X_j\right)}{\sqrt{\operatorname{Var}\left(\sum_j X_j\right)}}
+        \xrightarrow{\;D\;} N(0,1)\).
+        Equivalently, for large \(N\), \(\sum_j X_j \xrightarrow{\;D\;}
+        N\!\left(0,\operatorname{Var}\left(\sum_j X_j\right)\right)\).</li>
+      <li>Applying this to the genotype effects, with \(E(g)=\sum_j E(g_j)=0\) and
+        \(\operatorname{Var}(g)=\sigma_g^2\), the <em>sum</em> of a large enough number of individually
+        non-normal gene effects is well approximated by a normal distribution, even though no single
+        term is.</li>
+      </ol>
+    </div>
+
+    <p>The normal density itself is</p>
+    <div class="eqn c">\[f_Y(y)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left[-\frac{(y-\mu)^2}{2\sigma^2}\right],\qquad -\infty<y<\infty\]</div>
+
+    <p>written \(Y\sim N(\mu,\sigma^2)\).</p>
+    <div class="keybox"><strong>The point to take away</strong>
+    <p style="margin-top:4px">Normality of a quantitative trait is not an arbitrary convenience. It is a
+    <em>consequence</em> of many small, independent genetic contributions adding up. This also tells you
+    when to be careful: if a trait is governed by one or two large-effect genes, the normal
+    approximation is poor and the distribution may be visibly multi-modal.</p></div>
+  </section>
+  <section class="lsec" id="infinit">
+    <h2>The infinitesimal model</h2>
+
+    <p>Pushing the logic to its limit gives the model that underpins most of animal and plant breeding.</p>
+    <div class="keybox"><strong>Main assumptions of the infinitesimal model</strong>
+    <ul style="margin:6px 0 0">
+      <li>Effects are <strong>additive</strong>.</li>
+      <li>There is <strong>no linkage disequilibrium</strong> between loci.</li>
+      <li>The phenotype \(y\) is unchanged whichever model we choose to describe it.</li>
+    </ul></div>
+
+    <p>That last assumption deserves emphasis, because it is easy to misread. The animal's actual
+    phenotype does not change when we decide to write down a one-locus, two-locus or many-locus model.
+    What changes is how the same total genetic effect is <em>distributed</em> among the terms:</p>
+    <div class="eqn c">\[\begin{aligned}
+\text{One locus:}\quad & y=\mu+(G_1-2p_1)\alpha_1+e\\[2pt]
+\text{Two loci:}\quad  & y=\mu+(G_1-2p_1)\alpha_1+(G_2-2p_2)\alpha_2+e\\[2pt]
+\text{Infinitesimal:}\quad & y=\mu+\sum_{j=1}^{L}(G_j-2p_j)\alpha_j+e
+\end{aligned}\]</div>
+
+    <p>As more loci enter the model, the total genetic effect on \(y\) becomes more
+    <strong>diluted</strong> among the individual \(\alpha_j\). Each locus explains less, but the sum
+    explains the same. The infinitesimal model takes this to the extreme: infinitely many loci, each of
+    infinitesimally small effect.</p>
+    <div class="vslot"><strong>Video: The infinitesimal model</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="scope">
+    <h2>What the rest of the course covers</h2>
+
+    <p>The topics ahead, in the order they build on one another:</p>
+    <ol>
+      <li>Quantitative genetics of <strong>one locus</strong></li>
+      <li>Quantitative genetics of <strong>many loci</strong></li>
+      <li><strong>Genetic and environmental effects</strong>, and their interactions</li>
+      <li><strong>Linkage disequilibrium</strong> and gene mapping</li>
+      <li>Genetics of <strong>multiple traits</strong></li>
+      <li><strong>Relationship and similarity</strong> among relatives</li>
+      <li>Genetic change due to <strong>selection</strong> and <strong>random events</strong></li>
+    </ol>
+    <p>Two applied strands run alongside. <strong>Artificial selection</strong> aims to change the
+    genetic properties of a population by preferentially breeding individuals whose genetics move the
+    population in a desired direction. <strong>Breeding value prediction</strong> combines genetic,
+    pedigree and phenotypic information into the best available prediction of which individuals carry
+    the most desirable genetics, using linear models that pool information across many animals and
+    several traits. <strong>Breeding schemes</strong> then organise this optimally, maximising genetic
+    gain within physical, economic and biological constraints.</p>  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <p>These exercises use the R functions from the course (<code>QG_KU_functions.R</code>,
+    <code>simY()</code>). The point is not the coding but the shape of the distributions you get.</p>
+    <details class="exbox"><summary>Exercise 1.1</summary>
+      <div class="exbody">
+        <div class="exq"><p>Simulate 100 phenotypes from a <strong>single-locus</strong> model and plot the
+    density:</p>
+    <div class="eqn" style="text-align:left"><code>rm(list=ls(all=TRUE)); source("QG_KU_functions.R")<br>
+    data &lt;- simY(100, mu=-5)<br>plot.density(data$y)</code></div>
+    <p>Inspect the object with <code>str(data)</code>. What are the components <code>y</code>,
+    <code>G</code>, <code>s</code> and <code>e</code>? Why is the density not bell-shaped?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><code>str(data)</code> returns a list of four: <code>y</code> the phenotypes,
+    <code>G</code> the genotype codes (0/1/2) per locus, <code>s</code> the simulated allele
+    substitution effects, and <code>e</code> the residuals.</p>
+    <p>With one locus the genetic contribution \(g_1=(G_1-2p_1)\alpha_1\) takes only three distinct
+    values. The density is therefore a mixture of three narrow humps (one per genotype) smeared only by
+    the environmental term \(e\), not a single smooth bell.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 1.2</summary>
+      <div class="exbody">
+        <div class="exq"><p>Repeat with an increasing number of loci:</p>
+    <div class="eqn" style="text-align:left"><code>data &lt;- simY(100, n.loci=2,   mu=0); plot.density(data$y)<br>
+    data &lt;- simY(100, n.loci=10,  mu=0); plot.density(data$y)<br>
+    data &lt;- simY(100, n.loci=50,  mu=0); plot.density(data$y)<br>
+    data &lt;- simY(100, n.loci=100, mu=0); plot.density(data$y)</code></div>
+    <p>At roughly how many loci does the distribution become visually indistinguishable from a normal
+    curve? Relate what you see to the Central Limit Theorem.</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>With 2 loci you can still often see discrete humps (up to 9 genotype combinations). By about
+    10 loci the humps have merged; by 50 to 100 the density is smooth and symmetric and looks normal.</p>
+    <p>This is the CLT in action: the sum \(\sum_j g_j\) of many independent, individually non-normal
+    three-point variables converges to a normal distribution. Note that the <em>number of loci needed</em>
+    depends on how equal the effects are, a few large-effect loci among many small ones will keep the
+    distribution skewed for longer.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 1.3</summary>
+      <div class="exbody">
+        <div class="exq"><p>Conceptual, no computing. A colleague argues that because each gene effect
+    \(g_j\) can only take three values, it is wrong to model a quantitative trait as normally
+    distributed. What is the flaw in the argument, and under what circumstances would the colleague
+    actually be right?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>The flaw is confusing the distribution of a <em>single term</em> with the distribution of
+    their <em>sum</em>. Normality is claimed for \(y=\mu+\sum_j g_j+e\), not for any individual \(g_j\).</p>
+    <p>The colleague is right, however, whenever the sum is dominated by a small number of large-effect
+    loci. Then the CLT approximation fails and the phenotypic distribution can be visibly multi-modal or
+    skewed, coat colour scored on a numeric scale, or a trait with a major gene such as double-muscling,
+    are practical examples.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecnav"><span></span><a href="knowledge.html">All lectures</a><a href="lec-qg-probability.html">Lecture 2: Probability and expectations &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

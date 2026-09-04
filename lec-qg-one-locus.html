@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The one-locus model · ASAP-Bio</title>
+<meta name="description" content="Lecture on Hardy-Weinberg proportions, the one-locus model, average effect of an allele, breeding value, dominance deviation and the additive and dominance variances.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>The one-locus model</h1><p>Lecture 3 of the Quantitative Genetics series. Genotypic values, average effects, breeding values and the genetic variance components.</p></div></div><section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 3</span><span>Quantitative Genetics</span><span>MSc level</span><span class="s">Grum Gebreyesus</span></div>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#freqs">Genotype and allele frequencies</a></li>
+    <li><a href="#hw">Hardy-Weinberg proportions</a></li>
+    <li><a href="#model">The one-locus model</a></li>
+    <li><a href="#gmean">Average effect of a genotype</a></li>
+    <li><a href="#alpha">Average effect of an allele</a></li>
+    <li><a href="#bv">Breeding value and dominance deviation</a></li>
+    <li><a href="#additive">Additive gene action as a special case</a></li>
+    <li><a href="#vars">Variances: gametic, additive, dominance</a></li>
+    <li><a href="#depend">Everything depends on allele frequency</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="freqs">
+    <h2>Genotype and allele frequencies</h2>
+
+    <p>Alleles of a gene vary; there may be two or many allelic forms, and some of these variants affect
+    quantitative traits. Alleles occur in combinations, the genotypes. With two alleles \(A\) and \(a\)
+    there are three genotypes, \(AA\), \(Aa\) and \(aa\), with frequencies \(f_{AA}\), \(f_{Aa}\) and
+    \(f_{aa}\) summing to one.</p>
+    <p>Allele frequencies follow from genotype frequencies by counting: each homozygote carries two
+    copies, each heterozygote one.</p>
+    <div class="eqn c">\[p=\Pr(A)=f_{AA}+\tfrac{1}{2}f_{Aa},\qquad q=\Pr(a)=f_{aa}+\tfrac{1}{2}f_{Aa},\qquad p+q=1\]</div>
+  </section>
+  <section class="lsec" id="hw">
+    <h2>Hardy-Weinberg proportions</h2>
+
+    <p>Under random mating, with no selection, mutation or migration, and in a large population, each
+    allele in one generation has an equal chance of being copied into the next. No alleles are added,
+    removed or changed. Genotypes in the offspring are then formed by combining two independently drawn
+    alleles.</p>
+    <div class="derive"><h5>Random mating, gamete by gamete</h5>
+      <ol>
+      <li>A mother of genotype \(AA\) (frequency \(f_{AA}\)) transmits \(A\) with certainty; a mother
+        \(Aa\) (frequency \(f_{Aa}\)) transmits \(A\) with probability \(\tfrac12\). Summing over
+        maternal genotypes, the probability that the maternal gamete carries \(A\) is
+        \(f_{AA}+\tfrac12 f_{Aa}=p\).</li>
+      <li>The same holds for the paternal gamete, and under random mating the two draws are
+        <em>independent</em>.</li>
+      <li>Therefore \(\Pr(AA)=p\times p=p^2\), \(\Pr(aa)=q\times q=q^2\), and \(\Pr(Aa)=pq+qp=2pq\),
+        the factor 2 because \(A\) may come from either parent.</li>
+      </ol>
+    </div>
+    <div class="keybox"><strong>Hardy-Weinberg proportions</strong>
+    <div class="eqn c" style="background:#fff">\[f_{AA}=p^2,\qquad f_{Aa}=2pq,\qquad f_{aa}=q^2\]</div>
+    <p style="margin:6px 0 0">These are reached after a <strong>single</strong> generation of random
+    mating, and are the default assumption throughout the course. Note what this means in practice: even
+    if selection has severely distorted genotype frequencies among adults, one generation of random
+    mating among those adults restores Hardy-Weinberg proportions among the zygotes, provided mating
+    itself is random with respect to the locus.</p></div>
+    <div class="vslot"><strong>Video: Hardy-Weinberg proportions</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="model">
+    <h2>The one-locus model</h2>
+
+    <p>Our first goal is to decompose a phenotype into a genetic part and an environmental part. Consider
+    a locus with two alleles, and write the expected phenotype of each genotype as a conditional
+    expectation, exactly the object defined in the previous lecture:</p>
+    <div class="eqn c">\[\begin{array}{lcl}
+AA \ (\text{freq } p^2) & \quad & E(y\mid AA)=x_{AA}\\
+Aa \ (\text{freq } 2pq) & \quad & E(y\mid Aa)=x_{Aa}\\
+aa \ (\text{freq } q^2) & \quad & E(y\mid aa)=x_{aa}
+\end{array}\]</div>
+
+    <p>The population mean is the average of these three, weighted by their Hardy-Weinberg frequencies:</p>
+    <div class="eqn c">\[\mu=E(y)=p^2x_{AA}+2pq\,x_{Aa}+q^2x_{aa}\]</div>
+
+    <p>and the phenotype of an individual is written</p>
+    <div class="eqn c">\[y=\mu+g+e\]</div>
+
+    <p>with \(g\) the genotypic deviation and \(e\) the environmental deviation, both measured as
+    departures from \(\mu\).</p>  </section>
+  <section class="lsec" id="gmean">
+    <h2>Average effect of a genotype</h2>
+
+    <p>Define the genotypic value \(g\) of each genotype as its deviation from the population mean:</p>
+    <div class="eqn c">\[g_{ij}=x_{ij}-\mu \qquad\text{so that}\qquad
+E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}\]</div>
+
+    <p>By construction these deviations average to zero over the population:
+    \(p^2g_{AA}+2pq\,g_{Aa}+q^2g_{aa}=0\).</p>  </section>
+  <section class="lsec" id="alpha">
+    <h2>Average effect of an allele</h2>
+
+    <p>Here is the conceptual step that makes quantitative genetics work. Genotypes are <em>not</em>
+    transmitted to offspring, only <strong>alleles</strong> are. So we need the value associated with an
+    allele, not with a genotype.</p>
+    <p>The <strong>average effect of an allele</strong> is the expected deviation from \(\mu\) of an
+    individual known to carry that allele, with the second allele drawn at random from the population:</p>
+    <div class="eqn c">\[\begin{aligned}
+\alpha_A &= E(y\mid G=A-)-\mu = p\,g_{AA}+q\,g_{Aa}\\[3pt]
+\alpha_a &= E(y\mid G=a-)-\mu = p\,g_{Aa}+q\,g_{aa}
+\end{aligned}\]</div>
+
+    <p>The logic is direct: given one allele is \(A\), the other is \(A\) with probability \(p\) (giving
+    genotype \(AA\)) and \(a\) with probability \(q\) (giving \(Aa\)). Weight the genotypic values
+    accordingly.</p>
+    <div class="keybox"><strong>The allele substitution effect</strong>
+    <div class="eqn c" style="background:#fff">\[\beta=\alpha_A-\alpha_a\]</div>
+    <p style="margin:6px 0 0">\(\beta\) is the expected change in the trait when one \(a\) allele is
+    replaced by one \(A\). It is the single most useful number attached to a locus, and it is what the
+    \(\alpha_j\) in the many-locus model of Lecture 1 refers to. Note that average effects satisfy
+    \(p\alpha_A+q\alpha_a=0\).</p></div>
+    <div class="vslot"><strong>Video: Average effects of alleles</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="bv">
+    <h2>Breeding value and dominance deviation</h2>
+
+    <p>Since alleles are what get transmitted, the part of an individual's genotypic value that it can
+    pass on is the sum of the average effects of the two alleles it carries. That sum is the
+    <strong>breeding value</strong>.</p>
+    <div class="eqn c">\[a_{ij}=\alpha_i+\alpha_j \qquad\text{(the additive genetic value)}\]</div>
+
+    <p>The breeding value will generally not equal the genotypic value exactly. What is left over is the
+    <strong>dominance deviation</strong>:</p>
+    <div class="eqn c">\[\delta_{ij}=g_{ij}-\left(\alpha_i+\alpha_j\right)\]</div>
+
+    <p>giving the decomposition of the genotypic value at one locus:</p>
+    <div class="eqn c">\[g_{ij}=\underbrace{\alpha_i+\alpha_j}_{\text{additive, transmissible}}+\underbrace{\delta_{ij}}_{\text{dominance, not transmissible}}\]</div>
+
+    <div class="keybox"><strong>Why the split matters</strong>
+    <p style="margin-top:4px">A parent passes on <em>one allele</em>, not a genotype, so the dominance
+    deviation, which arises from the specific <em>combination</em> of two alleles, is broken up at
+    meiosis and not transmitted. This is precisely why selection responds to the additive component and
+    not to dominance, and why the breeder's equation later contains \(\sigma_A^2\) rather than
+    \(\sigma_G^2\).</p></div>
+
+    <p>Putting it together, the genetic model for one locus is</p>
+    <div class="eqn c">\[y=\mu+g+e=\mu+a+\delta+e\]</div>
+  </section>
+  <section class="lsec" id="additive">
+    <h2>Additive gene action as a special case</h2>
+
+    <p>It is worth seeing what happens when there is no dominance at all. Write the genotypic values in
+    the symmetric form \(x_{aa}=x-s\), \(x_{Aa}=x\), \(x_{AA}=x+s\), so that the heterozygote sits exactly
+    midway between the homozygotes. Then \(\mu=x+(p-q)s\) and the table becomes:</p>
+    <table class="dtab">
+      <tr><th>Genotype</th><th>\(x_{ij}\)</th><th>\(g_{ij}\)</th><th>\(\alpha_i+\alpha_j\)</th><th>\(\delta_{ij}\)</th></tr>
+      <tr><td>\(aa\)</td><td>\(x-s\)</td><td>\(-2ps\)</td><td>\(-2ps\)</td><td>0</td></tr>
+      <tr><td>\(Aa\)</td><td>\(x\)</td><td>\((p-q)s\)</td><td>\((p-q)s\)</td><td>0</td></tr>
+      <tr><td>\(AA\)</td><td>\(x+s\)</td><td>\(2qs\)</td><td>\(2qs\)</td><td>0</td></tr>
+    </table>
+    <p>Under purely additive gene action every dominance deviation is zero, the genotypic value equals
+    the breeding value, and \(\beta=\alpha_A-\alpha_a=s\) independently of allele frequency. This is the
+    reference case against which dominance and overdominance are judged.</p>  </section>
+  <section class="lsec" id="vars">
+    <h2>Variances: gametic, additive and dominance</h2>
+
+    <h3>Gametic variance</h3>
+    <p>The gametic variance is the variance of the effect transmitted by a single allele. A gamete
+    carries \(A\) with probability \(p\) (contributing \(\alpha_A\)) and \(a\) with probability \(q\)
+    (contributing \(\alpha_a\)). Since \(p\alpha_A+q\alpha_a=0\), the mean is zero and</p>
+    <div class="eqn c">\[\sigma_{\text{gametic}}^2=p\,\alpha_A^2+q\,\alpha_a^2=pq\beta^2\]</div>
+
+    <h3>Additive genetic variance</h3>
+    <p>An individual carries two independently drawn gametes, so the additive variance is twice the
+    gametic variance:</p>
+    <div class="eqn c">\[\sigma_A^2=2pq\beta^2\]</div>
+
+    <h3>Dominance variance</h3>
+    <p>The dominance variance is the variance of the deviations \(\delta_{ij}\), which have mean zero:</p>
+    <div class="eqn c">\[\sigma_D^2=p^2\delta_{AA}^2+2pq\,\delta_{Aa}^2+q^2\delta_{aa}^2\]</div>
+
+    <p>and, writing \(d\) for the dominance effect (the deviation of the heterozygote from the midpoint
+    of the homozygotes), this evaluates to the compact form</p>
+    <div class="eqn c">\[\sigma_D^2=\left(2pq\,d\right)^2\]</div>
+
+    <div class="keybox"><strong>The variance decomposition</strong>
+    <div class="eqn c" style="background:#fff">\[\sigma_G^2=\sigma_A^2+\sigma_D^2
+    \qquad\text{and}\qquad \sigma_y^2=\sigma_A^2+\sigma_D^2+\sigma_E^2\]</div>
+    <p style="margin:6px 0 0">The additive and dominance components are <strong>uncorrelated</strong>
+    by construction, which is what allows the variances to be added without a covariance term, exactly
+    the condition flagged in the variance section of Lecture 2. Note also that
+    \(\sigma_D^2=\sigma_G^2-\sigma_A^2\) holds <em>for one locus only</em>; with several loci the
+    difference would also contain epistatic variance.</p></div>
+    <div class="vslot"><strong>Video: Genetic variance components</strong>A recording of this section will be embedded here.</div>
+  </section>
+  <section class="lsec" id="depend">
+    <h2>Everything depends on allele frequency</h2>
+
+    <p>A point that students routinely underestimate. Look back at what we derived:</p>
+    <ul>
+      <li>\(\mu\) depends on the allele frequencies.</li>
+      <li>The \(\alpha\)'s depend on the allele frequencies.</li>
+      <li>Therefore the breeding values, the dominance deviations, and \(\sigma_A^2\) and
+          \(\sigma_D^2\) all depend on the allele frequencies too.</li>
+    </ul>
+    <p>The <em>genotypic values</em> \(x_{AA},x_{Aa},x_{aa}\) are properties of the biology and do not
+    change. Everything else on that list is a property of the <strong>population</strong>. The same
+    locus, with the same biology, has a different additive variance in two populations that differ in
+    allele frequency, and \(\sigma_A^2=2pq\beta^2\) necessarily goes to zero as \(p\to0\) or
+    \(p\to1\). A locus fixed for one allele contributes nothing to genetic variance, however large its
+    biological effect.</p>
+    <div class="keybox"><strong>Particularly important</strong>
+    <ol style="margin:6px 0 0">
+      <li>Hardy-Weinberg proportions are the default assumption.</li>
+      <li>The genetic model is \(y=\mu+g+e=\mu+a+\delta+e\).</li>
+      <li>Only the additive part \(a\) is transmitted to offspring.</li>
+      <li>All genetic parameters are population parameters, not constants of the gene.</li>
+    </ol></div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 3.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Sickle-cell anaemia.</strong> The locus has two alleles \(C\) and \(c\).
+    Individuals \(cc\) have anaemia; \(Cc\) individuals have partial protection against malaria. In parts
+    of West Africa the frequency of \(c\) is \(p_c=0.2\).</p>
+    <ol>
+      <li>What is the expected genotype distribution at birth?</li>
+      <li>\(cc\) individuals have far fewer children than \(CC\) or \(Cc\), and \(Cc\) have more
+          children than \(CC\), so allele frequencies among <em>adults</em> depart from Hardy-Weinberg
+          proportions. Assuming people marry and have children independently of their \(C/c\) genotype,
+          how far will the zygote distribution of the next generation deviate from Hardy-Weinberg
+          proportions?</li>
+    </ol></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1.</strong> With \(q=p_c=0.2\) and \(p=p_C=0.8\):
+    \(CC=p^2=0.64\), \(Cc=2pq=0.32\), \(cc=q^2=0.04\).</p>
+    <p><strong>2.</strong> Differential fertility among genotypes is a form of natural selection, and
+    selection is a violation of the Hardy-Weinberg conditions, so the <em>adult</em> population is not in
+    HW proportions. But the question asks about the <em>zygotes</em> of the next generation. Since mating
+    is random with respect to the \(C/c\) genotype, the zygotes are formed by independently sampling two
+    alleles from the adult gamete pool, so Hardy-Weinberg proportions are <strong>restored in a single
+    generation</strong>, at the new allele frequency.</p>
+    <p>The distinction to carry away: selection changes the allele <em>frequencies</em>, but random
+    mating re-establishes HW <em>proportions</em> at whatever those frequencies now are.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 3.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Crossing two populations.</strong> One locus with alleles \(A\) and \(a\).
+    In population 1 the frequency of \(A\) is \(p_1=0.7\); in population 2 it is \(p_2=0.4\).</p>
+    <ol>
+      <li>Compute the expected genotype frequencies in each subpopulation, assuming HW proportions.</li>
+      <li>Crossbred offspring are produced with one randomly chosen parent from each population. What is
+          the frequency of \(A\) in the crossbreds, and what is their expected genotype distribution?
+          Are the crossbreds in Hardy-Weinberg proportions? Why or why not?</li>
+      <li>The crossbreds are mated randomly among themselves to produce F2 animals. What are the allele
+          and genotype frequencies among the F2?</li>
+    </ol></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>1.</strong> Population 1: \(AA=0.49\), \(Aa=0.42\), \(aa=0.09\).
+    Population 2: \(AA=0.16\), \(Aa=0.48\), \(aa=0.36\).</p>
+    <p><strong>2.</strong> Allele frequency in the crossbreds is the average of the parental
+    frequencies, \(\bar p=(0.7+0.4)/2=0.55\). But the genotype frequencies are <em>not</em>
+    \(\bar p^2,2\bar p\bar q,\bar q^2\). Each crossbred receives one gamete from each population, so</p>
+    <div class="eqn c">\[\begin{aligned}
+    \Pr(AA)&=p_1p_2=0.7\times0.4=0.28\\
+    \Pr(Aa)&=p_1q_2+q_1p_2=0.7\times0.6+0.3\times0.4=0.54\\
+    \Pr(aa)&=q_1q_2=0.3\times0.6=0.18
+    \end{aligned}\]</div>
+    <p>HW would predict \(0.3025, 0.495, 0.2025\). The crossbreds have <em>more</em> heterozygotes than
+    HW (0.54 against 0.495), so they are <strong>not</strong> in Hardy-Weinberg proportions. The reason:
+    the two gametes are drawn from populations with <em>different</em> allele frequencies, so the two
+    draws are not identically distributed, which is one of the HW conditions.</p>
+    <p><strong>3.</strong> Now mating is random within a single population. Allele frequency stays at
+    \(\bar p=0.55\) (no selection), and one generation of random mating restores HW proportions:
+    \(AA=0.3025\), \(Aa=0.495\), \(aa=0.2025\). This is the classic F1-to-F2 loss of heterozygosity.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 3.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Compute the means.</strong> Set \(p=0.7\). For each of the three models of
+    gene action below, compute \(\mu\), \(\alpha_A\), \(\alpha_a\) and \(\beta\).</p>
+    <table class="dtab">
+      <tr><th>Model</th><th>\(x_{aa}\)</th><th>\(x_{Aa}\)</th><th>\(x_{AA}\)</th></tr>
+      <tr><td>Additive</td><td>1</td><td>2</td><td>3</td></tr>
+      <tr><td>Dominant</td><td>1</td><td>2</td><td>2</td></tr>
+      <tr><td>Overdominant</td><td>1</td><td>2</td><td>1</td></tr>
+    </table></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Use \(\mu=p^2x_{AA}+2pq\,x_{Aa}+q^2x_{aa}\), \(g_{ij}=x_{ij}-\mu\),
+    \(\alpha_A=p\,g_{AA}+q\,g_{Aa}\), \(\alpha_a=p\,g_{Aa}+q\,g_{aa}\), with \(p=0.7,q=0.3\).</p>
+    <p><strong>Additive:</strong> \(\mu=0.09(1)+0.42(2)+0.49(3)=2.4\).
+    Then \(g_{aa}=-1.4\), \(g_{Aa}=-0.4\), \(g_{AA}=0.6\).
+    \(\alpha_a=0.3(-1.4)+0.7(-0.4)=-0.7\); \(\alpha_A=0.3(-0.4)+0.7(0.6)=0.3\);
+    \(\beta=\alpha_A-\alpha_a=1.0\).</p>
+    <p><strong>Dominant:</strong> \(\mu=0.09(1)+0.42(2)+0.49(2)=1.91\).
+    \(g_{aa}=-0.91\), \(g_{Aa}=0.09\), \(g_{AA}=0.09\).
+    \(\alpha_a=0.3(-0.91)+0.7(0.09)=-0.21\); \(\alpha_A=0.3(0.09)+0.7(0.09)=0.09\);
+    \(\beta=0.30\).</p>
+    <p><strong>Overdominant:</strong> \(\mu=0.09(1)+0.42(2)+0.49(1)=1.42\).
+    \(g_{aa}=-0.42\), \(g_{Aa}=0.58\), \(g_{AA}=-0.42\).
+    \(\alpha_a=0.3(-0.42)+0.7(0.58)=0.28\); \(\alpha_A=0.3(0.58)+0.7(-0.42)=-0.12\);
+    \(\beta=-0.40\).</p>
+    <p>Notice that under overdominance \(\beta\) is <em>negative</em> at \(p=0.7\), even though the
+    \(A\) allele is not "worse" in any biological sense. The substitution effect is a population
+    quantity and it changes sign with allele frequency.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 3.4</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Compute and plot the variances.</strong> For the same three scenarios,
+    compute \(V_G\), \(V_A\) and \(V_D\), reusing the \(\mu,\alpha_A,\alpha_a\) you already have. Then
+    plot all three as functions of \(p\) over \((0,1)\) using the course R code (<code>var.R</code>).
+    Interpret the shapes: why are the maxima and minima where they are, and how would you identify the
+    allele frequencies at which \(V_A=0\)?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Use \(V_G=p^2g_{AA}^2+2pq\,g_{Aa}^2+q^2g_{aa}^2\), \(V_A=2pq\beta^2\), and
+    \(V_D=V_G-V_A\) (valid for a single locus only; with several loci the remainder would also contain
+    epistatic variance).</p>
+    <p>Reference implementation:</p>
+    <div class="eqn" style="text-align:left"><code>
+    mu &lt;- function(x_aa,x_Aa,x_AA,p){ q &lt;- 1-p; q^2*x_aa + 2*p*q*x_Aa + p^2*x_AA }<br>
+    Vg &lt;- function(x_aa,x_Aa,x_AA,p){ q &lt;- 1-p; m &lt;- mu(x_aa,x_Aa,x_AA,p)<br>
+    &nbsp;&nbsp;q^2*x_aa^2 + 2*p*q*x_Aa^2 + p^2*x_AA^2 - m^2 }<br>
+    alphaA &lt;- function(x_aa,x_Aa,x_AA,p){ q &lt;- 1-p; p*x_AA + q*x_Aa - mu(x_aa,x_Aa,x_AA,p) }<br>
+    alphaa &lt;- function(x_aa,x_Aa,x_AA,p){ q &lt;- 1-p; p*x_Aa + q*x_aa - mu(x_aa,x_Aa,x_AA,p) }<br>
+    Va &lt;- function(x_aa,x_Aa,x_AA,p){ q &lt;- 1-p<br>
+    &nbsp;&nbsp;beta &lt;- alphaA(x_aa,x_Aa,x_AA,p) - alphaa(x_aa,x_Aa,x_AA,p); 2*p*q*beta^2 }<br>
+    p &lt;- seq(0.01, 0.99, 0.01)
+    </code></div>
+    <p><strong>Interpretation.</strong> All variances vanish at \(p=0\) and \(p=1\), because a fixed
+    locus is not variable and therefore contributes no variance whatever its biological effect. In the
+    additive case \(\beta\) is constant, so \(V_A=2pq\beta^2\) is a symmetric parabola peaking at
+    \(p=0.5\). Under dominance the peak shifts away from 0.5, because \(\beta\) itself varies with
+    \(p\). Under overdominance \(\beta\) passes through zero at an intermediate frequency, so
+    \(V_A=0\) there while \(V_G\) and \(V_D\) remain positive, a locus with substantial genetic
+    variance but <em>no</em> additive variance, and therefore no response to selection.</p>
+    <p>To find where \(V_A=0\), solve \(\beta(p)=\alpha_A-\alpha_a=0\) for \(p\), since \(2pq>0\)
+    strictly inside the interval.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecnav"><a href="lec-qg-probability.html">&#8592; Lecture 2: Probability and expectations</a><a href="knowledge.html">All lectures</a><a href="lec-qg-relationship.html">Lecture 4: Relationship and inbreeding &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
