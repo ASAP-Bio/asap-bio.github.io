@@ -393,3 +393,58 @@ footer.site ul{padding-left:0;margin-left:0}
 .khicon{flex:none;width:78px;height:78px;border-radius:50%;background:var(--greendk);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(31,74,43,.20)}
 .khicon img{width:56px;height:56px;display:block}
 @media(max-width:640px){.khhead{gap:14px}.khicon{width:58px;height:58px}.khicon img{width:42px;height:42px}}
+/* ============ LECTURE PAGES (distinct from self-paced courses) ============ */
+.lecmeta{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+.lecmeta span{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12.5px;color:var(--grey);font-weight:600}
+.lecmeta span.s{background:#eef4f9;border-color:#cfe0ee;color:#225277}
+.lectoc{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px 0 26px}
+.lectoc h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--greendk)}
+.lectoc ol{margin:0 0 0 18px;padding-left:20px;font-size:14px}
+.lectoc li{margin:4px 0}
+.lsec{margin:34px 0 0;padding-top:8px}
+.lsec>h2{color:var(--greendk);font-size:24px;border-bottom:2px solid var(--band);padding-bottom:7px}
+.lsec h3{color:var(--green);font-size:17.5px;margin-top:22px}
+.lsec h4{color:var(--greendk);font-size:15px;margin-top:16px}
+.lsec p{line-height:1.72;margin:10px 0}
+.eqn{background:#fbfcfb;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:8px;padding:12px 18px;margin:14px 0;overflow-x:auto}
+.eqn.c{text-align:center}
+.keybox{background:#f2f8f2;border:1px solid #cfe3cf;border-radius:10px;padding:14px 18px;margin:16px 0}
+.keybox strong:first-child{display:block;color:var(--greendk);font-size:13px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.derive{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:14px 18px;margin:16px 0}
+.derive h5{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:var(--grey)}
+.derive ol{margin-left:18px;padding-left:20px}
+.derive li{margin:8px 0;line-height:1.65}
+.wex{background:#fffdf6;border:1px solid #ecdfc0;border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin:16px 0}
+.wex h5{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:#8a6d1f}
+.exbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:0;margin:14px 0;overflow:hidden}
+.exbox>summary{cursor:pointer;list-style:none;padding:13px 18px;font-weight:700;color:var(--greendk);background:var(--band);font-size:14.5px}
+.exbox>summary::-webkit-details-marker{display:none}
+.exbox>summary:hover{background:#e4ece2}
+.exbox .exbody{padding:14px 18px}
+.exq{margin:0 0 10px}
+.solv{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.solv>summary{cursor:pointer;font-weight:600;color:var(--green);font-size:13.5px;list-style:none}
+.solv>summary::-webkit-details-marker{display:none}
+.vslot{background:#f6f6f7;border:1px dashed #c8ccc9;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:13.5px;color:var(--grey);text-align:center}
+.vslot strong{color:var(--greendk);display:block;margin-bottom:3px}
+.srcnote{background:#fafafa;border:1px solid var(--line);border-radius:8px;padding:11px 15px;margin:16px 0;font-size:12.5px;color:var(--grey);line-height:1.6}
+.srcnote b{color:var(--greendk)}
+.lecnav{display:flex;justify-content:space-between;gap:12px;margin-top:34px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
+.lecnav a{font-size:14px;font-weight:600}
+.dtab{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.dtab th,.dtab td{border:1px solid var(--line);padding:7px 11px;text-align:center}
+.dtab th{background:var(--band);color:var(--greendk)}
+.dtab td:first-child,.dtab th:first-child{text-align:left}
+/* --- Lecture series block inside a course group --- */
+.lecseries{border:1px solid #cfe3cf;border-radius:12px;background:#f7fbf7;margin:0 0 18px;overflow:hidden}
+.lecseries>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:14px;background:#eef6ee}
+.lecseries>summary::-webkit-details-marker{display:none}
+.lecseries>summary:hover{background:#e6f1e6}
+.lecbody{padding:14px 18px 18px;display:flex;flex-direction:column;gap:8px}
+.leccard{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;transition:box-shadow .15s,transform .12s}
+.leccard:hover{box-shadow:0 3px 12px rgba(0,0,0,.08);transform:translateY(-1px);text-decoration:none}
+.lecn{flex:none;width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.lect{flex:1}
+.lect strong{display:block;color:var(--greendk);font-size:15px;margin-bottom:2px}
+.lect span{display:block;font-size:13px;color:var(--grey);line-height:1.5}
+.lecgo{flex:none;color:var(--green);font-weight:700;align-self:center}
