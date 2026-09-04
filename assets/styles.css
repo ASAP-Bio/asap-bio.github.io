@@ -448,24 +448,33 @@ footer.site ul{padding-left:0;margin-left:0}
 .lect strong{display:block;color:var(--greendk);font-size:15px;margin-bottom:2px}
 .lect span{display:block;font-size:13px;color:var(--grey);line-height:1.5}
 .lecgo{flex:none;color:var(--green);font-weight:700;align-self:center}
-/* --- Quick access to courses and lectures (Knowledge Hub) --- */
-.quickaccess{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;box-shadow:0 2px 10px rgba(20,50,30,.05)}
-.quickaccess>summary{list-style:none;cursor:pointer;padding:15px 20px;display:flex;align-items:center;gap:14px;background:var(--band)}
-.quickaccess>summary::-webkit-details-marker{display:none}
-.quickaccess>summary:hover{background:#e4ece2}
-.quickaccess[open]>summary{border-bottom:1px solid var(--line)}
-.qa-ico{flex:none;width:38px;height:38px;border-radius:10px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
-.qa-tx{flex:1}
-.qa-tx strong{display:block;color:var(--greendk);font-size:16px}
-.qa-sub{display:block;font-size:13px;color:var(--grey);margin-top:2px}
-.quickaccess .chev{flex:none;color:var(--green);font-size:15px;transition:transform .18s}
-.quickaccess[open] .chev{transform:rotate(180deg)}
-.qa-body{padding:18px 20px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px 26px}
-.qa-col h5{margin:0 0 8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--greendk);display:flex;align-items:center;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.qa-ic{font-size:15px}
-.qa-col ul{list-style:none;margin:0;padding:0}
-.qa-col li{margin:0 0 3px}
-.qa-col a{display:flex;align-items:flex-start;gap:7px;font-size:13.5px;line-height:1.45;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--ink)}
-.qa-col a:hover{background:var(--soft);color:var(--greendk);text-decoration:none}
-.qa-n{flex:none;width:19px;height:19px;border-radius:5px;background:var(--green);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.qa-ext{color:var(--grey);font-size:11px}
+/* --- Knowledge Hub header: icon + title left, Quick access dropdown right --- */
+.khhead{display:flex;align-items:center;gap:22px}
+.khtitle{flex:1;min-width:0}
+.khhead h1{margin:0}
+.qa{position:relative;flex:none;align-self:center}
+.qa-btn{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:11px 16px;font-size:14.5px;font-weight:700;color:var(--greendk);
+  cursor:pointer;white-space:nowrap;box-shadow:0 1px 4px rgba(20,50,30,.06);
+  transition:border-color .15s,box-shadow .15s,background .15s}
+.qa-btn:hover{border-color:var(--green);box-shadow:0 3px 12px rgba(20,50,30,.12)}
+.qa.is-open .qa-btn{border-color:var(--green);background:var(--soft)}
+.qa-chev{font-size:13px;color:var(--green);transition:transform .18s}
+.qa.is-open .qa-chev{transform:rotate(180deg)}
+.qa-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:40;min-width:330px;max-width:390px;
+  max-height:60vh;overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 14px 38px rgba(20,50,30,.20);padding:8px;animation:qaIn .15s ease-out}
+@keyframes qaIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.qa-menu a{display:block;padding:9px 13px;border-radius:8px;font-size:14px;line-height:1.4;
+  color:var(--ink);text-decoration:none;transition:background .12s,color .12s}
+.qa-menu a:hover{background:var(--soft);color:var(--greendk);text-decoration:none}
+.qa-menu a+a{margin-top:1px}
+.qa-ext{color:var(--grey);font-size:11px;margin-left:5px}
+.qa-menu::-webkit-scrollbar{width:8px}
+.qa-menu::-webkit-scrollbar-thumb{background:#cfdccf;border-radius:8px}
+@media(max-width:820px){
+  .khhead{flex-wrap:wrap;gap:16px}
+  .khtitle{flex:1 1 100%;order:2}
+  .qa{order:1;margin-left:auto}
+  .qa-menu{min-width:0;width:calc(100vw - 48px);max-width:none;right:auto;left:auto}
+}
