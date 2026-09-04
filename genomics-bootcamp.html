@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Genomics Boot Camp · ASAP-Bio</title>
+<meta name="description" content="A practical study path in SNP data analysis: PLINK, R and quality control, built with the Genomics Boot Camp by Gabor Meszaros and mapped onto the ASAP-Bio courses.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><h1>Genomics Boot Camp</h1><p>A hands-on study path in practical SNP data analysis, in collaboration with Gabor Meszaros.</p></div></div>
+<section><div class="wrap">
+  <div class="eyebrow">Practical skills track &middot; Open access &middot; In collaboration with Gabor Meszaros</div>
+  <h2>From theory to the command line</h2>
+  <p class="lead">Our ISAPS courses explain <em>why</em> genomic selection, diversity assessment and variant discovery work. The <strong>Genomics Boot Camp</strong>, created by <strong>Gabor Meszaros</strong>, teaches you to actually <em>do</em> it: handle real SNP genotype files, run PLINK, work in R, quality-control your data and analyse population structure. ASAP-Bio integrates it as the practical spine that connects our theory courses to real data.</p>
+
+  <div class="callout gold" style="margin-top:20px">
+    <strong>How to use this page</strong>
+    <p style="margin-top:6px">Work down the study path in order. Each boot camp chapter links to the relevant part of Gabor's open-access book and to his video walkthrough. The panels on either side show which ASAP-Bio course prepares you for that step, and which course it unlocks. Everything here is free and open access.</p>
+  </div>
+
+  <div class="btnrow" style="margin-top:16px">
+    <a class="btn" href="https://genomicsbootcamp.github.io/book/" target="_blank" rel="noopener">Open the Boot Camp book &#8594;</a>
+    <a class="btn green" href="https://www.youtube.com/channel/UCXuX-kQ1TbKHWeB75NgmhlA" target="_blank" rel="noopener">Genomics Boot Camp on YouTube</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>The study path</h2>
+  <p class="lead">Three stages. Do not skip stage 1: almost every problem learners hit in PLINK is really a gap in genetics vocabulary or file handling, not a software problem.</p>
+
+  <div class="pathstage">
+    <div class="pathnum">1</div>
+    <div class="pathbody">
+      <h3>Before you start: the theory you need</h3>
+      <p>You should be comfortable with what a SNP, an allele, a genotype and linkage disequilibrium actually are. If any of these are shaky, take these first.</p>
+      <div class="pathlinks">
+        <a href="course-foundations-animal-genetics.html#g1">Foundations of Animal Genetics &middot; Modules 1&ndash;2</a>
+        <a href="course-foundations-animal-genetics.html#g6">Foundations &middot; Module 6, From single genes to breeding</a>
+        <a href="course-breeding-genetics.html#bg2">Breeding and Genetics &middot; Module 2, Basic quantitative genetics</a>
+        <a href="course-applied-animal-breeding.html#a3">Applied Animal Breeding &middot; Module 3, Variation</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathstage">
+    <div class="pathnum">2</div>
+    <div class="pathbody">
+      <h3>The Boot Camp itself: nine chapters</h3>
+      <p>Gabor's book and videos, in his own order. Chapters 1&ndash;5 are setup, 6&ndash;9 are the real analysis. Budget roughly 12 to 18 hours including the exercises.</p>
+    </div>
+  </div>
+
+  <div class="grid g1" style="margin-top:8px">
+
+    <div class="bcchap">
+      <h4><span class="bcnum">1&ndash;2</span> Welcome &amp; technical preparations</h4>
+      <p>Why file naming, file paths and a tidy working directory matter. Dull, and the single biggest source of later errors.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/technical-preparations.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">3</span> Basic software: text editors &amp; file management</h4>
+      <p>A proper text editor and sane file management before any genomics tool is installed.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/basic-software.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">4</span> PLINK, the workhorse of SNP analysis</h4>
+      <p>Installing and launching PLINK, the tool used for essentially all downstream work in this path.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/plink-software-for-genomic-analyses.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=4VL4z71Ht70" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/4VL4z71Ht70/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: How to start PLINK</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=uOUJk8OmMZE" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/uOUJk8OmMZE/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>TOP 5 PLINK errors</strong><span class="vnote">Troubleshooting, watch before your first run</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=LniHqf45Zlo" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/LniHqf45Zlo/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>How to fix chromosome number problems in PLINK</strong><span class="vnote">Common non-model-species problem</span></span></a>
+      </div>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">5</span> R and RStudio</h4>
+      <p>The environment you will use to script PLINK runs and to plot results.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/r-and-rstudio.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=nKLqqkWWyA0" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/nKLqqkWWyA0/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: Introduction to R and RStudio</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=aiBWLfHeWGE" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/aiBWLfHeWGE/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>How to install R and RStudio</strong><span class="vnote">Setup guide</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=eXI_nEdEG3s" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/eXI_nEdEG3s/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>How to install R package tidyverse</strong><span class="vnote">Setup guide</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=OAXZDqrcM0A" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/OAXZDqrcM0A/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>How to change the RStudio editor theme</strong><span class="vnote">Optional, comfort</span></span></a>
+      </div>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">6</span> Genotype files in practice: fam, bim, bed</h4>
+      <p>What is actually inside a PLINK binary fileset: individuals, SNP positions and the genotypes themselves. The most important chapter for avoiding silent errors later.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/genotype-files-in-practice.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=vZyf5aXlB-k" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/vZyf5aXlB-k/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: SNP genotype data files</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      </div>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">7</span> Your first PLINK tutorial</h4>
+      <p>PLINK options, the ped and map formats, converting between formats, and driving PLINK from R.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/your-first-plink-tutorial.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=c1LSFiv9CxY" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/c1LSFiv9CxY/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: Genotype data format change with PLINK</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=8HcNEuNDWH4" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/8HcNEuNDWH4/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>PGDSpider and everything</strong><span class="vnote">Converting between the many genotype formats</span></span></a>
+      </div>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">8</span> Genotype data quality control</h4>
+      <p>Missingness per SNP and per individual, minor allele frequency, Hardy&ndash;Weinberg, and when it is legitimate to skip a filter. This chapter is a prerequisite for trustworthy genomic prediction.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/genotype-data-quality-control.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=QR80Y0Xhrg4" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/QR80Y0Xhrg4/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: SNP data quality control with PLINK</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      </div>
+    </div>
+
+    <div class="bcchap">
+      <h4><span class="bcnum">9</span> Principal component analysis</h4>
+      <p>Running and, more importantly, correctly interpreting a PCA of SNP data, including comparison with published results.</p>
+      <p><a href="https://genomicsbootcamp.github.io/book/principal-component-analysis-pca.html" target="_blank" rel="noopener">Read the chapter &#8594;</a></p>
+      <div class="vgrid">
+      <a class="vcard" href="https://www.youtube.com/watch?v=l5afbHnw6Uw" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/l5afbHnw6Uw/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomics in practice: PCA based on SNP data</strong><span class="vnote">Chapter walkthrough</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=o2rBS_wURQc" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/o2rBS_wURQc/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>STRUCTURE Harvester: choosing the best K</strong><span class="vnote">Next step after PCA, admixture structure</span></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathstage" style="margin-top:22px">
+    <div class="pathnum">3</div>
+    <div class="pathbody">
+      <h3>What the Boot Camp unlocks</h3>
+      <p>Once you can quality-control a genotype file and read a PCA, these courses stop being abstract. Each link goes to the specific module the boot camp skills feed into.</p>
+      <div class="pathlinks">
+        <a href="course-genomic-selection-breeding.html#b2">Genomic selection &middot; Module 2, Estimating genomic breeding values</a>
+        <a href="course-genomic-selection-breeding.html#b6">Genomic selection &middot; Module 6, Genetic change &amp; diversity</a>
+        <a href="course-breeding-genetics.html#bg5">Breeding and Genetics &middot; Module 5, Genomic breeding values</a>
+        <a href="course-breeding-genetics.html#bg6">Breeding and Genetics &middot; Module 6, Analysis in R</a>
+        <a href="course-ai-genomics-breeding.html#g1">AI-driven variant discovery &middot; Module 1</a>
+        <a href="course-applied-animal-breeding.html#a7">Applied Animal Breeding &middot; Module 7, Mating systems &amp; inbreeding</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Wider genomics topics</h2>
+  <p class="lead">Beyond the nine core chapters, these talks from the Genomics Boot Camp channel connect directly to the ISAPS themes. They are linked again from the relevant course modules.</p>
+  <div class="vgrid vgrid3" style="margin-top:16px">
+      <a class="vcard" href="https://www.youtube.com/watch?v=Ap5kIVxuO5Y" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/Ap5kIVxuO5Y/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genetics vs. genomics</strong><span class="vnote">Foundations, module 1</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=aSvC0BV5Bnw" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/aSvC0BV5Bnw/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>The most important 'omics' explained</strong><span class="vnote">Multi-omics theme</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=netf0e3ZGCQ" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/netf0e3ZGCQ/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>From microsatellites to SNP and sequence</strong><span class="vnote">Foundations, module 6</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=CTVg-02IwLs" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/CTVg-02IwLs/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Why microsatellites are outdated in 2025</strong><span class="vnote">Marker technology</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=MuGr5QMLnSY" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/MuGr5QMLnSY/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Visualising linkage disequilibrium: Haploview</strong><span class="vnote">Genomic selection, module 1</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=t1lJxzqBZTE" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/t1lJxzqBZTE/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>What is the pangenome?</strong><span class="vnote">Variant discovery</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=JCaiwmY1e3I" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/JCaiwmY1e3I/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>DNA paternity testing with PLINK</strong><span class="vnote">Applied breeding, module 7</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=pmKWGBBcxiM" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/pmKWGBBcxiM/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genetic indicators of diversity within and between breeds</strong><span class="vnote">Biodiversity theme</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=YM1Amn16f0Y" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/YM1Amn16f0Y/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomic data in breed management and conservation</strong><span class="vnote">Biodiversity theme</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=ZOB44XX3V-A" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/ZOB44XX3V-A/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>The breed concept revisited</strong><span class="vnote">Biodiversity theme</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=2bK-1XIwX2E" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/2bK-1XIwX2E/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genomic assessment of genetic variation, FAO webinar</strong><span class="vnote">Biodiversity theme</span></span></a>
+      <a class="vcard" href="https://www.youtube.com/watch?v=YBmnOBWQgAk" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi/YBmnOBWQgAk/mqdefault.jpg" alt="">
+        <span class="vmeta"><strong>Genetics of diversity in small ruminants</strong><span class="vnote">Biodiversity theme</span></span></a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>About the Boot Camp</h2>
+  <p class="lead">The Genomics Boot Camp is created and maintained by <strong>Gabor Meszaros</strong>. It comprises an open-access book and a YouTube channel covering practical genomic data analysis for beginners, with a focus on SNP data. Because DNA is fundamentally similar across livestock, humans, microbes and plants, the methods transfer directly to whichever species you work on.</p>
+  <p>The book is published under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 licence. ASAP-Bio links to the original materials rather than copying them, so you always get Gabor's latest version.</p>
+  <div class="btnrow" style="margin-top:14px">
+    <a class="btn" href="https://genomicsbootcamp.github.io/book/" target="_blank" rel="noopener">Boot Camp book</a>
+    <a class="btn green" href="https://www.youtube.com/channel/UCXuX-kQ1TbKHWeB75NgmhlA" target="_blank" rel="noopener">YouTube channel</a>
+    <a class="btn ghost" href="knowledge.html">Back to Knowledge Hub</a>
+  </div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
