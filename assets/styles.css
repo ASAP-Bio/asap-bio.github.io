@@ -526,3 +526,5 @@ footer.site ul{padding-left:0;margin-left:0}
 .vs-tab.is-active{background:var(--green);border-color:var(--green);color:#fff}
 .vs-pane{display:none}
 .vs-pane.is-active{display:block}
+.vfall,.vs-fall a{display:inline-block;margin-top:5px;font-size:12.5px;font-weight:600;color:var(--green)}
+.vs-fall{margin:8px 0 0}
