@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -65,9 +65,9 @@
           <em>base population</em>.</li>
       <li>It is based on the concept of <strong>identity by descent</strong>.</li>
     </ul>
-    <p>The first point is easy to skate over and causes real confusion later. All members of a
-    population share ancestors at <em>some</em> point in the phylogeny, so "related" is meaningless
-    without saying "related compared to what". In practice we consider recent ancestry rather than
+    <p>The first point is frequently overlooked and is a common source of confusion. All members of a
+    population share ancestors at <em>some</em> point in the phylogeny, so relatedness is undefined
+    without a stated reference point. In practice we consider recent ancestry rather than
     ancient common ancestry: if no further information is available for the top generation of a
     pedigree, those individuals are taken as the <strong>base animals</strong> and treated as unrelated
     and non-inbred. Every relationship coefficient you compute is therefore a statement about ancestry
@@ -114,9 +114,10 @@
       </ol>
     </div>
 
-    <p>That last line is the whole basis of quantitative genetic estimation from relatives, and also its
-    central danger: relatives usually share environments as well as genes, so
-    \(\operatorname{Cov}(e_i,e_j)\ne 0\) inflates apparent heritability unless the design controls it.</p>  </section>
+    <p>This result is the basis of quantitative genetic estimation from relatives, and also its principal
+    limitation: relatives usually share environments as well as genes, so
+    \(\operatorname{Cov}(e_i,e_j)\ne 0\) inflates estimated heritability unless the design controls
+    for it.</p>  </section>
   <section class="lsec" id="theta">
     <h2>The coefficient of coancestry</h2>
 
@@ -327,7 +328,7 @@ F_{n1} & & \cdots & & 1+F_{nn}
     \(F_{ij}=2\theta_{ij}\); the diagonal element is \(1+F_{ii}\), where \(F_{ii}\) is the individual's
     inbreeding coefficient. The diagonal exceeding one is exactly the \((1+F)V_a\) result derived
     above.</p>
-    <div class="keybox"><strong>Where this is going</strong>
+    <div class="keybox"><strong>Extension to BLUP</strong>
     <p style="margin-top:4px">\(\mathbf{A}\) is what makes BLUP possible: the additive genetic
     covariance structure of an entire pedigree is \(\mathbf{A}V_a\). In genomic prediction the same
     role is played by a genomic relationship matrix \(\mathbf{G}\), estimated from markers rather than
@@ -339,7 +340,7 @@ F_{n1} & & \cdots & & 1+F_{nn}
     <p>What happens when we mate the best with the best, phenotypically? This is what breeding
     programmes usually do, so the consequences matter. Assortative mating means
     \(\operatorname{Cov}(y_s,y_d)=r>0\).</p>
-    <div class="derive"><h5>Consequences, step by step</h5>
+    <div class="derive"><h5>Derivation</h5>
       <ol>
       <li>Association between <em>phenotypes</em> induces association between <em>breeding values</em>:
         \(\operatorname{Cov}(a_s,a_d)=r\,h^2V_a\).</li>
@@ -352,9 +353,10 @@ F_{n1} & & \cdots & & 1+F_{nn}
       </ol>
     </div>
 
-    <p>So in the first generation assortative mating <strong>increases</strong> the additive variance.
-    But there is a sting. By mating good with good and poor with poor we induce inbreeding at the very
-    genes that affect the trait, which reduces \(V_M\). Over time the effect reverses:</p>
+    <p>In the first generation assortative mating <strong>increases</strong> the additive variance. There
+    is, however, a counteracting effect. Mating superior with superior and inferior with inferior
+    induces inbreeding at the genes affecting the trait, which reduces \(V_M\). Over time the effect
+    reverses:</p>
     <table class="dtab">
       <tr><th>Generation</th><th>Additive genetic variance</th><th>Heritability</th></tr>
       <tr><td>0</td><td>\(V_a\)</td><td>\(h^2\)</td></tr>
@@ -380,7 +382,6 @@ F_{n1} & & \cdots & & 1+F_{nn}
       <li>Inbreeding leads to inbreeding depression.</li>
       <li>The numerator relationship matrix summarises degrees of allele sharing.</li>
     </ul>
-  <div class="srcnote"><b>Acknowledgement.</b> Lecture content inspired by notes from Prof. Bernt Guldbrandtsen.</div>
   </section>
   <section class="lsec" id="exercises">
     <h2>Exercises</h2>

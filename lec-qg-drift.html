@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -69,7 +69,7 @@
           other.</li>
       <li>Potential parents vary, partly by chance, in the number of offspring they actually have.</li>
     </ul>
-    <div class="keybox"><strong>The character of the process</strong>
+    <div class="keybox"><strong>Properties of the process</strong>
     <ul style="margin:6px 0 0">
       <li>Drift is a <strong>dispersive</strong> process.</li>
       <li>Its effects can be quantified in <strong>magnitude but not in direction</strong>.</li>
@@ -225,9 +225,9 @@
     <em>related</em> animals, so it reduces \(N_e\). Quantitatively, with selection intensity \(i\),</p>
     <div class="eqn c">\[\Delta F\propto i^2,\qquad \Delta G\propto i\]</div>
 
-    <p>Note the asymmetry, and hold on to it: gain rises <em>linearly</em> with intensity, but the loss
-    of variation rises with its <em>square</em>. Pushing selection harder buys progressively less gain
-    per unit of diversity sacrificed.</p>
+    <p>The asymmetry is important: gain rises <em>linearly</em> with intensity, whereas the loss of
+    variation rises with its <em>square</em>. Increasing selection intensity therefore yields
+    progressively less gain per unit of diversity lost.</p>
     <div class="vslot"><strong>Video: Effective population size</strong>A recording of this section will be embedded here.</div>
   </section>
   <section class="lsec" id="distinct">
@@ -244,10 +244,10 @@
       <li>Both, however, cause an increase in the <strong>average \(F\)</strong> in the population.</li>
     </ul></div>
 
-    <p>Because both raise average \(F\), they are easily confused when reading a single number off a
-    pedigree or a marker panel. The practical consequence is sharp: a heterozygote deficiency caused by
+    <p>Because both raise average \(F\), they are readily confused when a single coefficient is read from
+    a pedigree or a marker panel. The practical consequence is that a heterozygote deficiency caused by
     non-random mating disappears in one generation of random mating, whereas variation lost to drift is
-    gone permanently.</p>  </section>
+    not recoverable.</p>  </section>
   <section class="lsec" id="fst">
     <h2>\(F_{ST}\) as a variance ratio</h2>
 
@@ -270,7 +270,7 @@
     =\frac{0.0267}{0.4\times 0.6}=0.111\]</div>
     <p>So 11.1% of the variation is <em>between</em> populations.</p></div>
 
-    <div class="keybox"><strong>Two perspectives on \(F_{ST}\)</strong>
+    <div class="keybox"><strong>Two interpretations of \(F_{ST}\)</strong>
     <ul style="margin:6px 0 0">
       <li>The random <strong>differentiation of subpopulations</strong>, if we have many.</li>
       <li>The random <strong>change in the mean of one population</strong>, over time.</li>
@@ -290,7 +290,7 @@
     the probability of not being inbred due to non-random mating (\(F_{IS}\)) <em>and</em> not due to
     drift (\(F_{ST}\)).</p></div>
 
-    <p>Reading the three coefficients:</p>
+    <p>The three coefficients are interpreted as follows:</p>
     <ul>
       <li>\(F_{IS}\) measures what is usually thought of as "inbreeding", that is, inbreeding due to
           mating between close relatives. It is typically positive, but may be slightly negative in
@@ -344,8 +344,8 @@
       <li>The population mean is then the value of a <em>random</em> homozygous genotype from the base
           population.</li>
     </ul>
-    <p>Note the word random. Drift has no direction, so the endpoint is arbitrary: two replicate lines
-    from the same base will fix at different means. This is exactly why drift must be taken into account
+    <p>The endpoint is random. Drift has no direction, so two replicate lines from the same base
+    population fix at different means. This is exactly why drift must be taken into account
     when designing <strong>selection experiments</strong>, a divergence between selected and control
     lines is not evidence of response unless it exceeds what drift alone would produce.</p>  </section>
   <section class="lsec" id="balance">
@@ -376,7 +376,6 @@
       <li>Heterosis occurs through the cancellation of inbreeding depression.</li>
       <li>Genetic drift also applies to differentiation in quantitative traits.</li>
     </ul>
-  <div class="srcnote"><b>Acknowledgement.</b> Lecture content inspired by notes from Prof. Bernt Guldbrandtsen.</div>
   </section>
   <section class="lsec" id="exercises">
     <h2>Exercises</h2>
@@ -399,9 +398,9 @@
     <div class="eqn c">\[1-0.08=\left(1-\frac{1}{2N_e}\right)^{10}
     \;\Longrightarrow\;\left(1-\frac{1}{2N_e}\right)=0.92^{1/10}=0.99169\]</div>
     <div class="eqn c">\[\frac{1}{2N_e}=0.00831\;\Longrightarrow\;N_e=\frac{1}{2\times 0.00831}\approx 60\]</div>
-    <p>So each sub-population behaved like an ideal population of about 60 individuals. Note that this
-    is an estimate of the <em>average</em> \(N_e\) over the 10 generations; if size fluctuated, the
-    harmonic mean means the smallest generations dominate this figure.</p></div>
+    <p>Each sub-population therefore behaved as an ideal population of approximately 60 individuals. This
+    is an estimate of the <em>average</em> \(N_e\) over the 10 generations; where size fluctuates, the
+    harmonic mean is dominated by the smallest generations.</p></div>
         </details>
       </div>
     </details>
@@ -443,7 +442,7 @@
     </details>
     <details class="exbox"><summary>Exercise 5.3</summary>
       <div class="exbody">
-        <div class="exq"><p><strong>Which \(N_e\) bites hardest?</strong> A nucleus herd has 500 breeding
+        <div class="exq"><p><strong>Comparing effective population sizes.</strong> A nucleus herd has 500 breeding
     females and 10 breeding sires. In a second scenario, the herd has 250 of each. Compute \(N_e\) for
     both, and comment on which design conserves more variation.</p></div>
         <details class="solv"><summary>Show solution &#9662;</summary>
@@ -453,9 +452,9 @@
     <p>Both herds contain 510 and 500 animals respectively, almost identical census sizes, yet the
     effective sizes differ by more than tenfold. The bound \(N_e<4\min(N_m,N_f)=40\) makes the first
     scenario's ceiling explicit: with only 10 sires, no number of females can rescue \(N_e\).</p>
-    <p>This is the single most important practical lesson of the lecture for animal breeding. Intense
-    male selection, which is exactly what AI makes possible and what maximises \(\Delta G\), is also
-    what drives \(N_e\) down fastest.</p></div>
+    <p>This is the principal practical implication for animal breeding: intense male selection, which
+    artificial insemination makes possible and which maximises \(\Delta G\), also reduces \(N_e\)
+    most rapidly.</p></div>
         </details>
       </div>
     </details>

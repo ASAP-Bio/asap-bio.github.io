@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -103,9 +103,9 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
   <section class="lsec" id="alpha">
     <h2>Average effect of an allele</h2>
 
-    <p>Here is the conceptual step that makes quantitative genetics work. Genotypes are <em>not</em>
-    transmitted to offspring, only <strong>alleles</strong> are. So we need the value associated with an
-    allele, not with a genotype.</p>
+    <p>The following step underpins quantitative genetics. Genotypes are <em>not</em> transmitted to
+    offspring, only <strong>alleles</strong> are, so the quantity required is the value associated with
+    an allele rather than with a genotype.</p>
     <p>The <strong>average effect of an allele</strong> is the expected deviation from \(\mu\) of an
     individual known to carry that allele, with the second allele drawn at random from the population:</p>
     <div class="eqn c">\[\begin{aligned}
@@ -139,7 +139,7 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
     <p>giving the decomposition of the genotypic value at one locus:</p>
     <div class="eqn c">\[g_{ij}=\underbrace{\alpha_i+\alpha_j}_{\text{additive, transmissible}}+\underbrace{\delta_{ij}}_{\text{dominance, not transmissible}}\]</div>
 
-    <div class="keybox"><strong>Why the split matters</strong>
+    <div class="keybox"><strong>Significance of the decomposition</strong>
     <p style="margin-top:4px">A parent passes on <em>one allele</em>, not a genotype, so the dominance
     deviation, which arises from the specific <em>combination</em> of two alleles, is broken up at
     meiosis and not transmitted. This is precisely why selection responds to the additive component and
@@ -152,7 +152,7 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
   <section class="lsec" id="additive">
     <h2>Additive gene action as a special case</h2>
 
-    <p>It is worth seeing what happens when there is no dominance at all. Write the genotypic values in
+    <p>Consider the case in which there is no dominance. Write the genotypic values in
     the symmetric form \(x_{aa}=x-s\), \(x_{Aa}=x\), \(x_{AA}=x+s\), so that the heterozygote sits exactly
     midway between the homozygotes. Then \(\mu=x+(p-q)s\) and the table becomes:</p>
     <table class="dtab">
@@ -199,7 +199,7 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
   <section class="lsec" id="depend">
     <h2>Everything depends on allele frequency</h2>
 
-    <p>A point that students routinely underestimate. Look back at what we derived:</p>
+    <p>The following dependence is easily overlooked. From the results derived above:</p>
     <ul>
       <li>\(\mu\) depends on the allele frequencies.</li>
       <li>The \(\alpha\)'s depend on the allele frequencies.</li>
@@ -245,8 +245,8 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
     is random with respect to the \(C/c\) genotype, the zygotes are formed by independently sampling two
     alleles from the adult gamete pool, so Hardy-Weinberg proportions are <strong>restored in a single
     generation</strong>, at the new allele frequency.</p>
-    <p>The distinction to carry away: selection changes the allele <em>frequencies</em>, but random
-    mating re-establishes HW <em>proportions</em> at whatever those frequencies now are.</p></div>
+    <p>The distinction is that selection changes the allele <em>frequencies</em>, while random mating
+    re-establishes Hardy-Weinberg <em>proportions</em> at the new frequencies.</p></div>
         </details>
       </div>
     </details>
@@ -308,9 +308,9 @@ E(y\mid AA)=\mu+g_{AA},\quad E(y\mid Aa)=\mu+g_{Aa},\quad E(y\mid aa)=\mu+g_{aa}
     \(g_{aa}=-0.42\), \(g_{Aa}=0.58\), \(g_{AA}=-0.42\).
     \(\alpha_a=0.3(-0.42)+0.7(0.58)=0.28\); \(\alpha_A=0.3(0.58)+0.7(-0.42)=-0.12\);
     \(\beta=-0.40\).</p>
-    <p>Notice that under overdominance \(\beta\) is <em>negative</em> at \(p=0.7\), even though the
-    \(A\) allele is not "worse" in any biological sense. The substitution effect is a population
-    quantity and it changes sign with allele frequency.</p></div>
+    <p>Under overdominance \(\beta\) is <em>negative</em> at \(p=0.7\), although the \(A\) allele is
+    not inferior in any biological sense. The substitution effect is a population quantity and changes
+    sign with allele frequency.</p></div>
         </details>
       </div>
     </details>

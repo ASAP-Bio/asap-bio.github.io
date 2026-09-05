@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -64,12 +64,12 @@
       <li>The effect of any <em>single</em> gene cannot be observed directly.</li>
       <li>We can only speak about the trait in terms of <strong>probability and statistics</strong>.</li>
     </ul>
-    <p>This is worth pausing on, because it explains the shape of the whole subject. If you cannot see
-    an individual gene's effect, you cannot proceed gene by gene. Instead you describe the
-    <em>distribution</em> of the trait in a population, and you partition the <em>variation</em> in that
-    distribution into parts attributable to genes and to environment. That is why the next lecture is
-    about probability and expectations: they are not a mathematical detour, they are the working tools
-    of the subject.</p>
+    <p>This constraint determines the structure of the subject. Because the effect of an individual gene
+    cannot be observed, the analysis cannot proceed gene by gene. It instead describes the
+    <em>distribution</em> of the trait in a population and partitions the <em>variation</em> in that
+    distribution into components attributable to genes and to environment. Probability and expectations,
+    the subject of the next lecture, are therefore the working tools of the subject rather than a
+    mathematical preliminary.</p>
   </section>
   <section class="lsec" id="many">
     <h2>From one locus to many</h2>
@@ -97,20 +97,20 @@
     <div class="eqn c" style="background:#fff">\[E\!\left(y_{\text{off}}\right)=\mu+\sum_{j=1}^{L}
     \left(\tfrac{1}{2}g_{s,j}+\tfrac{1}{2}g_{d,j}\right)\]</div>
     <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">with \(s\) the sire and \(d\) the dam.
-    This single line is the reason breeding works at all, and it reappears as the parent average in
-    every breeding-value prediction you will meet later.</p></div>
+    This relation underlies genetic improvement by selection, and reappears as the parent average in
+    breeding-value prediction.</p></div>
     <div class="vslot"><strong>Video: From one locus to many</strong>A recording of this section will be embedded here.</div>
   </section>
   <section class="lsec" id="normal">
     <h2>Why phenotypes are normally distributed</h2>
 
     <p>Height, milk yield, body weight and feed intake are all routinely assumed to be normally
-    distributed. Yet look again at the building block:</p>
+    distributed. However, consider the building block:</p>
     <div class="eqn c">\[g_j = (G_j - 2p_j)\alpha_j \quad\text{takes only three values, since } G_j\in\{0,1,2\}\]</div>
 
     <p>A single gene effect is emphatically <strong>not</strong> normally distributed. It is a
     three-point discrete variable. So where does the familiar bell curve come from?</p>
-    <div class="derive"><h5>The argument, in three steps</h5>
+    <div class="derive"><h5>Derivation</h5>
       <ol>
       <li>A phenotype is a <em>sum</em> of many such three-point variables plus an environmental term:
         \(y=\mu+\sum_{j=1}^{L}g_j+e\).</li>
@@ -131,7 +131,7 @@
     <div class="eqn c">\[f_Y(y)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left[-\frac{(y-\mu)^2}{2\sigma^2}\right],\qquad -\infty<y<\infty\]</div>
 
     <p>written \(Y\sim N(\mu,\sigma^2)\).</p>
-    <div class="keybox"><strong>The point to take away</strong>
+    <div class="keybox"><strong>Interpretation</strong>
     <p style="margin-top:4px">Normality of a quantitative trait is not an arbitrary convenience. It is a
     <em>consequence</em> of many small, independent genetic contributions adding up. This also tells you
     when to be careful: if a trait is governed by one or two large-effect genes, the normal
@@ -148,8 +148,8 @@
       <li>The phenotype \(y\) is unchanged whichever model we choose to describe it.</li>
     </ul></div>
 
-    <p>That last assumption deserves emphasis, because it is easy to misread. The animal's actual
-    phenotype does not change when we decide to write down a one-locus, two-locus or many-locus model.
+    <p>The third assumption is easily misread. The animal's actual phenotype does not change when a
+    one-locus, two-locus or many-locus model is adopted.
     What changes is how the same total genetic effect is <em>distributed</em> among the terms:</p>
     <div class="eqn c">\[\begin{aligned}
 \text{One locus:}\quad & y=\mu+(G_1-2p_1)\alpha_1+e\\[2pt]
@@ -176,7 +176,7 @@
       <li><strong>Relationship and similarity</strong> among relatives</li>
       <li>Genetic change due to <strong>selection</strong> and <strong>random events</strong></li>
     </ol>
-    <p>Two applied strands run alongside. <strong>Artificial selection</strong> aims to change the
+    <p>Two applied strands accompany these topics. <strong>Artificial selection</strong> aims to change the
     genetic properties of a population by preferentially breeding individuals whose genetics move the
     population in a desired direction. <strong>Breeding value prediction</strong> combines genetic,
     pedigree and phenotypic information into the best available prediction of which individuals carry

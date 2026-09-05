@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -175,7 +175,7 @@ F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2\\
 h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & \sigma_y^2 & F_{ij}h^2\sigma_y^2\\
 F_{ij}h^2\sigma_y^2 & h^2\sigma_y^2 & F_{ij}h^2\sigma_y^2 & \sigma_y^2
 \end{bmatrix}\right)\]</div>
-    <div class="keybox"><strong>What this delivers</strong>
+    <div class="keybox"><strong>Interpretation</strong>
     <p style="margin-top:4px">Conditioning the top block (the breeding values) on the bottom block (the
     observed phenotypes) predicts <em>both</em> animals' genetic values from <em>both</em> records,
     weighting each by relationship. Notice that \(F_{ij}\), from the relationship lecture, is what
@@ -231,7 +231,7 @@ y_2&=\mu_2+g_2+e_2
     <p style="margin:6px 0 0">There are therefore <strong>three</strong> correlations between any two
     traits: phenotypic \(\rho_{12}\), genetic \(\rho_{g_{12}}\) and environmental \(\rho_{e_{12}}\).</p></div>
 
-    <div class="keybox"><strong>Why this is practically important</strong>
+    <div class="keybox"><strong>Practical implication</strong>
     <p style="margin-top:4px">The phenotypic correlation you can measure directly is a <em>blend</em> of
     the genetic and environmental correlations, weighted by the heritabilities. The two components can
     even have opposite signs, so a near-zero phenotypic correlation does not mean the traits are
@@ -283,9 +283,6 @@ y_2&=\mu_2+g_2+e_2
       <li>Genotype-environment interaction occurs when genotypes respond differently to different
           environments.</li>
     </ul>
-  <div class="srcnote"><b>References.</b> Slides for this lecture were influenced by the notes and slides of
-    Bernt Guldbrandtsen (Department of Veterinary and Animal Sciences, University of Copenhagen;
-    formerly at QGG) and Beatriz Cuyabano (INRA, France; formerly at QGG).</div>
   </section>
   <section class="lsec" id="exercises">
     <h2>Exercises</h2>
@@ -319,8 +316,7 @@ y_2&=\mu_2+g_2+e_2
     </code></div>
     <p>Var1 against Var3 forms a tight negatively sloping cloud (\(\rho=-0.9\)); Var1 against Var2 is a
     weak positive cloud; Var2 against Var3 is a circular blob with no tilt (\(\rho=0\)).</p>
-    <p><strong>A caution worth noticing.</strong> Var2 and Var3 are uncorrelated, yet each is correlated
-    with Var1. Marginal independence of a pair does not survive conditioning: if you condition on Var1,
+    <p><strong>Caution.</strong> Var2 and Var3 are uncorrelated, yet each is correlated with Var1. Marginal independence of a pair does not survive conditioning: if you condition on Var1,
     Var2 and Var3 become correlated. This is exactly why multi-trait evaluation cannot be replaced by a
     series of single-trait analyses.</p></div>
         </details>
@@ -353,7 +349,7 @@ y_2&=\mu_2+g_2+e_2
     x1  &lt;- mu1 + V12 %*% solve(V22) %*% (x2 - mu2)<br>
     print(x1)
     </code></div>
-    <p>Note carefully that \(V_{12}\) and \(V_{22}\) differ only in their diagonals: the genetic
+    <p>Note that \(V_{12}\) and \(V_{22}\) differ only in their diagonals: the genetic
     covariance between the two animals is \(7.5\) in both, but the phenotypic variance on the diagonal of
     \(V_{22}\) is \(100\) whereas the genetic variance in \(V_{12}\) is \(30\).</p>
     <p>Evaluating gives approximately \(\hat g_1\approx 3.5\) and \(\hat g_2\approx -0.6\). Two features
@@ -384,7 +380,7 @@ y_2&=\mu_2+g_2+e_2
     <p><strong>2.</strong> The phenotypic correlation is small and <em>positive</em>, about \(+0.07\).
     A breeder seeing only this would conclude the two traits are essentially unrelated, and that
     selecting on trait 1 is harmless for trait 2.</p>
-    <p>That conclusion is wrong, and expensively so. The genetic correlation is
+    <p>That conclusion is incorrect, and costly. The genetic correlation is
     \(-0.50\), strongly <strong>antagonistic</strong>. Correlated response depends on \(\rho_{g}\), not
     \(\rho_{12}\), so selection on trait 1 will steadily degrade trait 2. The positive environmental
     correlation has masked the antagonism at the phenotypic level. This is the quantitative reason that

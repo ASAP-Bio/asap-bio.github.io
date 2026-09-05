@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -44,8 +44,8 @@
     <p style="margin-top:4px">Selection is <strong>differential reproduction and survival</strong> of
     individuals due to genetic differences between the individuals.</p></div>
 
-    <p>Before the mathematics, it is worth recalling the question that selection was invented to answer:
-    why are organisms so well suited to their circumstances? Three historical answers frame the topic.</p>
+    <p>The question that selection was formulated to answer is why organisms are suited to their
+    circumstances. Three historical answers frame the topic.</p>
     <h3>William Paley (1743&ndash;1805), <em>Natural Theology</em></h3>
     <ul>
       <li>Believed organisms' design implied a designer.</li>
@@ -64,9 +64,9 @@
       <li>"Survival of the fittest" as an explanation of how species change over time.</li>
     </ul>
     <p>The decisive difference is that Darwin's mechanism requires <em>heritable variation that already
-    exists</em>, and does not require the variation to arise because it is needed. That is what makes it
-    a quantitative theory rather than a narrative, and it is why the rest of this lecture can be
-    written as algebra.</p>
+    exists</em> and does not require variation to arise because it is needed. This makes it a
+    quantitative theory rather than a narrative account, and allows the remainder of this lecture to be
+    developed algebraically.</p>
     <div class="vslot"><strong>Video: The question, and three answers</strong>A recording of this section will be embedded here.</div>
   </section>
   <section class="lsec" id="postulates">
@@ -100,7 +100,7 @@
       <li><strong>Fertility or fecundity selection</strong>: how many offspring</li>
       <li><strong>Gametic selection</strong>: competition between gametes</li>
     </ol>
-    <p>It helps to see where these stages sit in a life cycle, and that the stages differ between
+    <p>The stages occupy different positions in the life cycle, and the life cycle itself differs between
     taxa:</p>
     <table class="dtab">
       <tr><th>Mammals</th><th>Flowering plants</th></tr>
@@ -141,7 +141,7 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
     <h2>Change in allele frequency</h2>
 
     <p>Higher survival for an allele means higher representation in the next generation. Selection
-    therefore induces a change in allele frequencies. Here is the derivation in full.</p>
+    therefore induces a change in allele frequencies. The derivation follows.</p>
     <div class="derive"><h5>Deriving \(\Delta p\)</h5>
       <ol>
       <li>A fraction \(\bar W\) of all individuals survive to reproduce. Among the surviving gene copies,
@@ -154,11 +154,11 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
         \[\boxed{\;\Delta p=pq\,\frac{W_A-W_a}{\bar W}\;}\]</li>
       </ol>
     </div>
-    <div class="keybox"><strong>Read the result</strong>
+    <div class="keybox"><strong>Interpretation</strong>
     <p style="margin-top:4px">\(\Delta p\) is zero whenever \(W_A=W_a\), that is, whenever the two
     alleles have the same average fitness. It is also zero when \(p=0\) or \(q=0\). Selection needs both
-    a fitness difference <em>and</em> standing variation to produce change, which is Darwin's postulates
-    in algebraic form.</p></div>
+    a fitness difference <em>and</em> standing variation to produce change, which restates Darwin's postulates
+    algebraically.</p></div>
 
     <div class="keybox"><strong>In a breeding context</strong>
     <p style="margin-top:4px">In breeding, "survival" means the same thing as "being selected for
@@ -183,8 +183,8 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
 &=\frac{V_A(W)}{\bar W}
 \end{aligned}\]</div>
 
-    <p>The middle step should look familiar: \(2pq\alpha^2\) is exactly the additive genetic variance
-    derived in the one-locus lecture, here applied to fitness itself.</p>
+    <p>The middle step uses a result established earlier: \(2pq\alpha^2\) is the additive genetic
+    variance derived in the one-locus lecture, here applied to fitness.</p>
     <div class="keybox"><strong>Consequence</strong>
     <div class="eqn c" style="background:#fff">\[\Delta \bar W=\frac{V_A(W)}{\bar W}\]</div>
     <p style="margin:6px 0 0">Since \(\bar W>0\) and \(V_A(W)\ge 0\), we have \(\Delta\bar W\ge 0\).
@@ -210,7 +210,7 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
 
     <h3>Computing \(S\) under truncation</h3>
     <p>If the trait is normally distributed, \(i\) depends only on the proportion selected:</p>
-    <div class="derive"><h5>Recipe</h5>
+    <div class="derive"><h5>Procedure</h5>
       <ol>
       <li>Fix the proportion selected, \(B\).</li>
       <li>Find the truncation point \(t\) in the <em>standard normal</em> distribution such that a
@@ -236,9 +236,8 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
   <section class="lsec" id="onelocus">
     <h2>From one locus to the breeder's equation</h2>
 
-    <p>We now have two apparently separate stories: allele-frequency change under fitness differences,
-    and the practical business of selecting on a phenotype. This section connects them, and the
-    connection is the intellectual heart of the lecture.</p>
+    <p>Two treatments have been developed separately: allele-frequency change under fitness differences,
+    and selection on a phenotype. This section shows that they are equivalent.</p>
     <p>The effect of selecting on a <em>quantitative trait</em> can be modelled at a single locus of
     small effect. Assume selection is on phenotype alone: we use no information from other traits or
     from relatives.</p>
@@ -274,7 +273,7 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
         \[\Delta G=V_A\frac{i}{\sigma}=i\,h^2\frac{\sigma^2}{\sigma}=i\,h^2\sigma\]</li>
       </ol>
     </div>
-    <div class="keybox"><strong>What just happened</strong>
+    <div class="keybox"><strong>Relation to the breeder's equation</strong>
     <p style="margin-top:4px">Starting from nothing but allele-frequency change at a single locus of
     small effect, we have arrived at the breeder's equation. The two stories are one story. This also
     explains <em>why</em> the breeder's equation contains \(h^2\) and not \(H^2\): the derivation runs
@@ -284,8 +283,8 @@ pW_A+qW_a&=p\left(pW_{AA}+qW_{Aa}\right)+q\left(pW_{Aa}+qW_{aa}\right)\\
   <section class="lsec" id="breeder">
     <h2>The breeder's equation</h2>
 
-    <p>The derivation above came from the locus. Here is the complementary derivation, from regression,
-    which is the one that generalises to real breeding programmes. We assume non-overlapping
+    <p>The derivation above proceeded from the locus. The complementary derivation, from regression,
+    generalises to breeding programmes. We assume non-overlapping
     generations and that all selected individuals breed equally.</p>
     <div class="derive"><h5>Step 1: covariance between breeding value and phenotype</h5>
       <ol>
@@ -342,7 +341,7 @@ V_{p1} & \operatorname{Cov}(y_1,g_{a,1}) & \operatorname{Cov}(y_1,g_{a,2})\\
 \operatorname{Cov}(y_1,g_{a,1}) & V_{a1} & \operatorname{Cov}(g_{a,1},g_{a,2})\\
 \operatorname{Cov}(y_1,g_{a,2}) & \operatorname{Cov}(g_{a,1},g_{a,2}) & V_{a2}
 \end{pmatrix}\]</div>
-    <div class="derive"><h5>Working it through</h5>
+    <div class="derive"><h5>Derivation</h5>
       <ol>
       <li>\(\operatorname{Cov}(y_1,g_{a,1})=\operatorname{Cov}(g_{a,1}+e_1,g_{a,1})=V_{a1}\).</li>
       <li>\(\operatorname{Cov}(y_1,g_{a,2})=\operatorname{Cov}(g_{a,1},g_{a,2})
@@ -470,7 +469,7 @@ V_{p1} & \operatorname{Cov}(y_1,g_{a,1}) & \operatorname{Cov}(y_1,g_{a,2})\\
     selective sweep: anything linked to the lactase persistence mutation is now frequent, including any
     recessive deleterious allele that happened to be on the same haplotype, and such recessives are now
     expressed more often simply because they are more common.</p>
-    <div class="keybox"><strong>Why this matters for breeding</strong>
+    <div class="keybox"><strong>Implications for breeding</strong>
     <ul style="margin:6px 0 0">
       <li>Selection "drags along" large pieces of genome.</li>
       <li>This may raise the frequency of previously rare recessive deleterious alleles.</li>
@@ -530,13 +529,13 @@ V_{p1} & \operatorname{Cov}(y_1,g_{a,1}) & \operatorname{Cov}(y_1,g_{a,2})\\
     <p><strong>3. Change in allele frequency.</strong></p>
     <div class="eqn c">\[\Delta p=pq\frac{W_A-W_a}{\bar W}=\frac{(0.99)(0.01)(0.01)}{0.9999}
     \approx 9.9\times 10^{-5}\]</div>
-    <p>Sanity check via Fisher: \(\Delta\bar W=V_A/\bar W=1.98\times10^{-6}/0.9999\approx
+    <p>Check via Fisher's theorem: \(\Delta\bar W=V_A/\bar W=1.98\times10^{-6}/0.9999\approx
     1.98\times10^{-6}\), which is positive, as it must be.</p>
-    <p><strong>Interpretation.</strong> Even against a <em>lethal</em>, progress is glacial once the
-    allele is rare: \(\Delta p\approx 10^{-4}\) per generation. This is the same point met in the
-    Foundations course, selection against a recessive is slow at low frequency because almost all copies
-    are hidden in heterozygotes, and it is the reason marker-assisted removal of recessive defects is so
-    much more effective than phenotypic culling.</p></div>
+    <p><strong>Interpretation.</strong> Even against a <em>lethal</em>, progress is very slow once the
+    allele is rare: \(\Delta p\approx 10^{-4}\) per generation. This corresponds to the result in the
+    Foundations course: selection against a recessive is slow at low frequency because most copies are
+    carried by heterozygotes. It is also why marker-assisted removal of recessive defects is more
+    effective than phenotypic culling.</p></div>
         </details>
       </div>
     </details>
@@ -590,8 +589,7 @@ V_{p1} & \operatorname{Cov}(y_1,g_{a,1}) & \operatorname{Cov}(y_1,g_{a,2})\\
     =-0.291\]</div>
     <p>So one generation of selecting the top 20% on milk yield is expected to <strong>reduce</strong>
     protein percentage by about 0.29 phenotypic standard deviations.</p>
-    <p><strong>Interpretation.</strong> This is the single most important practical lesson of the
-    section. The unfavourable genetic correlation means that selecting hard on yield degrades
+    <p><strong>Interpretation.</strong> This is the principal practical implication of the section. The unfavourable genetic correlation means that selecting hard on yield degrades
     composition, and no amount of care in <em>measuring</em> yield avoids it. The only remedies are to
     select on an index that weights both traits, or to accept the loss. Historically, dairy programmes
     that selected on yield alone did exactly this, which is why balanced indices replaced them.</p></div>

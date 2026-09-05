@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=0d2d0dfb97">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
@@ -129,10 +129,10 @@
     <strong>linear</strong>, and that it passes through sums regardless of dependence:</p>
     <div class="eqn c">\[E(aX+b)=aE(X)+b \qquad\text{and}\qquad E(X+Y)=E(X)+E(Y)\]</div>
 
-    <div class="keybox"><strong>Why this matters here</strong>
+    <div class="keybox"><strong>Application</strong>
     <p style="margin-top:4px">The second identity is the reason we could write
     \(E(g)=E\!\left(\sum_j g_j\right)=\sum_j E(g_j)\) in the previous lecture <em>without</em> assuming
-    the loci were independent. Expectations always add. Variances, as we are about to see, do not.</p></div>
+    the loci were independent. Expectations always add. Variances do not, as shown in the next section.</p></div>
   </section>
   <section class="lsec" id="var">
     <h2>Variance</h2>
@@ -148,7 +148,7 @@ V(X+Y) &= V(X)+V(Y)+2\operatorname{Cov}(X,Y)\\[3pt]
 V(X+Y) &= V(X)+V(Y) \qquad \text{only if } X\perp Y
 \end{aligned}\]</div>
 
-    <div class="keybox"><strong>Read this twice</strong>
+    <div class="keybox"><strong>Additivity of variances</strong>
     <p style="margin-top:4px">Adding a constant \(b\) does not change the variance, but scaling by
     \(a\) multiplies it by \(a^2\). And variances of sums only add when the variables are
     <strong>uncorrelated</strong>. When we later decompose
