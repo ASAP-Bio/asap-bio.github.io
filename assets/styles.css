@@ -481,3 +481,21 @@ footer.site ul{padding-left:0;margin-left:0}
 }
 
 [hidden]{display:none!important}
+/* --- Lecture header: title left, PDF download button right --- */
+.lechead{display:flex;align-items:center;gap:24px}
+.lectitle{flex:1;min-width:0}
+.lechead h1{margin:0}
+.pdfbtn{flex:none;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:10px 16px;text-decoration:none;white-space:nowrap;
+  box-shadow:0 1px 4px rgba(20,50,30,.06);transition:border-color .15s,box-shadow .15s,transform .12s}
+.pdfbtn:hover{border-color:var(--green);box-shadow:0 4px 14px rgba(20,50,30,.13);
+  transform:translateY(-1px);text-decoration:none}
+.pdfic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--green);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+.pdftx strong{display:block;color:var(--greendk);font-size:14.5px;line-height:1.25}
+.pdftx span{display:block;font-size:12px;color:var(--grey);margin-top:1px}
+@media(max-width:760px){
+  .lechead{flex-wrap:wrap;gap:14px}
+  .lectitle{flex:1 1 100%;order:2}
+  .pdfbtn{order:1;margin-left:auto}
+}
