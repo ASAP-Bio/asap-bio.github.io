@@ -79,7 +79,10 @@
     pedigree, those individuals are taken as the <strong>base animals</strong> and treated as unrelated
     and non-inbred. Every relationship coefficient you compute is therefore a statement about ancestry
     <em>since that base</em>.</p>
-    <div class="vslot"><strong>Video: Relatedness and the base population</strong>A recording of this section will be embedded here.</div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQ1FGnwx2v?width=100%&height=100%&ff=1&title=0" title="Relationship and inbreeding: introduction" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Relationship and inbreeding: introduction</strong><span class="vcap">Why relatedness matters in breeding, and the role of the base population.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="ibd">
     <h2>Identity by descent</h2>
@@ -138,6 +141,10 @@
       <li>\(F_{ij}\) is the expected number of IBD copies, in \(j\), of a random allele drawn from
           \(i\).</li>
     </ul></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhA?width=100%&height=100%&ff=1&title=0" title="Relatedness and the sharing of genes" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Relatedness and the sharing of genes</strong><span class="vcap">Coancestry as the probability that two sampled alleles are identical by descent.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="cov">
     <h2>Covariance among relatives</h2>
@@ -177,7 +184,10 @@
       <tr><td>Half sibs</td><td>\(1/8\)</td><td>\(\tfrac14 V_a\)</td></tr>
       <tr><td>Full sibs</td><td>\(1/4\)</td><td>\(\tfrac12 V_a\) (plus \(\tfrac14 V_d\))</td></tr>
     </table>
-    <div class="vslot"><strong>Video: Covariance among relatives</strong>A recording of this section will be embedded here.</div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhB?width=100%&height=100%&ff=1&title=0" title="Sharing genes and the additive genetic variance" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Sharing genes and the additive genetic variance</strong><span class="vcap">Deriving Cov(a_i, a_j) = 2*theta*V_a from the effects of the shared alleles.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="mendel">
     <h2>Parent average and Mendelian sampling</h2>
@@ -209,6 +219,20 @@ V_M&=V_a-\tfrac12 V_a=\tfrac12 V_a
     \qquad y_o\sim N\!\left(a_{\bar p},\;\tfrac12 V_a+V_e\right)\]</div>
     <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">This is why even an elite mating
     produces a range of offspring, and why selection among full sibs is possible at all.</p></div>
+    <div class="vseries" id="vs-poreg">
+      <div class="vs-head"><span class="vplay">&#9658;</span><span class="vtx"><strong>Parent-offspring regression, in two parts</strong><span class="vcap">The regression of offspring on parent, and what it estimates.</span></span></div>
+      <div class="vs-tabs">
+        <button class="vs-tab is-active" data-i="0">Part 1</button>
+        <button class="vs-tab" data-i="1">Part 2</button>
+      </div>
+        <div class="vs-pane is-active" data-i="0">
+          <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzha?width=100%&height=100%&ff=1&title=0" title="Parent-offspring regression, in two parts, Part 1" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+        </div>
+        <div class="vs-pane" data-i="1">
+          <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhz?width=100%&height=100%&ff=1&title=0" title="Parent-offspring regression, in two parts, Part 2" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+        </div>
+    </div>
+<script>(function(){var r=document.getElementById("vs-poreg");if(!r)return;var t=r.querySelectorAll(".vs-tab"),p=r.querySelectorAll(".vs-pane");t.forEach(function(b){b.addEventListener("click",function(){var i=b.dataset.i;t.forEach(function(x){x.classList.toggle("is-active",x.dataset.i===i);});p.forEach(function(x){x.classList.toggle("is-active",x.dataset.i===i);});});});})();</script>
   </section>
   <section class="lsec" id="F">
     <h2>The inbreeding coefficient</h2>
@@ -229,7 +253,10 @@ V_M&=V_a-\tfrac12 V_a=\tfrac12 V_a
     <p style="margin:6px 0 0;font-size:13.5px;color:var(--grey)">\(n_i\) is the number of meioses
     (links) in loop \(i\). Each meiosis halves the probability of transmitting the same allele, which is
     where the factor of one half comes from.</p></div>
-    <div class="vslot"><strong>Video: Computing F from a pedigree</strong>A recording of this section will be embedded here.</div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhv?width=100%&height=100%&ff=1&title=0" title="Inbreeding: mating among relatives" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Inbreeding: mating among relatives</strong><span class="vcap">How mating related individuals produces inbred offspring, and how F is computed.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="Fvar">
     <h2>What inbreeding does to variance</h2>
@@ -254,6 +281,10 @@ V_M&=V_a-\tfrac12 V_a=\tfrac12 V_a
       <li>An inbred parent generates \(\tfrac14(1-F)V_a\).</li>
     </ul>
     <div class="eqn c">\[V_M=\tfrac14(1-F_s)V_a+\tfrac14(1-F_d)V_a=\tfrac12\left(1-\frac{F_s+F_d}{2}\right)V_a\]</div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhw?width=100%&height=100%&ff=1&title=0" title="Inbreeding and variance" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Inbreeding and variance</strong><span class="vcap">What inbreeding does to the additive variance and to Mendelian sampling.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="pop">
     <h2>Inbreeding at population level</h2>
@@ -293,6 +324,10 @@ V_M&=V_a-\tfrac12 V_a=\tfrac12 V_a
     <p>An average inbreeding of just 2.5% raises the incidence roughly <strong>26-fold</strong>. This is
     why rare recessive defects surface in closed nucleus herds long before inbreeding depression in
     production traits becomes obvious.</p></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhx?width=100%&height=100%&ff=1&title=0" title="Inbreeding at population level" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Inbreeding at population level</strong><span class="vcap">Average inbreeding, heterozygote deficiency, and the effect on rare recessives.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="depress">
     <h2>Inbreeding depression</h2>
@@ -340,6 +375,20 @@ F_{n1} & & \cdots & & 1+F_{nn}
     covariance structure of an entire pedigree is \(\mathbf{A}V_a\). In genomic prediction the same
     role is played by a genomic relationship matrix \(\mathbf{G}\), estimated from markers rather than
     deduced from the pedigree.</p></div>
+    <div class="vseries" id="vs-amat">
+      <div class="vs-head"><span class="vplay">&#9658;</span><span class="vtx"><strong>The numerator relationship matrix, in two parts</strong><span class="vcap">Building A from a pedigree, and what its elements mean.</span></span></div>
+      <div class="vs-tabs">
+        <button class="vs-tab is-active" data-i="0">Part 1</button>
+        <button class="vs-tab" data-i="1">Part 2</button>
+      </div>
+        <div class="vs-pane is-active" data-i="0">
+          <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhy?width=100%&height=100%&ff=1&title=0" title="The numerator relationship matrix, in two parts, Part 1" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+        </div>
+        <div class="vs-pane" data-i="1">
+          <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzh4?width=100%&height=100%&ff=1&title=0" title="The numerator relationship matrix, in two parts, Part 2" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+        </div>
+    </div>
+<script>(function(){var r=document.getElementById("vs-amat");if(!r)return;var t=r.querySelectorAll(".vs-tab"),p=r.querySelectorAll(".vs-pane");t.forEach(function(b){b.addEventListener("click",function(){var i=b.dataset.i;t.forEach(function(x){x.classList.toggle("is-active",x.dataset.i===i);});p.forEach(function(x){x.classList.toggle("is-active",x.dataset.i===i);});});});})();</script>
   </section>
   <section class="lsec" id="assort">
     <h2>Assortative mating</h2>
@@ -379,6 +428,10 @@ F_{n1} & & \cdots & & 1+F_{nn}
       <li>In the <strong>longer term</strong> the effect is the opposite, because of the inbreeding
           induced at the trait genes.</li>
     </ul></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://go.screenpal.com/player/cOQjjsnwzhu?width=100%&height=100%&ff=1&title=0" title="Assortative mating" loading="lazy" allowfullscreen allow="fullscreen" scrolling="no"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Assortative mating</strong><span class="vcap">Mating like with like: the short-term gain in variance and the long-term reversal.</span></span></figcaption>
+    </figure>
   </section>
   <section class="lsec" id="summary">
     <h2>Summary</h2>
