@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DNA, genes, genomes and markers · ASAP-Bio</title>
+<meta name="description" content="Lecture on the structure of DNA, Chargaff's rule, the double helix, genes and genomes, the omics layers, the distinction between genetics and genomics, molecular markers and single nucleotide polymorphisms.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css?v=6eb019e5c2">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><div class="lechead">
+  <div class="lectitle"><h1>DNA, genes, genomes and markers</h1><p>Lecture 1 of the Molecular Genomics series. The structure of DNA, what a gene and a genome are, and why molecular markers work.</p></div>
+  <a class="pdfbtn" href="assets/lectures/lec-mg-dna-markers.pdf" download title="Download this lecture as a PDF">
+    <span class="pdfic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 12l5 5 5-5"/><path d="M4 20h16"/></svg></span>
+    <span class="pdftx"><strong>Download PDF</strong><span>7 pages &middot; 190 KB</span></span>
+  </a>
+</div></div></div>
+<section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 1</span><span>Molecular Genomics</span><span>Introductory</span><span class="s">Gabor Meszaros</span></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://www.youtube-nocookie.com/embed/rKQGkPszPgU?rel=0" title="DNA and genetic markers" loading="lazy" allowfullscreen frameborder="0" allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>DNA and genetic markers</strong><span class="vcap">The full lecture on the Genomics Boot Camp channel.</span><a class="vfall" href="https://youtu.be/rKQGkPszPgU" target="_blank" rel="noopener">Watch on YouTube &#8599;</a></span></figcaption>
+    </figure>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#why">Why an animal scientist needs genomics</a></li>
+    <li><a href="#puzzle">What the structure of DNA had to explain</a></li>
+    <li><a href="#solution">The double helix</a></li>
+    <li><a href="#gene">From nucleotide to gene to genome</a></li>
+    <li><a href="#omes">The other 'omes'</a></li>
+    <li><a href="#distinction">Genetics and genomics</a></li>
+    <li><a href="#revolution">Why genomics happened when it did</a></li>
+    <li><a href="#markers">Molecular markers</a></li>
+    <li><a href="#snp">The single nucleotide polymorphism</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="why">
+    <h2>Why an animal scientist needs genomics</h2>
+
+    <p>Animal breeding worked for a century without any direct observation of DNA. Selection on
+    phenotypes, pedigrees and best linear unbiased prediction transformed dairy cattle, pigs and
+    poultry long before a single genome was sequenced. The statistical machinery of quantitative
+    genetics deliberately treats the genome as a black box: it is enough to know that relatives
+    resemble each other in a way that can be predicted from the pedigree.</p>
+
+    <p>What genomics changes is that the box is now open. Instead of inferring how much of the genome
+    two animals share from their pedigree relationship, we can measure it. Instead of waiting for a
+    bull's daughters to milk before knowing his breeding value, we can genotype him at birth. Instead
+    of describing a breed as a name in a herdbook, we can describe it as a set of allele frequencies
+    and ask where it came from.</p>
+
+    <p>This course covers the concepts needed to read, and to do, that kind of work. It is deliberately
+    theoretical. The companion <a href="genomics-bootcamp.html">Genomics Boot Camp</a> covers the
+    practical side, handling genotype files, running PLINK, quality control. The two are meant to be
+    taken together: the boot camp will teach you which command to type, this course explains what the
+    output means.</p>
+    <div class="keybox"><strong>Assumed background</strong>
+    <ul style="margin:6px 0 0">
+      <li>School-level biology: cells, chromosomes, meiosis.</li>
+      <li>Basic Mendelian genetics: alleles, genotypes, dominance.</li>
+      <li>Elementary statistics: mean, variance, correlation, a regression line.</li>
+    </ul>
+    <p style="margin:8px 0 0">Everything beyond that is developed as it is needed.</p></div>
+  </section>
+  <section class="lsec" id="puzzle">
+    <h2>What the structure of DNA had to explain</h2>
+
+    <p>By the early 1950s it was accepted that DNA carried heredity, but nobody knew how a molecule
+    could do such a thing. The problem was well posed, which is part of why it was solved so quickly.
+    Any proposed structure had to account for three properties simultaneously.</p>
+    <div class="keybox"><strong>Three requirements</strong>
+    <ul style="margin:6px 0 0">
+      <li><strong>Faithful replication.</strong> The molecule must be copyable, so that a daughter cell
+          receives the same information as the parent.</li>
+      <li><strong>Informational content.</strong> It must be able to encode something. A perfectly
+          regular crystal carries no information; the molecule needs a variable part.</li>
+      <li><strong>Stability with the capacity to change.</strong> Mutation must be possible, otherwise
+          there is no evolution, but it must be rare, otherwise the information degrades faster than
+          it can be used.</li>
+    </ul></div>
+
+    <p>Three pieces of evidence were on the table.</p>
+
+    <p><strong>The building blocks.</strong> DNA was known to consist of a phosphate group, a
+    five-carbon sugar (deoxyribose), and one of four nitrogenous bases. The bases fall into two
+    chemical classes: the purines, adenine and guanine, which have a double-ring structure, and the
+    pyrimidines, cytosine and thymine, which have a single ring. One phosphate plus one sugar plus one
+    base is a <strong>nucleotide</strong>, the repeating unit of the chain.</p>
+
+    <p><strong>Chargaff's rule.</strong> Erwin Chargaff had measured base composition across species
+    and found a regularity that held everywhere: the total amount of purine equals the total amount of
+    pyrimidine, and more specifically the amount of adenine equals the amount of thymine, and the
+    amount of guanine equals the amount of cytosine.</p>
+    <div class="eqn c">\[A = T,\qquad G = C,\qquad \text{hence } A+G = T+C\]</div>
+
+    <p>This is a strong hint. A one-to-one quantitative correspondence between two specific pairs of
+    molecules suggests those molecules are physically paired.</p>
+
+    <p><strong>X-ray diffraction.</strong> Rosalind Franklin fired X-rays at DNA fibres and recorded
+    the scattering pattern on photographic film. The angles at which the rays scattered constrain where
+    the atoms can be. Her results indicated a long, thin molecule with a helical, repeating structure
+    and two components running parallel to one another. This was the decisive constraint: it told
+    Watson and Crick they were looking for a structure with two strands.</p>
+  </section>
+  <section class="lsec" id="solution">
+    <h2>The double helix</h2>
+
+    <p>Watson and Crick did not perform a new experiment. They built physical models until one fitted
+    all three constraints at once, and published the result in a one-page paper in <em>Nature</em> in
+    1953. Watson, Crick and Wilkins received the Nobel Prize for Physiology or Medicine in 1962.</p>
+
+    <p>The structure has an alternating phosphate and deoxyribose backbone, with the bases pointing
+    inward. Two such chains run antiparallel, one in the 5' to 3' direction and the other in the
+    3' to 5' direction, wound around a common axis. The two chains are held together by hydrogen bonds
+    between the bases, and the pairing is specific: adenine pairs with thymine, guanine pairs with
+    cytosine.</p>
+    <div class="keybox"><strong>Why the structure answers all three requirements</strong>
+    <ul style="margin:6px 0 0">
+      <li><strong>Replication</strong> follows immediately. If A always pairs with T and G with C, then
+          each strand fully specifies the other. Separate the strands and each acts as a template.</li>
+      <li><strong>Information</strong> lies in the sequence of bases along one strand. The backbone is
+          regular, the sequence is not, so an arbitrary message can be written in a four-letter
+          alphabet.</li>
+      <li><strong>Stability</strong> comes from the fact that a base pair is held by two or three
+          hydrogen bonds and buried inside the helix, while <strong>change</strong> remains possible
+          through rare copying errors.</li>
+    </ul></div>
+
+    <p>Chargaff's rule is now not a curiosity but a consequence: every A on one strand forces a T on the
+    other, so the totals must be equal.</p>
+  </section>
+  <section class="lsec" id="gene">
+    <h2>From nucleotide to gene to genome</h2>
+
+    <p>The sequence of bases is not uniformly meaningful. A <strong>gene</strong> is a stretch of DNA
+    with a defined internal organisation. It begins with a <strong>regulatory region</strong> that
+    controls when and where transcription starts, contains a signal marking where transcription should
+    end, and in between alternates <strong>exons</strong>, the segments that end up in the mature
+    transcript and are translated into protein, with <strong>introns</strong>, the segments that are
+    spliced out.</p>
+
+    <p>The <strong>genome</strong> is the complete set of DNA in an organism. Two facts about it matter
+    for everything that follows. First, it is large: a mammalian genome is roughly three thousand
+    million base pairs, distributed over a set of chromosomes. Second, genes occupy a small minority of
+    it. Most of the genome is intergenic, and much of what is not a gene is nonetheless functional in
+    ways that regulate genes.</p>
+
+    <p>Both facts are inconvenient for anyone who wants to find the DNA responsible for a trait. There
+    is a great deal of sequence, and no simple rule tells you which parts matter.</p>
+  </section>
+  <section class="lsec" id="omes">
+    <h2>The other 'omes'</h2>
+
+    <p>The suffix <em>-ome</em> denotes the complete collection of something, and <em>-omics</em> the
+    study of it. The vocabulary has proliferated, sometimes past the point of usefulness, but the main
+    terms are worth knowing because they name genuinely different layers of biology.</p>
+
+    <table class="dtab">
+      <tr><th>Term</th><th>The complete collection of</th></tr>
+      <tr><td>Genome</td><td>DNA, that is, all the genetic information of an organism</td></tr>
+      <tr><td>Epigenome</td><td>chemical modifications to DNA and histone proteins that alter
+          expression without altering sequence</td></tr>
+      <tr><td>Transcriptome</td><td>RNA molecules in a cell or tissue</td></tr>
+      <tr><td>Proteome</td><td>proteins in a cell, tissue or organism</td></tr>
+      <tr><td>Metabolome</td><td>small-molecule metabolites</td></tr>
+      <tr><td>Microbiome</td><td>microbes, and their genes, living in or on the organism</td></tr>
+      <tr><td>Metagenome</td><td>genetic material recovered directly from an environmental sample</td></tr>
+      <tr><td>Phenome</td><td>phenotypic traits, as influenced by genome and environment</td></tr>
+    </table>
+
+    <p>The layers are ordered, roughly, from cause to consequence. The genome is fixed at conception and
+    the same in every cell; the transcriptome, proteome and metabolome differ between tissues and change
+    by the hour. That difference is exactly why the genome is the convenient place to start. A genotype
+    measured once is valid for life.</p>
+
+    <p>This course concerns the genome. The other layers appear in the ASAP-Bio multi-omics theme.</p>
+  </section>
+  <section class="lsec" id="distinction">
+    <h2>Genetics and genomics</h2>
+
+    <p>The two words are often used interchangeably and should not be. The World Health Organization
+    draws the distinction as follows.</p>
+    <div class="keybox"><strong>Definitions</strong>
+    <ul style="margin:6px 0 0">
+      <li><strong>Genetics</strong> is the study of heredity, and of individual genes: how a gene is
+          composed, what it does, how it is transmitted.</li>
+      <li><strong>Genomics</strong> is the study of all the genes of an organism together, their
+          interrelationships, and their combined influence on growth and development, together with the
+          techniques that make such study possible.</li>
+    </ul></div>
+
+    <p>The practical difference is one of scale, and scale changes the methods. When you study one gene
+    you can reason about it directly. When you study half a million markers simultaneously you cannot,
+    and statistical problems appear that have no analogue in single-gene genetics: multiple testing,
+    correlations between markers, more variables than observations. A large part of this course is
+    about those problems.</p>
+  </section>
+  <section class="lsec" id="revolution">
+    <h2>Why genomics happened when it did</h2>
+
+    <p>The intellectual framework for genomics was largely in place well before the data were. The
+    limiting factor was the cost of finding out what an animal's DNA actually says.</p>
+
+    <table class="dtab">
+      <tr><th>Period</th><th>What became possible</th></tr>
+      <tr><td>1860s</td><td>Mendel establishes particulate inheritance</td></tr>
+      <tr><td>1953</td><td>Watson and Crick, the structure of DNA</td></tr>
+      <tr><td>1970s</td><td>Cloning and sequencing, one gene at a time</td></tr>
+      <tr><td>1980s</td><td>Genome projects: concentrated efforts to sequence whole genomes and build
+          genomic maps, allowing overall patterns to be seen rather than isolated genes</td></tr>
+      <tr><td>1990s to 2010s</td><td>Genotyping and sequencing become fast, automated and cheap;
+          access moves from a handful of large laboratories to essentially anyone</td></tr>
+    </table>
+
+    <p>The decisive steps were the arrival of high-density <strong>single nucleotide polymorphism</strong>
+    (SNP) genotyping and, later, affordable <strong>whole genome sequencing</strong>. What mattered was
+    not that these were possible in principle but that they became cheap enough to apply to thousands
+    of animals. Genetic architecture is a population-level question, and population-level questions
+    need population-sized samples.</p>
+
+    <p>This produced the pattern typical of a technological shift in a science: old questions were
+    answered, new ones were created, and the new questions required methods that did not exist.</p>
+  </section>
+  <section class="lsec" id="markers">
+    <h2>Molecular markers</h2>
+
+    <p>We cannot look at everything at once, and for most purposes we do not need to. The working
+    compromise of genomics is the <strong>molecular marker</strong>.</p>
+    <div class="keybox"><strong>Definition</strong>
+    <p style="margin:6px 0 0">A molecular marker is a segment of DNA with an identifiable physical
+    location on a chromosome, whose inheritance can be followed. It may be a stretch of sequence or a
+    single base pair.</p></div>
+
+    <p>A marker is not usually interesting in itself. Its value is positional. If we know a marker's
+    location, and we can score its genotype cheaply in many animals, then it acts as a signpost for
+    whatever lies near it. When a marker's genotype is associated with a trait, the reasonable
+    conclusion is not that the marker causes the trait but that something close to the marker does.</p>
+
+    <p>The logic is the same as looking for a party in an unfamiliar town. You cannot see the house, but
+    you can see the cars parked along the street. Where the cars are dense, the house is near. The
+    markers are the cars; the gene is the house. How far along the street the cars extend, and therefore
+    how precisely they locate the house, is a question about linkage disequilibrium, which is
+    <a href="lec-mg-ld.html">Lecture 5</a>.</p>
+    <figure class="lecfig">
+      <svg viewBox="0 0 700 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A chromosome with evenly spaced markers; a gene lies between two of them"><rect x="40" y="66" width="620" height="20" rx="10" fill="#eef3ef" stroke="#c9d8cb"/><rect x="366" y="66" width="56" height="20" rx="4" fill="#c9a227" opacity=".85"/><text x="394" y="56" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8a6f14">gene</text><g fill="#2f5d3f"><circle cx="80" cy="76" r="5.5"/><circle cx="152" cy="76" r="5.5"/><circle cx="224" cy="76" r="5.5"/><circle cx="296" cy="76" r="5.5"/><circle cx="352" cy="76" r="5.5"/><circle cx="436" cy="76" r="5.5"/><circle cx="508" cy="76" r="5.5"/><circle cx="580" cy="76" r="5.5"/><circle cx="640" cy="76" r="5.5"/></g><g font-size="11" fill="#6b7a6d" text-anchor="middle"><text x="80" y="108">SNP 1</text><text x="152" y="108">2</text><text x="224" y="108">3</text><text x="296" y="108">4</text><text x="352" y="108">5</text><text x="436" y="108">6</text><text x="508" y="108">7</text><text x="580" y="108">8</text><text x="640" y="108">9</text></g><path d="M352 120 L352 132 L436 132 L436 120" fill="none" stroke="#2f5d3f" stroke-width="1.4"/><text x="394" y="150" text-anchor="middle" font-size="11.5" fill="#2f5d3f">markers 5 and 6 flank the gene and will be associated with it</text><text x="40" y="30" font-size="11.5" fill="#6b7a6d">chromosome</text></svg>
+      <figcaption>Markers are scored across the whole chromosome at known positions. The causal gene is not observed, but the markers nearest to it carry information about it.</figcaption>
+    </figure>
+  </section>
+  <section class="lsec" id="snp">
+    <h2>The single nucleotide polymorphism</h2>
+
+    <p>Several marker types have been used historically, including microsatellites and restriction
+    fragment length polymorphisms. The SNP has displaced almost all of them.</p>
+    <div class="keybox"><strong>Definition</strong>
+    <p style="margin:6px 0 0">A <strong>single nucleotide polymorphism</strong> is a single base pair
+    position in genomic DNA at which more than one sequence alternative, that is more than one allele,
+    is present in the population.</p></div>
+
+    <p>Two properties explain the dominance of the SNP. It is abundant, occurring roughly every few
+    hundred to few thousand bases in livestock genomes, so markers can be placed densely enough to
+    cover the whole genome. And it is simple: because it is a single position with, in practice, two
+    alleles, it can be scored by an automated assay with a binary readout, which makes
+    hundreds of thousands of simultaneous measurements economically feasible.</p>
+
+    <p>The second property has a cost. A SNP marker carries less information per locus than a
+    microsatellite, which may have ten or more alleles. Genomics compensates with volume: many
+    uninformative markers beat a few informative ones when the many are dense enough to blanket the
+    genome. How that trade-off works out in practice is the subject of
+    <a href="lec-mg-snp-chips.html">Lecture 2</a>.</p>
+    <div class="lecrefs">
+      <h5>References for this section</h5>
+      <ul>
+        <li><a href="https://www.nature.com/articles/171737a0" target="_blank" rel="noopener">Watson J.D., Crick F.H.C. (1953) Molecular structure of nucleic acids. Nature 171:737-738.</a></li>
+        <li>Griffiths A.J.F. et al. Introduction to Genetic Analysis. W.H. Freeman. Standard reference for the molecular material in this lecture.</li>
+        <li><a href="https://www.who.int/news-room/questions-and-answers/item/genomics" target="_blank" rel="noopener">WHO, Genomics: questions and answers.</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 1.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Chargaff arithmetic.</strong> A double-stranded DNA molecule is found to
+    be 22% adenine. What are the percentages of the other three bases? What would you conclude if a
+    sample were reported as 30% A and 25% T?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Because A pairs with T and G with C, in double-stranded DNA \(A=T\) and \(G=C\), and the four
+    must sum to 100%.</p>
+    <p>If \(A=22\%\) then \(T=22\%\), leaving \(100-44=56\%\) to be divided equally between G and C,
+    so \(G=C=28\%\).</p>
+    <p>A report of 30% A and 25% T is inconsistent with a double-stranded molecule. Three explanations
+    are worth considering, in roughly this order: measurement error; the material is single-stranded,
+    for example a viral genome or an RNA preparation, in which case Chargaff's rule does not apply; or
+    the sample is contaminated with material of a different composition. The rule is a diagnostic as
+    well as a fact.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 1.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Why two strands.</strong> Franklin's diffraction data indicated two
+    strands. Suppose the evidence had instead pointed to a single strand. Which of the three
+    requirements in this lecture would become difficult to satisfy, and why?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Replication is the requirement that fails. Information content and stability are both
+    achievable with one strand: a single chain of four bases can encode an arbitrary message, and
+    covalent bonds along a backbone are stable.</p>
+    <p>What complementary double-strandedness supplies is a mechanism for <em>copying</em>. Each strand
+    contains the full information needed to reconstruct the other, so separating them yields two
+    templates rather than one original and one blank. Without complementarity there is no obvious
+    physical basis for accurate duplication, which is why Watson and Crick's closing remark, that the
+    pairing they proposed immediately suggests a copying mechanism, was the substance of the paper
+    rather than an aside.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 1.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Markers and genes.</strong> A study reports that a SNP is significantly
+    associated with milk yield. A colleague concludes that the SNP causes the difference in yield.
+    Give two reasons why that conclusion is probably wrong, and state what the result does
+    support.</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p><strong>First</strong>, SNPs on commercial chips are selected to be common and evenly spaced,
+    not to be functional. The overwhelming majority lie outside coding sequence, and there is no prior
+    reason to expect the assayed base itself to alter a protein or its regulation.</p>
+    <p><strong>Second</strong>, a marker is correlated with everything physically near it, because
+    nearby loci are inherited together. An association therefore implicates a region, not a position.
+    The size of that region is set by the extent of linkage disequilibrium in the population, which in
+    livestock can be hundreds of kilobases and may contain many genes.</p>
+    <p>What the result supports is that a variant affecting milk yield lies somewhere in the
+    neighbourhood of that SNP. Narrowing the neighbourhood to a gene requires denser markers, sequence
+    data, or functional evidence, and is a substantial separate undertaking.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 1.4</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Choosing a layer.</strong> You want to predict which young bulls will
+    produce high-yielding daughters, and you may measure one 'ome'. Which do you choose, and what is
+    the argument against choosing the transcriptome, which is closer to the phenotype?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Choose the genome. The argument is not that the genome is more informative about the
+    phenotype in a biological sense, because the transcriptome is closer to it. The argument is about
+    what can be measured, when, and in what tissue.</p>
+    <p>The genome is identical in every cell, does not change with age, physiology or season, and can be
+    assayed from a blood or hair sample at birth. One measurement is valid for the animal's whole life.
+    The transcriptome differs between tissues and changes continuously, so a useful measurement would
+    require the right tissue at the right time, which for a lactating mammary gland is not available
+    from a newborn bull.</p>
+    <p>Since the entire value of genomic selection lies in evaluating animals before they have records,
+    a predictor that requires the animal to be adult and lactating defeats the purpose. This is the
+    reasoning developed in <a href="lec-mg-genomic-selection.html">Lecture 10</a>.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecsrc">Adapted by ASAP-Bio from the <em>Introduction to Genomics</em> slide series by <strong>Gabor Meszaros</strong> (<a href="https://www.youtube.com/@GenomicsBootCamp" target="_blank" rel="noopener">Genomics Boot Camp</a>), released under GPL-3.0. The sequence and worked examples follow his; the explanatory text was written for this platform.</div>
+  <div class="lecnav"><span></span><a href="knowledge.html">All lectures</a><a href="lec-mg-snp-chips.html">Lecture 2: SNP chips &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

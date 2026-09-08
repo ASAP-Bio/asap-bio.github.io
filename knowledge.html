@@ -5,7 +5,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/styles.css?v=1de5b91be8">
+<link rel="stylesheet" href="assets/styles.css?v=6eb019e5c2">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
 </head><body>
 <header class="nav"><div class="wrap">
@@ -30,9 +30,17 @@
       <a href="course-applied-animal-breeding.html" role="menuitem">Applied Animal Breeding</a>
       <a href="course-breeding-genetics.html" role="menuitem">Breeding and Genetics</a>
       <a href="course-genomic-selection-breeding.html" role="menuitem">Breeding programs with Genomic selection</a>
+      <a href="lec-mg-dna-markers.html" role="menuitem">DNA, genes, genomes and markers</a>
       <a href="course-foundations-animal-genetics.html" role="menuitem">Foundations of Animal Genetics</a>
+      <a href="lec-mg-gwas.html" role="menuitem">Genome-wide association studies</a>
+      <a href="lec-mg-admixture.html" role="menuitem">Genomic admixture</a>
+      <a href="lec-mg-roh.html" role="menuitem">Genomic inbreeding and runs of homozygosity</a>
+      <a href="lec-mg-maps.html" role="menuitem">Genomic maps and recombination</a>
+      <a href="lec-mg-genomic-selection.html" role="menuitem">Genomic selection</a>
       <a href="genomics-bootcamp.html" role="menuitem">Genomics Boot Camp</a>
       <a href="https://psoerensen.github.io/qgteach/genomics-systems-bioinfo/" target="_blank" rel="noopener" role="menuitem">Genomics, Systems Biology &amp; Bioinformatics<span class="qa-ext" title="Opens an external site">&#8599;</span></a>
+      <a href="lec-mg-haplotypes.html" role="menuitem">Haplotypes and imputation</a>
+      <a href="lec-mg-ld.html" role="menuitem">Linkage disequilibrium</a>
       <a href="lec-qg-multivariate.html" role="menuitem">Multivariate analysis</a>
       <a href="lec-qg-probability.html" role="menuitem">Probability and expectations</a>
       <a href="https://psoerensen.github.io/qgteach/quant-genetics/" target="_blank" rel="noopener" role="menuitem">Quantitative &amp; Population Genetics<span class="qa-ext" title="Opens an external site">&#8599;</span></a>
@@ -41,6 +49,8 @@
       <a href="lec-qg-drift.html" role="menuitem">Random genetic drift</a>
       <a href="lec-qg-relationship.html" role="menuitem">Relationship and inbreeding</a>
       <a href="lec-qg-selection.html" role="menuitem">Selection</a>
+      <a href="lec-mg-selection-signatures.html" role="menuitem">Selection signatures</a>
+      <a href="lec-mg-snp-chips.html" role="menuitem">SNP chips</a>
       <a href="lec-qg-one-locus.html" role="menuitem">The one-locus model</a>
     </div>
   </div>
@@ -63,6 +73,21 @@
   <summary><span class="thn">1</span><span class="tht">Multi-omics</span><span class="chev">▾</span></summary>
   <div class="theme-body">
     <p class="tdesc">Genomics, statistical genetics, transcriptomics, proteomics, metabolomics, microbiomics, and bioinformatics pipelines for livestock.</p>
+    <details class="lecseries">
+      <summary><span class="cg-ic">&#129516;</span><span class="cg-tx"><strong>Molecular Genomics lecture series</strong><span class="cg-desc">Ten lectures taking genomic data from the SNP chip to genomic selection, with derivations, worked examples and exercises. Adapted from the Introduction to Genomics series by Gabor Meszaros, whose recording accompanies each lecture.</span></span><span class="cg-n">10 lectures</span><span class="chev">&#9662;</span></summary>
+      <div class="lecbody">
+        <a class="leccard" href="lec-mg-dna-markers.html"><span class="lecn">1</span><span class="lect"><strong>DNA, genes, genomes and markers</strong><span>The structure of DNA and what it had to explain, genes and genomes, the omics layers, and why molecular markers work as proxies for genes.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-snp-chips.html"><span class="lecn">2</span><span class="lect"><strong>SNP chips</strong><span>How genotypes are produced: the BeadArray, single base extension, cluster plots and calling, allele coding, chip densities and ascertainment bias.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-maps.html"><span class="lecn">3</span><span class="lect"><strong>Genomic maps and recombination</strong><span>Physical distance in base pairs against genetic distance in Morgans, the one centiMorgan per megabase rule, crossing over and the odd-number rule.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-haplotypes.html"><span class="lecn">4</span><span class="lect"><strong>Haplotypes and imputation</strong><span>Why unphased genotypes are ambiguous, how phasing resolves them, and how low-density genotypes are imputed up to high density.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-ld.html"><span class="lecn">5</span><span class="lect"><strong>Linkage disequilibrium</strong><span>The disequilibrium coefficient D, the scaled measure D-prime, LD as a squared correlation, decay with distance and the link to effective population size.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-gwas.html"><span class="lecn">6</span><span class="lect"><strong>Genome-wide association studies</strong><span>Single-marker regression, the multiple testing problem, Bonferroni and false discovery rate, and confounding by population structure.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-admixture.html"><span class="lecn">7</span><span class="lect"><strong>Genomic admixture</strong><span>Estimating ancestry proportions from SNP data, validating against pedigree, and building cheap ancestry informative marker panels with F-ST.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-selection-signatures.html"><span class="lecn">8</span><span class="lect"><strong>Selection signatures</strong><span>Genetic hitchhiking, hard and soft sweeps, within- and between-population detection, and why demography and recombination rate mimic selection.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-roh.html"><span class="lecn">9</span><span class="lect"><strong>Genomic inbreeding and runs of homozygosity</strong><span>Identity by descent against identity by state, F-ROH, segment length as a clock for time to common ancestor, ROH islands and homozygosity mapping.</span></span><span class="lecgo">&#8594;</span></a>
+        <a class="leccard" href="lec-mg-genomic-selection.html"><span class="lecn">10</span><span class="lect"><strong>Genomic selection</strong><span>Why marker assisted selection failed, using all markers without significance testing, genetic gain and generation interval, GBLUP and single-step evaluation.</span></span><span class="lecgo">&#8594;</span></a>
+      </div>
+    </details>
     <div class="coursefeat">
       <span class="tagc">Featured course</span>
       <h4>AI-Driven Variant Discovery &amp; Genomic Prediction</h4>
@@ -79,7 +104,21 @@
     </div>
     <details class="sub">
       <summary>📚 Reading list &amp; key resources</summary>
-      <div class="subbody"><p class="soon">Curated open-access readings and references for this theme will be published here as the platform is populated. In the meantime, explore related free courses on the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy &#8594;</a></p></div>
+      <div class="subbody">
+        <ul class="rlist">
+        <li><a href="https://genomicsbootcamp.github.io/book/" target="_blank" rel="noopener">Genomics Boot Camp, the book</a><p>Gabor Meszaros' open-access companion to the practical track: SNP file handling, PLINK, quality control and population structure, worked end to end.</p></li>
+        <li><a href="https://www.youtube.com/@GenomicsBootCamp" target="_blank" rel="noopener">Genomics Boot Camp on YouTube</a><p>Video walkthroughs for every chapter of the book, plus the ten-part Introduction to Genomics theory series used in our Molecular Genomics course.</p></li>
+        <li><a href="https://www.cog-genomics.org/plink/" target="_blank" rel="noopener">PLINK 1.9</a><p>The standard toolset for whole-genome SNP analysis. Documentation doubles as a reference for file formats and quality-control conventions.</p></li>
+        <li><a href="https://darwin.eeb.uconn.edu/uncommon-ground/eeb348/" target="_blank" rel="noopener">Lecture notes in population genetics (Holsinger)</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Kent Holsinger's full course notes, from Hardy-Weinberg through coalescent theory. Open access, regularly revised, mathematically careful.</p></li>
+        <li><a href="https://cooplab.github.io/popgen-notes/" target="_blank" rel="noopener">Population genetics notes (Coop lab)</a><p>Graham Coop's open notes, strong on drift, selection and the coalescent, with the derivations written out rather than asserted.</p></li>
+        <li><a href="https://www.animalgenome.org/cgi-bin/QTLdb/index" target="_blank" rel="noopener">Animal QTLdb</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Curated database of QTL and association results across livestock species. The first place to check whether a GWAS signal has been reported before.</p></li>
+        <li><a href="https://www.ensembl.org/" target="_blank" rel="noopener">Ensembl</a><p>Genome browser and annotation for all the major livestock species. Needed for turning a genomic position into a gene.</p></li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">NCBI</a><p>Sequence archives, PubMed and the reference assemblies underlying most of the above.</p></li>
+        <li><a href="https://link.springer.com/journal/12711" target="_blank" rel="noopener">Genetics Selection Evolution</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Fully open-access journal, the main venue for quantitative and genomic methods in animal breeding.</p></li>
+        <li><a href="https://archive.org/details/classicpapersing00pete" target="_blank" rel="noopener">Classic papers in genetics</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Peters' anthology of the founding papers, freely readable. Useful for seeing how the arguments were originally made.</p></li>
+        </ul>
+        <p class="rlnote">Entries marked <span class="rl-salv">salvaged</span> were rescued from the <strong>ABG-Hub</strong>, an animal breeding and genetics link collection maintained by Gabor Meszaros until it went offline. Dead links have been removed and relocated resources traced to their current addresses. All links were verified before publication; tell us if one breaks.</p>
+      </div>
     </details>
     <details class="sub">
       <summary>📊 Teaching materials &amp; slides</summary>
@@ -100,7 +139,18 @@
     </div>
     <details class="sub">
       <summary>📚 Reading list &amp; key resources</summary>
-      <div class="subbody"><p class="soon">Curated open-access readings and references for this theme will be published here as the platform is populated. In the meantime, explore related free courses on the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy &#8594;</a></p></div>
+      <div class="subbody">
+        <ul class="rlist">
+        <li><a href="https://hastie.su.domains/ElemStatLearn/" target="_blank" rel="noopener">The Elements of Statistical Learning</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Hastie, Tibshirani and Friedman, free from the authors. The reference text behind most machine-learning methods now used on phenotype data.</p></li>
+        <li><a href="https://r4ds.hadley.nz/" target="_blank" rel="noopener">R for Data Science</a><p>Free online book covering the data-wrangling and visualisation workflow that precedes any modelling.</p></li>
+        <li><a href="https://adv-r.hadley.nz/" target="_blank" rel="noopener">Advanced R</a><p>For the point where scripts become tools: functions, environments, performance and debugging.</p></li>
+        <li><a href="https://xcelab.net/rm/" target="_blank" rel="noopener">Statistical Rethinking</a><p>McElreath's course and lecture videos. A readable route into Bayesian modelling for people who learned statistics as recipes.</p></li>
+        <li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT OpenCourseWare, Linear Algebra 18.06</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Strang's full lecture course. Nearly every method in genomic prediction and phenomics is linear algebra underneath.</p></li>
+        <li><a href="http://numerical.recipes/" target="_blank" rel="noopener">Numerical Recipes</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Reference for the numerical methods that sit under statistical software, useful when an algorithm misbehaves.</p></li>
+        <li><a href="https://videolectures.net/" target="_blank" rel="noopener">VideoLectures.NET</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Archive of recorded conference and summer-school lectures in machine learning and statistics.</p></li>
+        </ul>
+        <p class="rlnote">Entries marked <span class="rl-salv">salvaged</span> were rescued from the <strong>ABG-Hub</strong>, an animal breeding and genetics link collection maintained by Gabor Meszaros until it went offline. Dead links have been removed and relocated resources traced to their current addresses. All links were verified before publication; tell us if one breaks.</p>
+      </div>
     </details>
     <details class="sub">
       <summary>📊 Teaching materials &amp; slides</summary>
@@ -126,7 +176,17 @@
     </div>
     <details class="sub">
       <summary>📚 Reading list &amp; key resources</summary>
-      <div class="subbody"><p class="soon">Curated open-access readings and references for this theme will be published here as the platform is populated. In the meantime, explore related free courses on the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy &#8594;</a></p></div>
+      <div class="subbody">
+        <ul class="rlist">
+        <li><a href="https://www.feedipedia.org/" target="_blank" rel="noopener">Feedipedia</a><p>Encyclopaedia of feed materials with composition and nutritive values, maintained by INRAE, CIRAD, AFZ and FAO. Strong coverage of tropical feeds.</p></li>
+        <li><a href="https://www.fao.org/4/x6939e/x6939e00.htm" target="_blank" rel="noopener">Tropical Feeds (FAO)</a><p>FAO's reference on feeds and feeding in tropical systems, relevant to East African production environments.</p></li>
+        <li><a href="https://www.fao.org/gleam/en/" target="_blank" rel="noopener">GLEAM, Global Livestock Environmental Assessment Model</a><p>FAO's model and data for emissions and resource use in livestock supply chains.</p></li>
+        <li><a href="https://www.fao.org/partnerships/leap/en/" target="_blank" rel="noopener">Livestock Environmental Assessment and Performance (LEAP)</a><p>Agreed methods for measuring the environmental performance of livestock systems, including feed.</p></li>
+        <li><a href="https://www.lrrd.org/" target="_blank" rel="noopener">Livestock Research for Rural Development</a><p>Open-access journal focused on smallholder and tropical systems, with a long record of East African feeding studies.</p></li>
+        <li><a href="https://cgspace.cgiar.org/" target="_blank" rel="noopener">CGSpace</a><p>CGIAR's open repository. Large volume of ILRI feed and forage research, much of it region-specific.</p></li>
+        </ul>
+        <p class="rlnote">Entries marked <span class="rl-salv">salvaged</span> were rescued from the <strong>ABG-Hub</strong>, an animal breeding and genetics link collection maintained by Gabor Meszaros until it went offline. Dead links have been removed and relocated resources traced to their current addresses. All links were verified before publication; tell us if one breaks.</p>
+      </div>
     </details>
     <details class="sub">
       <summary>📊 Teaching materials &amp; slides</summary>
@@ -160,7 +220,18 @@
     </div>
     <details class="sub">
       <summary>📚 Reading list &amp; key resources</summary>
-      <div class="subbody"><p class="soon">Curated open-access readings and references for this theme will be published here as the platform is populated. In the meantime, explore related free courses on the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy &#8594;</a></p></div>
+      <div class="subbody">
+        <ul class="rlist">
+        <li><a href="https://www.who.int/health-topics/one-health" target="_blank" rel="noopener">WHO One Health</a><p>The framing definition and WHO's position on animal, human and environmental health as one system.</p></li>
+        <li><a href="https://www.fao.org/one-health/en" target="_blank" rel="noopener">FAO One Health</a><p>FAO's programme pages, with the agriculture and food-systems side of One Health.</p></li>
+        <li><a href="https://www.woah.org/en/home/" target="_blank" rel="noopener">WOAH, World Organisation for Animal Health</a><p>Standards, disease notification and the terrestrial animal health code.</p></li>
+        <li><a href="https://openknowledge.fao.org/handle/20.500.14283/cc2289en" target="_blank" rel="noopener">One Health Joint Plan of Action</a><p>The Quadripartite plan agreed by FAO, WHO, WOAH and UNEP. The current reference document for what One Health means operationally.</p></li>
+        <li><a href="https://www.fao.org/antimicrobial-resistance/en/" target="_blank" rel="noopener">FAO antimicrobial resistance</a><p>AMR guidance and surveillance material for the food and agriculture sector.</p></li>
+        <li><a href="https://animalhealthmetrics.org/" target="_blank" rel="noopener">Global Burden of Animal Diseases</a><p>Effort to quantify the burden of animal disease in the way GBD did for human health. Useful for prioritisation arguments.</p></li>
+        <li><a href="https://omia.org/" target="_blank" rel="noopener">Online Mendelian Inheritance in Animals</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Catalogue of inherited disorders and traits across animal species, with the causal variants where known.</p></li>
+        </ul>
+        <p class="rlnote">Entries marked <span class="rl-salv">salvaged</span> were rescued from the <strong>ABG-Hub</strong>, an animal breeding and genetics link collection maintained by Gabor Meszaros until it went offline. Dead links have been removed and relocated resources traced to their current addresses. All links were verified before publication; tell us if one breaks.</p>
+      </div>
     </details>
     <details class="sub">
       <summary>📊 Teaching materials &amp; slides</summary>
@@ -261,7 +332,21 @@
     </div>
     <details class="sub">
       <summary>📚 Reading list &amp; key resources</summary>
-      <div class="subbody"><p class="soon">Curated open-access readings and references for this theme will be published here as the platform is populated. In the meantime, explore related free courses on the <a href="https://elearning.fao.org/" target="_blank" rel="noopener">FAO e-learning Academy &#8594;</a></p></div>
+      <div class="subbody">
+        <ul class="rlist">
+        <li><a href="https://www.fao.org/dad-is/en/" target="_blank" rel="noopener">DAD-IS, Domestic Animal Diversity Information System</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>FAO's global database of livestock breeds and their risk status. The starting point for any breed conservation question.</p></li>
+        <li><a href="https://dagris.info/" target="_blank" rel="noopener">DAGRIS, Domestic Animal Genetic Resources Information System</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Breed-level information for African indigenous livestock, originally developed at ILRI. Directly relevant to the partner countries.</p></li>
+        <li><a href="https://www.fao.org/4/a1250e/a1250e00.htm" target="_blank" rel="noopener">The State of the World's Animal Genetic Resources</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>FAO's global assessment. Still the standard citation for the scale and direction of breed loss.</p></li>
+        <li><a href="https://jvanderw.une.edu.au/material.htm" target="_blank" rel="noopener">Quantitative genetics teaching material (van der Werf)</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Julius van der Werf's course notes from UNE: selection theory, index construction and breeding programme design, freely available.</p></li>
+        <li><a href="https://animalbiosciences.uoguelph.ca/~lrs/" target="_blank" rel="noopener">Animal breeding course notes (Schaeffer)</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Larry Schaeffer's Guelph notes on mixed models, BLUP and the animal model, written for students who have to implement them.</p></li>
+        <li><a href="https://nce.ads.uga.edu/wiki/doku.php?id=start" target="_blank" rel="noopener">BLUPF90 family of programs</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Misztal's programs for genetic evaluation, including single-step genomic BLUP, with the wiki documentation.</p></li>
+        <li><a href="https://interbull.org/" target="_blank" rel="noopener">Interbull</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>International genetic evaluation service and the bulletins describing how national evaluations are combined.</p></li>
+        <li><a href="https://eaap.org/" target="_blank" rel="noopener">EAAP</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>European Federation of Animal Science: annual meeting abstracts and working-group outputs.</p></li>
+        <li><a href="https://agro.biodiver.se/" target="_blank" rel="noopener">Agricultural Biodiversity Weblog</a> <span class="rl-salv" title="Rescued from the ABG-Hub link collection">salvaged</span><p>Long-running commentary on crop and livestock genetic resources, useful for keeping current.</p></li>
+        <li><a href="https://www.cbd.int/" target="_blank" rel="noopener">Convention on Biological Diversity</a><p>The treaty framework, including the targets that national genetic-resource policy is written against.</p></li>
+        </ul>
+        <p class="rlnote">Entries marked <span class="rl-salv">salvaged</span> were rescued from the <strong>ABG-Hub</strong>, an animal breeding and genetics link collection maintained by Gabor Meszaros until it went offline. Dead links have been removed and relocated resources traced to their current addresses. All links were verified before publication; tell us if one breaks.</p>
+      </div>
     </details>
     <details class="sub">
       <summary>📊 Teaching materials &amp; slides</summary>

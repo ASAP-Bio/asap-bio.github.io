@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SNP chips · ASAP-Bio</title>
+<meta name="description" content="Lecture on SNP chip technology: the BeadArray, single base extension, genotype cluster plots and calling, allele and genotype coding, chip densities across species and ascertainment bias.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css?v=6eb019e5c2">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><div class="lechead">
+  <div class="lectitle"><h1>SNP chips</h1><p>Lecture 2 of the Molecular Genomics series. How genotypes are produced, how they are coded, and where the errors come from.</p></div>
+  <a class="pdfbtn" href="assets/lectures/lec-mg-snp-chips.pdf" download title="Download this lecture as a PDF">
+    <span class="pdfic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 12l5 5 5-5"/><path d="M4 20h16"/></svg></span>
+    <span class="pdftx"><strong>Download PDF</strong><span>5 pages &middot; 181 KB</span></span>
+  </a>
+</div></div></div>
+<section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 2</span><span>Molecular Genomics</span><span>Introductory</span><span class="s">Gabor Meszaros</span></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://www.youtube-nocookie.com/embed/PeFOjLEJkrA?rel=0" title="SNP chips" loading="lazy" allowfullscreen frameborder="0" allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>SNP chips</strong><span class="vcap">The full lecture on the Genomics Boot Camp channel.</span><a class="vfall" href="https://youtu.be/PeFOjLEJkrA" target="_blank" rel="noopener">Watch on YouTube &#8599;</a></span></figcaption>
+    </figure>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#recap">Where we are</a></li>
+    <li><a href="#array">The BeadChip</a></li>
+    <li><a href="#chem">How a genotype is actually called</a></li>
+    <li><a href="#clusters">Cluster plots and quality</a></li>
+    <li><a href="#report">The final report</a></li>
+    <li><a href="#codes">Allele and genotype coding</a></li>
+    <li><a href="#density">Chip densities across species</a></li>
+    <li><a href="#phenotype">A caution about phenotypes</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="recap">
+    <h2>Where we are</h2>
+
+    <p>The previous lecture ended with the claim that SNP markers are cheap enough to score in large
+    numbers. This lecture is about how that is done, because the details determine what the data look
+    like, which errors occur, and why the first steps of any analysis are quality control.</p>
+  </section>
+  <section class="lsec" id="array">
+    <h2>The BeadChip</h2>
+
+    <p>The dominant technology is the microarray, marketed by Illumina as the BeadArray or BeadChip and
+    referred to universally as the <strong>SNP chip</strong>. A chip carries hundreds of thousands to
+    millions of microscopic silica beads held in etched wells. Each bead is coated with many copies of
+    a short oligonucleotide probe, and each probe is designed to be complementary to the sequence
+    immediately adjacent to one particular SNP in the genome.</p>
+
+    <p>Which SNPs appear on a chip is a design decision made once by the manufacturer, in consultation
+    with the research community. This has an important consequence.</p>
+    <div class="keybox"><strong>SNP chips are bi-allelic by design</strong>
+    <p style="margin:6px 0 0">Each assayed position has exactly two possible alleles, conventionally
+    called A and B, and therefore exactly three possible genotypes, AA, AB and BB, plus the
+    possibility of a failed call. This is a property of the assay, not of the genome. Positions with
+    three segregating alleles exist but are not put on chips, because the two-allele design is what
+    makes the readout simple.</p></div>
+
+    <p>It also means a chip can only ever report on variation that was known when the chip was
+    designed. A SNP private to an African indigenous breed will not be on a chip built from European
+    dairy cattle. This is <strong>ascertainment bias</strong>, and it matters a great deal for
+    diversity work; it returns in <a href="lec-mg-admixture.html">Lecture 7</a>.</p>
+  </section>
+  <section class="lsec" id="chem">
+    <h2>How a genotype is actually called</h2>
+
+    <p>The assay is a single-base extension reaction, read optically.</p>
+    <div class="derive"><h5>From DNA sample to signal</h5>
+      <ol>
+      <li>Fragmented sample DNA is washed over the chip. Each fragment binds to the bead whose probe is
+        complementary to it.</li>
+      <li>The probe is designed to stop <em>one base short</em> of the SNP position. A polymerase then
+        extends the probe by exactly one nucleotide, which must be the one complementary to the
+        animal's allele at that position.</li>
+      <li>The four nucleotides carry different fluorescent labels, so the base that was incorporated
+        determines the colour emitted.</li>
+      <li>A laser excites the labels and a scanner records the intensity in each channel for every bead.
+        The <em>ratio</em> of intensities in the two channels reports the allelic composition at that
+        locus.</li>
+      </ol>
+    </div>
+
+    <p>The output at this stage is not a genotype but a pair of intensities. Converting intensities to
+    genotypes is a statistical step, and it is where errors enter.</p>
+  </section>
+  <section class="lsec" id="clusters">
+    <h2>Cluster plots and quality</h2>
+
+    <p>Plot every animal for a single SNP, with one intensity channel on each axis. If the assay works,
+    the points fall into three clouds: one where only the A signal is present (genotype AA), one where
+    only B is present (BB), and one intermediate cloud where both are present at roughly equal
+    intensity (AB). Calling genotypes means assigning each point to a cloud.</p>
+    <figure class="lecfig">
+      <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two cluster plots, a well behaved SNP with three tight clusters and a poor SNP with diffuse overlapping clusters"><g stroke="#c9d8cb" fill="none" stroke-width="1.2"><path d="M50 210 L50 40 M50 210 L310 210"/><path d="M390 210 L390 40 M390 210 L650 210"/></g><g font-size="11" fill="#6b7a6d"><text x="46" y="34" text-anchor="end">B</text><text x="316" y="214">A</text><text x="386" y="34" text-anchor="end">B</text><text x="656" y="214">A</text></g><text x="180" y="243" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2f5d3f">a SNP that works</text><text x="520" y="243" text-anchor="middle" font-size="12.5" font-weight="700" fill="#a5342b">a SNP that does not</text><g fill="#2f5d3f" opacity=".78"><circle cx="82" cy="72" r="4"/><circle cx="92" cy="64" r="4"/><circle cx="76" cy="82" r="4"/><circle cx="88" cy="80" r="4"/><circle cx="96" cy="74" r="4"/><circle cx="80" cy="60" r="4"/><circle cx="176" cy="130" r="4"/><circle cx="186" cy="122" r="4"/><circle cx="170" cy="140" r="4"/><circle cx="182" cy="138" r="4"/><circle cx="190" cy="132" r="4"/><circle cx="174" cy="118" r="4"/><circle cx="266" cy="188" r="4"/><circle cx="276" cy="180" r="4"/><circle cx="260" cy="196" r="4"/><circle cx="272" cy="194" r="4"/><circle cx="280" cy="186" r="4"/><circle cx="264" cy="176" r="4"/></g><g fill="none" stroke="#2f5d3f" stroke-width="1.3" stroke-dasharray="4 3" opacity=".7"><ellipse cx="86" cy="72" rx="24" ry="20"/><ellipse cx="180" cy="130" rx="24" ry="20"/><ellipse cx="270" cy="186" rx="24" ry="20"/></g><g fill="#a5342b" opacity=".72"><circle cx="424" cy="80" r="4"/><circle cx="452" cy="66" r="4"/><circle cx="440" cy="104" r="4"/><circle cx="470" cy="92" r="4"/><circle cx="492" cy="118" r="4"/><circle cx="462" cy="128" r="4"/><circle cx="510" cy="100" r="4"/><circle cx="528" cy="140" r="4"/><circle cx="498" cy="156" r="4"/><circle cx="546" cy="122" r="4"/><circle cx="566" cy="168" r="4"/><circle cx="534" cy="180" r="4"/><circle cx="580" cy="146" r="4"/><circle cx="600" cy="186" r="4"/><circle cx="558" cy="196" r="4"/><circle cx="608" cy="160" r="4"/><circle cx="480" cy="140" r="4"/><circle cx="520" cy="70" r="4"/></g></svg>
+      <figcaption>Left: three well separated clusters, so every animal can be assigned a genotype with confidence. Right: no cluster structure, so calls are unreliable and the SNP should be discarded.</figcaption>
+    </figure>
+  </section>
+    <p>The calling algorithm fits clusters automatically and attaches a confidence score to each
+    call, the <strong>GenCall</strong> score in Illumina's implementation. Calls below a threshold,
+    conventionally 0.25, are left missing rather than guessed. A SNP whose clusters do not separate
+    produces many low-confidence calls and should be removed from the dataset entirely.</p>
+
+    <p>This is the origin of two of the standard quality-control filters. <strong>Call rate</strong>
+    per SNP removes markers that failed to cluster; <strong>call rate per animal</strong> removes
+    samples whose DNA was poor. Both are applied before any analysis, and both are covered practically
+    in the <a href="genomics-bootcamp.html">Genomics Boot Camp</a>.</p>
+  <section class="lsec" id="report">
+    <h2>The final report</h2>
+
+    <p>When genotyping is finished the machine produces a text file, the <strong>final report</strong>.
+    It is unglamorous and it is where every downstream analysis begins. From this point on the work is
+    computational: the file is converted into the format expected by PLINK or another package, filtered,
+    and analysed.</p>
+
+    <p>Two practical points follow. Datasets of this size cannot be inspected by hand, so some
+    programming ability is not optional. And because many programs exist and each expects its own
+    format, a large fraction of real analysis time is spent converting between them rather than doing
+    statistics.</p>
+  </section>
+  <section class="lsec" id="codes">
+    <h2>Allele and genotype coding</h2>
+
+    <p>The same genotype can be written in several ways, and confusing them is a common source of error
+    when combining datasets.</p>
+
+    <table class="dtab">
+      <tr><th>Scheme</th><th>Homozygote 1</th><th>Heterozygote</th><th>Homozygote 2</th></tr>
+      <tr><td>Nucleotide</td><td>AA</td><td>AG</td><td>GG</td></tr>
+      <tr><td>A/B</td><td>AA</td><td>AB</td><td>BB</td></tr>
+      <tr><td>Numeric allele</td><td>11</td><td>12</td><td>22</td></tr>
+      <tr><td>Genotype count</td><td>0</td><td>1</td><td>2</td></tr>
+    </table>
+
+    <p>The last row is the one that matters statistically. Coding a genotype as 0, 1 or 2 counts the
+    number of copies of a chosen reference allele carried by the animal. That count is a number, so it
+    can enter a regression directly, and it is the form in which genotypes appear in every model in
+    <a href="lec-mg-gwas.html">Lecture 6</a> and
+    <a href="lec-mg-genomic-selection.html">Lecture 10</a>.</p>
+    <div class="keybox"><strong>Two traps</strong>
+    <ul style="margin:6px 0 0">
+      <li><strong>Which allele is counted.</strong> The count is relative to whichever allele was
+          designated the reference. Two files can encode identical data with the counts reversed. Merging
+          them without checking flips the sign of every effect at those markers.</li>
+      <li><strong>Strand.</strong> Nucleotide coding depends on which DNA strand was read. An A/T SNP
+          reported on opposite strands in two datasets appears as a T/A SNP, and A/T and C/G SNPs cannot
+          be resolved by inspecting the alleles alone. Conventions such as Illumina's TOP/BOT and
+          FORWARD exist precisely to fix this; they must be recorded and respected.</li>
+      <li><strong>Missing values.</strong> Missing is often written as 0, which collides with the
+          genotype count 0. Whichever convention a file uses must be stated explicitly.</li>
+    </ul></div>
+  </section>
+  <section class="lsec" id="density">
+    <h2>Chip densities across species</h2>
+
+    <p>Chips are species-specific and come in several densities. For cattle the established tiers are
+    roughly seven thousand markers (low density), fifty-four thousand (medium, the workhorse, usually
+    written 50K), and seven hundred and seventy-seven thousand (high density, HD). Custom chips
+    targeting particular regions also exist.</p>
+
+    <table class="dtab">
+      <tr><th>Species</th><th>Approximate SNP count on a common chip</th></tr>
+      <tr><td>Human</td><td>906,000</td></tr>
+      <tr><td>Cattle</td><td>54,000 (medium), 777,000 (high density)</td></tr>
+      <tr><td>Sheep</td><td>54,000</td></tr>
+      <tr><td>Pig</td><td>60,000</td></tr>
+      <tr><td>Horse</td><td>70,000</td></tr>
+      <tr><td>Dog</td><td>230,000</td></tr>
+      <tr><td>Mouse</td><td>140,000</td></tr>
+      <tr><td>Wheat</td><td>660,000</td></tr>
+      <tr><td>Strawberry</td><td>95,000</td></tr>
+    </table>
+
+    <p>Density is chosen by trading cost against information. More markers give finer resolution and
+    better coverage of rare variants, but multiply the per-animal cost. For most breeding applications
+    a medium-density chip is sufficient, because the missing markers can be reconstructed
+    computationally rather than bought. That reconstruction is imputation, and it is
+    <a href="lec-mg-haplotypes.html">Lecture 4</a>.</p>
+  </section>
+  <section class="lsec" id="phenotype">
+    <h2>A caution about phenotypes</h2>
+
+    <p>It is worth stating plainly at this early stage: in the age of cheap genotypes, the phenotype is
+    the limiting resource. Genotyping is now routine and inexpensive relative to the cost of measuring
+    milk composition, feed intake, methane emission or disease incidence on the same animals.</p>
+
+    <p>Every method in this course estimates the relationship between genotype and phenotype. None of
+    them can extract more information than the phenotypes contain. A large genotyped population with
+    poorly recorded traits will give a weaker answer than a smaller population with careful phenotypes,
+    and no amount of marker density repairs that.</p>
+    <div class="lecrefs">
+      <h5>References for this section</h5>
+      <ul>
+        <li><a href="https://emea.illumina.com/science/technology/microarray.html" target="_blank" rel="noopener">Illumina, Infinium genotyping technology overview.</a></li>
+        <li><a href="https://www.cog-genomics.org/plink/" target="_blank" rel="noopener">PLINK 1.9, file formats and quality-control options.</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 2.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Reading a cluster plot.</strong> For a given SNP, 480 animals form three
+    tight clusters but 40 animals fall between the AB cluster and the BB cluster and receive GenCall
+    scores near 0.2. What happens to those 40 calls under the standard threshold, and what should you
+    check before deciding the SNP is fine?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>With a threshold of 0.25 those 40 calls are set to missing rather than assigned. The SNP
+    therefore has a call rate of \(480/520 = 92.3\%\), which fails the commonly used 95% filter and
+    would normally be dropped.</p>
+    <p>Before accepting that, check whether the 40 animals are a random subset or a group. If they are
+    the same 40 animals failing at many SNPs, the problem is the samples, not the markers: poor DNA
+    quality, a bad plate, or a processing batch. Removing those animals first may rescue a large number
+    of SNPs that would otherwise be discarded. If instead the 40 are different animals at each SNP, the
+    marker itself is unreliable and should go.</p>
+    <p>The general point is that per-SNP and per-animal call rates are not independent, and the order in
+    which the filters are applied changes the result.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 2.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Merging two datasets.</strong> Two laboratories genotype the same breed on
+    the same 50K chip and send you files. In file 1, SNP <em>rs123</em> is coded AA/AG/GG; in file 2 it
+    is coded 0/1/2. You merge them and later find that this SNP has a large effect of opposite sign in
+    the two halves of the data. What is the most likely explanation, and how would you detect it
+    systematically?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>The most likely explanation is that the two files count different reference alleles. If file 1
+    counts copies of G and file 2 counts copies of A, then an animal that is 0 in one coding is 2 in the
+    other. Regressing a phenotype on a variable that has been reversed reverses the sign of the
+    estimate, which is exactly what is observed.</p>
+    <p>The systematic check is allele frequency. Compute the frequency of the counted allele separately
+    in each file. For a shared breed these should agree closely; markers where they are approximately
+    \(p\) and \(1-p\) are flipped. Standard merge tools apply this check automatically.</p>
+    <p>The residual difficulty is A/T and C/G SNPs, where flipping the strand produces a valid-looking
+    allele pair and the frequency check fails when \(p \approx 0.5\). These are usually excluded from
+    merged datasets rather than resolved.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 2.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Choosing a density.</strong> A breeding programme in Ethiopia can genotype
+    2,000 animals on a 50K chip or 400 animals on a 777K chip for the same budget. Which would you
+    recommend for estimating genomic breeding values, and what would change your answer?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>For breeding value estimation, choose the 2,000 animals on 50K. The accuracy of genomic
+    prediction is driven far more by the size of the reference population than by marker density, once
+    density is high enough that markers are in reasonable linkage disequilibrium with the causal
+    variants. In cattle, 50K is generally sufficient for within-breed prediction; going to HD typically
+    buys a small percentage in accuracy while cutting the reference population by a factor of five.</p>
+    <p>Three things would change the answer. If the population has unusually short-range linkage
+    disequilibrium, as many African indigenous populations do because they have larger effective
+    population sizes and no history of intense selection, then 50K may not blanket the genome and higher
+    density becomes necessary. If the goal is fine-mapping a causal variant rather than prediction,
+    resolution is the whole point and density wins. And if a high-density reference already exists in a
+    related population, the 2,000 animals can be genotyped at 50K and imputed up, which gets both.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 2.4</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Ascertainment.</strong> A commercial cattle chip was designed using
+    variation discovered in Holstein, Angus and a few other European breeds. You use it to compare
+    genetic diversity between a European breed and an East African zebu population, and find the zebu
+    population is less diverse. Should you believe this?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>No, not without further work. The chip contains SNPs that were polymorphic in the discovery
+    panel. Variants private to zebu populations were never candidates for inclusion, so a real source of
+    zebu diversity is invisible by construction. Meanwhile every marker on the chip is guaranteed to be
+    variable in European taurine cattle.</p>
+    <p>The expected consequence is precisely the one observed: apparently reduced heterozygosity and
+    fewer segregating markers in the non-discovery population, regardless of the true diversity. Since
+    African cattle populations generally carry <em>more</em> sequence-level diversity than commercial
+    European breeds, the result is likely to be the reverse of the truth.</p>
+    <p>Defensible options are to use sequence data, which has no ascertainment step; to use a chip
+    designed with the population in question represented in discovery; or to restrict comparisons to
+    statistics that are less sensitive to ascertainment and to state the caveat explicitly. This problem
+    is a recurring obstacle in African animal genetic resource work.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecsrc">Adapted by ASAP-Bio from the <em>Introduction to Genomics</em> slide series by <strong>Gabor Meszaros</strong> (<a href="https://www.youtube.com/@GenomicsBootCamp" target="_blank" rel="noopener">Genomics Boot Camp</a>), released under GPL-3.0. The sequence and worked examples follow his; the explanatory text was written for this platform.</div>
+  <div class="lecnav"><a href="lec-mg-dna-markers.html">&#8592; Lecture 1: DNA, genes, genomes and markers</a><a href="knowledge.html">All lectures</a><a href="lec-mg-maps.html">Lecture 3: Genomic maps and recombination &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>

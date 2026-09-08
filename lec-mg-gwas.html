@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Genome-wide association studies · ASAP-Bio</title>
+<meta name="description" content="Lecture on genome-wide association studies: single-marker regression, the multiple testing problem, Bonferroni correction, false discovery rate, permutation, confounding by population structure and the limits of association mapping.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css?v=6eb019e5c2">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "65d348fea968478387f8337eee0623a3"}'></script><!-- End Cloudflare Web Analytics -->
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+</head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/emblem.png" alt="ASAP-Bio logo">
+    <span>ASAP-Bio<small>African–Danish University Partnerships</small></span></a>
+  <button class="navtoggle" onclick="document.getElementById('lk').classList.toggle('open')">☰</button>
+  <nav class="links" id="lk"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partners.html" class="">Partners</a><a href="collaborators.html" class="">Collaborators</a><a href="themes.html" class="">Themes</a><a href="knowledge.html" class="active">Knowledge Hub</a><a href="scholarships.html" class="">Scholarships</a><a href="erasmus.html" class="">Erasmus+</a><a href="news.html" class="">News</a><a href="contact.html" class="">Contact</a></nav>
+</div></header><div class="pagehdr"><div class="wrap"><div class="lechead">
+  <div class="lectitle"><h1>Genome-wide association studies</h1><p>Lecture 6 of the Molecular Genomics series. Testing every marker against a phenotype, and the two problems that creates.</p></div>
+  <a class="pdfbtn" href="assets/lectures/lec-mg-gwas.pdf" download title="Download this lecture as a PDF">
+    <span class="pdfic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 12l5 5 5-5"/><path d="M4 20h16"/></svg></span>
+    <span class="pdftx"><strong>Download PDF</strong><span>7 pages &middot; 227 KB</span></span>
+  </a>
+</div></div></div>
+<section><div class="wrap">
+  <p><a href="knowledge.html">&#8592; Knowledge Hub</a></p>
+  <div class="lecmeta"><span>Lecture 6</span><span>Molecular Genomics</span><span>MSc level</span><span class="s">Gabor Meszaros</span></div>
+    <figure class="lecvid">
+      <div class="lecvid-frame"><iframe src="https://www.youtube-nocookie.com/embed/7iarFfxYxQc?rel=0" title="Genome wide association studies" loading="lazy" allowfullscreen frameborder="0" allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>
+      <figcaption><span class="vplay">&#9658;</span><span class="vtx"><strong>Genome wide association studies</strong><span class="vcap">The full lecture on the Genomics Boot Camp channel.</span><a class="vfall" href="https://youtu.be/7iarFfxYxQc" target="_blank" rel="noopener">Watch on YouTube &#8599;</a></span></figcaption>
+    </figure>
+  <div class="lectoc"><h4>In this lecture</h4>
+    <ol>
+    <li><a href="#recap">Where we are</a></li>
+    <li><a href="#candidate">From candidate genes to the whole genome</a></li>
+    <li><a href="#what">What a GWAS estimates</a></li>
+    <li><a href="#models">Models</a></li>
+    <li><a href="#multiple">The multiple testing problem</a></li>
+    <li><a href="#errors">False positives and false negatives</a></li>
+    <li><a href="#correct">Correcting for multiple testing</a></li>
+    <li><a href="#structure">Population structure</a></li>
+    <li><a href="#limits">What GWAS does and does not deliver</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    </ol>
+  </div>
+  <section class="lsec" id="recap">
+    <h2>Where we are</h2>
+
+    <p>We have dense markers, we know they are correlated with whatever lies near them, and we have a
+    measure of how strong that correlation is. A genome-wide association study is the most direct use of
+    those facts: test every marker against a phenotype and see which ones respond.</p>
+  </section>
+  <section class="lsec" id="candidate">
+    <h2>From candidate genes to the whole genome</h2>
+
+    <p>Before dense genotyping was affordable, association work was necessarily restricted to
+    <strong>candidate genes</strong>: pick a gene with a plausible biological connection to the trait,
+    genotype variants in it, and test. The approach has an obvious weakness. It can only find what was
+    already suspected, and for quantitative traits influenced by many loci of small effect, biological
+    intuition is a poor guide to where those loci are. The hit rate was low.</p>
+
+    <p>Genome-wide association removes the requirement to guess. Every marker on the chip is tested,
+    so a signal can be found anywhere, including in regions with no previously known connection to the
+    trait. The trade is that you are now performing tens or hundreds of thousands of tests at once, and
+    that creates its own problem, dealt with below.</p>
+    <div class="keybox"><strong>The searching metaphor</strong>
+    <p style="margin:6px 0 0">The candidate gene approach is looking for a needle in a haystack, having
+    first guessed which haystack. A genome-wide scan searches all the haystacks, but with many markers
+    and many of them correlated, it is closer to searching for a needle in a stack of needles: the
+    difficulty is no longer finding something, it is telling the real signal from the many that arise
+    by chance.</p></div>
+  </section>
+  <section class="lsec" id="what">
+    <h2>What a GWAS estimates</h2>
+
+    <p>For each marker separately, we ask whether the genotype at that marker is associated with the
+    phenotype. The simplest formulation regresses the phenotype on the genotype coded as an allele
+    count.</p>
+    <div class="eqn c">\[y_i = \mu + x_{ij}\,\beta_j + e_i\]</div>
+
+    <p>Here \(y_i\) is the phenotype of animal \(i\), \(x_{ij} \in \{0,1,2\}\) is the number of copies of
+    the reference allele that animal \(i\) carries at marker \(j\), and \(\beta_j\) is the effect of
+    substituting one allele for the other. The null hypothesis is \(\beta_j = 0\), the marker has no
+    effect; the alternative is that it does.</p>
+
+    <p>The output is one estimate and one \(p\)-value per marker, conventionally plotted against genomic
+    position as \(-\log_{10}(p)\), which is the Manhattan plot. Note carefully what \(\beta_j\)
+    represents. Except by coincidence, the marker is not causal. The estimate is the effect of a causal
+    variant somewhere nearby, attenuated by the imperfect correlation between the marker and that
+    variant. Its magnitude is therefore not a direct estimate of the biological effect, and it is
+    diluted by exactly the factor \(r^{2}\) discussed in the previous lecture.</p>
+  </section>
+  <section class="lsec" id="models">
+    <h2>Models</h2>
+
+    <p>The single-marker regression above is the starting point, not the endpoint. Three broad families
+    are used.</p>
+
+    <table class="dtab">
+      <tr><th>Approach</th><th>Idea</th><th>Main limitation</th></tr>
+      <tr><td>Single-marker linear models</td><td>Fit each marker separately, as above, usually with a
+          random polygenic effect added to absorb relatedness</td><td>Ignores that markers are
+          correlated; the same signal appears at many neighbouring markers</td></tr>
+      <tr><td>Penalised multiple regression, such as lasso and elastic net</td><td>Fit all markers
+          simultaneously with a penalty that shrinks most effects to zero</td><td>Selection among
+          correlated markers is unstable; which marker is retained can be close to arbitrary</td></tr>
+      <tr><td>Bayesian methods</td><td>Fit all markers with an explicit prior on the distribution of
+          effects, allowing most to be near zero and a few to be large</td><td>Computationally heavy;
+          results depend on the prior, which is a modelling choice</td></tr>
+    </table>
+
+    <p>In simulation, methods that model all markers jointly generally outperform single-marker
+    regression. On real data the differences are usually much smaller than the simulation results
+    suggest, a pattern that recurs throughout this field and that we will meet again in
+    <a href="lec-mg-genomic-selection.html">Lecture 10</a>.</p>
+  </section>
+  <section class="lsec" id="multiple">
+    <h2>The multiple testing problem</h2>
+
+    <p>The null hypothesis at each marker is that it has no effect, and we reject when the \(p\)-value
+    falls below a threshold, conventionally \(p<0.05\). The definition of that threshold is the
+    probability of rejecting the null when it is in fact true.</p>
+
+    <p>That is acceptable for one test. Perform 50,000 tests on markers that all have no effect, and by
+    construction</p>
+    <div class="eqn c">\[50{,}000 \times 0.05 = 2{,}500\]</div>
+
+    <p>of them will be significant at the 5% level. Every one is a false positive. Publishing a list of
+    2,500 loci associated with a trait, none of which are real, is a failure mode that GWAS had to solve
+    before it could be trusted.</p>
+    <div class="keybox"><strong>The core issue</strong>
+    <p style="margin:6px 0 0">A significance threshold controls the error rate <em>per test</em>. When
+    many tests are performed, the number of errors accumulates. Any threshold used genome-wide must be
+    adjusted for how many tests are being made.</p></div>
+  </section>
+  <section class="lsec" id="errors">
+    <h2>False positives and false negatives</h2>
+
+    <p>Two errors are possible, and the correction for multiple testing trades one against the other.</p>
+    <div class="keybox"><strong>The two error types</strong>
+    <ul style="margin:6px 0 0">
+      <li><strong>False positive</strong> (type I error): the test statistic indicates that the null
+          should be rejected even though it is true. The marker appears significant but is not
+          associated with the trait.</li>
+      <li><strong>False negative</strong> (type II error): the test statistic indicates that the null
+          should not be rejected even though the alternative is true. The marker is genuinely associated
+          but is not detected.</li>
+    </ul></div>
+
+    <p>Making the threshold more stringent reduces false positives and increases false negatives. There
+    is no setting that avoids both, and the right balance depends on what the result is for. A study
+    intended to nominate a small number of loci for expensive follow-up work should be stringent, since
+    a false positive wastes a laboratory year. A study intended to build a prediction model can tolerate
+    false positives more readily, since a marker with no real effect contributes little.</p>
+  </section>
+  <section class="lsec" id="correct">
+    <h2>Correcting for multiple testing</h2>
+
+    <p><strong>Bonferroni correction.</strong> The simplest approach divides the desired overall error
+    rate by the number of tests.</p>
+    <div class="eqn c">\[p_{\text{threshold}} = \frac{\alpha}{n} = \frac{0.05}{50{,}000} = 1\times10^{-6}\]</div>
+
+    <p>This controls the probability of making even one false positive across the whole study. It is
+    where the widely quoted genome-wide significance threshold of \(5\times10^{-8}\) in human studies
+    comes from: roughly \(0.05\) divided by a million independent tests.</p>
+
+    <p>Bonferroni is conservative, and knowing why matters. It assumes the tests are independent. In a
+    GWAS they emphatically are not: markers in linkage disequilibrium test overlapping information, so
+    the number of <em>effective</em> independent tests is smaller than the number of markers, often by a
+    factor of several. Dividing by the full marker count therefore sets the bar higher than necessary
+    and produces avoidable false negatives.</p>
+
+    <p><strong>False discovery rate.</strong> An alternative is to control not the probability of any
+    false positive but the expected <em>proportion</em> of false positives among the markers declared
+    significant. Accepting that 5% of a list of 100 hits are spurious is often a more sensible target
+    than insisting on a 95% probability that none of them are, particularly when the purpose is to
+    identify regions for further study.</p>
+
+    <p><strong>Permutation.</strong> The most defensible option is to shuffle the phenotypes among
+    animals, breaking any genotype-phenotype relationship while preserving the LD structure exactly,
+    rerun the whole analysis, and record the best \(p\)-value obtained. Repeating this many times builds
+    the empirical distribution of the best \(p\)-value under the null, from which a threshold follows
+    directly. It is correct by construction and expensive to compute.</p>
+  </section>
+  <section class="lsec" id="structure">
+    <h2>Population structure</h2>
+
+    <p>The most serious source of false positives in GWAS is not multiple testing, for which the
+    corrections above work. It is confounding by <strong>population structure</strong>.</p>
+
+    <p>The reasoning behind a GWAS assumes that animals differ at a marker for reasons unrelated to why
+    they differ in phenotype, except through the causal variant. In real populations that assumption
+    fails. Animals are related, belong to families, breeds and geographic groups, and those groups differ
+    both in allele frequency at very many markers and, usually, in phenotype.</p>
+    <div class="wex"><h5>How the confounding works</h5>
+    <p>Suppose a sample contains two subpopulations. One is a European taurine breed, the other an
+    African indigenous population, and the taurine animals have higher milk yield for reasons that
+    include a century of selection and better management.</p>
+    <p>The two groups also differ in allele frequency at thousands of markers scattered across the
+    genome, simply because they are different populations. Every one of those markers will therefore be
+    associated with milk yield in the combined sample, because marker genotype predicts group membership
+    and group membership predicts yield.</p>
+    <p>None of those markers has any causal relationship with milk production. The association is
+    entirely a consequence of having sampled two populations and not accounted for it.</p></div>
+
+    <p>The classic demonstration of this effect used ancestral origin and body weight in laboratory
+    mice, where the confounding could be constructed deliberately and its magnitude measured. The same
+    mechanism operates in any structured sample, and livestock samples are always structured.</p>
+    <div class="keybox"><strong>Standard remedies</strong>
+    <ul style="margin:6px 0 0">
+      <li>Fit <strong>principal components</strong> of the genomic relationship matrix as covariates.
+          The leading components capture the major axes of population structure, so fitting them removes
+          the group differences from the residual.</li>
+      <li>Fit a <strong>mixed model</strong> with a random animal effect whose covariance is the genomic
+          relationship matrix. This accounts for relatedness at all scales at once, from breed structure
+          down to full sibs, and is now the default.</li>
+      <li>Restrict analysis to a <strong>single homogeneous population</strong>. Effective, but it
+          discards data and reduces the range of variation available.</li>
+    </ul>
+    <p style="margin:8px 0 0">Note that these corrections are not free. Population structure is
+    correlated with genuine adaptive differences between populations, so correcting for structure also
+    removes some real signal. A variant that is genuinely at high frequency in one breed because it was
+    selected there is difficult to distinguish from a variant that differs in frequency for no
+    reason.</p></div>
+  </section>
+  <section class="lsec" id="limits">
+    <h2>What GWAS does and does not deliver</h2>
+
+    <p>A GWAS identifies genomic regions whose variation is statistically associated with phenotypic
+    variation in the sample studied. It is worth being precise about the limits of that statement.</p>
+
+    <p><strong>It finds regions, not genes.</strong> The resolution is set by LD, which in livestock can
+    extend over hundreds of kilobases containing many genes. Moving from an associated region to a
+    causal variant requires denser data, sequence, and functional evidence, and is a separate research
+    programme.</p>
+
+    <p><strong>It works well for common variants and poorly for rare ones.</strong> Power depends on
+    the number of copies of the variant in the sample. A variant at 1% frequency in 1,000 animals is
+    present in about 20 copies, which is not enough to estimate an effect unless that effect is very
+    large. Rare variants of large effect, which include most Mendelian disorders, are better found by
+    other designs.</p>
+
+    <p><strong>It explains less variance than heritability implies.</strong> For most quantitative
+    traits, the significant hits together account for a modest fraction of the genetic variance. This is
+    not a paradox but a consequence of the architecture: if a trait is affected by thousands of loci each
+    contributing a fraction of a percent, then almost all of them fall below any defensible significance
+    threshold. Recognising this is precisely what motivates genomic selection, which abandons
+    significance testing altogether.</p>
+    <div class="lecrefs">
+      <h5>References for this section</h5>
+      <ul>
+        <li><a href="https://www.cog-genomics.org/plink/1.9/assoc" target="_blank" rel="noopener">PLINK 1.9, association analysis and correction options.</a></li>
+        <li><a href="https://www.animalgenome.org/cgi-bin/QTLdb/index" target="_blank" rel="noopener">Animal QTLdb, for checking whether an associated region has been reported before.</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="lsec" id="exercises">
+    <h2>Exercises</h2>
+
+    <details class="exbox"><summary>Exercise 6.1</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Setting a threshold.</strong> A GWAS uses 42,000 markers after quality
+    control. Compute the Bonferroni threshold for an overall error rate of 5%. If linkage disequilibrium
+    means there are effectively only 12,000 independent tests, what threshold would be appropriate, and
+    what is the practical consequence of using the wrong one?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Bonferroni on the raw marker count: \(0.05/42{,}000 = 1.19\times10^{-6}\).</p>
+    <p>On the effective number of independent tests: \(0.05/12{,}000 = 4.17\times10^{-6}\), which is
+    about 3.5 times less stringent.</p>
+    <p>The practical consequence of using \(1.19\times10^{-6}\) is a loss of power. Markers with
+    \(p\)-values between \(1.19\times10^{-6}\) and \(4.17\times10^{-6}\) are declared non-significant
+    although the correct family-wise threshold would have retained them. In a study with a handful of
+    true signals of moderate effect, this can be the difference between a positive and a negative
+    result.</p>
+    <p>The effective number of tests is usually estimated from the eigenvalues of the marker correlation
+    matrix, or empirically by permutation, which is why permutation remains the reference method despite
+    its cost.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 6.2</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Diagnosing structure.</strong> A GWAS for body weight in a sample
+    combining three breeds produces 3,000 significant markers spread evenly across every chromosome,
+    with no clear peaks. Before concluding that body weight is highly polygenic, what would you check,
+    and what pattern would confirm your suspicion?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Check for confounding by population structure. Genuine polygenic architecture produces many
+    weak signals, but they are not usually distributed with uniform density across all chromosomes;
+    real GWAS signals cluster into peaks because markers near a causal variant are in LD with it and with
+    each other.</p>
+    <p>The specific diagnostic is the quantile-quantile plot of observed against expected \(p\)-values,
+    summarised by the genomic inflation factor \(\lambda\), the ratio of the median observed test
+    statistic to its expectation under the null. Values near 1 are healthy; a \(\lambda\) of, say, 1.8
+    indicates that the whole distribution of test statistics is inflated, which is the signature of
+    structure rather than of many true effects.</p>
+    <p>The confirming pattern is that the inflation disappears when principal components of the genomic
+    relationship matrix, or a genomic relationship mixed model, are fitted. If 3,000 signals collapse to
+    four peaks after correction, the original result was confounding.</p>
+    <p>An honest caveat: correcting for structure can also remove genuine between-breed differences, so
+    a large drop in signal is not proof that the original signals were all spurious. It is evidence that
+    they cannot be distinguished from structure with this sample.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 6.3</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Effect size attenuation.</strong> A causal variant has a true allele
+    substitution effect of 10 kg of milk. The nearest genotyped marker has \(r^{2}=0.36\) with it. What
+    effect size do you expect the GWAS to estimate at that marker, and why does this matter for
+    interpreting published effect sizes?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>The expected estimated effect at a marker in LD with a causal variant is attenuated by a
+    factor of \(r\), not \(r^{2}\). With \(r^{2}=0.36\), \(r=0.6\), so the expected estimate is
+    \(0.6 \times 10 = 6\) kg, assuming similar allele frequencies at the two loci.</p>
+    <p>The proportion of variance explained is attenuated by \(r^{2}\), so the marker captures 36% of
+    the variance the causal variant explains. That is why sample size requirements scale as
+    \(1/r^{2}\).</p>
+    <p>This matters for interpretation in two ways. Reported effect sizes from GWAS are systematically
+    downward-biased estimates of the underlying causal effects, so quoting them as biological effect
+    sizes overstates the precision of what is known. And the degree of attenuation differs from marker
+    to marker, so the relative magnitudes of effects at different loci are distorted, not merely scaled.
+    Comparing effect sizes between two associated regions without accounting for their differing LD to
+    the underlying causal variants is not meaningful.</p></div>
+        </details>
+      </div>
+    </details>
+    <details class="exbox"><summary>Exercise 6.4</summary>
+      <div class="exbody">
+        <div class="exq"><p><strong>Missing heritability.</strong> A trait has heritability 0.35. A GWAS in
+    8,000 animals finds twelve genome-wide significant markers which together explain 4% of the
+    phenotypic variance. Is the heritability estimate wrong, is the GWAS wrong, or neither?</p></div>
+        <details class="solv"><summary>Show solution &#9662;</summary>
+          <div style="margin-top:8px"><p>Neither. The two numbers measure different things and the gap between them is expected.</p>
+    <p>Heritability is the proportion of phenotypic variance attributable to additive genetic effects
+    <em>in total</em>, estimated from resemblance between relatives without reference to any particular
+    locus. The GWAS figure is the variance explained by the small subset of loci whose effects were large
+    enough to survive a genome-wide significance threshold.</p>
+    <p>If the trait is affected by thousands of loci each explaining a hundredth of a percent, then with
+    8,000 animals almost none of them reach \(p<10^{-6}\), while collectively they account for the full
+    0.35. The twelve that were detected are the extreme tail of the effect size distribution, plus
+    possibly some that were lucky.</p>
+    <p>Three things reduce the gap: much larger samples, which move more loci above the threshold;
+    estimating variance explained by <em>all</em> markers jointly rather than only the significant ones,
+    which typically recovers a large share of the heritability; and sequence data, which captures rare
+    and structural variants that chips miss.</p>
+    <p>The important conclusion is methodological. If most of the genetic variance sits in loci that
+    will never be individually significant, then selecting on significant loci is the wrong strategy.
+    Using all markers regardless of significance is the right one, and that is genomic selection.</p></div>
+        </details>
+      </div>
+    </details>
+  </section>
+  <div class="lecsrc">Adapted by ASAP-Bio from the <em>Introduction to Genomics</em> slide series by <strong>Gabor Meszaros</strong> (<a href="https://www.youtube.com/@GenomicsBootCamp" target="_blank" rel="noopener">Genomics Boot Camp</a>), released under GPL-3.0. The sequence and worked examples follow his; the explanatory text was written for this platform.</div>
+  <div class="lecnav"><a href="lec-mg-ld.html">&#8592; Lecture 5: Linkage disequilibrium</a><a href="knowledge.html">All lectures</a><a href="lec-mg-admixture.html">Lecture 7: Genomic admixture &#8594;</a></div>
+</div></section>
+<section class="funderstrip"><div class="wrap">
+    <img src="assets/mfa.png" alt="Ministry of Foreign Affairs of Denmark">
+    <img src="assets/dfc.jpg" alt="Danida Fellowship Centre">
+    <div class="ack"><strong>The project is funded by the Ministry of Foreign Affairs of Denmark and managed by Danida Fellowship Centre.</strong><br>
+    DANIDA Knowledge and Innovation Programme (KIP) 2025.</div>
+</div></section>
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>ASAP-Bio</h4><p style="color:#cfe0d0">Advancing Sustainable Animal Production and Biodiversity through Equitable African–Danish University Partnerships. A 2026–2032 partnership in Integrated Sustainable Animal Production Systems (ISAPS).</p><img class="footemblem" src="assets/emblem-trans.png" alt="ASAP-Bio emblem"></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="about.html">About the project</a></li><li><a href="partners.html">Partners</a></li><li><a href="collaborators.html">Collaborators</a></li>
+      <li><a href="themes.html">Themes</a></li><li><a href="knowledge.html">Knowledge Hub</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="erasmus.html">Erasmus+ Mobility</a></li>
+      <li><a href="genomics-bootcamp.html">Genomics Boot Camp</a></li>
+      <li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p style="color:#cfe0d0">ASAP-Bio Project Coordination<br>Center for Quantitative Genetics and Genomics (QGG)<br>Aarhus University, Denmark</p>
+      <p style="margin-top:8px"><a href="mailto:grum.gebreyesus@qgg.au.dk">grum.gebreyesus@qgg.au.dk</a></p>
+      <p style="margin-top:8px"><a href="contact.html">See all project contacts &#8594;</a></p></div>
+  </div>
+  <div class="fbar"><span>© 2026 ASAP-Bio partnership. All partner institutions.</span>
+  <span>Aarhus University · Debre Berhan University · Muni University · University of Nairobi · Jomo Kenyatta University of Agriculture and Technology</span></div>
+</div></footer>
+<script>document.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('lk').classList.remove('open')));</script>
+</body></html>
