@@ -556,3 +556,9 @@ footer.site ul{padding-left:0;margin-left:0}
 .lecrefs li:last-child{margin-bottom:0}
 .lecsrc{margin:26px 0 0;padding:13px 16px;background:#f4f7f4;border-left:3px solid #cfe0d0;
   border-radius:0 8px 8px 0;font-size:12.5px;color:var(--grey);line-height:1.6}
+
+/* ---- GDPR consent line on the scholarship call ---- */
+.gdpr{margin:14px 0 0;padding:11px 13px;background:#f4f7f4;border-left:3px solid var(--green);
+  border-radius:0 6px 6px 0;font-size:13px;line-height:1.55}
+.gdpr strong{font-weight:600}
+.gdpr a{text-decoration:underline}
