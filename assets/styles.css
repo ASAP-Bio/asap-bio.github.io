@@ -409,7 +409,7 @@ footer.site ul{padding-left:0;margin-left:0}
 .eqn{background:#fbfcfb;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:8px;padding:12px 18px;margin:14px 0;overflow-x:auto}
 .eqn.c{text-align:center}
 .keybox{background:#f2f8f2;border:1px solid #cfe3cf;border-radius:10px;padding:14px 18px;margin:16px 0}
-.keybox strong:first-child{display:block;color:var(--greendk);font-size:13px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.keybox > strong:first-child{display:block;color:var(--greendk);font-size:13px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
 .derive{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:14px 18px;margin:16px 0}
 .derive h5{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:var(--grey)}
 .derive ol{margin-left:18px;padding-left:20px}
