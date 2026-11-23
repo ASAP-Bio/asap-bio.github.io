@@ -52,7 +52,7 @@
   <p><a href="news.html">&#8592; Back to News</a></p>
   <div class="eyebrow">Conference &middot; Uganda &middot; 6&ndash;7 November 2026</div>
   <figure class="nw-hero"><img src="assets/news/apsu-2026/apsu-01.jpg" alt="Group photo of participants at the 2nd APSU Scientific Conference"></figure>
-  <p class="nw-cap">Participants of the 2nd Animal Production Society of Uganda Scientific Conference and AGM at the Golden Tulip Canaan Hotel, Kampala.</p>
+  <p class="nw-cap">Participants of the 2nd Animal Production Society of Uganda Scientific Conference and AGM at the Golden Tulip Canaan Hotel, Kampala. Photo: David Buule.</p>
 
   <div class="nw-layout">
   <article class="nw-article">
@@ -116,7 +116,7 @@
 
 <section class="alt"><div class="wrap">
   <h2>Photo gallery</h2>
-  <p class="lead">Photos from both days of the conference. Select a photo to enlarge it.</p>
+  <p class="lead">Photos from both days of the conference by David Buule. Select a photo to enlarge it.</p>
   <div class="nw-grid"></div>
   <p style="margin-top:22px"><a href="news.html">&#8592; Back to News</a> &middot; <a href="news-apsu.html">The conference call for abstracts</a></p>
 </div></section>
@@ -131,7 +131,7 @@ const full=id=>D+id+".jpg", th=id=>D+"th/"+id+".jpg";
 /* lightbox */
 const lb=document.querySelector('.nw-lb'), lbi=lb.querySelector('img'), lbp=lb.querySelector('p');
 const U=P.filter(p=>!p.dup);let list=U.map(p=>p.id), cur=0;
-function show(i){cur=(i+list.length)%list.length;const p=byId[list[cur]];lbi.src=full(p.id);lbi.alt=p.cap;lbp.textContent=p.cap;}
+function show(i){cur=(i+list.length)%list.length;const p=byId[list[cur]];lbi.src=full(p.id);lbi.alt=p.cap;lbp.textContent=p.cap+' · Photo: David Buule';}
 function openLB(id,ids){list=ids||U.map(p=>p.id);show(Math.max(0,list.indexOf(id)));lb.classList.add('open');document.body.style.overflow='hidden';}
 function closeLB(){lb.classList.remove('open');document.body.style.overflow='';}
 lb.querySelector('.x').onclick=closeLB; lb.querySelector('.pv').onclick=()=>show(cur-1); lb.querySelector('.nx').onclick=()=>show(cur+1);
